@@ -20,7 +20,7 @@
             <p>les meilleurs produits, les plus vendu sur eblack mpor incididunt ut labore et dolore magna aliqua.</p>-->
             <a href="liste_grid.html"  class="btn btn-outline-primary round align-self-center" style="width: 100px;z-index: 999999;border: 2px solid white;font-weight: bold; color: white;">
                 Explorer</a>
-            <img src="images/h_chemise-motif-carrly.jpg" style="width:100%;height:100%;z-index: -1;" class="img-bg zoom-in d-none d-lg-block">
+            <img src="images/banners/h_chemise-motif-carrly.jpg" style="width:100%;height:100%;z-index: -1;" class="img-bg zoom-in d-none d-lg-block">
         </div>
     </article>
     
@@ -215,7 +215,7 @@
             <article href="#" class="card-banner h-100 reveal-2"style="background-color: #162A70">
                     <div class="card-body zoom-wrap align-items-center row justify-content-center">			<a href="liste_grid.html"  class="btn btn-outline-primary round align-self-center" style="width: 100px;z-index: 999999;border: 2px solid white;font-weight: bold; color: white;">
                     Explorer</a>
-                <img src="images/shoe.jpg" style="width:100%;height:100%;z-index: -1;" class="img-bg zoom-in d-none d-lg-block">
+                <img src="images/banners/shoe.jpg" style="width:100%;height:100%;z-index: -1;" class="img-bg zoom-in d-none d-lg-block">
             </div>
         </article>
             </div> <!-- col.// -->
