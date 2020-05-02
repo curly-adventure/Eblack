@@ -1,18 +1,18 @@
 INSERT INTO `products` ( `fournisseur_id`, `p_name`, `p_code`, `p_color`, `p_desc`, `prix`, `image`, `created_at`, `updated_at`) VALUES
 (0, 'T-shirt noir', 't-shirt-noir-250', 'noir', 'T-shirt pour homme de couleur noir, les couleur rouge et vert sont aussi disponible', 5000, '1000.png', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
-(0, 'Chaussure nike bleu', 'ch-nike-150', 'Bleu', 'description ixi', 2500.00, '78346.png', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
-(0, 'iphone 11', 'cb-vi-150', 'Violet', 'description.............', 4050, '70461.png',  '2020-05-1 15:00:06', '2020-05-1 15:00:06');
-(0, 'escarpin rouge', 'escarpin-250', 'rouge', 'chaussure rouge pour femme, disponibles en vert', 5000, 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'basket_grise', 'basket-250', 'grise', 'chaussure pour homme, disponibles en noir', 5000, 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'montre argenter', 'argent-250', 'argent', 'montre masculine, disponibles or', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'montre-feminine', 'bracelet-montre-250','rose-bleu', 'montre pour femme', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'montre-argenter', 'argent-250', 'argent', 'montre masculine, disponibles or', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'basket_nike', 'nike-250', 'blanche', 'basket nike, disponibles noir', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'pull-over', 'pull-250', 'noir', 'pull-over, disponibles blanc', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'chemise-blanche', 'blanche-250', 'blanche', 'chemises blanches, disponibles en noir', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'chaussure blanche', 'blanche-251', 'blanche', 'chaussures blanches, hommes et femmes', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')1
-(0, 'tricot', 'tricot-250', 'toutes couleurs', 'tricots en dentelles pour femmes', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
-(0, 'chemise blanche', 'blanche-250', 'blanche', 'chemises blanches, disponibles en noir', '5000', 'jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06')
+(0, 'Chaussure nike bleu', 'ch-nike-150', 'Bleu', 'description ixi', 2500.00, 'nike.png', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'iphone 11', 'cb-vi-150', 'Violet', 'description.............', 104050, 'iphone.png',  '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'escarpin rouge', 'escarpin-250', 'rouge', 'chaussure rouge pour femme, disponibles en vert', 7000, 'escarpin.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'basket_grise', 'basket-250', 'grise', 'chaussure pour homme, disponibles en noir', 5000, 'basket.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'montre argenter', 'argent-250', 'argent', 'montre masculine, disponibles or', 15000, 'montre-argenter.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'montre-feminine', 'bracelet-montre-250','rose-bleu', 'montre pour femme', 10500, 'montre-feminine.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'montre-argenter', 'argent-250', 'argent', 'montre masculine, disponibles or', 7000, 'montre-argenter.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'basket_nike', 'nike-250', 'blanche', 'basket nike, disponibles noir', 12000, 'baskett_nike.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'pull-over', 'pull-250', 'noir', 'pull-over, disponibles blanc', 25000, 'pull-over.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'chemise-blanche', 'blanche-250', 'blanche', 'chemises blanches, disponibles en noir', 85000, 'chemise-blanche.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'chaussure blanche', 'blanche-251', 'blanche', 'chaussures blanches, hommes et femmes', 45000, 'chaussure-blanche.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'tricot', 'tricot-250', 'toutes couleurs', 'tricots en dentelles pour femmes', 8450, 'tricots.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06'),
+(0, 'chemise blanche', 'blanche-250', 'blanche', 'chemises blanches, disponibles en noir', 95000, 'chemise-blanche.jpg', '2020-05-1 15:00:06', '2020-05-1 15:00:06');
 
 INSERT INTO `category_product` (`category_id`, `product_id`) VALUES
 (5,1),(6,2),(7,3);

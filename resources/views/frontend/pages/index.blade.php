@@ -1,7 +1,7 @@
 @extends('frontend.app')
 @section('title','Accueil')
-
 @section('content')
+
 @include('frontend.partials.slider')
 <section class="section-content padding-y-sm bg reveal">
     <div class="container">
@@ -26,17 +26,22 @@
     
         </div> <!-- col.// -->
         <div class="col-md-9 reveal-3">
-        <ul class="row no-gutters border-cols">
+    <ul class="row no-gutters border-cols">
+        <!--produits-->
+        @foreach ($new_prod as $key => $product)
+        @if ($key==4)
+            @break:
+        @endif
         <li class="col-6 col-md-3">
         <a href="#" class="itembox"> 
             <div class="card-body">
-            <p class="word-limit">sac a main rouge</p>
+            <p class="word-limit">{{$product->p_name}}</p>
             <div class="price-wrap h6 float-left">
-                <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
+                <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
             </div>
             <div class="float-right">
                 <!--<span class="badge-new float-right"> NEW </span>-->
-                <img class="img-sm float-right " src="images/items/3.jpg">
+                <img class="img-sm float-right " src="images/produits/{{$product->image}}">
             </div>
             
             <div class="bottom-wrap">
@@ -48,97 +53,24 @@
             </div>
         </a>
         </li>
-        <li class="col-6 col-md-3">
-            <a href="#" class="itembox"> 
-                <div class="card-body">
-                <p class="word-limit">iphone 11</p>
-                <div class="price-wrap h6 float-left">
-                    <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                </div>
-                <div class="float-right">
-                    <img class="img-sm float-right " src="images/items/4.jpg">
-                </div>
-                
-                <div class="bottom-wrap">
-                    <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                    <span class="float-right"> &nbsp;&nbsp;</span>
-                    <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                    <!-- price-wrap.// -->
-                </div>
-                </div>
-            </a>
-            </li>
-            <li class="col-6 col-md-3">
-                <a href="#" class="itembox"> 
-                    <div class="card-body">
-                    <p class="word-limit">chemise manches longues bas arrondi femme blanc</p>
-                    <div class="price-wrap h6 float-left">
-                        <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                    </div>
-                    <div class="float-right">
-                        <img class="img-sm float-right " src="images/items/14.jpg">
-                    </div>
-                    
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                        <span class="float-right"> &nbsp;&nbsp;</span>
-                        <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                        <!-- price-wrap.// -->
-                    </div>
-                    </div>
-                </a>
-            </li>
-            <li class="col-6 col-md-3">
-                <a href="#" class="itembox"> 
-                    <div class="card-body">
-                    <p class="word-limit">chaussure nike</p>
-                    <div class="price-wrap h6 float-left">
-                        <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                    </div>
-                    <div class="float-right">
-                        <img class="img-sm float-right " src="images/items/1.jpg">
-                    </div>
-                    
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                        <span class="float-right"> &nbsp;&nbsp;</span>
-                        <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                        <!-- price-wrap.// -->
-                    </div>
-                    </div>
-                </a>
-                </li>
+        @endforeach
     </ul>
+    
     <ul class="row no-gutters border-cols">
-        <li class="col-6 col-md-3">
-        <a href="#" class="itembox"> 
-            <div class="card-body">
-            <p class="word-limit">sac a main rouge</p>
-            <div class="price-wrap h6 float-left">
-                <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-            </div>
-            <div class="float-right">
-                <img class="img-sm float-right " src="images/items/2.jpg">
-            </div>
-            
-            <div class="bottom-wrap">
-                <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                <span class="float-right"> &nbsp;&nbsp;</span>
-                <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                <!-- price-wrap.// -->
-            </div>
-            </div>
-        </a>
-        </li>
+        @foreach ($new_prod as $key => $product)
+        @if ($key>=4)
+       
+    
         <li class="col-6 col-md-3">
             <a href="#" class="itembox"> 
                 <div class="card-body">
-                <p class="word-limit">iphone 11</p>
+                <p class="word-limit">{{$product->p_name}}</p>
                 <div class="price-wrap h6 float-left">
-                    <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
+                    <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
                 </div>
                 <div class="float-right">
-                    <img class="img-sm float-right " src="images/items/9.jpg">
+                    <!--<span class="badge-new float-right"> NEW </span>-->
+                    <img class="img-sm float-right " src="images/produits/{{$product->image}}">
                 </div>
                 
                 <div class="bottom-wrap">
@@ -150,46 +82,8 @@
                 </div>
             </a>
             </li>
-            <li class="col-6 col-md-3">
-                <a href="#" class="itembox"> 
-                    <div class="card-body">
-                    <p class="word-limit">chemise manches longues bas arrondi femme blanc</p>
-                    <div class="price-wrap h6 float-left">
-                        <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                    </div>
-                    <div class="float-right">
-                        <img class="img-sm float-right " src="images/items/10.jpg">
-                    </div>
-                    
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                        <span class="float-right"> &nbsp;&nbsp;</span>
-                        <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                        <!-- price-wrap.// -->
-                    </div>
-                    </div>
-                </a>
-            </li>
-            <li class="col-6 col-md-3">
-                <a href="#" class="itembox"> 
-                    <div class="card-body">
-                    <p class="word-limit">chaussure nike</p>
-                    <div class="price-wrap h6 float-left">
-                        <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                    </div>
-                    <div class="float-right">
-                        <img class="img-sm float-right " src="images/items/11.jpg">
-                    </div>
-                    
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                        <span class="float-right"> &nbsp;&nbsp;</span>
-                        <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                        <!-- price-wrap.// -->
-                    </div>
-                    </div>
-                </a>
-                </li>
+            @endif
+        @endforeach
     </ul>
         </div> <!-- col.// -->
     </div> <!-- row.// -->
@@ -211,7 +105,6 @@
         <div class="card">
         <div class="row no-gutters">
             <div class="col-md-3">
-            
             <article href="#" class="card-banner h-100 reveal-2"style="background-color: #162A70">
                     <div class="card-body zoom-wrap align-items-center row justify-content-center">			<a href="liste_grid.html"  class="btn btn-outline-primary round align-self-center" style="width: 100px;z-index: 999999;border: 2px solid white;font-weight: bold; color: white;">
                     Explorer</a>
@@ -221,15 +114,23 @@
             </div> <!-- col.// -->
             <div class="col-md-9 reveal-3">
             <ul class="row no-gutters border-cols">
+           
+           @foreach($pop_prod as $key=>$product)
+                @if($key==4)
+                    
+                @break
+
+                    
+                @endif
             <li class="col-6 col-md-3">
             <a href="#" class="itembox"> 
                 <div class="card-body">
-                <p class="word-limit">sac a main rouge</p>
+                <p class="word-limit">{{$product->p_name}}</p>
                 <div class="price-wrap h6 float-left">
-                    <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
+                    <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
                 </div>
                 <div class="float-right">
-                    <img class="img-sm float-right " src="images/items/5.jpg">
+                    <img class="img-sm float-right " src="images/produits/{{$product->image}}">
                 </div>
                 
                 <div class="bottom-wrap">
@@ -241,137 +142,21 @@
                 </div>
             </a>
             </li>
-            <li class="col-6 col-md-3">
-                <a href="#" class="itembox"> 
-                    <div class="card-body">
-                    <p class="word-limit">T-shirt 11</p>
-                    <div class="price-wrap h6 float-left">
-                        <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                    </div>
-                    <div class="float-right">
-                        <img class="img-sm float-right " src="images/items/6.jpg">
-                    </div>
-                    
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                        <span class="float-right"> &nbsp;&nbsp;</span>
-                        <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                        <!-- price-wrap.// -->
-                    </div>
-                    </div>
-                </a>
-                </li>
-                <li class="col-6 col-md-3">
-                    <a href="#" class="itembox"> 
-                        <div class="card-body">
-                        <p class="word-limit">montre noir swagg</p>
-                        <div class="price-wrap h6 float-left">
-                            <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                        </div>
-                        <div class="float-right">
-                            <img class="img-sm float-right " src="images/items/7.jpg">
-                        </div>
-                        
-                        <div class="bottom-wrap">
-                            <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                            <span class="float-right"> &nbsp;&nbsp;</span>
-                            <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                            <!-- price-wrap.// -->
-                        </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-6 col-md-3">
-                    <a href="#" class="itembox"> 
-                        <div class="card-body">
-                        <p class="word-limit">chaussure nike</p>
-                        <div class="price-wrap h6 float-left">
-                            <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                        </div>
-                        <div class="float-right">
-                            <img class="img-sm float-right " src="images/items/8.jpg">
-                        </div>
-                        
-                        <div class="bottom-wrap">
-                            <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                            <span class="float-right"> &nbsp;&nbsp;</span>
-                            <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                            <!-- price-wrap.// -->
-                        </div>
-                        </div>
-                    </a>
-                    </li>
+            @endforeach
         </ul>
         <ul class="row no-gutters border-cols">
-            <li class="col-6 col-md-3">
-            <a href="#" class="itembox"> 
-                <div class="card-body">
-                <p class="word-limit">sac a main rouge</p>
-                <div class="price-wrap h6 float-left">
-                    <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                </div>
-                <div class="float-right">
-                    <img class="img-sm float-right " src="images/items/12.png">
-                </div>
+            @foreach($pop_prod as $key=>$product)
+                @if($key>=4)
                 
-                <div class="bottom-wrap">
-                    <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                    <span class="float-right"> &nbsp;&nbsp;</span>
-                    <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                    <!-- price-wrap.// -->
-                </div>
-                </div>
-            </a>
-            </li>
-            <li class="col-6 col-md-3">
-                <a href="#" class="itembox"> 
-                    <div class="card-body">
-                    <p class="word-limit">T-shirt noir</p>
-                    <div class="price-wrap h6 float-left">
-                        <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                    </div>
-                    <div class="float-right">
-                        <img class="img-sm float-right " src="images/items/13.png">
-                    </div>
-                    
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                        <span class="float-right"> &nbsp;&nbsp;</span>
-                        <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                        <!-- price-wrap.// -->
-                    </div>
-                    </div>
-                </a>
-                </li>
                 <li class="col-6 col-md-3">
                     <a href="#" class="itembox"> 
                         <div class="card-body">
-                        <p class="word-limit">chemise manches longues bas arrondi femme blanc</p>
+                        <p class="word-limit">{{$product->p_name}}</p>
                         <div class="price-wrap h6 float-left">
-                            <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
+                            <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
                         </div>
                         <div class="float-right">
-                            <img class="img-sm float-right " src="images/items/14.jpg">
-                        </div>
-                        
-                        <div class="bottom-wrap">
-                            <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                            <span class="float-right"> &nbsp;&nbsp;</span>
-                            <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                            <!-- price-wrap.// -->
-                        </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-6 col-md-3">
-                    <a href="#" class="itembox"> 
-                        <div class="card-body">
-                        <p class="word-limit">chaussure nike</p>
-                        <div class="price-wrap h6 float-left">
-                            <span class="price-new">$1280</span> <del class="price-old ">$1980</del>
-                        </div>
-                        <div class="float-right">
-                            <img class="img-sm float-right " src="images/items/15.jpg">
+                            <img class="img-sm float-right " src="images/produits/{{$product->image}}">
                         </div>
                         
                         <div class="bottom-wrap">
@@ -383,6 +168,9 @@
                         </div>
                     </a>
                     </li>
+                @endif
+                @endforeach
+           
         </ul>
             </div> <!-- col.// -->
         </div> <!-- row.// -->

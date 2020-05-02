@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend/pages/index');
-});
+route::get('/','IndexController@home');
+route::get('/shop','IndexController@shop');
