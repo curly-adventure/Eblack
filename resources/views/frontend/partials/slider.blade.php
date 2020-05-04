@@ -22,13 +22,13 @@
         </div>
       </div>
       <div class="carousel-item item-slide">
-        <img src="images/banners/slide2.png" alt="Deuxième diapositive">
+        <img src="images/banners/slide2.jpg" alt="Deuxième diapositive">
       </div>
       <div class="carousel-item item-slide">
-        <img src="images/banners/slide3.png" alt="Troisième diapositive">
+        <img src="images/banners/slide3.jpg" alt="Troisième diapositive">
     </div>
     <div class="carousel-item item-slide">
-      <img src="images/banners/slide4.png" alt="Troisième diapositive">
+      <img src="images/banners/slide4.jpg" alt="Troisième diapositive">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">

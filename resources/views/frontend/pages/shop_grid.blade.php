@@ -30,7 +30,7 @@
 					<ul class="list-inline">
 					  <div class="btn-group">
 		  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			type de produit
+			categorie
 		  </button>
 		  <div class="dropdown-menu">
 			<a class="dropdown-item" href="#">tout afficher</a>
@@ -101,7 +101,7 @@
 	</div> <!-- card.// -->
 	<header class="mb-3">
 		<div class="form-inline">
-			<strong class="mr-md-auto">32 produits trouver </strong>
+			<strong class="mr-md-auto">{{$products->total()}} produits trouver </strong>
 			<div class="btn-group  d-none d-lg-block">
 				<a href="page-listing-grid.html" class="btn btn-light active" data-toggle="tooltip" title="" data-original-title="List view"> 
 					<i class="fa fa-bars"></i></a>
@@ -112,14 +112,15 @@
 </header>
 	
 	<div class="row-sm">
+		@foreach ($products as $key => $product)
 	<div class="col-md-3 col-sm-6">
 		<figure class="card card-product">
-			<span class="badge-new"> NEW </span>
-			<div class="img-wrap"> <img src="images/items/13.png"></div>
+			<!--<span class="badge-new"> NEW </span>-->
+			<div class="img-wrap"> <img src="images/produits/{{$product->image}}"></div>
 			<figcaption class="info-wrap text-center">
-				<a href="#" class="title">Chaussures Nike bg</a>
+				<a href="#" class="title">{{$product->p_name}}</a>
 				<div class="price-wrap">
-					<span class="price-new">1280 FCFA</span>
+					<span class="price-new">{{$product->prix}}</span>
 					<del class="price-old">1980 FCFA</del>
 					
 				</div><a href="#"><button type="button" class="btn btn-outline-primary">acheter</button></a> <!-- price-wrap.// -->
@@ -127,148 +128,16 @@
 
 		</figure> <!-- card // -->
 	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/2.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-					
-				</div><a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a> <!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/3.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">Good item name</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-				</div><a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a><!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/4.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">Good item name</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
+	@endforeach
 
-				</div><a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a> <!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/5.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">Good item name</a>
-				<div class="price-wrap">
-					<span class="price-new">$1280</span>
-					<del class="price-old">$1980</del>
-				</div>
-				<a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a> <!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/6.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-				</div>
-				<a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a> <!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/7.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-				</div> 
-				<a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a><!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/1.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-				</div><a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a> <!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/2.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$1280</span>
-					<del class="price-old">$1980</del>
-				</div> <a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a><!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> 
-	<!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/3.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-				</div><a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a> <!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/4.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-				</div><a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a> <!-- price-wrap.// -->
-			</figcaption>
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<div class="img-wrap"> <img src="images/items/6.jpg"></div>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap">
-					<span class="price-new">$280</span>
-				</div> <a href="#"><button type="button" class="btn btn-outline-primary">voir produit</button></a><!-- price-wrap.// -->
-			</figcaption>
-		</figure> 
-	</div>
-	<center>
+
 	<nav class="mb-4" aria-label="Page navigation sample">
 		<ul class="pagination">
-		  <li class="page-item disabled"><a class="page-link" href="#">Precedant</a></li>
-		  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-		  <li class="page-item"><a class="page-link" href="#">2</a></li>
-		  <li class="page-item"><a class="page-link" href="#">3</a></li>
-		  <li class="page-item"><a class="page-link" href="#">4</a></li>
-		  <li class="page-item"><a class="page-link" href="#">5</a></li>
-		  <li class="page-item"><a class="page-link" href="#">suivant</a></li>
+		 <!-- <li class="page-item disabled"><a class="page-link" href="#">Precedant</a></li>-->
+		  {{ $products->links() }}
+		  <!--<li class="page-item"><a class="page-link" href="#">suivant</a></li>-->
 		</ul>
 	  </nav>
-	  </center>
 
 	  
 	</div><!-- container // -->

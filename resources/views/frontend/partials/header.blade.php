@@ -3,8 +3,8 @@
     <a href="#top"><img src="images/to_top.png"/></a>
     </div>
     <nav class="navbar  fixed-top navbar-dark bg-dark  d-lg-none" style="height: 70px;">
-    <a class="btn open-menu" href="#" role="button" style="font-size: 20px;"><i class="fa fa-bars"></i><!--<i class="fas fa-align-left"></i> --></a>
-    <a class="navbar-brand" style="color: white;font-weight: bold;"><img class="logo" src="images/logoh.png">Eblack</a>
+    <a class="btn open-menu" href="#" role="button" style="font-size: 20px;"><i class="fas fa-align-left"></i> <!--<i class="fa fa-bars"></i>--></a>
+    <a class="navbar-brand" href="{{url('/')}}" style="color: white;font-weight: bold;"><img class="logo" src="images/logoh.png">Eblack</a>
     
     <div class="widget-header dropdown" style="margin-right: 0;padding: 0;">
         <a href="#" class="ml-1 icontext" data-toggle="dropdown" data-offset="20,10">
@@ -30,8 +30,8 @@
 <div class="col-lg-4-24 col-sm-3">
     
     <div class="brand-wrap">
-        <a class="btn open-menu" href="#" role="button" style="font-size: 20px;"><i class="fa fa-bars"></i></a>
-        <a href="#" style="color:white;font-weight:bold;font-size:18px"><img class="logo" src="images/logoh.png">Eblack</a>
+        <a class="btn open-menu" href="#" role="button" style="font-size: 20px;"><i class="fa fa-align-left"></i></a>
+        <a href="{{url('/')}}"  style="color:white;font-weight:bold;font-size:18px"><img class="logo" src="images/logoh.png">Eblack</a>
     </div> 
 </div>
 <div class="col-lg-11-24 col-sm-8  d-none d-lg-block">

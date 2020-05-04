@@ -68,21 +68,21 @@ class CategoriesTableSeeder extends Seeder
         Category::create([
             'parent_id' => 1,
             'name' => 'chaussures',
-            'description' => 'Tous les pantalons pour hommes',
+            'description' => 'Toutes les chaussures pour hommes',
             
         ]);
          //9
         Category::create([
             'parent_id' => 3,
             'name' => 'chaussures',
-            'description' => 'Tous les pantalons pour enfants',
+            'description' => 'Tous les chaussures pour enfants',
             
         ]);
          //10
         Category::create([
             'parent_id' => 2,
             'name' => 'chaussures',
-            'description' => 'Tous les pantalons pour femmes',
+            'description' => 'Tous les chaussures pour femmes',
             
         ]);
             //11
@@ -100,21 +100,15 @@ class CategoriesTableSeeder extends Seeder
             'description' => 'accessoire d\'hommes',
           
         ]);
-            //13
-        Category::create([
-            'parent_id' => 1,
-            'name' => 'accessoires',
-            'description' => 'accessoire d\'hommes',
-          
-        ]);
-        //14
+    
+        //13
         Category::create([
             'parent_id' => 3,
             'name' => 'accessoires',
             'description' => 'accessoire pour enfants',
           
         ]);
-        //15
+        //14
         Category::create([
             'parent_id' => 4,
             'name' => 'accessoires',
@@ -122,14 +116,14 @@ class CategoriesTableSeeder extends Seeder
           
         ]);
 
-        //16
+        //15
         Category::create([
             'name' => 'audios',
             'parent_id' => 4,
             'description' => 'casque audio et autres',
         ]);
 
-        //17
+        //16
         Category::create([
             'name' => 'tel & pc',
             'parent_id' => 4,
