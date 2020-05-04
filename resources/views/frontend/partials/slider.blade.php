@@ -18,7 +18,7 @@
       <div class="carousel-item active item-slide">
       <img src="images/banners/slide1.png" alt="Première diapositive"> 
       <div class="carousel-caption">
-          <h1> <a href="">SHOP</a></h1>
+          <h3> <a href="{{url('/shop')}}">SHOP</a></h3>
         </div>
       </div>
       <div class="carousel-item item-slide">
@@ -53,7 +53,7 @@
           <p>vêtement, chaussures, montres... <br>de toutes marques</p>
           <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
           </div> 
-          <img src="images/items/1.jpg" height="80" class="img-bg">
+          <img src="images/produits/veste-nike.jpeg" height="80" class="img-bg">
         </div>
   
         <div class="card-banner border-bottom reveal-2">
@@ -62,7 +62,7 @@
             <p>vêtement, chaussures, montres... <br>de toutes marques</p>
           <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
           </div> 
-          <img src="images/items/2.jpg" height="80" class="img-bg">
+          <img src="images/produits/complet.jpg" height="80" class="img-bg">
         </div>
   
         <div class="card-banner border-bottom reveal-3">
@@ -71,7 +71,7 @@
             <p>les plus beau mobilier africain...</p>
           <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
           </div> 
-          <img src="images/items/6.jpg" height="80" class="img-bg">
+          <img src="images/produits/chaise.jpg" height="80" class="img-bg">
         </div>
   
       </aside>

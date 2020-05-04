@@ -37,7 +37,7 @@
             <div class="card-body">
             <p class="word-limit">{{$product->p_name}}</p>
             <div class="price-wrap h6 float-left">
-                <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
+                <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
             </div>
             <div class="float-right">
                 <!--<span class="badge-new float-right"> NEW </span>-->
@@ -45,9 +45,9 @@
             </div>
             
             <div class="bottom-wrap">
-                <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
+                <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
                 <span class="float-right"> &nbsp;&nbsp;</span>
-                <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
+                <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
                 <!-- price-wrap.// -->
             </div>
             </div>
@@ -66,7 +66,7 @@
                 <div class="card-body">
                 <p class="word-limit">{{$product->p_name}}</p>
                 <div class="price-wrap h6 float-left">
-                    <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
+                    <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
                 </div>
                 <div class="float-right">
                     <!--<span class="badge-new float-right"> NEW </span>-->
@@ -74,9 +74,9 @@
                 </div>
                 
                 <div class="bottom-wrap">
-                    <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
+                    <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
                     <span class="float-right"> &nbsp;&nbsp;</span>
-                    <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
                     <!-- price-wrap.// -->
                 </div>
                 </div>
@@ -123,26 +123,27 @@
 
                     
                 @endif
-            <li class="col-6 col-md-3">
-            <a href="#" class="itembox"> 
-                <div class="card-body">
-                <p class="word-limit">{{$product->p_name}}</p>
-                <div class="price-wrap h6 float-left">
-                    <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
-                </div>
-                <div class="float-right">
-                    <img class="img-sm float-right " src="images/produits/{{$product->image}}">
-                </div>
-                
-                <div class="bottom-wrap">
-                    <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                    <span class="float-right"> &nbsp;&nbsp;</span>
-                    <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                    <!-- price-wrap.// -->
-                </div>
-                </div>
-            </a>
-            </li>
+                <li class="col-6 col-md-3">
+                    <a href="#" class="itembox"> 
+                        <div class="card-body">
+                        <p class="word-limit">{{$product->p_name}}</p>
+                        <div class="price-wrap h6 float-left">
+                            <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
+                        </div>
+                        <div class="float-right">
+                            <!--<span class="badge-new float-right"> NEW </span>-->
+                            <img class="img-sm float-right " src="images/produits/{{$product->image}}">
+                        </div>
+                        
+                        <div class="bottom-wrap">
+                            <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
+                            <span class="float-right"> &nbsp;&nbsp;</span>
+                            <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
+                            <!-- price-wrap.// -->
+                        </div>
+                        </div>
+                    </a>
+                    </li>
             @endforeach
         </ul>
         <ul class="row no-gutters border-cols">
@@ -154,16 +155,17 @@
                         <div class="card-body">
                         <p class="word-limit">{{$product->p_name}}</p>
                         <div class="price-wrap h6 float-left">
-                            <span class="price-new">{{$product->prix}}</span> <del class="price-old ">$1980</del>
+                            <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
                         </div>
                         <div class="float-right">
+                            <!--<span class="badge-new float-right"> NEW </span>-->
                             <img class="img-sm float-right " src="images/produits/{{$product->image}}">
                         </div>
                         
                         <div class="bottom-wrap">
-                            <a href="" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
+                            <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
                             <span class="float-right"> &nbsp;&nbsp;</span>
-                            <a href="" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
+                            <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
                             <!-- price-wrap.// -->
                         </div>
                         </div>
