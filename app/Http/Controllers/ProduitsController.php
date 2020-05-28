@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Produits;
 
-class ProductsController extends Controller
+class ProduitsController extends Controller
 {
   
     function shop(){
-        $products=Product::with('categories')->paginate(8);
+        $products=Produits::with('categories')->paginate(8);
         return view('frontend.pages.shop_grid',compact('products'));
     }
     

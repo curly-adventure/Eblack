@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Produits;
-class ProductsTableSeeder extends Seeder
+class ProduitsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        //1
         Produits::create([
             'nom' => 'basket bleu',
             'prix_achat' =>'5000',
@@ -23,7 +22,5 @@ class ProductsTableSeeder extends Seeder
             'Marque_id'=>0,
             'description'=>"basket bleu"
             ]);
-//2
-       
     }
 }

@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::get('/','IndexController@home');
-route::get('/shop','ProductsController@shop');
+route::get('/shop','ProduitsController@shop');

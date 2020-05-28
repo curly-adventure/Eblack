@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Produits;
 
 class IndexController extends Controller
 {
@@ -11,8 +11,8 @@ class IndexController extends Controller
         //dd($products);
         //$products=Product::with('categories')->paginate(6);
 
-        $new_prod=Product::inRandomOrder()->take(8)->get();
-        $pop_prod=Product::take(8)->get();
+        $new_prod=Produits::inRandomOrder()->take(8)->get();
+        $pop_prod=Produits::take(8)->get();
         return view('frontend.pages.index',compact('new_prod','pop_prod'));
     }
     
