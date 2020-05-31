@@ -10,7 +10,7 @@ class CreateAdresseTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'Adresse';
+    public $tableName = 'Adresses';
 
     /**
      * Run the migrations.
@@ -22,17 +22,15 @@ class CreateAdresseTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('description', 45)->nullable();
-            $table->integer('Communes_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->bigInteger('utilisateur_id')->unsigned();
+            $table->bigInteger('Communes_id')->unsigned();
+            $table->longText('description');
+            $table->softDeletes();
+            $table->timestamps();
 
-            $table->index(["Communes_id"], 'fk_Adresse_Communes1_idx');
-
-
-            $table->foreign('Communes_id', 'fk_Adresse_Communes1_idx')
-                ->references('id')->on('Communes')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('Communes_id')
+                ->references('id')->on('Communes');
         });
     }
 

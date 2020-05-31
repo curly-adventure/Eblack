@@ -22,13 +22,13 @@ class CreateBonReductionTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('code', 45)->nullable();
-            $table->integer('valeur')->nullable();
-            $table->tinyInteger('utilise')->nullable();
-            $table->integer('Administrateurs_id')->unsigned();
-
-           
+            $table->bigIncrements('id');
+            $table->string('code');
+            $table->integer('valeur');
+            $table->boolean('utilise')->default(false);
+            $table->bigInteger('Administrateurs_id')->unsigned();
+            $table->softDeletes();
+            $table->timestamps();
 
 
             $table->foreign('Administrateurs_id', 'fk_bon_reduction_Administrateurs1_idx')

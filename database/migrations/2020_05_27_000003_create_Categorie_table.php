@@ -22,8 +22,10 @@ class CreateCategorieTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('nom', 45)->nullable();
+            $table->bigIncrements('id')->unsigned();
+            $table->string('nom');
+            $table->string('logo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

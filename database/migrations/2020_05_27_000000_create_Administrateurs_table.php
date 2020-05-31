@@ -22,9 +22,12 @@ class CreateAdministrateursTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('email', 45)->nullable();
-            $table->string('password', 45)->nullable();
+            $table->bigIncrements('id')->unsigned();
+            $table->string('email');
+            $table->string('password');
+            $table->string('activer');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
