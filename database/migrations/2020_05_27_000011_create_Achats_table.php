@@ -22,35 +22,26 @@ class CreateAchatsTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('prix_vente', 45)->nullable();
-            $table->string('prix_achat', 45)->nullable();
-            $table->integer('Produits_id')->unsigned();
-            $table->integer('Adresse_id')->unsigned();
-            $table->integer('Utilisateurs_id')->unsigned();
-            $table->tinyInteger('livre')->nullable();
-
-            $table->index(["Adresse_id"], 'fk_Achats_Adresse1_idx');
-
-            $table->index(["Utilisateurs_id"], 'fk_Achats_Utilisateurs1_idx');
-
-            $table->index(["Produits_id"], 'fk_Achats_Produits1_idx');
+            $table->bigIncrements('id')->unsigned();
+            $table->integer('prix_vente');
+            $table->integer('prix_achat');
+            $table->bigInteger('produit_id')->unsigned();
+            $table->bigInteger('adresse_id')->unsigned();
+            $table->bigInteger('Utilisateur_id')->unsigned();
+            $table->boolean('canceled')->default(false)
+                ->comment('pour voir si la commande est annulée');
+            $table->softDeletes();
+            $table->timestamps();
 
 
-            $table->foreign('Produits_id', 'fk_Achats_Produits1_idx')
-                ->references('id')->on('Produits')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('produit_id')
+                ->references('id')->on('Produits');
 
-            $table->foreign('Adresse_id', 'fk_Achats_Adresse1_idx')
-                ->references('id')->on('Adresse')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('adresse_id')
+                ->references('id')->on('Adresses');
 
-            $table->foreign('Utilisateurs_id', 'fk_Achats_Utilisateurs1_idx')
-                ->references('id')->on('Utilisateurs')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('Utilisateur_id')
+                ->references('id')->on('Utilisateurs');
         });
     }
 

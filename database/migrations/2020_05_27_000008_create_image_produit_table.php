@@ -22,17 +22,14 @@ class CreateImageProduitTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('lien', 45)->nullable();
-            $table->integer('Produits_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->string('lien');
+            $table->bigInteger('Produits_id')->unsigned();
+            $table->softDeletes();
+            $table->timestamps();
 
-            $table->index(["Produits_id"], 'fk_image_produit_Produits1_idx');
-
-
-            $table->foreign('Produits_id', 'fk_image_produit_Produits1_idx')
-                ->references('id')->on('Produits')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('Produits_id')
+                ->references('id')->on('Produits');
         });
     }
 

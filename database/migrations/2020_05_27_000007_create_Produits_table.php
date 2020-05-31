@@ -22,38 +22,27 @@ class CreateProduitsTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('nom', 45)->nullable();
-            $table->string('prix_achat', 45)->nullable();
-            $table->string('prix_vente', 45)->nullable();
-            $table->string('enligne', 45)->nullable();
-            $table->string('quantite', 45)->nullable();
-            $table->integer('Categorie_id')->unsigned();
-            $table->integer('sousCategorie_id')->unsigned();
-            $table->integer('Marque_id')->unsigned();
-            $table->longText('description')->nullable();
+            $table->bigIncrements('id')->unsigned();
+            $table->string('nom');
+            $table->integer('prix_achat');
+            $table->integer('prix_vente');
+            $table->integer('quantite');
+            $table->bigInteger('Categorie_id')->unsigned();
+            $table->bigInteger('sousCategorie_id')->unsigned();
+            $table->bigInteger('Marque_id')->unsigned();
+            $table->longText('description');
+            $table->boolean('enligne')->default(true);
+            $table->softDeletes();
             $table->timestamps();
-            $table->index(["Categorie_id"], 'fk_Produits_Categorie1_idx');
 
-            $table->index(["Marque_id"], 'fk_Produits_Marque1_idx');
+            $table->foreign('Categorie_id')
+                ->references('id')->on('Categorie');
 
-            $table->index(["sousCategorie_id"], 'fk_Produits_sousCategorie1_idx');
+            $table->foreign('sousCategorie_id')
+                ->references('id')->on('sousCategorie');
 
-
-            $table->foreign('Categorie_id', 'fk_Produits_Categorie1_idx')
-                ->references('id')->on('Categorie')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('sousCategorie_id', 'fk_Produits_sousCategorie1_idx')
-                ->references('id')->on('sousCategorie')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('Marque_id', 'fk_Produits_Marque1_idx')
-                ->references('id')->on('Marque')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('Marque_id')
+                ->references('id')->on('Marque');
         });
     }
 

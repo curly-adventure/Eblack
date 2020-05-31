@@ -22,19 +22,17 @@ class CreateUtilisateursTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('nom', 45)->nullable();
-            $table->string('prenom', 45)->nullable();
-            $table->string('email', 45)->nullable();
-            $table->string('motdepasse', 45)->nullable();
-            $table->integer('Adresse_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('email', 45)->unique();
+            $table->string('motdepasse', 45);
+            $table->bigInteger('Adresse_id')->unsigned();
+            $table->softDeletes();
+            $table->timestamps();
 
-            $table->index(["Adresse_id"], 'fk_Utilisateurs_Adresse1_idx');
-            $table->nullableTimestamps();
-
-
-            $table->foreign('Adresse_id', 'fk_Utilisateurs_Adresse1_idx')
-                ->references('id')->on('Adresse')
+            $table->foreign('Adresse_id')
+                ->references('id')->on('Adresses')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

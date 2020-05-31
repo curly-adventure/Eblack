@@ -22,17 +22,14 @@ class CreateCommunesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('nom', 45)->nullable();
-            $table->integer('Villes_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->string('nom')->unique();
+            $table->bigInteger('ville_id')->unsigned();
+            $table->softDeletes();
+            $table->timestamps();
 
-            $table->index(["Villes_id"], 'fk_Communes_Villes_idx');
-
-
-            $table->foreign('Villes_id', 'fk_Communes_Villes_idx')
-                ->references('id')->on('Villes')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('ville_id')
+                ->references('id')->on('Villes');
         });
     }
 

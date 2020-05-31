@@ -22,8 +22,10 @@ class CreateVillesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('nom', 45)->nullable();
+            $table->bigIncrements('id');
+            $table->string('nom')->unique();
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

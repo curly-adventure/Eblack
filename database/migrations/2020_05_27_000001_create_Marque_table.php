@@ -22,9 +22,11 @@ class CreateMarqueTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->string('nom', 45)->nullable();
-            $table->string('logo', 45)->nullable();
+            $table->bigIncrements('id')->unsigned();
+            $table->string('nom');
+            $table->string('logo')->comment('chemin absolue vers l\'image');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
