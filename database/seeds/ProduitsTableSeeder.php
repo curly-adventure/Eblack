@@ -12,15 +12,15 @@ class ProduitsTableSeeder extends Seeder
     public function run()
     {
         Produits::create([
-            'nom' => 'basket bleu',
-            'prix_achat' =>'5000',
-            'prix_vente'=>'5000',
+            'nom' => 'veste nike',
+            'prix_achat' =>'50000',
+            'prix_vente'=>'50000',
             'enligne'=>'oui',
             'quantite'=>40,
-            'Categorie_id'=>4,
+            'Categorie_id'=>1,
             'sousCategorie_id'=>0,
             'Marque_id'=>0,
-            'description'=>"basket bleu"
+            'description'=>"veste homme nike noir"
             ]);
     }
 }

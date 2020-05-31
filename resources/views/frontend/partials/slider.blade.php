@@ -15,21 +15,27 @@
     <li data-target="#carousel1_indicator" data-slide-to="3" class=""></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active item-slide">
-      <img src="images/banners/slide1.png" alt="Première diapositive"> 
+      <div class="carousel-item active item-slide cover img-fluid">
+      <a href="liste_grid.html"><img src="images/banners/slide1.png" alt="Première diapositive" style="width:100%;height:100%;object-fit: cover"> </a>
       <div class="carousel-caption">
-          <h3> <a href="{{url('/shop')}}">SHOP</a></h3>
+          <h5 style="color: white;" >casque audio</h5>
         </div>
       </div>
       <div class="carousel-item item-slide">
-        <img src="images/banners/slide2.jpg" alt="Deuxième diapositive">
+      <a href="liste_grid.html"><img src="images/banners/slide2.png" alt="Deuxième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
       </div>
       <div class="carousel-item item-slide">
-        <img src="images/banners/slide3.jpg" alt="Troisième diapositive">
+      <a href="liste_grid.html"><img src="images/banners/slide3.png" alt="Troisième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
+      <div class="carousel-caption">
+        <h5 style="color: white;" >ordinateurs </h5>
+        </div>
     </div>
     <div class="carousel-item item-slide">
-      <img src="images/banners/slide4.jpg" alt="Troisième diapositive">
-      </div>
+      <a href="liste_grid.html"><img src="images/banners/slide4.png" alt="Troisième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
+      <div class="carousel-caption">
+        <h5 style="color: white;" >chaussures</h5>
+        </div>
+    </div>
     </div>
     <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -45,36 +51,36 @@
     </div> <!-- col.// -->
     <div class="col-md d-none d-lg-block flex-grow-1 reveal">
       <aside class="special-home-right">
-        <h6 class="bg-blue text-center text-white mb-0 p-2" style="background-color: #00044C;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Catégorie populaire</font></font></h6>
-        
-        <div class="card-banner border-bottom reveal-1" >
-          <div class="py-3" style="width:80%">
-            <h6 class="card-title" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mode homme</font></font></h6>
-          <p>vêtement, chaussures, montres... <br>de toutes marques</p>
-          <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
-          </div> 
-          <img src="images/produits/veste-nike.jpeg" height="80" class="img-bg">
-        </div>
-  
-        <div class="card-banner border-bottom reveal-2">
-          <div class="py-3" style="width:80%">
-            <h6 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mode femme </font></font></h6>
+          <h6 class="bg-blue text-center text-white mb-0 p-2" style="background-color: #00044C;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Catégorie populaire</font></font></h6>
+          
+          <div class="card-banner border-bottom reveal-1" >
+            <div class="py-3" style="width:80%">
+              <h6 class="card-title" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mode homme</font></font></h6>
             <p>vêtement, chaussures, montres... <br>de toutes marques</p>
-          <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
-          </div> 
-          <img src="images/produits/complet.jpg" height="80" class="img-bg">
-        </div>
-  
-        <div class="card-banner border-bottom reveal-3">
-          <div class="py-3" style="width:80%">
-            <h6 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mobiler</font></font></h6>
-            <p>les plus beau mobilier africain...</p>
-          <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
-          </div> 
-          <img src="images/produits/chaise.jpg" height="80" class="img-bg">
-        </div>
-  
-      </aside>
+            <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
+            </div> 
+            <img src="images/produits/veste-nike.jpeg" height="80" class="img-bg">
+          </div>
+    
+          <div class="card-banner border-bottom reveal-2">
+            <div class="py-3" style="width:80%">
+              <h6 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mode femme </font></font></h6>
+              <p>vêtement, chaussures, montres... <br>de toutes marques</p>
+            <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
+            </div> 
+            <img src="images/produits/complet.jpg" height="80" class="img-bg">
+          </div>
+    
+          <div class="card-banner border-bottom reveal-3">
+            <div class="py-3" style="width:80%">
+              <h6 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mobiler</font></font></h6>
+              <p>les plus beau mobilier africain...</p>
+            <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
+            </div> 
+            <img src="images/produits/chaise.jpg" height="80" class="img-bg">
+          </div>
+    
+        </aside>
     </div>
   </div> <!-- row.// -->
     </div> <!-- card-body .// -->

@@ -1,87 +1,122 @@
-<section class="section-subscribe  padding-y-lg" style="background-color: #162A70;">
-    <div class="container">
-        <div class="d-lg-none text-center"><img src="images/logo_footer.png" width="150px" height="80px" alt="Eblack le choix de la qualité"></div>
-    <div class="float-left d-none d-lg-block"><img src="images/logo_footer.png" width="170px" height="100px" alt="Eblack le choix de la qualité"></div>
-    <p class="pb-2 text-center white">Recevez les dernières tendances de produits et les nouvelles arrivées directement dans votre boîte de réception</p>
+    <footer class="page-footer font-small indigo d-none d-lg-block" style="background-color: #002687;color: white;">
+   
+      <!-- Footer Links -->
+      <div class="container">
     
-    <div class="row justify-content-md-center">
-        <div class="col-lg-4 col-sm-6">
-    <form class="row-sm form-noborder">
-            <div class="col-8">
-            <input class="form-control" placeholder="Votre Email" type="email">
-            </div> <!-- col.// -->
-            <div class="col-3">
-            <button type="submit" class="btn btn-outline-primary" style="border:1px solid #00044C;" > <i class="fa fa-envelope"></i> Souscrire </button>
-            </div> <!-- col.// -->
-    </form>
-    <small class="form-text text-white-50">nous ne partagerons jamais votre addresse e-mail avec un tiers </small>
-        </div> <!-- col-md-6.// -->
-    </div>
+        <!-- Grid row-->
+        <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+    
+          <!-- Grid column -->
+          <div class="col-md-2 mb-3" >
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#" style="color: white;">Apropos de nous</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#" style="color: white;">TERMES & CONDITIONS</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" style="color: white;">POINT DE VENTE</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" style="color: white;">DEVENEZ VENDEUR</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="#!" style="color: white;">NOUS CONTACTER</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+    
+        </div>
+        <!-- Grid row-->
+        <hr class="rgba-white-light" style="margin: 0 15%;">
+        <br>
+        <!-- Grid row-->
+        <div class="row pb-3 text-center">
+    
+          <!-- Grid column -->
+          <div class="col-md-12">
+    
+            <div class="mb-5 flex-center">
+    
+              <!-- Facebook -->
+              <a class="fb-ic">
+                <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+              </a>
+              <!-- Twitter -->
+              <a class="tw-ic">
+                <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
+              </a>
+              
+              <!--Instagram-->
+              <a class="ins-ic">
+                <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
+              </a>
+            
+            </div>
+    
+          </div>
+          <!-- Grid column -->
+    
+        </div>
+        <!-- Grid row-->
         
+      </div>
+      <!-- Footer Links -->
     
-    </div> <!-- container // -->
+      <section class="footer-bottom text-center">
+                
+        <p class="text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><!--©-->Copyright ©<script>document.write(new Date().getFullYear());</script>Eblack ci, Tous droits réservés ! </font></font></p>
+        <p class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ce site à été fait avec <i style="color:red"class="fas fa-heart" aria-hidden="true"></i> par <a href="" target="_blank">kingscode teams</a></font></font></p>
+            
     </section>
-    <!-- ========================= SECTION SUBSCRIBE END.//========================= -->
+      <!-- Copyright -->
     
-    <!-- ========================= FOOTER ========================= -->
-    <footer class="section-footer "style="background-color:#12225B">
-        <div class="container">
-            <section class="footer-top padding-y-lg text-white" style="border-bottom:1px solid grey ;padding-bottom: 0;">
-                <div class="row">
-                    <aside class="col-md col-6">
-                        <h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marques</font></font></h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adidas</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Puma</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reebok</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nike</font></font></a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md col-6">
-                        <h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compagnie</font></font></h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">À propos de nous</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trouver un magasin</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devenir vendeur</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Règles et conditions</font></font></a></li>
-    
-                        </ul>
-                    </aside>
-                    <aside class="col-md col-6">
-                        <h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aidez-moi</font></font></h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nous contacter</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Politique de retour</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Statut de la commande</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">laisser un avis</font></font></a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md col-6">
-                        <h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compte</font></font></h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Connexion</font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Inscription </font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Paramètre du compte </font></font></a></li>
-                            <li> <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mes commandes </font></font></a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md">
-                        <h6 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Social</font></font></h6>
-                        <ul class="list-unstyled">
-                            <li><a href="#"> <i class="fab fa-facebook"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Facebook </font></font></a></li>
-                            <li><a href="#"> <i class="fab fa-twitter"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Twitter </font></font></a></li>
-                            <li><a href="#"> <i class="fab fa-instagram"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Instagram </font></font></a></li>
-                            <li><a href="#"> <i class="fab fa-youtube"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Youtube </font></font></a></li>
-                        </ul>
-                    </aside>
-                </div> <!-- row.// -->
-            </section>	<!-- footer-top.// -->
-            
-            <section class="footer-bottom text-center">
-            
-                <p class="text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><!--©-->Copyright &copy;<script>document.write(new Date().getFullYear());</script> Eblack ci, Tous droits réservés ! </font></font></p>
-                <p class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ce site à été fait avec <i class="fas fa-heart" aria-hidden="true"></i> par <a href="" target="_blank">kingscode teams</a></font></font></p>
-                    <br>
-            </section>
-        </div><!-- //container -->
     </footer>
+    <footer class="section-footer d-lg-none d-block"style="background-color:#12225B">
+        <div class="container">
+            <section class="footer-top padding-y-lg text-white" style="padding:0px ;">
+                <div class="" style="width:50%;display:inline-block">
+                    <a class="btn ">CONTACTER-NOUS</a>
+                    <a class="btn ">DEVENEZ VENDEUR</a>
+                </div>
+                
+                <div class="left" style="width:40%;display:inline-block">
+                    <a class="btn " > POINT DE VENTE</a>
+                    <a class="btn " >AIDE</a>
+                </div> 
+                <hr>
+            </section>
+        
+            
+            <!--style="border-top:1px solid grey ;margin:0;padding: 0;"-->
+            <section class="footer-bottom text-center"  style="padding-bottom: 1px">
+            
+                <p class="text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eblack ci, Tous droits réservés ! </font></font></p>
+                <p class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fait avec <i style="color:red"class="fas fa-heart" aria-hidden="true"></i> par <a href="" target="_blank">kingscode teams</a></font></font></p>
+                    
+            </section>
+        </div>
+        
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+    

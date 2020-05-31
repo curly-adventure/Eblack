@@ -86,7 +86,9 @@ strong { font-weight: 500; }
 
 /* sidebar light */
 
-.sidebar.light { background: #fff; color: #888; }
+
+
+.sidebar.light { background: #fff; color: black; }
 
 .sidebar.light .dismiss { background: #ddd; color: #888; }
 
@@ -98,23 +100,23 @@ strong { font-weight: 500; }
 
 .sidebar.light ul.menu-elements { border-color: #eee; }
 
-.sidebar.light ul li a { color: #888; }
+.sidebar.light ul li a { color: black }
 
 .sidebar.light ul li a:hover,
 .sidebar.light ul li a:focus,
 .sidebar.light ul li.active > a:hover,
-.sidebar.light ul li.active > a:focus { background: #ccc; color: #888; }
+.sidebar.light ul li.active > a:focus { background: #ccc; color:  black }
 
 .sidebar.light ul li.active > a, .sidebar.light a[aria-expanded="true"] {
 	background: #ddd;
-	color: #888;
+	color:  black;
 }
 
 .sidebar.light ul ul a { background: #ddd; }
 
 .sidebar.light ul ul li.active > a { background: #ccc; }
 
-.sidebar.light a.btn-customized-3 { background: #ddd; color: #888; }
+.sidebar.light a.btn-customized-3 { background: #ddd; color:  black }
 
 .sidebar.light a.btn-customized-3:hover, 
 .sidebar.light a.btn-customized-3:active, 
@@ -123,7 +125,7 @@ strong { font-weight: 500; }
 .sidebar.light a.btn-customized-3.active:focus,
 .sidebar.light a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active,
 .sidebar.light a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
-	background: #ccc; color: #888;
+	background: #ccc; color: black;
 }
 
 .sidebar.light a.btn-customized-4.btn-customized-dark { background: #555; }
@@ -246,3 +248,6 @@ z-index: 20;
 #titre-cate{
 	font-size: 70px;font-weight: bold;
 }
+.breadcrumb a{color: black;}
+
+.title{color: #002687;font-weight: bold;}

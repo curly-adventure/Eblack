@@ -3,7 +3,11 @@
 @section('content')
 
 <section class="section-content bg padding-y-sm" >
-	<div class="container" style="margin-top:80px">
+	<style>
+		.btn{border:1px solid #002687;color:black;background-color: white}
+		footer .btn{border:none}
+	</style>
+	<div class="container" style="margin-top:100px">
 		<div class="row">
 			<nav class="col-md-18-24"> 
 				<ol class="breadcrumb">
@@ -18,8 +22,6 @@
 		<div class="container">
 			<figure class="mt-3 banner p-3 ">
 				<div class="text-lg text-center " id="titre-cate">Casque audio & ecouteur</div>
-				<div id="desc-cate" class="text-lg col-lg-8 col-md-10 offset-lg-2  text-center">
-					Excellents casques audio et écouteurs sans fil, Bluetooth ou sport. Compatible avec tout type de téléphones tels que Samsung ou Infinix. Livraison et Retours partout à Abidjan.</div>
 			</figure>	
 		</div>
 		<div class="card d-none d-lg-block" style="padding:20px;margin-bottom: 10px;" >
@@ -29,7 +31,7 @@
 				
 					<ul class="list-inline">
 					  <div class="btn-group">
-		  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			categorie
 		  </button>
 		  <div class="dropdown-menu">
@@ -43,7 +45,7 @@
 		</div>
 					
 					 <div class="btn-group">
-		  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			couleur
 		  </button>
 		  <div class="dropdown-menu">
@@ -56,7 +58,7 @@
 		  </div>
 		</div>
 					  <div class="btn-group">
-		  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			taille
 		  </button>
 		  <div class="dropdown-menu">
@@ -72,7 +74,7 @@
 			</div>
 			<div class="col-4 ">
 				<strong class="">Trier par</strong>
-				<select class="mr-2 form-control" >
+				<select style="border-color:#002687;background-color:white"class="mr-2 form-control" >
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">popularité</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : moins chere au plus chere</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : plus chere au moins chere</font></font></option>
@@ -88,7 +90,7 @@
 	<div class="row">
 	<div class="col-8 offset-2">
 	<strong class="">Trier par</strong>
-	<select class="mr-2 form-control" >
+	<select style="border-color:#002687;background-color:white" class="mr-2 form-control" >
 		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">popularité</font></font></option>
 		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">moins chere au plus chere</font></font></option>
 		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus chere au moins chere</font></font></option>
@@ -101,33 +103,34 @@
 	</div> <!-- card.// -->
 	<header class="mb-3">
 		<div class="form-inline">
-			<strong class="mr-md-auto">{{$products->total()}} produits trouver </strong>
+			<strong class="mr-md-auto">{{$products->total()}} produits trouvés </strong>
 			<div class="btn-group  d-none d-lg-block">
-				<a href="page-listing-grid.html" class="btn btn-light active" data-toggle="tooltip" title="" data-original-title="List view"> 
-					<i class="fa fa-bars"></i></a>
-				<a href="page-listing-large.html" class="btn btn-light" data-toggle="tooltip" title="" data-original-title="Grid view"> 
+				<a href="" class="btn btn-light active" data-toggle="tooltip" title="" data-original-title="affichage grid"> 
 					<i class="fa fa-th"></i></a>
+				<a href="#" class="btn btn-light " data-toggle="tooltip" title="" data-original-title="affichage liste"> 
+					<i class="fa fa-bars"></i></a>
+				
 			</div>
 		</div>
 </header>
 	
 	<div class="row-sm">
-		@foreach ($products as $key => $product)
-	<div class="col-md-3 col-sm-6">
-		<figure class="card card-product">
-			<!--<span class="badge-new"> NEW </span>-->
-			<div class="img-wrap"> <img src="images/produits/{{$product->image}}"></div>
-			<figcaption class="info-wrap text-center">
-				<a href="#" class="title">{{$product->p_name}}</a>
-				<div class="price-wrap">
-					<span class="price-new">{{$product->prix}}</span>
-					<del class="price-old">1980 FCFA</del>
-					
-				</div><a href="#"><button type="button" class="btn btn-outline-primary">acheter</button></a> <!-- price-wrap.// -->
-			</figcaption>
-
-		</figure> <!-- card // -->
-	</div> <!-- col // -->
+		@foreach ($products as $key => $produit)
+		<div class="col-md-3 col-sm-6">
+			<figure class="card card-product">
+				<!--<span class="badge-new"> NEW </span>-->
+				<div class="img-wrap img-fluid"> <img src="images/produits/{{$produit->images_prod()->lien}}" style="width:50%;object-fit: cover"></div>
+				<figcaption class="info-wrap text-center">
+					<a href="#" class="title">{{$produit->nom}}</a>
+					<div class="price-wrap">
+						<span class="h6 price-new">{{$produit->prix_vente}} FCFA</span>
+						<del class="price-old">{{$produit->prix_achat}} FCFA</del>
+						
+					</div><a href="{{route('detail',[$produit->nom,$produit->id])}}"><button type="button" class="btn ">acheter</button></a>
+				</figcaption>
+	
+			</figure> <!-- card // -->
+		</div>
 	@endforeach
 
 

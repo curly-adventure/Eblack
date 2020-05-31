@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 route::get('/','IndexController@home');
 route::get('/shop','ProduitsController@shop');
+route::get('/connexion',function(){
+    return view('frontend/pages/connexion');
+});
+route::get('/inscription',function(){
+    return view('frontend/pages/inscription');
+});
+Route::get('/detail', function() {
+    return view('frontend/pages/details');
+  })->name('detail');
+
+Route::any('{catchall}', function() {
+    return 'Cette page n\'existe pas !';
+  })->where('catchall', '.*');

@@ -28,31 +28,27 @@
         <div class="col-md-9 reveal-3">
     <ul class="row no-gutters border-cols">
         <!--produits-->
-        @foreach ($new_prod as $key => $product)
+        @foreach ($new_prod as $key => $produit)
         @if ($key==4)
             @break:
         @endif
         <li class="col-6 col-md-3">
-        <a href="#" class="itembox"> 
-            <div class="card-body">
-            <p class="word-limit">{{$product->p_name}}</p>
-            <div class="price-wrap h6 float-left">
-                <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
-            </div>
-            <div class="float-right">
-                <!--<span class="badge-new float-right"> NEW </span>-->
-                <img class="img-sm float-right " src="images/produits/{{$product->image}}">
-            </div>
-            
-            <div class="bottom-wrap">
-                <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                <span class="float-right"> &nbsp;&nbsp;</span>
-                <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                <!-- price-wrap.// -->
-            </div>
-            </div>
-        </a>
-        </li>
+            <a href="{{route('detail')}}" class="itembox"> 
+                <div class="card-body align-items-center">
+                <div class="">
+                    <center class="word-limit ">{{$produit->nom}}</center>
+                    <center class="price-wrap h6 price-new">{{$produit->prix_vente}}F CFA</center>
+                </div>
+                <hr>
+                <center>
+                    
+                    <!--<span class="badge-new float-right"> NEW </span>-->
+                    <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                </center>
+                </div>
+            </a>
+            </li>
+        
         @endforeach
     </ul>
     
@@ -62,23 +58,17 @@
        
     
         <li class="col-6 col-md-3">
-            <a href="#" class="itembox"> 
-                <div class="card-body">
-                <p class="word-limit">{{$product->p_name}}</p>
-                <div class="price-wrap h6 float-left">
-                    <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
+            <a href="{{route('detail')}}" class="itembox"> 
+                <div class="card-body align-items-center">
+                <div class="">
+                    <center class="word-limit ">{{$product->nom}}</center>
+                    <center class="price-wrap h6 price-new">{{$product->prix_vente}}F CFA</center>
                 </div>
-                <div class="float-right">
+                <hr>
+                <center>
                     <!--<span class="badge-new float-right"> NEW </span>-->
-                    <img class="img-sm float-right " src="images/produits/{{$product->image}}">
-                </div>
-                
-                <div class="bottom-wrap">
-                    <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                    <span class="float-right"> &nbsp;&nbsp;</span>
-                    <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                    <!-- price-wrap.// -->
-                </div>
+                    <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                </center>
                 </div>
             </a>
             </li>
@@ -116,61 +106,52 @@
             <div class="col-md-9 reveal-3">
             <ul class="row no-gutters border-cols">
            
-           @foreach($pop_prod as $key=>$product)
+           @foreach($pop_prod as $key=>$produit)
                 @if($key==4)
                     
                 @break
-
-                    
                 @endif
                 <li class="col-6 col-md-3">
-                    <a href="#" class="itembox"> 
-                        <div class="card-body">
-                        <p class="word-limit">{{$product->p_name}}</p>
-                        <div class="price-wrap h6 float-left">
-                            <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
+                    <a href="{{route('detail')}}" class="itembox"> 
+                        <div class="card-body align-items-center">
+                        <div class="">
+                            <center class="word-limit ">{{$produit->nom}}</center>
+                            <div class="price-wrap" style="font-size: 15px;font-weight: bold;text-align: center;">
+                                <span class="price-new">{{$produit->prix_vente}} CFA</span> <del class="price-old ">{{$product->prix_achat}} CFA</del>
+                            </div>
                         </div>
-                        <div class="float-right">
+                        <hr>
+                        <center>
                             <!--<span class="badge-new float-right"> NEW </span>-->
-                            <img class="img-sm float-right " src="images/produits/{{$product->image}}">
-                        </div>
-                        
-                        <div class="bottom-wrap">
-                            <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                            <span class="float-right"> &nbsp;&nbsp;</span>
-                            <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                            <!-- price-wrap.// -->
-                        </div>
+                            <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                        </center>
                         </div>
                     </a>
-                    </li>
+                </li>
+                
             @endforeach
         </ul>
         <ul class="row no-gutters border-cols">
-            @foreach($pop_prod as $key=>$product)
+            @foreach($pop_prod as $key=>$produit)
                 @if($key>=4)
                 
                 <li class="col-6 col-md-3">
-                    <a href="#" class="itembox"> 
-                        <div class="card-body">
-                        <p class="word-limit">{{$product->p_name}}</p>
-                        <div class="price-wrap h6 float-left">
-                            <span class="price-new">CFA{{$product->prix}}</span> <del class="price-old ">CFA{{$product->prix * 2}}</del>
+                    <a href="{{route('detail')}}" class="itembox"> 
+                        <div class="card-body align-items-center">
+                        <div class="">
+                            <center class="word-limit ">{{$produit->nom}}</center>
+                            <div class="price-wrap" style="font-size: 15px;font-weight: bold;text-align: center;">
+                                <span class="price-new">{{$produit->prix_vente}} FCFA</span> <del class="price-old ">{{$product->prix_achat}} FCFA</del>
+                            </div>
                         </div>
-                        <div class="float-right">
+                        <hr>
+                        <center>
                             <!--<span class="badge-new float-right"> NEW </span>-->
-                            <img class="img-sm float-right " src="images/produits/{{$product->image}}">
-                        </div>
-                        
-                        <div class="bottom-wrap">
-                            <a href="#" class="btn btn-outline-primary btn-sm float-left"><i class="fa fa-heart"></i></a>			
-                            <span class="float-right"> &nbsp;&nbsp;</span>
-                            <a href="#" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-shopping-cart"></i></a>
-                            <!-- price-wrap.// -->
-                        </div>
+                            <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                        </center>
                         </div>
                     </a>
-                    </li>
+                </li>
                 @endif
                 @endforeach
            
@@ -183,69 +164,5 @@
         </div> <!-- container .//  -->
         </section>
         
-    <!-- ========================= SECTION REQUEST ========================= -->
-    <section class="section-request bg padding-y-sm d-lg-block d-none">
-        <div class="container">
-        <header class="section-heading heading-line">
-            <h4 class="title-section bg text-uppercase">Demande de devis</h4>
-        </header>
-        
-        <div class="row ">
-        <div class="col-md-8">
-        <figure class="card-banner banner-size-lg">
-            <figcaption class="overlay left">
-                <br>
-                <h2 style="max-width: 300px;">collection d'articles en vedette</h2>
-                <br>
-                <a class="btn btn-outline-primary" href="{{url('/shop')}}">Detail info » </a>
-            </figcaption>
-            <img src="images/banners/premail22.gif">
-            <p style="position: absolute;color:white;font-size:30px;font-weight: bold;margin:20px" class="">Un moyen simple d'envoyer une demande aux fournisseurs</p>
-        </figure>
-            </div> <!-- col // -->
-            <div class="col-md-4">
-        
-        <div class="card card-body">
-            <h5 class="title py-4">Une demande, plusieurs devis.</h5>
-            <form>
-                <div class="form-group">
-                    <input class="form-control" name="" type="text" placeholder="Que cherchez-vous ?">
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <input class="form-control" name="" type="text" placeholder="Quantité ?">
-                        <span class="input-group-btn" style="border:0; width: 0;"></span>
-                        <select class="form-control">
-                            <option>taille</option>
-                            <option>toutes les tailles</option>
-                            <option>XXL</option>
-                            <option>XL</option>
-                            <option>L</option>
-                            <option>M</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group text-muted">
-                    
-                    <label class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" value="option1">
-                      <span class="form-check-label">Demander le prix</span>
-                    </label>
-                    <label class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" value="option2">
-                      <span class="form-check-label">Demander un échantillon</span>
-                    </label>
-                </div>
-                <div class="form-group text-center">
-                    <button class="btn btn-outline-primary"style="width:100px">Envoyer</button>
-                </div>
-            </form>
-        </div>
-        
-            </div> <!-- col // -->
-        </div><!-- row // -->
-        
-        </div><!-- container // -->
-        </section>
-
+    
 @stop
