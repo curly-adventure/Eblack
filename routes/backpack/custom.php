@@ -15,4 +15,12 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     Route::crud('category', 'CategoryCrudController');
+    Route::crud('villes', 'VillesCrudController');
+    Route::crud('communes', 'CommunesCrudController');
+    Route::crud('achats', 'AchatsCrudController');
+    Route::crud('souscategorie', 'SouscategorieCrudController');
+    Route::crud('images', 'ImagesCrudController');
+    Route::crud('adresse', 'AdresseCrudController');
+    Route::crud('reduction', 'ReductionCrudController');
+    Route::crud('marque', 'MarqueCrudController');
 }); // this should be the absolute last line of this file
