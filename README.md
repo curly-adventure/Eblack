@@ -82,29 +82,23 @@ Panneau d'administration et site vitrine du site de Eblack ,
 * XML PHP Extension
 * Mysql
 * git
-##### télécharger (clôner) le projet dans répertoire de travail
-- En utilisant git
-``` bash
-git clone git@gitlab.com:balbine/dashboard-laravel.git
-```
 
-##### Installer les dépendances avec npm et composer
+##### Installer les dépendances avec composer
 ##### pour les dépendances PHP
 ``` bash
 composer install
 ```
-##### pour les dépendances javascript
+
+##### générer une clé pour lancer laravel
 ``` bash
-npm install
+php artisan key:generate
 ```
-##### lancer le seed
+
+##### lancer la migration
 ``` bash
-php artisan db:seed
+php artisan migrate:fresh
 ```
-##### lancer les clés pour l'API
-``` bash
-php artisan passport:install
-```
+
 ##### demarrer l'application web
 ``` bash
 php artisan serve
@@ -116,10 +110,11 @@ php artisan serve
 - panneau d'administration : https://127.0.0.1:8000/admin
 
 ## Comment puis-je aider ?
-* Pour commencer à contribuer, suivez [le guide de contribution](CONTRIBUTING.md).
+* Pour commencer à contribuer, suivez
+  [le guide de contribution](TUTORIAL.md).
 
 ### Equipe
 
-* Emmanuel Malen
-* Guelade Kevin (**Consultant**)
-* Danzo
+* Emmanuel Malen (**Core developer **)
+* Guelade Kevin ((**Core developer **)
+* Danzo (**Core developer **)
