@@ -28,7 +28,10 @@ class Category extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function sousCategories()
+    {
+        return $this->belongsToMany('App\Models\Souscategorie','cate_sous','Categorie_id','sousCategorie_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
