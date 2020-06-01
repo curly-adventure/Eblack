@@ -29,7 +29,20 @@ class CategoryCrudController extends CrudController
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn([
+            'name' => 'nom', // The db column name
+            'label' => "Nom", // Table column heading
+            'type' => 'text'
+        ]);
+        $this->crud->addColumn([
+            'name' => 'sousCategories', // la methode qui defini la relation dans ton model
+            'type' => 'select',
+            'label' => "sous categories",
+            'entity' => 'sousCategories', // la methode qui defini la relation dans ton model
+            'attribute' => 'nom',
+            'model' => "App\Models\Souscategorie", // foreign key model
+            'pivot' => true,
+        ]);
     }
 
     protected function setupCreateOperation()
@@ -47,7 +60,16 @@ class CategoryCrudController extends CrudController
             [   // Browse
                 'name'  => 'logo',
                 'label' => 'logo',
-                'type'  => 'browse'
+                'type'  => 'text'
+            ],
+            [   
+                'name' => 'sousCategories', // la methode qui defini la relation dans ton model
+                'type' => 'select2_multiple',
+                'label' => "sous categories",
+                'entity' => 'sousCategories', // la methode qui defini la relation dans ton model
+                'attribute' => 'nom',
+                'model' => "App\Models\Souscategorie", // foreign key model
+                'pivot' => true,
             ]
         ]);
     }
