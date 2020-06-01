@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CommunesRequest;
+use App\Models\Villes;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -28,16 +29,42 @@ class CommunesCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn([
+            'name' => 'ville_id',
+            'type' => 'select',
+            'label' => "ville",
+            'entity' => 'ville',
+            'attribute' => 'nom',
+            'model' => Villes::class,
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'nom', // The db column name
+            'label' => "nom", // Table column heading
+            'type' => 'text'
+        ]);
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(CommunesRequest::class);
 
-        // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'ville_id',
+            'type' => 'select2',
+            'label' => "ville",
+            'entity' => 'ville',
+            'attribute' => 'nom',
+            'model' => Villes::class,
+        ]);
+
+        $this->crud->addField([
+            'name' => 'nom', // The db column name
+            'label' => "nom", // Table column heading
+            'type' => 'text'
+        ]);
+
+
     }
 
     protected function setupUpdateOperation()
