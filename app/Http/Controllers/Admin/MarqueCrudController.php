@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\MarqueRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class CategoryCrudController
+ * Class MarqueCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class CategoryCrudController extends CrudController
+class MarqueCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,9 +21,9 @@ class CategoryCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel('App\Models\Category');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/category');
-        $this->crud->setEntityNameStrings('category', 'categories');
+        $this->crud->setModel('App\Models\Marque');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/marque');
+        $this->crud->setEntityNameStrings('marque', 'marques');
     }
 
     protected function setupListOperation()
@@ -34,8 +34,8 @@ class CategoryCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(CategoryRequest::class);
-        
+        $this->crud->setValidation(MarqueRequest::class);
+
         // TODO: remove setFromDb() and manually define Fields
         //$this->crud->setFromDb();
         $this->crud->addFields([

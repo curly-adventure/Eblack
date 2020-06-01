@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\ImagesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class CategoryCrudController
+ * Class ImagesCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class CategoryCrudController extends CrudController
+class ImagesCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,9 +21,9 @@ class CategoryCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel('App\Models\Category');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/category');
-        $this->crud->setEntityNameStrings('category', 'categories');
+        $this->crud->setModel('App\Models\Images');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/images');
+        $this->crud->setEntityNameStrings('images', 'images');
     }
 
     protected function setupListOperation()
@@ -34,22 +34,10 @@ class CategoryCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(CategoryRequest::class);
-        
+        $this->crud->setValidation(ImagesRequest::class);
+
         // TODO: remove setFromDb() and manually define Fields
-        //$this->crud->setFromDb();
-        $this->crud->addFields([
-            [
-                'name'  => 'nom',
-                'type'  => 'text',
-                'label' => 'Nom',
-            ],
-            [   // Browse
-                'name'  => 'logo',
-                'label' => 'logo',
-                'type'  => 'browse'
-            ]
-        ]);
+        $this->crud->setFromDb();
     }
 
     protected function setupUpdateOperation()

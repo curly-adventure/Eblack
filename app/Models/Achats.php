@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Achats extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Category extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'Categorie';
+    protected $table = 'Achats';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -28,10 +28,7 @@ class Category extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function sousCategories()
-    {
-        return $this->belongsToMany('App\Models\Souscategorie','cate_sous','Categorie_id','sousCategorie_id');
-    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
