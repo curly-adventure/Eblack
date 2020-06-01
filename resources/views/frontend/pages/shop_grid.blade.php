@@ -5,7 +5,7 @@
 <section class="section-content bg padding-y-sm" >
 	<style>
 		.btn{border:1px solid #002687;color:black;background-color: white}
-		footer .btn{border:none}
+		footer .btn{border:none;background:transparent}
 	</style>
 	<div class="container" style="margin-top:100px">
 		<div class="row">
