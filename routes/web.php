@@ -26,6 +26,9 @@ Route::get('/detail', function() {
     return view('frontend/pages/details');
   })->name('detail');
 
+Route::get('/test',function(){
+  return view('test');
+});
 Route::any('{catchall}', function() {
     return 'Cette page n\'existe pas !';
   })->where('catchall', '.*');

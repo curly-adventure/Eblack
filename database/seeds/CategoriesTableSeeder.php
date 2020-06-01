@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\DB;
-use App\Categories;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesTableSeeder extends Seeder
@@ -13,9 +13,17 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         //1
-        Categories::create([
-            'id' => 1,
+        Category::create([
             'nom' => 'Mode Homme',
+            'logo' => '17.jpeg',
+        ]);
+        Category::create([
+            'nom' => 'Mode Enfant',
+            'logo' => '12.png',
+        ]);
+        Category::create([
+            'nom' => 'Mode Femme',
+            'logo' => '14.jpg',
         ]);
         
     }

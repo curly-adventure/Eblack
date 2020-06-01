@@ -11,7 +11,7 @@ class ProduitsTableSeeder extends Seeder
      */
     public function run()
     {
-        Produits::create([
+        /*Produits::create([
             'nom' => 'veste nike',
             'prix_achat' =>'50000',
             'prix_vente'=>'50000',
@@ -21,6 +21,6 @@ class ProduitsTableSeeder extends Seeder
             'sousCategorie_id'=>0,
             'Marque_id'=>0,
             'description'=>"veste homme nike noir"
-            ]);
+            ]);*/
     }
 }

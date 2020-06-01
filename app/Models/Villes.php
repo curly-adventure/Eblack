@@ -28,7 +28,11 @@ class Villes extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    
+    public function communes()
+    {
+    return $this->hasMany('App\Models\Communes', 'ville_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

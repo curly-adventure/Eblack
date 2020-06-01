@@ -28,7 +28,10 @@ class Communes extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function ville()
+    {
+        return $this->belongsTo('App\Models\Villes', 'ville_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
