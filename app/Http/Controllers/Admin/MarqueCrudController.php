@@ -37,7 +37,19 @@ class MarqueCrudController extends CrudController
         $this->crud->setValidation(MarqueRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        //$this->crud->setFromDb();
+        $this->crud->addFields([
+            [
+                'name'  => 'nom',
+                'type'  => 'text',
+                'label' => 'Nom',
+            ],
+            [   // Browse
+                'name'  => 'logo',
+                'label' => 'logo',
+                'type'  => 'browse'
+            ]
+        ]);
     }
 
     protected function setupUpdateOperation()

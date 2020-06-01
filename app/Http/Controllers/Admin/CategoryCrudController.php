@@ -35,9 +35,21 @@ class CategoryCrudController extends CrudController
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(CategoryRequest::class);
-
+        
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        //$this->crud->setFromDb();
+        $this->crud->addFields([
+            [
+                'name'  => 'nom',
+                'type'  => 'text',
+                'label' => 'Nom',
+            ],
+            [   // Browse
+                'name'  => 'logo',
+                'label' => 'logo',
+                'type'  => 'browse'
+            ]
+        ]);
     }
 
     protected function setupUpdateOperation()
