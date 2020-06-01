@@ -15,7 +15,7 @@ class Villes extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'villes';
+    protected $table = 'Villes';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -31,7 +31,7 @@ class Villes extends Model
     
     public function communes()
     {
-    return $this->hasMany('App\Models\Communes', 'ville_id');
+        return $this->hasMany('App\Models\Communes', 'ville_id');
     }
     /*
     |--------------------------------------------------------------------------
