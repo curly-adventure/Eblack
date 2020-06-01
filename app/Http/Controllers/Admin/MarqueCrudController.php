@@ -45,9 +45,11 @@ class MarqueCrudController extends CrudController
                 'label' => 'Nom',
             ],
             [   // Browse
-                'name'  => 'logo',
-                'label' => 'logo',
-                'type'  => 'browse'
+                'label' => "logo",
+                'name' => "logo",
+                'type' => 'image',
+                'upload' => true,
+                'crop' => true,
             ]
         ]);
     }

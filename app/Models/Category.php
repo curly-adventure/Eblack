@@ -30,7 +30,7 @@ class Category extends Model
     */
     public function sousCategories()
     {
-        return $this->belongsToMany('App\Models\Souscategorie','cate_sous','Categorie_id','sousCategorie_id');
+        return $this->belongsToMany('App\Models\Souscategorie','category_has_souscategorie','Categorie_id','sousCategorie_id');
     }
     /*
     |--------------------------------------------------------------------------

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCateSousTable extends Migration
+class CreateCategoryHasSouscategorieTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCateSousTable extends Migration
      */
     public function up()
     {
-        Schema::create('cate_sous', function (Blueprint $table) {
+        Schema::create('category_has_souscategorie', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('Categorie_id')->unsigned();
             $table->bigInteger('sousCategorie_id')->unsigned();
@@ -24,9 +24,8 @@ class CreateCateSousTable extends Migration
 
             $table->foreign('sousCategorie_id')
                 ->references('id')->on('sousCategorie');
-
-        });
         
+        });
     }
 
     /**
@@ -36,6 +35,6 @@ class CreateCateSousTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cate_sous');
+        Schema::dropIfExists('category_has_souscategorie');
     }
 }
