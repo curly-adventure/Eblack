@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CommunesRequest extends FormRequest
+class ProduitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,8 @@ class CommunesRequest extends FormRequest
     {
         return [
             'nom' => 'required|min:5|max:255',
-            'ville_id' => 'required'
+            'prix_vente' => 'required',
+            'prix_achat' => 'required'
         ];
     }
 

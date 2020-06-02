@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Souscategorie extends Model
+class Produit extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Souscategorie extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'sousCategorie';
+    protected $table = 'Produits';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -23,28 +23,34 @@ class Souscategorie extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
+    protected $casts = [
+        'images' => 'array'
+    ];
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function setLogoAttribute($value)
-    {
-        $attribute_name = "logo";
-        $disk = "public"; // or use your own disk, defined in config/filesystems.php
-        $destination_path = "logo"; // path relative to the disk above
-        $this->uploadFileToDisk($value,$attribute_name,$disk,$destination_path);
 
-    }
-    
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function categories()
+    public function categorie()
     {
-        return $this->belongsToMany('App\Models\Category','category_has_souscategorie','sousCategorie_id','Categorie_id');
+        return $this->hasOne('App\Models\Category');
+    }
+
+    public function sousCategorie()
+    {
+        return $this->hasOne('App\Models\Souscategorie');
+    }
+
+    public function marque()
+    {
+        return $this->hasOne('App\Models\Marque');
     }
     /*
     |--------------------------------------------------------------------------
@@ -63,4 +69,12 @@ class Souscategorie extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setImagesAttribute($value)
+    {
+        $attribute_name = "images";
+        $disk = "public"; // or use your own disk, defined in config/filesystems.php
+        $destination_path = "logo"; // path relative to the disk above
+        $this->uploadFileToDisk($value,$attribute_name,$disk,$destination_path);
+
+    }
 }

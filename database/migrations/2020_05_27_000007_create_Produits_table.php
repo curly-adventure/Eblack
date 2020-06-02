@@ -23,10 +23,11 @@ class CreateProduitsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unsigned();
-            $table->string('nom');
+            $table->string('nom')->unique();
+            $table->longText('images');
             $table->integer('prix_achat');
             $table->integer('prix_vente');
-            $table->integer('quantite');
+            $table->integer('quantite')->nullable();
             $table->bigInteger('Categorie_id')->unsigned();
             $table->bigInteger('sousCategorie_id')->unsigned();
             $table->bigInteger('Marque_id')->unsigned();

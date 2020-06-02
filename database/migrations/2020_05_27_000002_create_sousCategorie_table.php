@@ -23,8 +23,8 @@ class CreateSouscategorieTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unsigned();
-            $table->string('nom');
-            $table->string('logo');
+            $table->string('nom')->unique();
+            $table->string('logo')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

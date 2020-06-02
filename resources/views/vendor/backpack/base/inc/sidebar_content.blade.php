@@ -9,3 +9,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('adresse') }}'><i class='nav-icon la la-database'></i> Adresses</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('reduction') }}'><i class='nav-icon la la-database'></i> Reductions</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('marque') }}'><i class='nav-icon la la-database'></i> Marques</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('produit') }}'><i class='nav-icon la la-question'></i> Produits</a></li>

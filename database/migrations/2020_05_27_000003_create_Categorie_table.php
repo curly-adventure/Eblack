@@ -24,7 +24,7 @@ class CreateCategorieTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unsigned();
             $table->string('nom');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

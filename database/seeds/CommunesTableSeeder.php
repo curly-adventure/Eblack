@@ -1,55 +1,78 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Communes;
+
 class CommunesTableSeeder extends Seeder
 {
+
     /**
-     * Run the database seeds.
+     * Auto generated seed file
      *
      * @return void
      */
     public function run()
     {
-        Communes::create([
-            "nom"=>"yopougon",
-            "ville_id"=> 1,
-        ]);
-        Communes::create([
-            "nom"=>"cocody",
-            "ville_id"=> 1,
-        ]);
-        Communes::create([
-            "nom"=>"koumassi",
-            "ville_id"=> 1,
-        ]);
-        Communes::create([
-            "nom"=>"Adjamé",
-            "ville_id"=> 1,
-        ]);
-        Communes::create([
-            "nom"=>"bouake",
-            "ville_id"=> 2,
-        ]);
-        Communes::create([
-            "nom"=>"yakro",
-            "ville_id"=> 3,
-        ]);
-        Communes::create([
-            "nom"=>"daloua",
-            "ville_id"=> 4,
-        ]);
-        Communes::create([
-            "nom"=>"man",
-            "ville_id"=> 5,
-        ]);
-        Communes::create([
-            "nom"=>"marcory",
-            "ville_id"=> 1,
-        ]);
-        Communes::create([
-            "nom"=>"abobo",
-            "ville_id"=> 1,
-        ]);
+        
+
+        \DB::table('Communes')->delete();
+        
+        \DB::table('Communes')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'nom' => 'koumassi',
+                'ville_id' => 1,
+                'deleted_at' => NULL,
+                'created_at' => '2020-06-02 18:17:15',
+                'updated_at' => '2020-06-02 18:17:15',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'nom' => 'yopougon',
+                'ville_id' => 1,
+                'deleted_at' => NULL,
+                'created_at' => '2020-06-02 18:17:24',
+                'updated_at' => '2020-06-02 18:17:24',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'nom' => 'Cocody',
+                'ville_id' => 1,
+                'deleted_at' => NULL,
+                'created_at' => '2020-06-02 18:17:33',
+                'updated_at' => '2020-06-02 18:17:33',
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'nom' => 'Abobo',
+                'ville_id' => 1,
+                'deleted_at' => NULL,
+                'created_at' => '2020-06-02 18:17:40',
+                'updated_at' => '2020-06-02 18:17:40',
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'nom' => '2 plateaux',
+                'ville_id' => 1,
+                'deleted_at' => NULL,
+                'created_at' => '2020-06-02 18:17:47',
+                'updated_at' => '2020-06-02 18:17:47',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'nom' => 'Port bouet',
+                'ville_id' => 1,
+                'deleted_at' => NULL,
+                'created_at' => '2020-06-02 18:17:57',
+                'updated_at' => '2020-06-02 18:17:57',
+            ),
+        ));
+        
+        
     }
 }
