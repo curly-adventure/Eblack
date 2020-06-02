@@ -57,10 +57,12 @@ class CategoryCrudController extends CrudController
                 'type'  => 'text',
                 'label' => 'Nom',
             ],
-            [   // Browse
+            [   
                 'name'  => 'logo',
                 'label' => 'logo',
-                'type'  => 'text'
+                'type' => 'upload',
+                'upload' => true,
+                'crop' => true,
             ],
             [   
                 'name' => 'sousCategories', // la methode qui defini la relation dans ton model

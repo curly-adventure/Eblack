@@ -62,7 +62,7 @@ class SouscategorieCrudController extends CrudController
             [   // Browse
                 'name'  => 'logo',
                 'label' => 'logo',
-                'type'  => 'text'
+                'type'  => 'upload'
             ],
             [
                 'name' => 'categories',

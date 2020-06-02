@@ -28,16 +28,24 @@ class Souscategorie extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function categories()
+    public function setLogoAttribute($value)
     {
-        return $this->belongsToMany('App\Models\category','category_has_souscategorie','sousCategorie_id','Categorie_id');
+        $attribute_name = "logo";
+        $disk = "public"; // or use your own disk, defined in config/filesystems.php
+        $destination_path = "logo"; // path relative to the disk above
+        $this->uploadFileToDisk($value,$attribute_name,$disk,$destination_path);
+
     }
+    
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\category','category_has_souscategorie','sousCategorie_id','Categorie_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
