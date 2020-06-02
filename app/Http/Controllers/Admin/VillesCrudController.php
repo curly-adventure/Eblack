@@ -29,7 +29,19 @@ class VillesCrudController extends CrudController
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+      //  $this->crud->setFromDb();
+          $this->crud->addColumn([
+                "name"=>"id",
+
+                'type'=>"text",
+                "label"=>"identifiant",
+            ]);
+          $this->crud->addColumn([
+                "name"=>"nom",
+               
+                'type'=>"text",
+                "label"=>"nom",
+            ]);
     }
 
     protected function setupCreateOperation()
