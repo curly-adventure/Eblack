@@ -50,7 +50,7 @@ class ProduitCrudController extends CrudController
                 ],
             ],
             [
-                'name' => 'sousCategorie_id',
+                'name' => 'sous_categorie_id',
                 'type' => 'select2',
                 'label' => "sous catégorie du produit",
                 'entity' => 'sousCategorie',

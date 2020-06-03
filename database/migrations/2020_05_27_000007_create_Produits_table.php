@@ -29,7 +29,7 @@ class CreateProduitsTable extends Migration
             $table->integer('prix_vente');
             $table->integer('quantite')->nullable();
             $table->bigInteger('Categorie_id')->unsigned();
-            $table->bigInteger('sousCategorie_id')->unsigned();
+            $table->bigInteger('sous_categorie_id')->unsigned();
             $table->bigInteger('Marque_id')->unsigned();
             $table->longText('description');
             $table->boolean('enligne')->default(true);
@@ -39,7 +39,7 @@ class CreateProduitsTable extends Migration
             $table->foreign('Categorie_id')
                 ->references('id')->on('Categorie');
 
-            $table->foreign('sousCategorie_id')
+            $table->foreign('sous_categorie_id')
                 ->references('id')->on('sousCategorie');
 
             $table->foreign('Marque_id')
