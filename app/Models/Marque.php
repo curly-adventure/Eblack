@@ -41,7 +41,10 @@ class Marque extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function produits() : HasMany
+    {
+        return $this->hasMany('App\Models\Produit');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -19,7 +19,7 @@ Route::group([
     Route::crud('communes', 'CommunesCrudController');
     Route::crud('achats', 'AchatsCrudController');
     Route::crud('souscategorie', 'SouscategorieCrudController');
-    Route::crud('images', 'ImagesCrudController');
+    //Route::crud('images', 'ImagesCrudController');
     Route::crud('adresse', 'AdresseCrudController');
     Route::crud('reduction', 'ReductionCrudController');
     Route::crud('marque', 'MarqueCrudController');
