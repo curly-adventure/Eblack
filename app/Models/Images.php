@@ -34,7 +34,13 @@ class Images extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function produit() : BelongsTo
 
+    {
+
+        return $this->belongsTo('App\Models\Produit');
+
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

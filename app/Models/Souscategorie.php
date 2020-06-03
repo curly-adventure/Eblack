@@ -46,6 +46,10 @@ class Souscategorie extends Model
     {
         return $this->belongsToMany('App\Models\Category','category_has_souscategorie','sousCategorie_id','Categorie_id');
     }
+    public function produits() : HasMany
+    {
+        return $this->hasMany('App\Models\Produit');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

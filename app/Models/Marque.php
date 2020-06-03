@@ -28,7 +28,14 @@ class Marque extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public function setLogoAttribute($value)
+    {
+        $attribute_name = "logo";
+        $disk = "public"; // or use your own disk, defined in config/filesystems.php
+        $destination_path = "logo"; // path relative to the disk above
+        $this->uploadFileToDisk($value,$attribute_name,$disk,$destination_path);
 
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

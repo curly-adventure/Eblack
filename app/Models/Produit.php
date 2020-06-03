@@ -40,17 +40,24 @@ class Produit extends Model
     */
     public function categorie()
     {
-        return $this->hasOne('App\Models\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 
     public function sousCategorie()
     {
-        return $this->hasOne('App\Models\Souscategorie');
+        return $this->belongsTo('App\Models\Souscategorie');
     }
 
     public function marque()
     {
-        return $this->hasOne('App\Models\Marque');
+        return $this->belongsTo('App\Models\Marque');
+    }
+    public function photos() : HasMany
+
+    {
+
+        return $this->hasMany('App\Models\Images');
+
     }
     /*
     |--------------------------------------------------------------------------

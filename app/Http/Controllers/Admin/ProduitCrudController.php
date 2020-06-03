@@ -35,16 +35,16 @@ class ProduitCrudController extends CrudController
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ProduitRequest::class);
-        /*
+        
         $this->crud->addFields([
             [
-                'name' => 'Categorie_id',
+                'name' => 'categorie_id',
                 'type' => 'select2',
                 'label' => "Categorie du produit",
                 'entity' => 'categorie',
                 'attribute' => 'nom',
                 'model' => "App\Models\Category", // foreign key model
-                'pivot' => true,
+                //'pivot' => true,
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
@@ -56,7 +56,7 @@ class ProduitCrudController extends CrudController
                 'entity' => 'sousCategorie',
                 'attribute' => 'nom',
                 'model' => "App\Models\Souscategorie", // foreign key model
-                'pivot' => true,
+                //'pivot' => true,
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
@@ -68,7 +68,7 @@ class ProduitCrudController extends CrudController
                 'entity' => 'marque',
                 'attribute' => 'nom',
                 'model' => "App\Models\Marque", // foreign key model
-                'pivot' => true,
+                //'pivot' => true,
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
@@ -76,7 +76,7 @@ class ProduitCrudController extends CrudController
             [   // Browse
                 'label' => "image(s)",
                 'name' => "images",
-                'type' => 'upload_multiple',
+                'type' => 'upload',
                 'upload' => true
             ],
             [
@@ -113,17 +113,10 @@ class ProduitCrudController extends CrudController
                     'class' => 'form-group col-md-6'
                 ],
             ],
-            [
-                'name'  => 'is',
-                'type'  => 'number',
-                'label' => 'quantité disponible',
-                'wrapperAttributes' => [
-                    'class' => 'form-group col-md-6'
-                ],
-            ]
+            
 
         ]);
-        */
+        
     }
 
     protected function setupUpdateOperation()

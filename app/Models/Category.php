@@ -46,6 +46,19 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Models\Souscategorie','category_has_souscategorie','Categorie_id','sousCategorie_id');
     }
+    public function produits() : HasMany
+    {
+        return $this->hasMany('App\Models\Produit');
+    }
+
+    /**
+     * Une catégorie peut avoir plusieurs photos.
+     */
+
+    public function photos() : HasManyThrough
+    {
+        return $this->hasManyThrough('App\Models\Images');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
