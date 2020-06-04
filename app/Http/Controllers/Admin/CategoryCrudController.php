@@ -23,7 +23,7 @@ class CategoryCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Category');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/category');
-        $this->crud->setEntityNameStrings('category', 'categories');
+        $this->crud->setEntityNameStrings('categorie', 'categories');
     }
 
     protected function setupListOperation()
@@ -34,15 +34,14 @@ class CategoryCrudController extends CrudController
             'label' => "Nom", // Table column heading
             'type' => 'text'
         ]);
+
         $this->crud->addColumn([
-            'name' => 'sousCategories', // la methode qui defini la relation dans ton model
-            'type' => 'select',
-            'label' => "sous categories",
-            'entity' => 'sousCategories', // la methode qui defini la relation dans ton model
-            'attribute' => 'nom',
-            'model' => "App\Models\Souscategorie", // foreign key model
-            'pivot' => true,
+            'name'  => 'logo',
+            'label' => 'logo',
+            'type' => 'image',
+            'prefix' => 'storage/',
         ]);
+
     }
 
     protected function setupCreateOperation()
@@ -56,20 +55,18 @@ class CategoryCrudController extends CrudController
                 'name'  => 'nom',
                 'type'  => 'text',
                 'label' => 'Nom',
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-6'
+                ],
             ],
             [   // Browse
                 'name'  => 'logo',
                 'label' => 'logo',
-                'type'  => 'text'
-            ],
-            [   
-                'name' => 'sousCategories', // la methode qui defini la relation dans ton model
-                'type' => 'select2_multiple',
-                'label' => "sous categories",
-                'entity' => 'sousCategories', // la methode qui defini la relation dans ton model
-                'attribute' => 'nom',
-                'model' => "App\Models\Souscategorie", // foreign key model
-                'pivot' => true,
+                'type' => 'upload',
+                'upload' => true,
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-6'
+                ],
             ]
         ]);
     }

@@ -29,6 +29,8 @@ class AchatsCrudController extends CrudController
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
+        $this->crud->removeButton('create');
+        $this->crud->removeButton('update');
         $this->crud->setFromDb();
     }
 

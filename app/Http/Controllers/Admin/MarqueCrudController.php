@@ -28,8 +28,18 @@ class MarqueCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn([
+            'name' => 'nom', // The db column name
+            'label' => "Nom", // Table column heading
+            'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'name'  => 'logo',
+            'label' => 'logo',
+            'type' => 'image',
+            'prefix' => 'storage/',
+        ]);
     }
 
     protected function setupCreateOperation()

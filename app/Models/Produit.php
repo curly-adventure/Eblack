@@ -40,7 +40,7 @@ class Produit extends Model
     */
     public function categorie()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsToMany('App\Models\Category','category_has_souscategorie','sousCategorie_id','Categorie_id');
     }
 
     public function sousCategorie()
@@ -81,7 +81,7 @@ class Produit extends Model
         $attribute_name = "images";
         $disk = "public"; // or use your own disk, defined in config/filesystems.php
         $destination_path = "logo"; // path relative to the disk above
-        $this->uploadFileToDisk($value,$attribute_name,$disk,$destination_path);
+        $this->uploadMultipleFilesToDisk($value,$attribute_name,$disk,$destination_path);
 
     }
 }
