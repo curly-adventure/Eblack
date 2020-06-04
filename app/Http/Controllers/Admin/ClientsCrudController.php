@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\AchatsRequest;
+use App\Http\Requests\ClientsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class AchatsCrudController
+ * Class ClientsCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class AchatsCrudController extends CrudController
+class ClientsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,22 +21,20 @@ class AchatsCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel('App\Models\Achats');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/achats');
-        $this->crud->setEntityNameStrings('achats', 'achats');
+        $this->crud->setModel('App\Models\Clients');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/clients');
+        $this->crud->setEntityNameStrings('clients', 'clients');
     }
 
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->removeButton('create');
-        $this->crud->removeButton('update');
         $this->crud->setFromDb();
     }
 
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(AchatsRequest::class);
+        $this->crud->setValidation(ClientsRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
         $this->crud->setFromDb();

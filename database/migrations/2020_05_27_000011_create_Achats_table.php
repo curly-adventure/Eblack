@@ -27,7 +27,7 @@ class CreateAchatsTable extends Migration
             $table->integer('prix_achat');
             $table->bigInteger('produit_id')->unsigned();
             $table->bigInteger('adresse_id')->unsigned();
-            $table->bigInteger('Utilisateur_id')->unsigned();
+            $table->bigInteger('client_id')->unsigned();
             $table->boolean('canceled')->default(false)
                 ->comment('pour voir si la commande est annulée');
             $table->softDeletes();
@@ -40,8 +40,8 @@ class CreateAchatsTable extends Migration
             $table->foreign('adresse_id')
                 ->references('id')->on('Adresses');
 
-            $table->foreign('Utilisateur_id')
-                ->references('id')->on('Utilisateurs');
+            $table->foreign('client_id')
+                ->references('id')->on('Clients');
         });
     }
 

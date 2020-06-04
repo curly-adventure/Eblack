@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Adresses extends Model
+class Administrators extends Model
 {
     use CrudTrait;
 
@@ -15,12 +15,12 @@ class Adresses extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'Adresses';
+    protected $table = 'administrators';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
-    // protected $hidden = [];
+    protected $hidden = [];
     // protected $dates = [];
 
     /*

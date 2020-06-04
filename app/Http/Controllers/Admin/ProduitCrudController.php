@@ -28,15 +28,45 @@ class ProduitCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+
+        $this->crud->addColumn([
+            'name' => 'Marque_id',
+            'type' => 'select2',
+            'label' => "Marque",
+            'entity' => 'marque',
+            'attribute' => 'nom',
+            'model' => "App\Models\Marque"
+        ]);
+
+
+        $this->crud->addColumn(
+            [
+                'name'  => 'nom',
+                'type'  => 'text',
+                'label' => 'nom du produit',
+            ]
+        );
+
+        $this->crud->addColumn(
+            [
+                'name'  => 'prix_vente',
+                'type'  => 'number',
+                'label' => 'prix_vente'
+            ]
+        );
+        $this->crud->addColumn(
+            [
+                'name'  => 'quantite',
+                'type'  => 'number',
+                'label' => 'qte'
+            ]);
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ProduitRequest::class);
         
-        $this->crud->addFields([
+        $this->crud->addField(
             [
                 'name' => 'categorie_id',
                 'type' => 'select2',
@@ -47,8 +77,10 @@ class ProduitCrudController extends CrudController
                 //'pivot' => true,
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
-                ],
-            ],
+                ]
+            ]);
+
+        $this->crud->addField(
             [
                 'name' => 'sous_categorie_id',
                 'type' => 'select2',
@@ -60,35 +92,42 @@ class ProduitCrudController extends CrudController
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
+            ]
+        );
+        $this->crud->addField([
+            'name' => 'Marque_id',
+            'type' => 'select2',
+            'label' => "Marque du produit",
+            'entity' => 'marque',
+            'attribute' => 'nom',
+            'model' => "App\Models\Marque", // foreign key model
+            //'pivot' => true,
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-6'
             ],
-            [
-                'name' => 'Marque_id',
-                'type' => 'select2',
-                'label' => "Marque du produit",
-                'entity' => 'marque',
-                'attribute' => 'nom',
-                'model' => "App\Models\Marque", // foreign key model
-                //'pivot' => true,
-                'wrapperAttributes' => [
-                    'class' => 'form-group col-md-6'
-                ],
-            ],
+        ]);
+
+        $this->crud->addField(
             [   // Browse
                 'label' => "image(s)",
                 'name' => "images",
-                'type' => 'upload',
+                'type' => 'upload_multiple',
                 'upload' => true
-            ],
+            ]
+        );
+        $this->crud->addField(
             [
                 'name'  => 'nom',
                 'type'  => 'text',
                 'label' => 'nom du produit',
-            ],
-            [
-                'name'  => 'description',
-                'type'  => 'wysiwyg',
-                'label' => 'description du produit',
-            ],
+            ]
+        );
+        $this->crud->addField( [
+            'name'  => 'description',
+            'type'  => 'wysiwyg',
+            'label' => 'description du produit',
+        ]);
+        $this->crud->addField(
             [
                 'name'  => 'prix_achat',
                 'type' => 'number',
@@ -96,7 +135,9 @@ class ProduitCrudController extends CrudController
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
-            ],
+            ]
+        );
+        $this->crud->addField(
             [
                 'name'  => 'prix_vente',
                 'type'  => 'number',
@@ -104,7 +145,9 @@ class ProduitCrudController extends CrudController
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
-            ],
+            ]
+        );
+        $this->crud->addField(
             [
                 'name'  => 'quantite',
                 'type'  => 'number',
@@ -112,10 +155,7 @@ class ProduitCrudController extends CrudController
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
-            ],
-            
-
-        ]);
+            ]);
         
     }
 
