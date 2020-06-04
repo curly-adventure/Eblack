@@ -19,5 +19,5 @@
 
 
 
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('clients') }}'><i class='nav-icon la la-question'></i> Clients</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('clients') }}'><i class="nav-icon    lab la-jenkins"></i></i> Clients</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('administrators') }}'><i class='nav-icon la la-question'></i> Administrators</a></li>
