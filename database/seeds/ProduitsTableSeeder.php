@@ -1,16 +1,21 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Produits;
+
 class ProduitsTableSeeder extends Seeder
 {
+
     /**
-     * Run the database seeds.
+     * Auto generated seed file
      *
      * @return void
      */
     public function run()
     {
+        
+
+        \DB::table('Produits')->delete();
+        
         /*Produits::create([
             'nom' => 'veste nike',
             'prix_achat' =>'50000',
@@ -22,5 +27,6 @@ class ProduitsTableSeeder extends Seeder
             'Marque_id'=>0,
             'description'=>"veste homme nike noir"
             ]);*/
+        
     }
 }

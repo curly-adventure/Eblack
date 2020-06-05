@@ -30,12 +30,12 @@ class ProduitCrudController extends CrudController
     {
 
         $this->crud->addColumn([
-            'name' => 'Marque_id',
-            'type' => 'select2',
+            'name' => 'marque_id',
+            'type' => 'select',
             'label' => "Marque",
             'entity' => 'marque',
             'attribute' => 'nom',
-            'model' => "App\Models\Marque"
+            'model' => "App\Models\Marque",
         ]);
 
 
@@ -95,7 +95,7 @@ class ProduitCrudController extends CrudController
             ]
         );
         $this->crud->addField([
-            'name' => 'Marque_id',
+            'name' => 'marque_id',
             'type' => 'select2',
             'label' => "Marque du produit",
             'entity' => 'marque',

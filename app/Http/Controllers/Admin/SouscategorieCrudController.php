@@ -23,7 +23,7 @@ class SouscategorieCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Souscategorie');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/souscategorie');
-        $this->crud->setEntityNameStrings('souscategorie', 'souscategories');
+        $this->crud->setEntityNameStrings('une sous categorie', 'sous categories');
     }
 
     protected function setupListOperation()

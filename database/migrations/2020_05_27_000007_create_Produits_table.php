@@ -28,21 +28,21 @@ class CreateProduitsTable extends Migration
             $table->integer('prix_achat');
             $table->integer('prix_vente');
             $table->integer('quantite')->nullable();
-            $table->bigInteger('Categorie_id')->unsigned();
+            $table->bigInteger('categorie_id')->unsigned();
             $table->bigInteger('sous_categorie_id')->unsigned();
-            $table->bigInteger('Marque_id')->unsigned();
+            $table->bigInteger('marque_id')->unsigned();
             $table->longText('description');
             $table->boolean('enligne')->default(true);
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('Categorie_id')
+            $table->foreign('categorie_id')
                 ->references('id')->on('Categorie');
 
             $table->foreign('sous_categorie_id')
                 ->references('id')->on('sousCategorie');
 
-            $table->foreign('Marque_id')
+            $table->foreign('marque_id')
                 ->references('id')->on('Marque');
         });
     }

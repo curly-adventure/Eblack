@@ -43,7 +43,7 @@ class Marque extends Model
     */
     public function produits() : HasMany
     {
-        return $this->hasMany('App\Models\Produit');
+        return $this->hasMany('App\Models\Produit','marque_id');
     }
     /*
     |--------------------------------------------------------------------------

@@ -28,7 +28,8 @@ class ProduitRequest extends FormRequest
         return [
             'nom' => 'required|min:5|max:255',
             'prix_vente' => 'required',
-            'prix_achat' => 'required'
+            'prix_achat' => 'required',
+            'description' => 'required'
         ];
     }
 

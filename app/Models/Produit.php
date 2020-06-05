@@ -40,7 +40,7 @@ class Produit extends Model
     */
     public function categorie()
     {
-        return $this->belongsToMany('App\Models\Category','category_has_souscategorie','sousCategorie_id','Categorie_id');
+        return $this->belongsTo('App\Models\Category','categorie_id');
     }
 
     public function sousCategorie()
@@ -50,7 +50,7 @@ class Produit extends Model
 
     public function marque()
     {
-        return $this->belongsTo('App\Models\Marque');
+        return $this->belongsTo('App\Models\Marque','marque_id');
     }
     public function photos() : HasMany
 
