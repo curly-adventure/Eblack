@@ -80,7 +80,7 @@ class Produit extends Model
     {
         $attribute_name = "images";
         $disk = "public"; // or use your own disk, defined in config/filesystems.php
-        $destination_path = "logo"; // path relative to the disk above
+        $destination_path = "produits"; // path relative to the disk above
         $this->uploadMultipleFilesToDisk($value,$attribute_name,$disk,$destination_path);
 
     }

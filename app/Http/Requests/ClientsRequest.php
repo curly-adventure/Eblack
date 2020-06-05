@@ -29,6 +29,7 @@ class ClientsRequest extends FormRequest
             'nom' => 'required|min:5|max:255',
             'prenom' => 'required|min:5|max:255',
             'motdepasse' => 'required|min:5|max:255',
+            'email' => 'required',
 
         ];
     }

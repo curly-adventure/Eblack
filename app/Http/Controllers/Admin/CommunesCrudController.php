@@ -29,6 +29,13 @@ class CommunesCrudController extends CrudController
 
     protected function setupListOperation()
     {
+
+        $this->crud->addColumn([
+            'name' => 'nom', // The db column name
+            'label' => "nom", // Table column heading
+            'type' => 'text'
+        ]);
+        
         $this->crud->addColumn([
             'name' => 'ville_id',
             'type' => 'select',
@@ -38,11 +45,7 @@ class CommunesCrudController extends CrudController
             'model' => Villes::class,
         ]);
 
-        $this->crud->addColumn([
-            'name' => 'nom', // The db column name
-            'label' => "nom", // Table column heading
-            'type' => 'text'
-        ]);
+        
     }
 
     protected function setupCreateOperation()

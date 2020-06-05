@@ -41,6 +41,15 @@ class CategoryCrudController extends CrudController
             'type' => 'image',
             'prefix' => 'storage/',
         ]);
+        $this->crud->addColumn([
+            'name' => 'sousCategories',
+            'type' => 'select',
+            'label' => "sous categorie",
+            'entity' => 'sousCategories',
+            'attribute' => 'nom',
+            'model' => "App\Models\Souscategorie", // foreign key model
+            'pivot' => true,
+        ]);
 
     }
 
