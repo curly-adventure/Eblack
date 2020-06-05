@@ -24,7 +24,7 @@ class CommunesCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Communes');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/communes');
-        $this->crud->setEntityNameStrings('communes', 'communes');
+        $this->crud->setEntityNameStrings('une commune', 'Communes');
     }
 
     protected function setupListOperation()

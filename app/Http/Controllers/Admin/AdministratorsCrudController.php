@@ -23,13 +23,27 @@ class AdministratorsCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Administrators');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/administrators');
-        $this->crud->setEntityNameStrings('administrators', 'administrators');
+        $this->crud->setEntityNameStrings('un administrateur', 'Admin');
     }
 
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn([
+            'name' => 'name', // The db column name
+            'label' => "nom", // Table column heading
+            'type' => 'text'
+        ]);
+        $this->crud->addColumn([
+        'name' => 'email', // The db column name
+            'label' => "email", // Table column heading
+            'type' => 'email'
+        ]);
+        $this->crud->addColumn([
+            'name' => 'email_verified_at', // The db column name
+            'label' => "date de verification", // Table column heading
+            'type' => 'text'
+        ]);
     }
 
     protected function setupCreateOperation()
@@ -37,7 +51,27 @@ class AdministratorsCrudController extends CrudController
         $this->crud->setValidation(AdministratorsRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'name', // The db column name
+            'label' => "nom", // Table column heading
+            'type' => 'text'
+        ]);
+        
+        $this->crud->addField([
+            'name' => 'email', // The db column name
+            'label' => "email", // Table column heading
+            'type' => 'email'
+        ]);
+        $this->crud->addField([
+            'name' => 'email_verified_at', // The db column name
+            'label' => "date de verification", // Table column heading
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'password', // The db column name
+            'label' => "mot de passe", // Table column heading
+            'type' => 'password'
+        ]);
     }
 
     protected function setupUpdateOperation()

@@ -23,7 +23,7 @@ class ClientsCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Clients');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/clients');
-        $this->crud->setEntityNameStrings('clients', 'clients');
+        $this->crud->setEntityNameStrings('un client', 'Clients');
     }
 
     protected function setupListOperation()
@@ -37,7 +37,26 @@ class ClientsCrudController extends CrudController
         $this->crud->setValidation(ClientsRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'nom', // The db column name
+            'label' => "nom", // Table column heading
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'prenom', // The db column name
+            'label' => "prenoms", // Table column heading
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'email', // The db column name
+            'label' => "email", // Table column heading
+            'type' => 'email'
+        ]);
+        $this->crud->addField([
+            'name' => 'motdepasse', // The db column name
+            'label' => "mot de passe", // Table column heading
+            'type' => 'password'
+        ]);
     }
 
     protected function setupUpdateOperation()

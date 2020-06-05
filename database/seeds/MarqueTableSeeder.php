@@ -20,7 +20,7 @@ class MarqueTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'nom' => 'lolipop',
+                'nom' => 'Nike',
                 'logo' => 'logo/e6f252a81186aa4f6e43b6f842e2cbb1.png',
                 'deleted_at' => NULL,
                 'created_at' => '2020-06-04 23:48:51',

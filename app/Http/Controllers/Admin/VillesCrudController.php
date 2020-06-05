@@ -23,7 +23,7 @@ class VillesCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Villes');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/villes');
-        $this->crud->setEntityNameStrings('villes', 'villes');
+        $this->crud->setEntityNameStrings('une ville', 'Villes');
     }
 
     protected function setupListOperation()

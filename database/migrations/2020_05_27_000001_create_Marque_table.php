@@ -24,7 +24,7 @@ class CreateMarqueTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unsigned();
             $table->string('nom');
-            $table->string('logo')->comment('chemin absolue vers l\'image');
+            $table->string('logo')->nullable()->comment('chemin absolue vers l\'image');
             $table->softDeletes();
             $table->timestamps();
         });

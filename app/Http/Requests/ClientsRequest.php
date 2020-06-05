@@ -26,7 +26,10 @@ class ClientsRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'nom' => 'required|min:5|max:255',
+            'prenom' => 'required|min:5|max:255',
+            'motdepasse' => 'required|min:5|max:255',
+
         ];
     }
 

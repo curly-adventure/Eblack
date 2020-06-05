@@ -23,7 +23,7 @@ class ReductionCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Reduction');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/reduction');
-        $this->crud->setEntityNameStrings('reduction', 'reductions');
+        $this->crud->setEntityNameStrings('un bon', 'Bons de reduction');
     }
 
     protected function setupListOperation()

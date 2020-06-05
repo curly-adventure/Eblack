@@ -23,7 +23,7 @@ class AchatsCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Achats');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/achats');
-        $this->crud->setEntityNameStrings('achats', 'achats');
+        $this->crud->setEntityNameStrings('Commandes', 'Commandes');
     }
 
     protected function setupListOperation()

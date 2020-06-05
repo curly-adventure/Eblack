@@ -23,7 +23,7 @@ class ProduitCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Produit');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/produit');
-        $this->crud->setEntityNameStrings('produit', 'produits');
+        $this->crud->setEntityNameStrings('un produit', 'Produits');
     }
 
     protected function setupListOperation()

@@ -38,7 +38,7 @@ class SouscategorieCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'categories',
             'type' => 'select',
-            'label' => "Categories parent",
+            'label' => "Categorie",
             'entity' => 'categories',
             'attribute' => 'nom',
             'model' => "App\Models\Category", // foreign key model

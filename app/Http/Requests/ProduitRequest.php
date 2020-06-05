@@ -29,7 +29,9 @@ class ProduitRequest extends FormRequest
             'nom' => 'required|min:5|max:255',
             'prix_vente' => 'required',
             'prix_achat' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'images' => 'required',
+            'quantite' => 'required'
         ];
     }
 

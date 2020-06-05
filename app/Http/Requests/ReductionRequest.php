@@ -26,7 +26,9 @@ class ReductionRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+           
+            'code' => 'required|min:5|max:255',
+            'valeur' => 'required',
         ];
     }
 
