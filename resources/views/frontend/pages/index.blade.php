@@ -3,26 +3,6 @@
 @section('content')
 
 @include('frontend.partials.slider')
-@php
-function strtoarray($a, $t = ''){
-    $arr = [];
-    $a = ltrim($a, '[');$a = ltrim($a, 'array(');$a = rtrim($a, ']');$a = rtrim($a, ')');
-    $tmpArr = explode(",", $a);
-    foreach ($tmpArr as $v) {
-        if($t == 'keys'){
-            $tmp = explode("=>", $v);
-            $k = $tmp[0]; $nv = $tmp[1];$k = trim(trim($k), "'");$k = trim(trim($k), '"');
-            $nv = trim(trim($nv), "'");$nv = trim(trim($nv), '"');
-            $arr[$k] = $nv;
-        } else {
-            $v = trim(trim($v), "'");$v = trim(trim($v), '"');
-            $arr[] = $v;
-        }
-    }
-    return $arr;
-}
-@endphp
-
 <section class="section-content padding-y-sm bg reveal">
     <div class="container">
     
@@ -64,16 +44,10 @@ function strtoarray($a, $t = ''){
                     
                     <!--<span class="badge-new float-right"> NEW </span>-->
                     @php
-                        $liens=$produit->images;
-                        //$str_arr = preg_split ("/\,/", $liens);
-                        //$a=$str_arr[1];
-                        //eval("\$liens = \"$liens\";"); 
-                        //$lien0 = strstr($liens, ',', true);
-                        //$lien = substr($a, 2,-2);
-                        $v=strtoarray($liens)[0];
-                        //dd($v);
-                    @endphp
-                    <img class="img-sm" src="storage/{{$v}}">
+					$liens=$produit->images; $lien=json_decode($liens);
+					//dd($lien);
+				    @endphp
+                    <img class="img-sm" src="storage/{{$lien[0]}}">
                 </center>
                 </div>
             </a>
@@ -97,10 +71,10 @@ function strtoarray($a, $t = ''){
                 <hr>
                 <center>
                     @php
-                        $liens=$produit->images;
-                        $v=strtoarray($liens)[0];
-                    @endphp
-                    <img class="img-sm" src="storage/{{$v}}">
+					$liens=$produit->images; $lien=json_decode($liens);
+					//dd($lien);
+				    @endphp
+                    <img class="img-sm" src="storage/{{$lien[0]}}">
                 </center>
                 </div>
             </a>
@@ -156,10 +130,10 @@ function strtoarray($a, $t = ''){
                         <hr>
                         <center>
                             @php
-                        $liens=$produit->images;
-                        $v=strtoarray($liens)[0];
-                    @endphp
-                    <img class="img-sm" src="storage/{{$v}}">
+                            $liens=$produit->images; $lien=json_decode($liens);
+                            //dd($lien);
+                            @endphp
+                            <img class="img-sm" src="storage/{{$lien[0]}}">
                         </center>
                         </div>
                     </a>
@@ -183,10 +157,10 @@ function strtoarray($a, $t = ''){
                         <hr>
                         <center>
                             @php
-                            $liens=$produit->images;
-                            $v=strtoarray($liens)[0];
-                        @endphp
-                        <img class="img-sm" src="storage/{{$v}}">
+                            $liens=$produit->images; $lien=json_decode($liens);
+                            //dd($lien);
+                            @endphp
+                            <img class="img-sm" src="storage/{{$lien[0]}}">
                         </center>
                         </div>
                     </a>
