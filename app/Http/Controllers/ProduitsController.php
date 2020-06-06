@@ -13,6 +13,12 @@ class ProduitsController extends Controller
         return view('frontend.pages.shop_grid',compact('products'));
     }
     
+    function index(){
+
+        $products=produits::inRandomOrder()->take(1)->get();
+        return view ('produits.index')->with('products',$products);
+    }
+
     /*function detail($nom,$id){
         $produit=Produits::where('id',$id)->first();
         $images=ImagesProduit::all()->where('produits_id',$id);

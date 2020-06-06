@@ -28,7 +28,7 @@
         <div class="col-md-9 reveal-3">
     <ul class="row no-gutters border-cols">
         <!--produits-->
-        @foreach ($new_prod as $key => $produit)
+        @foreach ($products as $key => $produit)
         @if ($key==4)
             @break:
         @endif
@@ -53,7 +53,7 @@
     </ul>
     
     <ul class="row no-gutters border-cols">
-        @foreach ($new_prod as $key => $product)
+        @foreach ($products as $key => $product)
         @if ($key>=4)
        
     
@@ -106,7 +106,7 @@
             <div class="col-md-9 reveal-3">
             <ul class="row no-gutters border-cols">
            
-           @foreach($pop_prod as $key=>$produit)
+           @foreach($products as $key=>$produit)
                 @if($key==4)
                     
                 @break
@@ -132,7 +132,7 @@
             @endforeach
         </ul>
         <ul class="row no-gutters border-cols">
-            @foreach($pop_prod as $key=>$produit)
+            @foreach($products as $key=>$produit)
                 @if($key>=4)
                 
                 <li class="col-6 col-md-3">
