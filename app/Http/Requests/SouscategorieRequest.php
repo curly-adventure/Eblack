@@ -27,6 +27,7 @@ class SouscategorieRequest extends FormRequest
     {
         return [
             'nom' => 'required|min:5|max:255',
+            'categories' => 'required',
             
         ];
     }

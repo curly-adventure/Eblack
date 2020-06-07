@@ -29,6 +29,14 @@ class ProduitCrudController extends CrudController
     protected function setupListOperation()
     {
 
+        $this->crud->addColumn(
+            [
+                'name'  => 'nom',
+                'type'  => 'text',
+                'label' => 'nom du produit',
+            ]
+        );
+
         $this->crud->addColumn([
             'name' => 'marque_id',
             'type' => 'select',
@@ -37,15 +45,6 @@ class ProduitCrudController extends CrudController
             'attribute' => 'nom',
             'model' => "App\Models\Marque",
         ]);
-
-
-        $this->crud->addColumn(
-            [
-                'name'  => 'nom',
-                'type'  => 'text',
-                'label' => 'nom du produit',
-            ]
-        );
 
         $this->crud->addColumn(
             [

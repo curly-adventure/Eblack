@@ -1,7 +1,6 @@
 @extends('frontend.app')
 @section('title','shop')
 @section('content')
-
 <section class="section-content bg padding-y-sm" >
 	<style>
 		.btn{border:1px solid #002687;color:black;background-color: white}
@@ -118,8 +117,13 @@
 		@foreach ($products as $key => $produit)
 		<div class="col-md-3 col-sm-6">
 			<figure class="card card-product">
-				<!--<span class="badge-new"> NEW </span>-->
-				<div class="img-wrap img-fluid"> <img src="images/produits/{{$produit->images_prod()->lien}}" style="width:50%;object-fit: cover"></div>
+				
+				<div class="img-wrap img-fluid"> 
+				@php
+					$liens=$produit->images; $lien=json_decode($liens);
+					//dd($lien);
+				@endphp
+				<img src="storage/{{$lien[0]}}" style="width:50%;object-fit: cover"></div>
 				<figcaption class="info-wrap text-center">
 					<a href="#" class="title">{{$produit->nom}}</a>
 					<div class="price-wrap">

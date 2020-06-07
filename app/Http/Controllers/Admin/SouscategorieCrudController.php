@@ -36,6 +36,12 @@ class SouscategorieCrudController extends CrudController
             'type' => 'text'
         ]);
         $this->crud->addColumn([
+            'name'  => 'logo',
+            'label' => 'logo',
+            'type' => 'image',
+            'prefix' => 'storage/',
+        ]);
+        $this->crud->addColumn([
             'name' => 'categories',
             'type' => 'select',
             'label' => "Categorie",
@@ -62,7 +68,11 @@ class SouscategorieCrudController extends CrudController
             [   // Browse
                 'name'  => 'logo',
                 'label' => 'logo',
-                'type'  => 'upload'
+                'type' => 'upload',
+                'upload' => true,
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-6'
+                ],
             ],
             [
                 'name' => 'categories',

@@ -26,7 +26,7 @@ class MarqueRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required|min:5|max:255'
+            'nom' => 'required|min:4|max:255'
         ];
     }
 

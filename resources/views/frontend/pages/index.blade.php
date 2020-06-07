@@ -43,7 +43,11 @@
                 <center>
                     
                     <!--<span class="badge-new float-right"> NEW </span>-->
-                    <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                    @php
+					$liens=$produit->images; $lien=json_decode($liens);
+					//dd($lien);
+				    @endphp
+                    <img class="img-sm" src="storage/{{$lien[0]}}">
                 </center>
                 </div>
             </a>
@@ -53,7 +57,11 @@
     </ul>
     
     <ul class="row no-gutters border-cols">
+<<<<<<< HEAD
         @foreach ($products as $key => $product)
+=======
+        @foreach ($new_prod as $key => $produit)
+>>>>>>> fb09d123bebe008cd2ea45c6251a5d3ae8162030
         @if ($key>=4)
        
     
@@ -61,13 +69,16 @@
             <a href="{{route('detail')}}" class="itembox"> 
                 <div class="card-body align-items-center">
                 <div class="">
-                    <center class="word-limit ">{{$product->nom}}</center>
-                    <center class="price-wrap h6 price-new">{{$product->prix_vente}}F CFA</center>
+                    <center class="word-limit ">{{$produit->nom}}</center>
+                    <center class="price-wrap h6 price-new">{{$produit->prix_vente}}F CFA</center>
                 </div>
                 <hr>
                 <center>
-                    <!--<span class="badge-new float-right"> NEW </span>-->
-                    <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                    @php
+					$liens=$produit->images; $lien=json_decode($liens);
+					//dd($lien);
+				    @endphp
+                    <img class="img-sm" src="storage/{{$lien[0]}}">
                 </center>
                 </div>
             </a>
@@ -117,13 +128,16 @@
                         <div class="">
                             <center class="word-limit ">{{$produit->nom}}</center>
                             <div class="price-wrap" style="font-size: 15px;font-weight: bold;text-align: center;">
-                                <span class="price-new">{{$produit->prix_vente}} CFA</span> <del class="price-old ">{{$product->prix_achat}} CFA</del>
+                                <span class="price-new">{{$produit->prix_vente}} CFA</span> <del class="price-old ">{{$produit->prix_achat}} CFA</del>
                             </div>
                         </div>
                         <hr>
                         <center>
-                            <!--<span class="badge-new float-right"> NEW </span>-->
-                            <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                            @php
+                            $liens=$produit->images; $lien=json_decode($liens);
+                            //dd($lien);
+                            @endphp
+                            <img class="img-sm" src="storage/{{$lien[0]}}">
                         </center>
                         </div>
                     </a>
@@ -141,13 +155,16 @@
                         <div class="">
                             <center class="word-limit ">{{$produit->nom}}</center>
                             <div class="price-wrap" style="font-size: 15px;font-weight: bold;text-align: center;">
-                                <span class="price-new">{{$produit->prix_vente}} FCFA</span> <del class="price-old ">{{$product->prix_achat}} FCFA</del>
+                                <span class="price-new">{{$produit->prix_vente}} FCFA</span> <del class="price-old ">{{$produit->prix_achat}} FCFA</del>
                             </div>
                         </div>
                         <hr>
                         <center>
-                            <!--<span class="badge-new float-right"> NEW </span>-->
-                            <img class="img-sm" src="images/produits/{{$produit->images_prod()->lien}}">
+                            @php
+                            $liens=$produit->images; $lien=json_decode($liens);
+                            //dd($lien);
+                            @endphp
+                            <img class="img-sm" src="storage/{{$lien[0]}}">
                         </center>
                         </div>
                     </a>
