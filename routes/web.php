@@ -15,16 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::get('/','IndexController@home');
-route::get('/shop','ProduitsController@shop');
+route::get('/shop','ProduitsController@index');
 route::get('/connexion',function(){
     return view('frontend/pages/connexion');
 });
 route::get('/inscription',function(){
     return view('frontend/pages/inscription');
 });
-Route::get('/detail', function() {
+/*Route::get('/detail', function() {
     return view('frontend/pages/details');
   })->name('detail');
+*/
+  Route::get('produits/{produit}/details', [
+    'as'=>'produits.show',
+    'uses'=> 'ProduitsController@show',
+  ]);
 
 Route::get('/test',function(){
   return view('test');

@@ -33,7 +33,7 @@
             @break:
         @endif
         <li class="col-6 col-md-3">
-            <a href="{{route('detail')}}" class="itembox"> 
+            <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
                 <div class="">
                     <center class="word-limit ">{{$produit->nom}}</center>
@@ -62,7 +62,7 @@
        
     
         <li class="col-6 col-md-3">
-            <a href="{{route('detail')}}" class="itembox"> 
+            <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
                 <div class="">
                     <center class="word-limit ">{{$produit->nom}}</center>
@@ -119,7 +119,7 @@
                 @break
                 @endif
                 <li class="col-6 col-md-3">
-                    <a href="{{route('detail')}}" class="itembox"> 
+                    <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                         <div class="card-body align-items-center">
                         <div class="">
                             <center class="word-limit ">{{$produit->nom}}</center>
@@ -146,7 +146,7 @@
                 @if($key>=4)
                 
                 <li class="col-6 col-md-3">
-                    <a href="{{route('detail')}}" class="itembox"> 
+                    <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                         <div class="card-body align-items-center">
                         <div class="">
                             <center class="word-limit ">{{$produit->nom}}</center>

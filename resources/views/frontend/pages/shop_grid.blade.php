@@ -129,8 +129,8 @@
 					<div class="price-wrap">
 						<span class="h6 price-new">{{$produit->prix_vente}} FCFA</span>
 						<del class="price-old">{{$produit->prix_achat}} FCFA</del>
-						
-					</div><a href="{{route('detail',[$produit->nom,$produit->id])}}"><button type="button" class="btn ">acheter</button></a>
+						{{--URL::action('ProduitsController@show',$produit->id)--}}
+					</div><a href="{{route('produits.show',[$produit->id])}}"><button type="button" class="btn ">acheter</button></a>
 				</figcaption>
 	
 			</figure> <!-- card // -->
