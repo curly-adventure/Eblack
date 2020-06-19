@@ -18,6 +18,7 @@ route::get('/','IndexController@home');
 
 /*vue produits*/
 route::get('/shop','ProduitsController@index')->name('produits.index');
+route::get('/recherche','ProduitsController@search')->name('produits.recherche');
 Route::get('produits/{produit}/details', [
   'as'=>'produits.show',
   'uses'=> 'ProduitsController@show',

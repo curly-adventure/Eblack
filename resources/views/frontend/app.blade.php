@@ -13,6 +13,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo32.png')}}">
     <!-- jQuery -->
     <script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
+    
+
     <!-- Bootstrap4 files-->
     <script src="{{ asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
     <link href="{{ asset('css/bootstrap-custom.css')}}" rel="stylesheet" type="text/css"/>
@@ -30,6 +32,7 @@
     <!-- custom style -->
     <link href="{{ asset('css/uikit.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    
     <link href="{{ asset('css/responsive.css')}}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/media-queries.css')}}">
@@ -51,6 +54,9 @@
 
 		<!-- Content -->
 		<div class="content">
+            <div id='flash-container' class='flash-container'>
+                saved.
+        </div>
 			@if (session('success'))
             <div class="alert alert-success">
                 {{session('success')}}
@@ -59,6 +65,15 @@
             @if (session('danger'))
             <div class="alert alert-danger">
                 {{session('danger')}}
+            </div>
+            @endif
+            @if (count($errors)>0)
+            <div class="alert alert-danger">
+                <ul class="mb-0 mt-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}} </li>
+                    @endforeach
+                </ul>
             </div>
             @endif
             @include('frontend.partials.header')

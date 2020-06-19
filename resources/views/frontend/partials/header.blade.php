@@ -25,10 +25,10 @@
         </a>
     </div>
     <div style="width: 100%;margin-top: -10px; ">
-        <form action="#" class="py-1 search-header d-lg-none" >
+    <form action="{{route('produits.recherche')}}" class="py-1 search-header d-lg-none" >
             <div class="input-group " >
                 
-                <input type="text" class="form-control" style="border: 1px solid #002687;border-right: none; " placeholder="rechercher un produit, une marque ou une categories">
+                <input type="text" name="q" id="search" class="form-control" style="border: 1px solid #002687;border-right: none; " placeholder="rechercher un produit, une marque ou une categories">
                 <div class="input-group-append">
                   <button  onclick="if(!$(search).value) return false;" class="btn btn-primary" style="border: 1px solid #002687;background-color: white;border-left: none;" type="submit">
                     <i style="color:#002687;"class="fa fa-search"></i>
@@ -51,12 +51,12 @@
     </div> 
 </div>
 <div class="col-lg-11-24 col-sm-8  d-none d-lg-block">
-        <form action="#" class="py-1 search-header " >
+        <form action="{{route('produits.recherche')}}" class="py-1 search-header " >
             <div class="input-group w-100" >
                 
-                <input type="text" class="form-control"  style="border:2px solid #002687;border-right: transparent;"placeholder="rechercher un produit, une marque ou une categories">
+            <input type="text" name="q" value="{{request()->q ?? ''}}" id="search" class="form-control"  style="border:2px solid #002687;border-right: transparent;"placeholder="rechercher un produit, une marque ou une categories">
                 <div class="input-group-append">
-                  <button onclick="if(!$(search).value) return false;" class="btn" type="submit" style="border: 2px solid #002687;border-left: transparent;background-color: white;">
+                  <button onclick="" class="btn" type="submit" style="border: 2px solid #002687;border-left: transparent;background-color: white;">
                     <i class="fas fa-search" style="color: #002687;"></i>
                   </button>
                 </div>

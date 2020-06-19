@@ -138,7 +138,7 @@
                   </ul>
                   <div class="tab-content" style="background-color: white;" id="myTabContent">
                     <div style="background-color: white;font-size: 20px;padding: 25px;"class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        {{$produit->description}}               
+                        {!!$produit->description!!}               
                     </div>
                 </div>
             </div>

@@ -83,7 +83,7 @@
       </div>
       <!-- Footer Links -->
     
-      <section class="footer-bottom text-center">
+      <section class="footer-bottom text-center" style="margin-top: -50px;">
                 
         <p class="text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><!--©-->Copyright ©<script>document.write(new Date().getFullYear());</script>Eblack ci, Tous droits réservés ! </font></font></p>
         <p class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ce site à été fait avec <i style="color:red"class="fas fa-heart" aria-hidden="true"></i> par <a href="" target="_blank">kingscode teams</a></font></font></p>
