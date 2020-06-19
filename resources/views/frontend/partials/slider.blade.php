@@ -59,7 +59,7 @@
             <p>vêtement, chaussures, montres... <br>de toutes marques</p>
             <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
             </div> 
-            <img src="images/produits/veste-nike.jpeg" height="80" class="img-bg">
+            <img src="{{asset('images/produits/veste-nike.jpeg')}}" height="80" class="img-bg">
           </div>
     
           <div class="card-banner border-bottom reveal-2">

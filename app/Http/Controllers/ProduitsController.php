@@ -9,7 +9,12 @@ class ProduitsController extends Controller
 {
   
     function index(){
-        $products=Produits::paginate(8);
+        if (request()->categorie) {
+            $products = Produits::where('categorie_id', request()->categorie)->paginate(8);
+        } else {
+            $products=Produits::paginate(8);
+        }
+        //
         return view('frontend.pages.shop_grid',compact('products'));
     }
     

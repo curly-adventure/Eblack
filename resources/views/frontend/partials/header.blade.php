@@ -1,10 +1,10 @@
 <header class="section-header">
     <div id="scrollUp">
-    <a href="#top"><img src="images/to_top.png"/></a>
+    <a href="#top"><img src="{{ asset('images/to_top.png')}}"/></a>
     </div>
     <nav class="navbar fixed-top  d-lg-none" style="height: auto;background-color: white;box-shadow: 0px 0px 5px 0px #eee;padding-bottom: 0;padding-left: 8px;padding-right: 8px;">
     <a class="btn open-menu" href="#" role="button" style="font-size: 20px;color: #002687;padding: 0;border:none"><i class="fas fa-align-left"></i><!--<i class="fas fa-align-left"></i> --></a>
-    <a class="navbar-brand" href="{{url('/')}}" style="color: white;font-weight: bold;"><img class="logo" src="images/eblack.png"></a>
+    <a class="navbar-brand" href="{{url('/')}}" style="color: white;font-weight: bold;"><img class="logo" src="{{ asset('images/eblack.png')}}"></a>
     
     <div class="widget-header dropdown" style="margin-right: -40px;padding: 0;color: #002687">
         <a href="{{url('/connexion')}}" class="ml-1 icontext" >
@@ -12,12 +12,14 @@
         </a>
     </div>
     <div class="widget-header" >
-        <a href="#" class="icontext">
+        <a href="{{route('panier.index')}}" class="icontext">
             <div class="icontext mr-0" style="max-width: 50px;color: #002687">
                 <span class="icon icon-sm ">
                     <i class="fas fa-cart-plus"></i>
+                    @if (Cart::count()!=0)
                     <span style="width: 25px;height: 25px; font-size: 12px; text-align: center;line-height: 19px;" class="notify small round badge badge-secondary">
-                    3</span>
+                        {{Cart::count()}}</span>
+                    @endif
                 </span>
             </div>
         </a>
@@ -45,7 +47,7 @@
     
     <div class="brand-wrap">
         <a class="btn open-menu" href="#" role="button" style="font-size: 20px;color: #002687;border:none"><i class="fas fa-align-left"></i><!--<i class="fa fa-bars"></i>--></a>
-        <a href="{{url('/')}}" style="color:white;font-weight:bold;font-size:18px"><img class="logo" src="images/eblack.png"></a>
+        <a href="{{url('/')}}" style="color:white;font-weight:bold;font-size:18px"><img class="logo" src="{{ asset('images/eblack.png')}}"></a>
     </div> 
 </div>
 <div class="col-lg-11-24 col-sm-8  d-none d-lg-block">
@@ -74,13 +76,17 @@
             </div>  <!-- widget-header .// -->
         </div> <!-- col.// -->
         <div class="widget-header col-auto">
-            <a href="#" class="icontext">
+        <a href="{{route('panier.index')}}" class="icontext">
                 <div class="icontext mr-0" style="max-width: 50px;color: #002687;">
                     <span class="icon icon-sm ">
                         <i class="fas fa-cart-plus  "></i><!--fa fa-shopping-cart-->
+                        @if (Cart::count()!=0)
                         <span style="width: 25px;height: 25px; font-size: 12px; text-align: center;line-height: 19px;" class="notify small round badge badge-secondary">
-                        3</span>
-                    </span>
+                            {{Cart::count()}}</span>
+                        @endif
+                        </span>
+                        
+                        
                 </div>
             </a>
         </div>  <!-- col.// -->

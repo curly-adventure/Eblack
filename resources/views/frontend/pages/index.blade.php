@@ -4,6 +4,7 @@
 
 @include('frontend.partials.slider')
 <section class="section-content padding-y-sm bg reveal">
+    
     <div class="container">
     
     <header class="section-heading heading-line reveal-1">

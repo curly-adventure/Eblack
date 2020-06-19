@@ -16,10 +16,12 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "hardevine/shoppingcart": "^2.8",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "orangehill/iseed": "^2.6"
+        "orangehill/iseed": "^2.6",
+        "stripe/stripe-php": "^7.37"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

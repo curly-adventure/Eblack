@@ -33,14 +33,14 @@
 		  <button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			categorie
 		  </button>
-		  <div class="dropdown-menu">
-			<a class="dropdown-item" href="#">tout afficher</a>
+		  <ul class="btn dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+			<li><a class="dropdown-item" href="{{route('produits.index')}}">Tout Afficher</a></li>
 			<div class="dropdown-divider"></div>
-			<a class=" btn btn-primary dropdown-item" href="#">homme</a>
-			<a class="dropdown-item" href="#">femme</a>
-			<a class="dropdown-item" href="#">enfant</a>
-			
-		  </div>
+			@foreach (App\Categories::All() as $categorie)
+			  <li><a class="dropdown-item" href="{{route('produits.index',['categorie'=>$categorie->id])}}">{{$categorie->nom}}</a></li>
+			  
+			@endforeach
+		  </ul>
 		</div>
 					
 					 <div class="btn-group">
@@ -125,7 +125,7 @@
 				@endphp
 				<img src="storage/{{$lien[0]}}" style="width:50%;object-fit: cover"></div>
 				<figcaption class="info-wrap text-center">
-					<a href="#" class="title">{{$produit->nom}}</a>
+					<a href="{{route('produits.show',[$produit->id])}}" class="title">{{$produit->nom}}</a>
 					<div class="price-wrap">
 						<span class="h6 price-new">{{$produit->prix_vente}} FCFA</span>
 						<del class="price-old">{{$produit->prix_achat}} FCFA</del>
@@ -141,7 +141,7 @@
 	<nav class="mb-4" aria-label="Page navigation sample">
 		<ul class="pagination">
 		 <!-- <li class="page-item disabled"><a class="page-link" href="#">Precedant</a></li>-->
-		  {{ $products->links() }}
+		  {{ $products->appends(request()->input())->links() }}
 		  <!--<li class="page-item"><a class="page-link" href="#">suivant</a></li>-->
 		</ul>
 	  </nav>
