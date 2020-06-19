@@ -54,9 +54,7 @@
 
 		<!-- Content -->
 		<div class="content">
-            <div id='flash-container' class='flash-container'>
-                saved.
-        </div>
+            
 			@if (session('success'))
             <div class="alert alert-success">
                 {{session('success')}}

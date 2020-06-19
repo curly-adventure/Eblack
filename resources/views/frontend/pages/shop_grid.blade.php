@@ -33,13 +33,20 @@
 		  <button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			categorie
 		  </button>
-		  <ul class="btn dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+		  <ul class="btn dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 			<li><a class="dropdown-item" href="{{route('produits.index')}}">Tout Afficher</a></li>
 			<div class="dropdown-divider"></div>
 			@foreach (App\Categories::All() as $categorie)
 			  <li><a class="dropdown-item" href="{{route('produits.index',['categorie'=>$categorie->id])}}">{{$categorie->nom}}</a></li>
-			  
 			@endforeach
+			<li class="dropdown-submenu">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">H</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">I</a></li>
+					<li><a href="#">J</a></li>
+					<li><a href="#">K</a></li>
+				</ul>
+			</li>
 		  </ul>
 		</div>
 					
@@ -74,13 +81,12 @@
 			<div class="col-4 ">
 				<strong class="">Trier par</strong>
 				<select style="border-color:#002687;background-color:white"class="mr-2 form-control" >
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">popularité</font></font></option>
+						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="#">popularité</a></font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : moins chere au plus chere</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : plus chere au moins chere</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ordre Alphabetique</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus ancien au plus recent</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus recent au plus ancien</font></font></option>
-					
 				</select>
 			</div>
 			</div>

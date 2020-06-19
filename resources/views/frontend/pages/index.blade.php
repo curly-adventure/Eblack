@@ -60,8 +60,6 @@
     <ul class="row no-gutters border-cols">
         @foreach ($new_prod as $key => $produit)
         @if ($key>=4)
-       
-    
         <li class="col-6 col-md-3">
             <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
