@@ -8,7 +8,7 @@ use App\Produits;
 class IndexController extends Controller
 {
     function home(){
-        //dd($products);
+        //dd(Auth()->user()->id);
         //$products=Product::with('categories')->paginate(6);
 
         //$new_prod=Produits::inRandomOrder()->take(8)->get();
