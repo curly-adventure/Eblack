@@ -30,7 +30,8 @@
                 
                 <input type="text" name="q" id="search" class="form-control" style="border: 1px solid #002687;border-right: none; " placeholder="rechercher un produit, une marque ou une categories">
                 <div class="input-group-append">
-                  <button  onclick="if(!$(search).value) return false;" class="btn btn-primary" style="border: 1px solid #002687;background-color: white;border-left: none;" type="submit">
+                    <!--onclick="if(!$(search).value) return false;"-->
+                  <button   class="btn btn-primary" style="border: 1px solid #002687;background-color: white;border-left: none;" type="submit">
                     <i style="color:#002687;"class="fa fa-search"></i>
                   </button>
                 </div>

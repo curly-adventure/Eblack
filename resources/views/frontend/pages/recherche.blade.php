@@ -10,17 +10,22 @@
 		<div class="row">
 			<nav class="col-md-18-24"> 
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Accueil</a></li>
-					<li class="breadcrumb-item"><a href="#">categories</a></li>
-					<li class="breadcrumb-item"><a href="#">Sous categories</a></li>
-					<li class="breadcrumb-item active" aria-current="page">produits</li>
+					<li class="breadcrumb-item"><a href="{{URL('/')}}">Accueil</a></li>
+					@foreach ($lien as $i =>$item)
+					@if (request()->categorie)
+					<li class="breadcrumb-item"><a href="{{route($item,['categorie'=>request()->categorie])}}">{{$i}}</a></li>
+					@else
+					<li class="breadcrumb-item"><a href="{{route($item)}}">{{$i}}</a></li>
+					@endif
+						
+					@endforeach
 				</ol>
-			</nav> <!-- col.// -->
+			</nav>  <!-- col.// -->
 		</div>
 		 <!-- row.// -->
 		<div class="container">
 			<figure class="mt-3 banner p-3 ">
-				<div class="text-lg text-center " id="titre-cate">Casque audio & ecouteur</div>
+				<div class="text-lg text-center " id="titre-cate">{{$titre}}</div>
 			</figure>	
 		</div>
 		<div class="card d-none d-lg-block" style="padding:20px;margin-bottom: 10px;" >

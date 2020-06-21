@@ -7,8 +7,9 @@
 
 @section('content')
 @if (Cart::count()>0)
-<section class="section-content bg padding-y border-top" >
-    <div class="container" style=" margin-top:90px;">
+{{-- affichage du panier pour ecran large  --}}
+<section class="section-content d-none d-lg-block bg padding-y border-top" >
+    <div class="container" style=" margin-top:80px;">
       <center><p class="h3"style="color: #888;font-weight:bold;">VOTRE PANIER ( {{Cart::count()}} )</p></center><br>
     
     <div class="row">
@@ -93,7 +94,29 @@
     
     </div> <!-- container .//  -->
     </section>
-    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <section class="section-content d-block d-lg-none bg padding-y border-top" >
+        <div class="container" style=" margin-top:90px;">
+          <center><p class="h5"style="color: #888;font-weight:bold;">VOTRE PANIER ( {{Cart::count()}} )</p></center><br>
+        
+         <main class="col-sm-9">
+        
+            <div class="card">
+                <figure class="media">
+                    @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
+                    <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}" class="img-thumbnail img-sm"></div>
+                    <figcaption class="media-body">
+                        <h6 class="title text-truncate">{{$produit->model->nom}}</h6>
+                        <dl class="dlist-inline small">
+                        <dt>Taille: </dt>
+                        <dd>XXL</dd>
+                        </dl>
+                        
+                    </figcaption>
+                </figure>
+            </div>
+         </main>
+        </div>
+    </section>
     
     <!-- ========================= SECTION  ========================= -->
     <section class="section-name bg-white padding-y">
@@ -109,13 +132,14 @@
     </div>
     </div><!-- container // -->
     </section>
+    
 @else
 <section class="section-content bg padding-y border-top" >
     <div class="container" style=" margin-top:100px;">
       <center><p class="h3"style="font-weight:bold;">VOTRE PANIER EST VIDE</p><br>
       <p>ajouter des produits dans votre panier</p>
       <div class="col-md-6 mt-4 ">
-        <a class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;">passez aux achats !</a></center>
+        <a href="{{route('produits.index')}}" class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;border:none">passez aux achats !</a></center>
         </div>
     </div>
 </section>

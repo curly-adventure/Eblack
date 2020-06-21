@@ -11,38 +11,25 @@
     <div id="tcat"><spam style="text-transform: uppercase;font-size: 15px;font-weight:bold">nos categories</spam> <a href="" style="color:blue">voir plus</a></div>
     <style>#tcat{padding: 5px;font-size: 11px;}#tcat a{margin-left: 60px;font-size: 12px;}</style>
     <ul class="list-unstyled menu-elements">
-        <li><!--class="active"-->
-            <a href="#electro" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="electro">
-               Electronique
+        @foreach (App\Categories::All() as $i=>$cate)
+        @if ($i==4)
+            @php break; @endphp
+        @endif
+        <li class="">
+            <a href="#{{$cate->id}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="{{$cate->id}}">
+                {{$cate->nom}}
             </a>
-            <ul class="collapse list-unstyled" id="electro">
-                <li><a class="scroll-link" href="#section-3">Tous</a></li>
-                <li><a class="scroll-link" href="#section-4">Audio</a></li>
-                <li>
-                    <a href="#acess" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="acess">
-                        Accessoires</a>
-                        <ul class="collapse list-unstyled" id="acess">
-                            <li><a class="scroll-link" href="#section-3">Tous</a></li>
-                            <li><a class="scroll-link" href="#section-4">Accessoire de tel</a></li>
-                            <li><a class="scroll-link" href="#section-4">Accessoire inforlatique</a></li>
-                            <li><a class="scroll-link" href="#section-4">Autres accessoires</a></li>
-                        </ul>
-                </li>
-                <li><a class="scroll-link" href="#section-4">Tel & pc</a></li>
+            <ul class="collapse list-unstyled" id="{{$cate->id}}">
+                <li><a class="" href="{{route('produits.index',['categorie'=>$cate->id])}}">Tous</a></li>
+                @foreach ($cate->sousCategories as $sous)
+                <li><a class="" href="{{route('produits.index',['categorie'=>$cate->id,'souscategorie'=>$sous->id])}}">{{$sous->nom}}</a></li>
+                @endforeach
+                
             </ul>
         </li>
-        <li class="">
-            <a href="#hme" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="hme">
-                Mode Homme
-            </a>
-            <ul class="collapse list-unstyled" id="hme">
-                <li><a class="scroll-link" href="#section-3">Tous</a></li>
-                <li><a class="scroll-link" href="#section-4">vêtements</a></li>
-                <li><a class="scroll-link" href="#section-4">Chaussures</a></li>
-                <li><a class="scroll-link" href="#section-4">Accessoires</a></li>
-            </ul>
-        </li>
-        <li class="">
+        @endforeach
+        
+        <!--<li class="">
             <a href="#fme" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="fme">
                Mode Femme
             </a>
@@ -63,7 +50,7 @@
                 <li><a class="scroll-link" href="#section-4">Chaussures</a></li>
                 <li><a class="scroll-link" href="#section-4">Accessoires</a></li>
             </ul>
-        </li>
+        </li>-->
         
         
     </ul>

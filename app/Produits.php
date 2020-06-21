@@ -13,6 +13,9 @@ class Produits extends Model
     public function categories(){
         return $this->belongsToMany('App\Categories');
     }
+    public function sousCategories(){
+        return $this->belongsToMany('App\Categories');
+    }
     /*
     public function images_prod(){
         return ImagesProduit::select('lien')->where('produits_id', $this->id)->first();

@@ -15,9 +15,9 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'administrators',
+        'passwords' => 'clients',
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -36,16 +36,20 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'administrators' => [
             'driver' => 'session',
             'provider' => 'administrators',
         ],
-
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
         'api' => [
             'driver' => 'token',
-            'provider' => 'administrators',
+            'provider' => 'clients',
             'hash' => false,
         ],
+        
     ],
 
     /*
@@ -69,6 +73,10 @@ return [
         'administrators' => [
             'driver' => 'eloquent',
             'model' => App\Administrator::class,
+        ],
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Client::class,
         ],
         //'users' => [
         //    'driver' => 'eloquent',
@@ -95,7 +103,7 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-
+    
     'passwords' => [
         'administrators' => [
             'provider' => 'administrators',
@@ -103,8 +111,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'clients' => [
+            'provider' => 'clients',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout

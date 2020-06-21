@@ -10,45 +10,46 @@
 		<div class="row">
 			<nav class="col-md-18-24"> 
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Accueil</a></li>
-					<li class="breadcrumb-item"><a href="#">categories</a></li>
-					<li class="breadcrumb-item"><a href="#">Sous categories</a></li>
-					<li class="breadcrumb-item active" aria-current="page">produits</li>
+					<li class="breadcrumb-item"><a href="{{URL('/')}}">Accueil</a></li>
+					
+					@foreach ($lien as  $item=>$i)
+
+					@if ($item==$titre)
+					
+					<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie,'souscategorie'=>request()->souscategorie])}}">{{$item}}</a></li>
+					@else
+					<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie])}}">{{$item}}</a></li>
+					@endif
+						
+					@endforeach
 				</ol>
 			</nav> <!-- col.// -->
 		</div>
 		 <!-- row.// -->
 		<div class="container">
-			<figure class="mt-3 banner p-3 ">
-				<div class="text-lg text-center " id="titre-cate">Casque audio & ecouteur</div>
+			<figure class="mt-3 mb-3 banner ">
+				<div class=" text-center " id="titre-cate">{{$titre}}</div>
 			</figure>	
 		</div>
 		<div class="card d-none d-lg-block" style="padding:20px;margin-bottom: 10px;" >
 			<div class="row">
 			<div class="col-lg-8 float-left">
 				<strong class="">Filtrer par</strong>
-				
 					<ul class="list-inline">
 					  <div class="btn-group">
-		  <button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			categorie
-		  </button>
-		  <ul class="btn dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-			<li><a class="dropdown-item" href="{{route('produits.index')}}">Tout Afficher</a></li>
-			<div class="dropdown-divider"></div>
-			@foreach (App\Categories::All() as $categorie)
-			  <li><a class="dropdown-item" href="{{route('produits.index',['categorie'=>$categorie->id])}}">{{$categorie->nom}}</a></li>
-			@endforeach
-			<li class="dropdown-submenu">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">H</a>
-				<ul class="dropdown-menu">
-					<li><a href="#">I</a></li>
-					<li><a href="#">J</a></li>
-					<li><a href="#">K</a></li>
+		  			 <button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					categorie</button>
+				<ul class="btn dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+					<li><a class="dropdown-item" href="{{route('produits.index')}}">Tout Afficher</a></li>
+					<div class="dropdown-divider"></div>
+					@foreach (App\Categories::All() as $categorie)
+					<li><a class="dropdown-item" href="{{route('produits.index',['categorie'=>$categorie->id])}}">{{$categorie->nom}}</a></li>
+						@foreach ($categorie->sousCategories as $souscategorie)
+					<li><a class="dropdown-item" href="{{route('produits.index',['souscategorie'=>$souscategorie->id])}}">{{$souscategorie->nom}}</a></li>
+					@endforeach
+					@endforeach
 				</ul>
-			</li>
-		  </ul>
-		</div>
+			</div>
 					
 					 <div class="btn-group">
 		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,27 +82,46 @@
 			<div class="col-4 ">
 				<strong class="">Trier par</strong>
 				<select style="border-color:#002687;background-color:white"class="mr-2 form-control" >
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="#">popularité</a></font></font></option>
+						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">popularité</font></font></option>
+						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nouveauté</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : moins chere au plus chere</font></font></option>
 						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : plus chere au moins chere</font></font></option>
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ordre Alphabetique</font></font></option>
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus ancien au plus recent</font></font></option>
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus recent au plus ancien</font></font></option>
+						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ordre alphabetique</font></font></option>
+						
 				</select>
 			</div>
 			</div>
 		</div>
 	<div class="card d-lg-none" style="padding:20px;margin-bottom: 10px;" >
 	<div class="row">
-	<div class="col-8 offset-2">
+		<div class="col-5">
+			<strong class="">Filtrer par</strong>
+			<ul class="list-inline">
+				<div class="btn-group">
+		  			<button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					categorie</button>
+					<ul class="btn dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+						<li><a class="dropdown-item" href="{{route('produits.index')}}">Tout Afficher</a></li>
+						<div class="dropdown-divider"></div>
+						@foreach (App\Categories::All() as $categorie)
+						<li><a class="dropdown-item" href="{{route('produits.index',['categorie'=>$categorie->id])}}">{{$categorie->nom}}</a></li>
+						@foreach ($categorie->sousCategories as $souscategorie)
+						<li><a class="dropdown-item" href="{{route('produits.index',['souscategorie'=>$souscategorie->id])}}">{{$souscategorie->nom}}</a></li>
+						@endforeach
+						@endforeach
+					</ul>
+				</div>
+			</ul>
+		</div>
+			
+	<div class="col-7">
 	<strong class="">Trier par</strong>
 	<select style="border-color:#002687;background-color:white" class="mr-2 form-control" >
 		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">popularité</font></font></option>
-		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">moins chere au plus chere</font></font></option>
-		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus chere au moins chere</font></font></option>
-		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ordre Alphabetique</font></font></option>
-		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus ancien au plus recent</font></font></option>
-		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus recent au plus ancien</font></font></option>
+		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nouveauté</font></font></option>
+		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : moins chere au plus chere</font></font></option>
+		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : plus chere au moins chere</font></font></option>
+		<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ordre alphabetique</font></font></option>
 	</select>
 	</div> <!-- row.// -->
 	</div>
@@ -129,7 +149,7 @@
 					$liens=$produit->images; $lien=json_decode($liens);
 					//dd($lien);
 				@endphp
-				<img src="storage/{{$lien[0]}}" style="width:50%;object-fit: cover"></div>
+				<img src="{{asset('storage/'.$lien[0])}}" style="width:50%;object-fit: cover"></div>
 				<figcaption class="info-wrap text-center">
 					<a href="{{route('produits.show',[$produit->id])}}" class="title">{{$produit->nom}}</a>
 					<div class="price-wrap">

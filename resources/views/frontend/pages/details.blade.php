@@ -41,7 +41,7 @@
                         <aside class="col-sm-7">
                             
                             <article class="p-5">
-                                <a data-original-title="Sauver dans favoris" title="" href="" class="btn " data-toggle="tooltip" style="border-color: #002687;color:#002687;position: absolute;left:90%"> <i class="fas fa-heart"></i> </span></a>
+                                <a data-original-title="Sauver dans favoris" title="" href="" class="btn " data-toggle="tooltip" style="border-color: #002687;color:#002687;position: absolute;left:80%"> <i class="fas fa-heart"></i> </span></a>
                                 <h3 class="title mb-3">{{$produit->nom}}</h3>
 
                                 <div class="rating-wrap">
@@ -154,24 +154,25 @@
         <header class="section-heading heading-line">
             <h4 class="title-section bg">Produits identiques</h4>
         </header>
-        <div class="owl-carousel owl-init slide-items col" data-items="4" data-margin="20" data-dots="true" data-nav="true" >
-            @for ($i = 0; $i < 10; $i++)
-            <div class="item-slide">
-            <figure class="card card-product">
-            <span class="badge-new"> NEW </span>
-            <div class="img-wrap"> <img src="images/items/15.jpg"> </div>
-            <figcaption class="info-wrap text-center">
-                <h6 class="title text-truncate">
-                <a class="title"href="#">produit {{$i}}</a></h6>
-                <div class="price-wrap">
-                    <span class="h6 price-new">1280 FCFA</span>
-                    <del class="price-old">1980 FCFA</del>
-                    
+        <div class="owl-carousel owl-init slide-items col" data-items="3" data-margin="20" data-dots="true" data-nav="true" >
+            @foreach ($autres_produits as  $produit)
+                <div class="item-slide" style="max-width: 350px">
+                    <figure class="card card-product">
+                    <!--<span class="badge-new"> NEW </span>-->
+                        @php $liens=$produit->images; $lien=json_decode($liens); @endphp
+                        <div class="img-wrap"> <img src="{{asset('storage/'.$lien[0])}}"> </div>
+                        <figcaption class="info-wrap text-center">
+                            <h6 class="title text-truncate">
+                                <a class="title"href="{{route('produits.show',[$produit->id])}}">{{$produit->nom}}</a></h6>
+                                <div class="price-wrap">
+                                    <span class="h6 price-new">{{$produit->prix_vente}} FCFA</span>
+                                    <del class="price-old">{{$produit->prix_achat}} FCFA</del>
+                                </div>
+                        </figcaption>
+                    </figure> 
                 </div>
-            </figcaption>
-            </figure> <!-- card // -->
-            </div>
-            @endfor       
-    <!-- container .//  -->
+            @endforeach
+        </div>  
+    </div>
 </section>
 @stop

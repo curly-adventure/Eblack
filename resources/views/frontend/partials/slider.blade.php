@@ -16,7 +16,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active item-slide cover img-fluid">
-      <a href="liste_grid.html"><img src="images/banners/slide1.png" alt="Première diapositive" style="width:100%;height:100%;object-fit: cover"> </a>
+      <a href="{{route('produits.index')}}"><img src="images/banners/slide1.png" alt="Première diapositive" style="width:100%;height:100%;object-fit: cover"> </a>
       <div class="carousel-caption">
           <h5 style="color: white;" >casque audio</h5>
         </div>

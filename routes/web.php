@@ -3,22 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-route::get('/','IndexController@home');
+route::get('/','IndexController@home')->name('accueil');
 
 /*vue produits*/
 route::get('/shop','ProduitsController@index')->name('produits.index');
 route::get('/recherche','ProduitsController@search')->name('produits.recherche');
+route::get('/shop/{mot_cle}','ProduitsController@trie')->name('produits.trie');
 Route::get('produits/{produit}/details', [
   'as'=>'produits.show',
   'uses'=> 'ProduitsController@show',
