@@ -31,12 +31,13 @@ Route::post("/paiement/stripe","CheckoutController@store")->name("paiement.store
 Route::get("paiement/merci","CheckoutController@thankyou")->name("paiement.thankyou");
 
 /*route connexion inscription*/
-route::get('/connexion',function(){
-    return view('frontend/pages/connexion');
-});
-route::get('/inscription',function(){
-    return view('frontend/pages/inscription');
-});
+route::get('/login',function(){
+    return view('auth/login');
+})->name('client.connexion');
+route::get('/register',function(){
+  return view('auth/register');
+})->name('client.inscription');
+
   
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -50,3 +51,7 @@ Route::any('{catchall}', function() {
     return 'Cette page n\'existe pas !';
   })->where('catchall', '.*');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,77 +1,86 @@
-@extends('layouts.app')
-
+@extends('frontend.app')
+@section('title','inscription')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<section class="section-content padding-y" style="min-height:84vh;">
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
+	<!-- ============================ COMPONENT REGISTER   ================================= -->
+		<div class="card mx-auto" style="max-width: 400px; margin-top:60px;">
+		  <article class="card-body" style="-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+		  -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+		  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);">
+			<header class="mb-4"><h4 class="card-title">Creer un compte</h4></header>
+			<form method="POST" action="{{ route('register') }}">
+				@csrf
+					<div class="form-row">
+						<div class="col form-group">
+							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="nom">
+							@error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>veillez entrez un nom valide</strong>
+                                    </span>
+                            @enderror
+						</div> <!-- form-group end.// -->
+						<div class="col form-group">
+							<input placeholder="prenom" id="prenom" type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>
+
+                                @error('prenom')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>veillez entrez un prenom valide</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+						</div> <!-- form-group end.// -->
+					</div> <!-- form-row end.// -->
+					<div class="form-group">
+						<input placeholder="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>@php if($message=="validation.unique"){echo "ce mail est deja utilisé";}
+											else{echo "entrez un mail valide";} @endphp</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+					</div> <!-- form-group end.// -->
+					
+					
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input placeholder="mot de passe" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+										<strong>@php if($message=="validation.confirmed"){echo "mot de passe differents";}
+										else{echo "mot de passe trop court";} @endphp</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
+						</div> <!-- form-group end.// --> 
+						<div class="form-group col-md-6">
+							<input placeholder="confirmer mot de passe" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+						</div> <!-- form-group end.// -->  
+					</div>
+					<div class="form-group">
+						<button  style="background-color: #002687;border:none" type="submit" class="btn btn-primary btn-block"> Enregistrer </button>
+					</div> <!--     
+					<div class="form-group"> 
+						<label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a>  </div> </label>
+					</div> form-group end.// -->           
+				</form>
+				<div class="row">
+					<div class="col"><hr></div>
+					<div class="col-auto">OU</div>
+					<div class="col"><hr></div>
+				</div>
+				<a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp  S'inscrire avec Facebook</a>
+				<a href="#" class="btn btn-instagram btn-block mb-4"> <i class="fab fa-google"></i> &nbsp  S'inscrire avec Google</a>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+			</article><!-- card-body.// -->
+		</div> <!-- card .// -->
+		
+		<p class="text-center mt-4">Vous avez un compte? <a href="{{url('/login')}}" style="font-weight:bold;color: #002687;">Se connecter</a></p>
+		<br><br>
+	<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+	
+	</section>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+@stop
