@@ -20,6 +20,7 @@ class CreateCommandeTable extends Migration
             $table->datetime('paiement_created_at');
             $table->text('produits');
             $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('Clients')->onDelete('cascade');
             $table->timestamps();
         });
     }

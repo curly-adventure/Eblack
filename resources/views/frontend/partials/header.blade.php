@@ -7,7 +7,7 @@
     <a class="navbar-brand" href="{{url('/')}}" style="color: white;font-weight: bold;"><img class="logo" src="{{ asset('images/eblack.png')}}"></a>
     
     <div class="widget-header dropdown" style="margin-right: -40px;padding: 0;color: #002687">
-        <a href="{{url('/connexion')}}" class="ml-1 icontext" >
+        <a href="{{url('/login')}}" class="ml-1 icontext" >
             <div class="icon-wrap"><i class="icon-sm  fas fa-user-circle"style="color: #002687;font-size:25px"></i></div>
         </a>
     </div>
@@ -68,12 +68,29 @@
     <div class="widgets-wrap float-right row no-gutters py-1">
         <div class="col-auto">
             <div class="widget-header dropdown" >
-                <a href="{{url('/connexion')}}" class="ml-1 icontext" >
+                @guest
+                    <a href="{{url('/login')}}" class="ml-1 icontext" >
                     <div class="icon-wrap"><i style="color: #002687;font-size: 25px;" class="icon-sm  fas fa-user-circle" ></i></div>
-                
-                <div class="textwrap d-none d-lg-block" style="color: #002687;">se connecter  </div></a>
-                
+                    <div class="textwrap d-none d-lg-block" style="color: #002687;">se connecter  </div></a>
+                @else
+                <li class="nav-item dropdown " style="list-style: none;">
+                    <a id="navbarDropdown" style="font-weight:bold;color:#002687; "  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->nom }} <span class="caret"></span>
+                    </a>
+                    
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <hr class="dropdown-divider">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('deconnexion') }}
+                        </a>
 
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
             </div>  <!-- widget-header .// -->
         </div> <!-- col.// -->
         <div class="widget-header col-auto">

@@ -26,7 +26,7 @@ class CreateClientsTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('email', 45)->nullable()->unique();
-            $table->string('motdepasse', 45);
+            $table->string('motdepasse', 250);
             $table->bigInteger('Adresse_id')->nullable()->unsigned();
             $table->rememberToken();
             $table->softDeletes();

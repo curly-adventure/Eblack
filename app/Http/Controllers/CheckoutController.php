@@ -79,7 +79,7 @@ class CheckoutController extends Controller
         }
 
         $commande->produits = serialize($produits);
-        $commande->client_id = Auth()->client()->id;
+        $commande->client_id = Auth()->user()->id;
         $commande->save();
         
         if ($data['paymentIntent']['status'] === 'succeeded') {
