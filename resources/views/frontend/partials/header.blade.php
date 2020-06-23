@@ -7,9 +7,38 @@
     <a class="navbar-brand" href="{{url('/')}}" style="color: white;font-weight: bold;"><img class="logo" src="{{ asset('images/eblack.png')}}"></a>
     
     <div class="widget-header dropdown" style="margin-right: -40px;padding: 0;color: #002687">
+        @guest
         <a href="{{url('/login')}}" class="ml-1 icontext" >
             <div class="icon-wrap"><i class="icon-sm  fas fa-user-circle"style="color: #002687;font-size:25px"></i></div>
         </a>
+        @else
+                <li class="nav-item dropdown " style="list-style: none;">
+                    <a id="navbarDropdown" style="font-weight:bold;color:#002687; "  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->nom }} <span class="caret"></span>
+                    </a>
+                    
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('home') }}">
+                            Votre compte
+                        </a>
+                        <a class="dropdown-item" href="{{ route('home') }}">
+                            Vos commandes
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            Vos favoris
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('deconnexion') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
     </div>
     <div class="widget-header" >
         <a href="{{route('panier.index')}}" class="icontext">
@@ -79,6 +108,15 @@
                     </a>
                     
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('home') }}">
+                            Votre compte
+                        </a>
+                        <a class="dropdown-item" href="{{ route('home') }}">
+                            Vos commandes
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            Vos favoris
+                        </a>
                         <hr class="dropdown-divider">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

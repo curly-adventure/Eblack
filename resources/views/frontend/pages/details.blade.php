@@ -6,12 +6,19 @@
     <div class="col" >
         <nav class="col-md-18-24">
            <br>
-            <ol class="breadcrumb">
-                <li id="indic"class="breadcrumb-item"><a href="#">Accueil</a></li>
-                <li class="breadcrumb-item"><a href="#">categories</a></li>
-                <li class="breadcrumb-item"><a href="#">Sous categories</a></li>
-                <li class="breadcrumb-item active" aria-current="page">produits</li>
-            </ol>
+           <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{URL('/')}}">Accueil</a></li>
+            
+            @foreach ($lien as  $item=>$i)
+             
+            @if ($item==$sous_categorie->nom) <li class="breadcrumb-item"><a href="{{route($i,['categorie'=>$categorie->id,'souscategorie'=>$sous_categorie->id])}}">{{$item}}</a></li>
+            @elseif ($item==$categorie->nom) <li class="breadcrumb-item"><a href="{{route($i,['categorie'=>$categorie->id])}}">{{$item}}</a></li>
+            @else
+            <li class="breadcrumb-item"><a href="#">{{$item}}</a></li>
+            @endif
+            
+            @endforeach
+        </ol>
         </nav> <!-- col.// -->
     </div>
     <br>
@@ -25,16 +32,27 @@
                                 <div class="img-big-wrap">
                                     @php $liens=$produit->images; $lien=json_decode($liens); @endphp
                                     <div>
-                                        <a id="item-display" href="{{asset('storage/'.$lien[0])}}" data-fancybox=""><img class="img-fluid" src="{{asset('storage/'.$lien[0])}}" style="max-height:300px"></a>
+                                        <a id="item-display" href="{{asset('storage/'.$lien[0])}}" data-fancybox=""><img id="display" class="img-fluid" src="{{asset('storage/'.$lien[0])}}" style="max-height:300px"></a>
                                     </div>
                                 </div>
                                 <!-- slider-product.// -->
                                 <div class="img-small-wrap">
                                     @foreach ($lien as $img)
-                                    <div class="item-gallery"> <img src="{{asset('storage/'.$img)}}"></div>
+                                    <div class="item-gallery"> <img class="item"src="{{asset('storage/'.$img)}}"></div>
                                     @endforeach
                                 </div>
-                                <!-- slider-nav.// -->
+                                @section('extra-js')
+                                    <script>
+                                        var display= document.querySelector('#display');
+                                        var itemdisplay= document.querySelector('#item-display');
+                                        var small = document.querySelectorAll('.item');
+                                        small.forEach((element)=> element.addEventListener('click',changeImage));
+                                        function changeImage(e) {
+                                            display.src = this.src;
+                                            itemdisplay.href=this.src;
+                                        }
+                                    </script>
+                                @endsection
                             </article>
                             <!-- gallery-wrap .end// -->
                         </aside>
@@ -70,12 +88,14 @@
                                 </var>
                                 </div>
                                 <hr>
+                                <form action="{{route('panier.store')}}" method="POST">
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <dl class="dlist-inline">
                                             <dt>Quantité  </dt>
                                             <dd>
-                                                <select class="form-control form-control-sm" style="width:70px;">
+                                                @csrf
+                                                <select name="qte" class="form-control form-control-sm" style="width:70px;">
                                                     <option> 1 </option>
                                                     <option> 2 </option>
                                                     <option> 3 </option>
@@ -108,15 +128,14 @@
                                     <!-- col.// -->
                                 </div>
                                 <!-- row.// -->
-                                <hr>
-                            <form action="{{route('panier.store')}}" method="POST">
+                               <br><br>
                                     <button data-original-title="Ajouter au panier" type="submit" class="btn " data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;">
                                     <i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
                                     @csrf
                                     <input type="hidden" name="produit_id" value="{{$produit->id}}">
                                     {{--<input type="hidden" name="nom" value="{{$produit->nom}}">
                                     <input type="hidden" name="prix" value="{{$produit->prix_vente}}">--}}
-                                </form>
+                            </form>
                                 
                             </article>
                             <!-- card-body.// -->
@@ -154,7 +173,7 @@
         <header class="section-heading heading-line">
             <h4 class="title-section bg">Produits identiques</h4>
         </header>
-        <div class="owl-carousel owl-init slide-items col" data-items="3" data-margin="20" data-dots="true" data-nav="true" >
+    <div class="owl-carousel owl-init slide-items col" data-items="{{count($autres_produits)}}" data-margin="20" data-dots="true" data-nav="true" >
             @foreach ($autres_produits as  $produit)
                 <div class="item-slide" style="max-width: 350px">
                     <figure class="card card-product">

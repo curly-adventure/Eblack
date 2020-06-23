@@ -38,17 +38,17 @@ class PanierController extends Controller
      */
     public function store(Request $request)
     {
-        
+    
         $duplicata =Cart::search(function($cartItem, $rowId)use ($request){
             return $cartItem->id==$request->produit_id;
         });
 
         if ($duplicata->isNotEmpty()) {
-            return redirect()->route('panier.index')->with('success','le produit a deja été ajouter');
+            return redirect()->route('panier.index')->with('info','le produit a deja été ajouter');
         }
 
         $produit=Produits::find($request->produit_id);
-        Cart::add($produit->id,$produit->nom,1,$produit->prix_vente)
+        Cart::add($produit->id,$produit->nom,$request->qte,$produit->prix_vente)
             ->associate('App\Produits');
         return redirect()->route('panier.index')->with('success','le produit a bien été ajouter');
     }
@@ -91,14 +91,14 @@ class PanierController extends Controller
         ]);
 
         if ($validates->fails()) {
-            Session::flash('error', 'La quantité doit est comprise entre 1 et 5.');
-            return response()->json(['error' => 'Cart Quantity Has Not Been Updated']);
+            return back()->with(toast('La quantité doit est comprise entre 1 et 5.','error')->autoClose(5000));
+            //return response()->json(['error' => 'Cart Quantity Has Not Been Updated']);
         }
 
         Cart::update($rowId, $data['qty']);
-
-        Session::flash('success', 'La quantité du produit est passée à ' . $data['qty'] . '.');
-        return response()->json(['success' => 'Cart Quantity Has Been Updated']);
+        return back()->with(toast('panier mis à jour !','success')->autoClose(5000));
+        //return back()->with(toast('La quantité des produits est passée à ' . Cart::count() . '.','success')->autoClose(5000));
+        //return response()->json(['success' => 'Cart Quantity Has Been Updated']);
     }
 
 

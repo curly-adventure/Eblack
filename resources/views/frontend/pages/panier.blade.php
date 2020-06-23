@@ -68,28 +68,49 @@
     
     </tbody>
     </table>
+    <div class="card-body border-top">
+        <a href="{{route('paiement.stripe')}}" class="btn btn-light float-md-right"style="font-weight:bold;font-size:18px" > Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: #002687"></i> </a>
+        <a href="{{route('produits.index')}}" class="btn btn-light" style="font-weight:bold;font-size:18px"> <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>
+    </div>
     </div> <!-- card.// -->
-    
+    <div class="alert alert-success mt-3 p-1 pl-5 ">
+        <p class="icontext" style="font-weight: bold"><i class="icon text-success fa fa-truck"></i>&nbsp;Livraison gratuite pour un achat superieur a 20000 fr</p>
+    </div>
         </main> <!-- col.// -->
-        <aside class="col-sm-3">
-    <p class="alert alert-primary" style="background-color: #002687 ;"> </p>
-    
-    <dl class="dlist-align h4">
-      <dt>Total:</dt>
-      <dd class="text"><strong>{{Cart::subtotal()}}</strong></dd>
-    </dl>
-    <hr>
-    mode de paiement possible <br> <br>
-    <figure class="itemside mb-3">
-      <aside class="aside"><img src="images/icons/pay-visa.png"></aside>
-      <aside class="aside"> <img src="images/icons/pay-mastercard.png"> </aside>
-      <aside class="aside"><img src="images/icons/pay-visa.png"></aside>
-      <aside class="aside"> <img src="images/icons/pay-mastercard.png"> </aside>
-    
-    </figure>
-    
-    
-        </aside> <!-- col.// -->
+        <aside class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label>coupon ?</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="" placeholder="code coupon">
+                            <span class="input-group-append"> 
+                                <button class="btn btn-primary" style="border:none;background-color: #002687">appliquer</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                </div> <!-- card-body.// -->
+            </div>  <!-- card .// -->
+            <div class="card">
+                <div class="card-body">
+                        <dl class="dlist-align">
+                          <dt>Prix Total:</dt>
+                          <dd class="text-right">{{Cart::subtotal()}} FCFA</dd>
+                        </dl>
+                       
+                        <hr>
+                        <figure class="itemside mb-3">
+                            <aside class="aside"><img src="{{asset('images/icons/logo-jpay-card.png')}}"></aside>
+                            <aside class="aside"><img src="{{asset('images/icons/ompay-ci.png')}}"></aside>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <aside class="aside"><img src="{{asset('images/icons/momo.png')}}"></aside>
+                          </figure>
+                        
+                </div> <!-- card-body.// -->
+            </div>  <!-- card .// -->
+        </aside> 
     </div>
     
     </div> <!-- container .//  -->
@@ -113,39 +134,32 @@
                         
                     </figcaption>
                 </figure>
+                <div class="card-body border-top">
+                    <a href="#" class="btn btn-light float-md-right"style="font-weight:bold;font-size:18px" > Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: #002687"></i> </a>
+                    <a href="#" class="btn btn-light" style="font-weight:bold;font-size:18px"> <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>
+                </div>
             </div>
+            
          </main>
-        </div>
-    </section>
-    
-    <!-- ========================= SECTION  ========================= -->
-    <section class="section-name bg-white padding-y">
-    <div class="container">
-    
-    <div class="row">
-    <div class="col-md-6 mt-4 ">
-      <a href="{{route('produits.index')}}"class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;">continuer ses achats</a>
-    </div>
-    <div class="col-md-6 mt-4 ">
-    <a href="{{route('paiement.stripe')}}" class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;">Finaliser la commande</a>
-    </div>
-    </div>
-    </div><!-- container // -->
-    </section>
-    
-@else
-<section class="section-content bg padding-y border-top" >
-    <div class="container" style=" margin-top:100px;">
-      <center><p class="h3"style="font-weight:bold;">VOTRE PANIER EST VIDE</p><br>
-      <p>ajouter des produits dans votre panier</p>
-      <div class="col-md-6 mt-4 ">
-        <a href="{{route('produits.index')}}" class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;border:none">passez aux achats !</a></center>
-        </div>
-    </div>
-</section>
-@endif
 
-@endsection
+        </div>
+    </section>
+    
+    @else
+    <section class="section-content bg padding-y border-top" style="height: 60vh">
+        <div class="container" style=" margin-top:100px;">
+          
+            <center><p class="h3"style="font-weight:bold;">VOTRE PANIER EST VIDE</p><br>
+                <p>ajouter des produits dans votre panier</p>
+                <div class="col-md-6 mt-4 ">
+                    <a href="{{route('produits.index')}}" class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;border:none">passez aux achats !</a>
+                </div>
+            </center>
+        </div>
+    </section>
+    @endif
+
+    @endsection
 
 @section('extra-js')
 <script>
@@ -175,4 +189,5 @@
         });
     });
 </script>
+@include('sweetalert::alert')
 @endsection

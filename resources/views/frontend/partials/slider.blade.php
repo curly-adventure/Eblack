@@ -47,37 +47,52 @@
     </a>
   </div>
   <!-- ============== main slidesow .end // ============= -->
-  
-    </div> <!-- col.// -->
+    </div> 
+    <style>
+      #a-cat{
+        border:none;border-bottom:2px solid #00044C;border-radius:20%;
+        font-size:15px; background-color: white;color:black;width: 100px;
+      }
+    </style>
+    @php
+        $categories=App\Categories::All()
+    @endphp 
     <div class="col-md d-none d-lg-block flex-grow-1 reveal">
       <aside class="special-home-right">
-          <h6 class="bg-blue text-center text-white mb-0 p-2" style="background-color: #00044C;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Catégorie populaire</font></font></h6>
+          <h6 class="bg-blue text-center text-white mb-3 p-3" style="background-color: #00044C;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Catégories populaires</font></font></h6>
           
-          <div class="card-banner border-bottom reveal-1" >
-            <div class="py-3" style="width:80%">
-              <h6 class="card-title" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mode homme</font></font></h6>
-            <p>vêtement, chaussures, montres... <br>de toutes marques</p>
-            <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
+          <div class=" row  reveal-1 mb-0" >
+            <div class="float-left py-4 ml-4" style="width: 40%;">
+            <img src="{{asset('storage/'.$categories[0]->logo)}}" height="80" style="padding:10px;border:1px solid black;border-radius:50%" class="img-bg">
+            </div>
+            <div class="py-4 float-right" style="width:30%">
+              <h6 class="card-title" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$categories[0]->nom}}</font></font></h6>
+             <a id="a-cat" href="{{route('produits.index',['categorie'=>$categories[0]->id])}}" class="btn btn-secondary btn-sm" style="">
+              <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">explorer </font></font></a>
             </div> 
-            <img src="{{asset('images/produits/veste-nike.jpeg')}}" height="80" class="img-bg">
           </div>
+          <hr>
     
-          <div class="card-banner border-bottom reveal-2">
-            <div class="py-3" style="width:80%">
-              <h6 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mode femme </font></font></h6>
-              <p>vêtement, chaussures, montres... <br>de toutes marques</p>
-            <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
+          <div class=" row  reveal-1 mb-0" >
+            <div class="float-left py-4 ml-4" style="width: 40%;">
+            <img src="{{asset('storage/'.$categories[1]->logo)}}" height="80" style="padding:10px;border:1px solid black;border-radius:50%" class="img-bg">
+            </div>
+            <div class="py-4 float-right" style="width:30%">
+              <h6 class="card-title" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$categories[1]->nom}}</font></font></h6>
+             <a id="a-cat" href="{{route('produits.index',['categorie'=>$categories[1]->id])}}" class="btn btn-secondary btn-sm" style="">
+              <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">explorer </font></font></a>
             </div> 
-            <img src="images/produits/complet.jpg" height="80" class="img-bg">
           </div>
-    
-          <div class="card-banner border-bottom reveal-3">
-            <div class="py-3" style="width:80%">
-              <h6 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mobiler</font></font></h6>
-              <p>les plus beau mobilier africain...</p>
-            <a href="#" class="btn btn-secondary btn-sm" style="background-color: #00044C;width: 100px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voir </font></font></a>
+          <hr>
+          <div class=" row  reveal-1 mb-0" >
+            <div class="float-left py-4 ml-4" style="width: 40%;">
+            <img src="{{asset('storage/'.$categories[2]->logo)}}" height="80" style="padding:10px;border:1px solid black;border-radius:50%" class="img-bg">
+            </div>
+            <div class="py-4 float-right" style="width:30%">
+              <h6 class="card-title" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$categories[2]->nom}}</font></font></h6>
+             <a id="a-cat" href="{{route('produits.index',['categorie'=>$categories[2]->id])}}" class="btn btn-secondary btn-sm" style="">
+              <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">explorer </font></font></a>
             </div> 
-            <img src="images/produits/chaise.jpg" height="80" class="img-bg">
           </div>
     
         </aside>

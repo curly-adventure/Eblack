@@ -35,9 +35,9 @@
 			  
 							  
 			  <div class="form-group">
-				<!--<input class="form-check-input" style="margin-left:2px" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-				<label style="margin-left:15px" class="form-check-label" for="remember">se souvenir de moi</label>
-                -->
+				<input class="form-check-input mt-3 ml-1" style="" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+				<label style="" class="form-check-label mt-2 ml-4" for="remember">se souvenir </label>
+                
                 @if (Route::has('password.request'))
                 <a class="btn btn-link float-right" style="color:red;" href="{{ route('password.request') }}">
                     {{ __('mot de passe oublié?') }}

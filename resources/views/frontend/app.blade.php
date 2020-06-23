@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html class="reveal-loaded" lang="fr" >
 <head>
@@ -14,7 +15,7 @@
     <!-- jQuery -->
     <script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
     
-
+   
     <!-- Bootstrap4 files-->
     <script src="{{ asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
     <link href="{{ asset('css/bootstrap-custom.css')}}" rel="stylesheet" type="text/css"/>
@@ -55,33 +56,17 @@
 		<!-- Content -->
 		<div class="content">
             
-			@if (session('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-            @endif
-            @if (session('danger'))
-            <div class="alert alert-danger">
-                {{session('danger')}}
-            </div>
-            @endif
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul class="mb-0 mt-0">
-                    @foreach ($errors->all() as $error)
-                        <li>{{$error}} </li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+			
             @include('frontend.partials.header')
+            
             @yield('content')
-
+            
             @include('frontend.partials.footer')
 
         </div>
 
     </div>
+   
 <!-- End wrapper -->
 <script src="{{ asset('js/scripts.js')}}"></script>
  @yield('extra-js')

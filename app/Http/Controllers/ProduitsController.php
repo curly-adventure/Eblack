@@ -36,9 +36,16 @@ class ProduitsController extends Controller
     }
     
     function show(Produits $produit){
-        $id_categ = $produit->categorie_id;
-        $autres_produits = Produits::where('categorie_id', $id_categ)->paginate(10);
-        return view('frontend.pages.details',compact('produit','autres_produits'));
+        $categorie = Categories::find($produit->categorie_id);
+        $sous_categorie=SousCategories::find($produit->sous_categorie_id);
+        $autres_produits = Produits::where('categorie_id', $categorie->id)->paginate(10);
+        $lien=array(
+            $categorie->nom=>"produits.index",
+            $sous_categorie->nom=>"produits.index",
+            $produit->nom =>"produits.show"
+        );
+
+        return view('frontend.pages.details',compact('produit','autres_produits','lien','categorie','sous_categorie'));
     }
     
     public function search()
