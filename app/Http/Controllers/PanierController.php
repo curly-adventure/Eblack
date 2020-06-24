@@ -111,6 +111,6 @@ class PanierController extends Controller
     public function destroy($rowId)
     {
         Cart::remove($rowId);
-        return back()->with('success','le produit a été supprimer');
+        return back()->with('toast_success','le produit a été supprimer');
     }
 }

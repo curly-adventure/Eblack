@@ -10,7 +10,7 @@
 {{-- affichage du panier pour ecran large  --}}
 <section class="section-content d-none d-lg-block bg padding-y border-top" >
     <div class="container" style=" margin-top:80px;">
-      <center><p class="h3"style="color: #888;font-weight:bold;">VOTRE PANIER ( {{Cart::count()}} )</p></center><br>
+    <center><p class="h3"style="color: #888;font-weight:bold;">VOTRE PANIER ( {{Cart::count()}} )</p></center><br>
     
     <div class="row">
         <main class="col-sm-9">
@@ -47,7 +47,7 @@
                     @for ($i = 1; $i <= 6; $i++)
             <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
                     @endfor	
-                </select> 
+            </select> 
             </td>
             <td> 
                 <div class="price-wrap"> 
@@ -60,7 +60,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger">× Supprimer</button>
-                </form>
+            </form>
             </td>
         </tr>
         @endforeach
@@ -96,8 +96,8 @@
             <div class="card">
                 <div class="card-body">
                         <dl class="dlist-align">
-                          <dt>Prix Total:</dt>
-                          <dd class="text-right">{{Cart::subtotal()}} FCFA</dd>
+                          <dt >TOTAL :</dt>
+                          <dd class="text-right" style="font-weight:bold;color: #002687">{{Cart::subtotal()}} FCFA</dd>
                         </dl>
                        
                         <hr>
@@ -120,31 +120,59 @@
           <center><p class="h5"style="color: #888;font-weight:bold;">VOTRE PANIER ( {{Cart::count()}} )</p></center><br>
         
          <main class="col-sm-9">
-        
-            <div class="card">
-                <figure class="media">
+            @foreach (Cart::content() as $produit)
+            <div class="card mb-3" style="box-shadow: 0px 0px 5px 0px rgba(46, 41, 41, 0.192);">
+                
+                <figure class="media p-2">
                     @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
-                    <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}" class="img-thumbnail img-sm"></div>
+                    <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}"  style="border:none" class="img-thumbnail img-sm"></div>
                     <figcaption class="media-body">
-                        <h6 class="title text-truncate">{{$produit->model->nom}}</h6>
+                        <h6 class="title text-truncate mt-1" style="color: black;font-size:20px;">{{$produit->model->nom}}</h6>
                         <dl class="dlist-inline small">
                         <dt>Taille: </dt>
                         <dd>XXL</dd>
                         </dl>
+                        <span style="color: #002687;font-weight:bold;font-size:17px">{{$produit->model->prix_vente}} </span>F
+                        &nbsp;&nbsp;<del class="price-old" >{{$produit->model->prix_achat}} F</del>                           
                         
                     </figcaption>
                 </figure>
                 <div class="card-body border-top">
-                    <a href="#" class="btn btn-light float-md-right"style="font-weight:bold;font-size:18px" > Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: #002687"></i> </a>
-                    <a href="#" class="btn btn-light" style="font-weight:bold;font-size:18px"> <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>
+                    <div class="row pl-2">
+                        <div class="text-left ml-2 ">
+                        <select  name="qty" id="qty" data-id="{{$produit->rowId}}" class="custom-select">
+                            @for ($i = 1; $i <= 6; $i++)
+                            <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
+                            @endfor	
+                        </select> 
+                    </div>
+                    <form class="text-right ml-5" action="{{route('panier.supprime',$produit->rowId)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger">× Supprimer</button>
+                    </form>
+                </div>
                 </div>
             </div>
-            
+            @endforeach
          </main>
-
+         
         </div>
     </section>
-    
+    <section class="mb-4 d-lg-none">
+        <div class="mt-3 col-sm-12" style="background: white">
+            <center style="font-size: 20px">
+            <span class="text-left" style="font-weight: bold">TOTAL :</span>
+           <span class="text-right" style="font-weight: bold;color:#002687">{{Cart::subtotal()}}</span> Fcfa
+           </center>
+           <center class="mt-2">
+            <a href="{{route('paiement.stripe')}}" class="btn btn-light "style="font-weight:bold;font-size:18px;border:none;background:#002687;color:white" >
+                Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: white"></i> </a>
+            <a href="{{route('produits.index')}}" class="btn mt-2" style="color:black;font-weight:bold;font-size:18px;border:1px solid #002687">
+                 <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>
+        </center>
+        </div>
+    </section>
     @else
     <section class="section-content bg padding-y border-top" style="height: 60vh">
         <div class="container" style=" margin-top:100px;">

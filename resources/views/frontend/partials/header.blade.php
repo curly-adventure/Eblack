@@ -13,8 +13,8 @@
         </a>
         @else
                 <li class="nav-item dropdown " style="list-style: none;">
-                    <a id="navbarDropdown" style="font-weight:bold;color:#002687; "  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->nom }} <span class="caret"></span>
+                    <a id="navbarDropdown" class="word-limit pr-4"style="font-weight:bold;color:#002687; "  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->nom }}<span class="caret"></span>
                     </a>
                     
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -103,7 +103,7 @@
                     <div class="textwrap d-none d-lg-block" style="color: #002687;">se connecter  </div></a>
                 @else
                 <li class="nav-item dropdown " style="list-style: none;">
-                    <a id="navbarDropdown" style="font-weight:bold;color:#002687; "  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown"  style="font-weight:bold;color:#002687; width:5px"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->nom }} <span class="caret"></span>
                     </a>
                     

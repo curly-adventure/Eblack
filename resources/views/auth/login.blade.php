@@ -53,8 +53,8 @@
             <div class="col-auto">OU</div>
             <div class="col"><hr></div>
         </div>
-        <a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp  se connecter avec Facebook</a>
-        <a href="#" class="btn btn-instagram btn-block mb-4"> <i class="fab fa-google"></i> &nbsp  se connecter avec Google</a>
+        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp  se connecter avec Facebook</a>
+        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-instagram btn-block mb-4"> <i class="fab fa-google"></i> &nbsp  se connecter avec Google</a>
 
 		  </div> <!-- card-body.// -->
 		</div> <!-- card .// -->
@@ -62,8 +62,6 @@
 		 <p class="text-center mt-4">aucun compte ? <a href="{{url('/register')}}" style="font-weight:bold;color: #002687;">S'inscrire</a></p>
 		 <br><br>
 	<!-- ============================ COMPONENT LOGIN  END.// ================================= -->
-	
-	
 	</section>
 
 @stop

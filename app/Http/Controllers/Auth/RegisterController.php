@@ -8,7 +8,9 @@ use App\Client;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Registered;
 class RegisterController extends Controller
 {
     /*
@@ -71,4 +73,17 @@ class RegisterController extends Controller
             'motdepasse' => Hash::make($data['password']),
         ]);
     }
+    protected function registered(Request $request, $user)
+{
+    $details=[
+        'email' => $user->email,
+        
+    ];
+    Mail::to($user->email)->send(new Registered($details));
+    /*$admins = User::whereAdmin(true)->get();
+    foreach($admins as $admin) {
+        // Là on prévoira de notifier les administrateurs
+    }  */      
+    return redirect(route('home'))->with('message', config('messages.registered'));
+}
 }

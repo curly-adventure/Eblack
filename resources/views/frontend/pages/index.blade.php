@@ -37,7 +37,7 @@
             <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
                 <div class="">
-                    <center class="word-limit ">{{$produit->nom}}</center>
+                    <center class="word-limit">{{$produit->nom}}</center>
                     <center class="price-wrap h6 price-new">{{$produit->prix_vente}}F CFA</center>
                 </div>
                 <hr>

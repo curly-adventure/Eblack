@@ -107,7 +107,7 @@
                                     <!-- col.// -->
                                     <div class="col-sm-7">
                                         <dl class="dlist-inline">
-                                            <dt>Size: </dt>
+                                            <dt>Taille: </dt>
                                             <dd>
                                                 <label class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">

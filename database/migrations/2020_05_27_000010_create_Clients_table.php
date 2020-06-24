@@ -24,9 +24,11 @@ class CreateClientsTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('nom');
-            $table->string('prenom');
+            $table->string('prenom')->nullable();;
             $table->string('email', 45)->nullable()->unique();
             $table->string('motdepasse', 250);
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
             $table->bigInteger('Adresse_id')->nullable()->unsigned();
             $table->rememberToken();
             $table->softDeletes();

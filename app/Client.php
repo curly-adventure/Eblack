@@ -13,7 +13,7 @@ class Client extends Authenticatable
     protected $primaryKey='id';
 
     protected $fillable = [
-        'nom','prenom','email', 'motdepasse',
+        'nom','prenom','email', 'motdepasse','provider', 'provider_id'
     ];
 
     /**

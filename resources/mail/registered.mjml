@@ -1,0 +1,60 @@
+<mjml>
+  <mj-body background-color="#FFF">
+    <mj-section padding-bottom="20px" padding-top="20px">
+      <mj-column width="100%">
+        <mj-image src="{{ asset('images/eblack.png') }}" alt="" align="center" border="none" width="300px" padding-left="0px" padding-right="0px" padding-bottom="10px" padding-top="10px"></mj-image>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#356cc7" padding-bottom="0px" padding-top="0">
+      <mj-column width="100%">
+        <mj-text align="center" font-size="13px" color="#ABCDEA" font-family="Ubuntu, Helvetica, Arial, sans-serif" padding-left="25px" padding-right="25px" padding-bottom="18px" padding-top="28px">BONJOUR
+          <p style="font-size:16px; color:white">{{ $user->nom }} {{ $user->prenom }}</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#356cc7" padding-bottom="5px" padding-top="0">
+      <mj-column width="100%">
+        <mj-divider border-color="#ffffff" border-width="2px" border-style="solid" padding-left="20px" padding-right="20px" padding-bottom="0px" padding-top="0"></mj-divider>
+        <mj-text align="center" color="#FFF" font-size="13px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="28px" padding-top="28px"><span style="font-size:20px; font-weight:bold">Merci d'avoir créé votre compte client</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#356cc7" padding-bottom="5px" padding-top="0">
+      <mj-column width="100%">
+        <mj-divider border-color="#ffffff" border-width="2px" border-style="solid" padding-left="20px" padding-right="20px" padding-bottom="0px" padding-top="0"></mj-divider>
+        <!--<mj-text align="center" color="#FFF" font-size="13px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="28px"><span style="font-size:20px; font-weight:bold">Votre code d'accès</span>
+        </mj-text>-->
+        <mj-text align="center" color="#FFF" font-size="13px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="28px"><span style="font-size:20px; font-weight:bold">Adresse e-mail : {{ $user->email }}</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#568feb" padding-bottom="15px">
+      <mj-column>
+        <mj-text align="center" color="#FFF" font-size="17px" font-family="Ubuntu, Helvetica, Arial, sans-serif" padding-left="25px" padding-right="25px" padding-bottom="0px"><strong>Conseils de sécurité</strong></mj-text>
+        <mj-text color="#FFF" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="10px">
+          <ul>
+            <li>
+              Vos informations de compte doivent rester confidentielles.
+            </li>
+            <li>Ne les communiquez jamais à qui que ce soit.</li>
+            <li>Changez votre mot de passe régulièrement.</li>
+            <li>
+              Si vous pensez que quelqu'un utilise votre compte illégalement, veuillez nous prévenir immédiatement.
+            </li>
+          </ul>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#356cc7" padding-bottom="0px" padding-top="0">
+      <mj-column width="100%">
+        <mj-text align="center" color="#FFF" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="20px">Vous pouvez dès à présent passer vos commandes sur notre boutique
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#FFF" padding-bottom="0px" padding-top="0">
+      <mj-column width="100%">
+        <mj-text align="center" color="#555" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-top="20px">Eblack, le choix de la qualité</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

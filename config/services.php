@@ -13,7 +13,16 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
-
+    'google' => [
+        'client_id' => '1000003890082-el0k1pue5v7r1d655rar78ufq82tf3ri.apps.googleusercontent.com',
+        'client_secret' => 'Yc8hvhxSC0zbwDY1a_WeAMnM',
+        'redirect' => 'http://eblackshop.ci/callback/google',
+      ], 
+      'facebook' => [
+        'client_id' => '688423352003130',
+        'client_secret' => '9de3de152549fd914bda293045b21104',
+        'redirect' => 'https://a6f964af44e0.ngrok.io/callback/facebook',
+      ], 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

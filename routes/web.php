@@ -25,9 +25,12 @@ Route::get('produits/{produit}/details', [
     return redirect()->route('produits.index');
 });
 
+//route social connexion
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
 
+/*route checkout proteger par le middleware auth*/
 Route::group(['middleware' => ['auth']],function(){
-/*route checkout*/
 //Route::get("/paiement","CheckoutController@index")->name("paiement.index");
 Route::get("/paiement/stripe","CheckoutController@stripe")->name("paiement.stripe");
 Route::post("/paiement/stripe","CheckoutController@store")->name("paiement.store");

@@ -96,6 +96,13 @@
 	<div class="row">
 		<div class="col-5">
 			<strong class="">Filtrer par</strong>
+			<select style="border-color:#002687;background-color:white" class="mr-2 form-control" >
+				<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">popularité</font></font></option>
+				<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nouveauté</font></font></option>
+				<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : moins chere au plus chere</font></font></option>
+				<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : plus chere au moins chere</font></font></option>
+				<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ordre alphabetique</font></font></option>
+			</select>
 			<ul class="list-inline">
 				<div class="btn-group">
 		  			<button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
