@@ -1,8 +1,8 @@
-@extends('frontend.app')
+@extends('layouts.app')
 @section('title','Accueil')
 @section('content')
 
-@include('frontend.partials.slider')
+@include('layouts.slider')
 <section class="section-content padding-y-sm bg reveal">
     
     <div class="container">

@@ -17,7 +17,7 @@ class PanierController extends Controller
     public function index()
     {
         //dd(Cart::content());
-        return view('frontend.pages.panier');
+        return view('panier.index');
     }
 
     /**
@@ -48,7 +48,7 @@ class PanierController extends Controller
         }
 
         $produit=Produits::find($request->produit_id);
-        Cart::add($produit->id,$produit->nom,$request->qte,$produit->prix_vente)
+        Cart::add($produit->id,$produit->nom,$request->qte?$request->qte:1,$produit->prix_vente)
             ->associate('App\Produits');
         return redirect()->route('panier.index')->with('success','le produit a bien été ajouter');
     }
@@ -82,16 +82,16 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rowId)
+    public function update(Request $request, $rowId, $qte)
     {
         $data = $request->json()->all();
-
+        //dd($data);
         $validates = Validator::make($request->all(), [
-            'qty' => 'numeric|required|between:1,5',
+            'qty' => "numeric|required|between:1,$qte",
         ]);
 
         if ($validates->fails()) {
-            return back()->with(toast('La quantité doit est comprise entre 1 et 5.','error')->autoClose(5000));
+            return back()->with(toast("La quantité doit est comprise entre 1 et ".$qte,"error")->autoClose(5000));
             //return response()->json(['error' => 'Cart Quantity Has Not Been Updated']);
         }
 
@@ -111,6 +111,6 @@ class PanierController extends Controller
     public function destroy($rowId)
     {
         Cart::remove($rowId);
-        return back()->with('toast_success','le produit a été supprimer');
+        return back()->with('toast_success','article supprimer !');
     }
 }

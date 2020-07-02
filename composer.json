@@ -18,6 +18,7 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "hardevine/shoppingcart": "^2.8",
+        "lamalama/laravel-wishlist": "^0.1.0",
         "laravel/framework": "^7.0",
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",

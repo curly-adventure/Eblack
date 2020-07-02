@@ -32,7 +32,7 @@ class ProduitsController extends Controller
             $titre = "Tous Les Produits";
             $lien=array("tout les produits"=>"produits.index");
         }
-        return view('frontend.pages.shop_grid',compact('products','titre','lien'));
+        return view('produits.index',compact('products','titre','lien'));
     }
     
     function show(Produits $produit){
@@ -45,7 +45,7 @@ class ProduitsController extends Controller
             $produit->nom =>"produits.show"
         );
 
-        return view('frontend.pages.details',compact('produit','autres_produits','lien','categorie','sous_categorie'));
+        return view('produits.details',compact('produit','autres_produits','lien','categorie','sous_categorie'));
     }
     
     public function search()
@@ -61,7 +61,7 @@ class ProduitsController extends Controller
         $lien=array(
             "tout les produits"=>"produits.index",
             "$q"=>'produits.index');
-        return view('frontend.pages.recherche')->with(['products'=>$products,'titre'=>$titre,'lien'=>$lien]);
+        return view('produits.recherche')->with(['products'=>$products,'titre'=>$titre,'lien'=>$lien]);
     }
     public function trie($mot_cle)
     {
@@ -80,7 +80,7 @@ class ProduitsController extends Controller
                 "populaires"=>'produits.index');
             
         }
-        return view('frontend.pages.shop_grid',compact('products','titre','lien'));
+        return view('produits.index',compact('products','titre','lien'));
     }
 
 }

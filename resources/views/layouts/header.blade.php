@@ -12,33 +12,9 @@
             <div class="icon-wrap"><i class="icon-sm  fas fa-user-circle"style="color: #002687;font-size:25px"></i></div>
         </a>
         @else
-                <li class="nav-item dropdown " style="list-style: none;">
-                    <a id="navbarDropdown" class="word-limit pr-4"style="font-weight:bold;color:#002687; "  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->nom }}<span class="caret"></span>
-                    </a>
+            <a href="{{ route('home') }}" style="color:#002687; " ><i style="font-size:23px;" class="fas fa-user"></i><i class="fas fa-check" style=""></i> </a>
                     
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('home') }}">
-                            Votre compte
-                        </a>
-                        <a class="dropdown-item" href="{{ route('home') }}">
-                            Vos commandes
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Vos favoris
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('deconnexion') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest
+        @endguest
     </div>
     <div class="widget-header" >
         <a href="{{route('panier.index')}}" class="icontext">
@@ -103,7 +79,7 @@
                     <div class="textwrap d-none d-lg-block" style="color: #002687;">se connecter  </div></a>
                 @else
                 <li class="nav-item dropdown " style="list-style: none;">
-                    <a id="navbarDropdown"  style="font-weight:bold;color:#002687; width:5px"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown"  style="font-weight:bold;color:#002687;"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->nom }} <span class="caret"></span>
                     </a>
                     
@@ -147,12 +123,12 @@
             </a>
         </div>  <!-- col.// -->
         <div class="widget-header col-auto d-none d-lg-block">
-            <a href="#" class="icontext">
+        <a href="{{route('wishlist.show')}}" class="icontext">
                 <div class="icontext mr-0" style="max-width: 50px;color: #002687;">
                     <span class="icon icon-sm ">
                         <i class="far fa-heart "></i>
                         <span style="width: 25px;height: 25px; font-size: 12px; text-align: center;line-height: 19px;" class="notify small round badge badge-secondary">
-                        3</span>
+                        {{\Auth::user() ?count(\Auth::user()->wishlist('default')):0}} </span>
                     </span>
                 </div>
             </a>

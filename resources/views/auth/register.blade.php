@@ -1,9 +1,9 @@
-@extends('frontend.app')
+@extends('layouts.app')
 @section('title','inscription')
 @section('content')
 
 <section class="section-content padding-y" style="min-height:84vh;">
-
+<!-- JESUS CHRIST -->
 <!-- ============================ COMPONENT REGISTER   ================================= -->
 	<div class="card mx-auto" style="max-width: 400px; margin-top:60px;">
 		<article class="card-body" style="-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);

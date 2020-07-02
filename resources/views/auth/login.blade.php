@@ -1,4 +1,4 @@
-@extends('frontend.app')
+@extends('layouts.app')
 @section('title','connexion')
 @section('content')
 

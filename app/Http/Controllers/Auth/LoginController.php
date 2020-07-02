@@ -26,6 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+    //protected $redirectTo = "/client/index";
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**

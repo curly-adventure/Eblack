@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', false),
+    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'toast_position' => env('SWEET_ALERT_TOAST_POSITION', 'bottom'),
+    'toast_position' => env('SWEET_ALERT_TOAST_POSITION', 'top-end'),
 
     /*
     |--------------------------------------------------------------------------

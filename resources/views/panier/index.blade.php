@@ -1,4 +1,4 @@
-@extends('frontend/app')
+@extends('layouts.app')
 @section('title','panier')
 
 @section('extra-meta')
@@ -19,9 +19,9 @@
     <table class="table table-hover shopping-cart-wrap">
     <thead class="text-muted">
     <tr>
-      <th scope="col">PRODUIT</th>
+      <th scope="col" width="150">PRODUIT</th>
       <th scope="col" width="100">QUANTITE</th>
-      <th scope="col" width="140">SOUS-TOTAL</th>
+      <th scope="col" width="150" class="text-right">SOUS-TOTAL</th>
       <th scope="col" class="text-right" width="200">ACTION</th>
     </tr>
     </thead>
@@ -33,30 +33,30 @@
                 @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
                 <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}" class="img-thumbnail img-sm"></div>
                 <figcaption class="media-body">
-                    <h6 class="title text-truncate">{{$produit->model->nom}}</h6>
-                    <dl class="dlist-inline small">
-                    <dt>Taille: </dt>
-                    <dd>XXL</dd>
-                    </dl>
+                    
+                    <h6 class="title text-truncate mt-4" style="font-size: 20px;">
+                        {{$produit->model->nom}}</h6>
                     
                 </figcaption>
             </figure> 
             </td>
             <td> 
-            <select name="qty" id="qty" data-id="{{$produit->rowId}}" class="custom-select">
-                    @for ($i = 1; $i <= 6; $i++)
-            <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
+                
+            <select name="qty" id="qty" data-id="{{$produit->rowId}}" qte="{{$produit->model->quantite}}" class="custom-select mt-4" style="width: 80px">
+                    @for ($i = 1; $i <= $produit->model->quantite; $i++)
+                <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
                     @endfor	
             </select> 
             </td>
             <td> 
-                <div class="price-wrap"> 
-                    <var class="price"style="color:#002687; ">{{$produit->subtotal()}} FCFA</var> 
+                <div class="price-wrap mt-3"> 
+                    <var class="price text-right"style="color:#002687; ">{{$produit->subtotal()}} FCFA</var>
+                    <del class="price-old ml-5 text-right">{{$produit->model->prix_achat}} FCFA</del>  
                     
                 </div> <!-- price-wrap .// -->
             </td>
             <td class="text-right"> 
-            <form action="{{route('panier.supprime',$produit->rowId)}}" method="POST">
+            <form class=" mt-4" action="{{route('panier.supprime',$produit->rowId)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger">× Supprimer</button>
@@ -69,7 +69,7 @@
     </tbody>
     </table>
     <div class="card-body border-top">
-        <a href="{{route('paiement.stripe')}}" class="btn btn-light float-md-right"style="font-weight:bold;font-size:18px" > Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: #002687"></i> </a>
+        <a href="{{route('paiement.index')}}" class="btn btn-light float-md-right"style="font-weight:bold;font-size:18px" > Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: #002687"></i> </a>
         <a href="{{route('produits.index')}}" class="btn btn-light" style="font-weight:bold;font-size:18px"> <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>
     </div>
     </div> <!-- card.// -->
@@ -127,13 +127,10 @@
                     @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
                     <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}"  style="border:none" class="img-thumbnail img-sm"></div>
                     <figcaption class="media-body">
-                        <h6 class="title text-truncate mt-1" style="color: black;font-size:20px;">{{$produit->model->nom}}</h6>
-                        <dl class="dlist-inline small">
-                        <dt>Taille: </dt>
-                        <dd>XXL</dd>
-                        </dl>
+                        <h6 class="title text-truncate mt-4" style="color: black;font-size:20px;">{{$produit->model->nom}}</h6>
+                        
                         <span style="color: #002687;font-weight:bold;font-size:17px">{{$produit->model->prix_vente}} </span>F
-                        &nbsp;&nbsp;<del class="price-old" >{{$produit->model->prix_achat}} F</del>                           
+                        <del class="price-old">{{$produit->model->prix_achat}} F</del>                           
                         
                     </figcaption>
                 </figure>
@@ -166,7 +163,7 @@
            <span class="text-right" style="font-weight: bold;color:#002687">{{Cart::subtotal()}}</span> Fcfa
            </center>
            <center class="mt-2">
-            <a href="{{route('paiement.stripe')}}" class="btn btn-light "style="font-weight:bold;font-size:18px;border:none;background:#002687;color:white" >
+            <a href="{{route('paiement.index')}}" class="btn btn-light "style="font-weight:bold;font-size:18px;border:none;background:#002687;color:white" >
                 Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: white"></i> </a>
             <a href="{{route('produits.index')}}" class="btn mt-2" style="color:black;font-weight:bold;font-size:18px;border:1px solid #002687">
                  <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>
@@ -195,8 +192,9 @@
     Array.from(qty).forEach((element) => {
         element.addEventListener('change', function () {
             var rowId = element.getAttribute('data-id');
+            var qte=element.getAttribute('qte');
             var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch(`/panier/${rowId}`,
+            fetch(`/panier/${rowId}/${qte}`,
                 {
                     headers: {
                         "Content-Type": "application/json",

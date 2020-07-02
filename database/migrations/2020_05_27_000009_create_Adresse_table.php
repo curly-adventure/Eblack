@@ -23,13 +23,13 @@ class CreateAdresseTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->bigInteger('utilisateur_id')->unsigned();
-            $table->bigInteger('Communes_id')->unsigned();
+            $table->bigInteger('client_id')->unsigned();
+            $table->bigInteger('commune_id')->unsigned();
             $table->longText('description');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('Communes_id')
+            $table->foreign('commune_id')
                 ->references('id')->on('Communes');
         });
     }

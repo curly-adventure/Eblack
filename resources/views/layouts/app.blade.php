@@ -1,80 +1,74 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<!DOCTYPE HTML>
+<html class="reveal-loaded" lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eblack, pour vos meilleurs achats en ligne">
+    <meta name="author" content="KingsCode">
+    @yield('extra-meta')
+    <title>@yield('title') - {{ config('app.name') }}</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('extra-script')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo32.png')}}">
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
+    
+   
+    <!-- Bootstrap4 files-->
+    <script src="{{ asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
+    <link href="{{ asset('css/bootstrap-custom.css')}}" rel="stylesheet" type="text/css"/>
+    <!--<link href="css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+    Font awesome 5 -->
+    <link href="{{ asset('fonts/fontawesome/css/fontawesome-all.min.css')}}" type="text/css" rel="stylesheet">
+    <!-- plugin: fancybox  -->
+    <script src="{{ asset('plugins/fancybox/fancybox.min.js')}}" type="text/javascript"></script>
+    <link href="{{ asset('plugins/fancybox/fancybox.min.css')}}" type="text/css" rel="stylesheet">
+    <!-- plugin: owl carousel  -->
+    <link href="{{ asset('plugins/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('plugins/owlcarousel/assets/owl.theme.default.css')}}" rel="stylesheet">
+    <script src="{{ asset('plugins/owlcarousel/owl.carousel.min.js')}}"></script>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- custom style -->
+    <link href="{{ asset('css/uikit.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    
+    <link href="{{ asset('css/responsive.css')}}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/media-queries.css')}}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- custom javascript -->
+    <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+	<!-- Wrapper -->
+	<div class="wrapper">
+        <!-- Sidebar -->
+        @include('layouts.siderbar')
+		<!-- End sidebar -->
+		
+		<!-- Dark overlay -->
+		<div class="overlay"></div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->nom }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
+		<!-- Content -->
+		<div class="content">
+            
+			
+            @include('layouts.header')
+            
             @yield('content')
-        </main>
+            
+            @include('layouts.footer')
+
+        </div>
+
     </div>
+   
+<!-- End wrapper -->
+<script src="{{ asset('js/scripts.js')}}"></script>
+ @yield('extra-js')
 </body>
 </html>

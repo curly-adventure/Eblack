@@ -19,7 +19,23 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+        $client=\Auth::user();
+        $adresse_client =\App\Adresse::where('utilisateur_id', $client->id)->first();
+       if ($adresse_client) {
+        $commune = \App\Commune::where('id',$adresse_client->commune_id)->first();
+        $ville_client = \App\Ville::where('id',$commune->ville_id)->first()->nom;
+        $commune_client=$commune->nom;
+       }else {
+        $commune_client=null;
+        $ville_client=null;
+       }
         
+        return view("checkout.checkout",[
+            'client' => $client,
+            'adresse_client' =>$adresse_client,
+            'commune_client' => $commune_client,
+            'ville_client' =>$ville_client,
+            ]);
     }
 
     public function stripe()
@@ -30,11 +46,11 @@ class CheckoutController extends Controller
         Stripe::setApiKey('sk_test_51GvMrEIC4FQuwivkb3niidtGPvpXN047Tu3a8jgoBtkwcsZRKTxhL49CcSMw5QhQ9JxUiM2Q1LoU6kf13uYZqGIM00SNK21NSZ');
         $intent = PaymentIntent::create([
             'amount' => round(Cart::total()),
-            'currency' => 'eur',
+            'currency' => 'usd',
           ]);
           //dd($intent);
           $clientSecret=Arr::get($intent,'client_secret');
-        return view("frontend.pages.check_stripe",[
+        return view("checkout.check_stripe",[
             'clientSecret' => $clientSecret
             ]);
     }
@@ -93,7 +109,7 @@ class CheckoutController extends Controller
 
     public function thankyou()
     {
-        return Session::has('success') ? view('frontend.pages.thankyou') : redirect()->route('produits.index');
+        return Session::has('success') ? view('checkout.thankyou') : redirect()->route('produits.index');
     }
     /**
      * Display the specified resource.

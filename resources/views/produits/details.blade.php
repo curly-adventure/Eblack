@@ -1,4 +1,4 @@
-@extends('frontend/app')
+@extends('layouts.app')
 @section('title','detail produit')
 @section('content')
 <section class="section-content bg padding-y border-top" style="padding-top: 80px;">
@@ -59,7 +59,12 @@
                         <aside class="col-sm-7">
                             
                             <article class="p-5">
-                                <a data-original-title="Sauver dans favoris" title="" href="" class="btn " data-toggle="tooltip" style="border-color: #002687;color:#002687;position: absolute;left:80%"> <i class="fas fa-heart"></i> </span></a>
+                            <form action="{{route('wishlist.store')}}" method="POST">
+                                <button type="submit" data-original-title="Sauver dans favoris" class="btn" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;position: absolute;left:80%"> <i class="fas fa-heart"></i> </span></button>
+                                @csrf
+                                <input type="hidden" name="produit_id" value="{{$produit->id}}">
+                            </form>
+                                
                                 <h3 class="title mb-3">{{$produit->nom}}</h3>
 
                                 <div class="rating-wrap">
@@ -77,7 +82,6 @@
                                         </li>
                                     </ul>
                                     <div class="label-rating">51 avis</div>
-                                    
                                 </div>
                                 <hr>
                                 <div class="mb-3">
@@ -96,9 +100,9 @@
                                             <dd>
                                                 @csrf
                                                 <select name="qte" class="form-control form-control-sm" style="width:70px;">
-                                                    <option> 1 </option>
-                                                    <option> 2 </option>
-                                                    <option> 3 </option>
+                                                    @for ($i = 1; $i <= $produit->quantite; $i++)
+                                                    <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
+                                                        @endfor	
                                                 </select>
                                             </dd>
                                         </dl>
@@ -106,7 +110,7 @@
                                     </div>
                                     <!-- col.// -->
                                     <div class="col-sm-7">
-                                        <dl class="dlist-inline">
+                                        <!--<dl class="dlist-inline">
                                             <dt>Taille: </dt>
                                             <dd>
                                                 <label class="form-check form-check-inline">
@@ -123,7 +127,7 @@
                                                 </label>
                                             </dd>
                                         </dl>
-                                        <!-- item-property .// -->
+                                         item-property .// -->
                                     </div>
                                     <!-- col.// -->
                                 </div>

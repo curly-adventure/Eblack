@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use LamaLama\Wishlist\HasWishlists;
+
 class Client extends Authenticatable
 {
     use Notifiable;
+    use HasWishlists;
     protected $table='Clients';
     protected $primaryKey='id';
 
