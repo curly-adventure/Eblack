@@ -73,8 +73,9 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        
         $data = $request->json()->all();
+        
+       /* $data = $request->json()->all();
         $commande = new Commande();
 
         $commande->id_paiement = $data['paymentIntent']['id'];
@@ -104,7 +105,7 @@ class CheckoutController extends Controller
             return response()->json(['success' => 'Payment Intent Succeeded']);
         } else {
             return response()->json(['error' => 'Payment Intent Not Succeeded']);
-        }
+        }*/
     }
 
     public function thankyou()

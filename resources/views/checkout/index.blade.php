@@ -133,7 +133,7 @@
                                 </div>
                                 <small class="form-text text-muted">* champs requis </small>
                                 <div class="col-md-12 mt-4">
-                                    <input class="btn btn-success btn-lg btn-block" type="submit" style="background-color: #002687;color: white;border:none" value="Soumettre"
+                                    <input class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;border:none" value="Soumettre"
                                     onclick="suivant()">
                                 </div>
                             </form>
@@ -239,7 +239,8 @@
                     </header>
                     <article class="card-body">
                         <p style="font-weight: bold;">Quel moyen de paiement voulez-vous utiliser ?</p><br>
-                        <form action="">
+                        <form action="{{route('paiement.store')}}" id="form-3">
+                        @csrf
                         <div style="padding-left: 20px;" class="form-group ">
                             <input style="color: #002687;font-size: 20px;"class="form-check-input" type="radio" name="gender" value="option1" checked>
                             <span style="font-weight: bold;"class="form-check-label"> Paiement à la livraison</span>
@@ -256,14 +257,14 @@
                             <span class="form-check-label"><img src="{{asset('images/momo.png')}}" alt=""></span>
                             <span style="font-weight: bold;">MTN Mobile Money</span>
                          </div>
-                         <hr>
+                         <!--<hr>
                          <div style="padding-left: 20px;" class="form-group ">
                             <input class="form-check-input" type="radio" name="gender" value="option1" >
                             <span class="form-check-label"><img src="{{asset('images/logo-jpay-card.png')}}" alt=""></span>
                             <span style="font-weight: bold;">Carte Bancaire</span>
-                         </div>
+                         </div>-->
                          <div class="col-md-6 mt-4">
-                            <input class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;" value='Valider le paiement'>
+                            <input class="btn btn-success btn-lg btn-block" type="submit" style="background-color: #002687;color: white;" value='Valider le paiement'>
                         </div>
                     </form>
                     </article>
@@ -277,8 +278,11 @@
 @endsection
 
 @section('extra-js')
-    <script>
-        var stripe = Stripe('pk_test_51GvMrEIC4FQuwivkob7owwAwRqpy5s2PAOJQYMF26g20GTTKGIX8fQa1nvR4AOSBWX6J5NiuLXc3lNeZhUqJBBJK00KS7UeuSz');
-        var elements = stripe.elements();
-    </script>
+<script>
+var form = document.getElementById('form-3');
+var submitButton=document.getElementById('submit');
+form.addEventListener('submit', function(ev) {
+
+});
+</script>
 @endsection
