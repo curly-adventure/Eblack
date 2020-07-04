@@ -69,7 +69,7 @@
     </tbody>
     </table>
     <div class="card-body border-top">
-        <a href="{{route('paiement.index')}}" class="btn btn-light float-md-right"style="font-weight:bold;font-size:18px" > Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: #002687"></i> </a>
+        <a href="{{route('paiement.info.adresse')}}" class="btn btn-light float-md-right"style="font-weight:bold;font-size:18px" > Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: #002687"></i> </a>
         <a href="{{route('produits.index')}}" class="btn btn-light" style="font-weight:bold;font-size:18px"> <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>
     </div>
     </div> <!-- card.// -->
@@ -243,7 +243,7 @@
         @endif
         
            <center class="mt-2">
-            <a href="{{route('paiement.index')}}" class="btn btn-light "style="font-weight:bold;font-size:18px;border:none;background:#002687;color:white" >
+            <a href="{{route('paiement.info.adresse')}}" class="btn btn-light "style="font-weight:bold;font-size:18px;border:none;background:#002687;color:white" >
                 Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: white"></i> </a>
             <a href="{{route('produits.index')}}" class="btn mt-2" style="color:black;font-weight:bold;font-size:18px;border:1px solid #002687">
                  <i class="fa fa-chevron-left" style="color: #002687"></i> &nbsp;Continuer ses achats </a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 Use Alert;
 class HomeController extends Controller
 {
@@ -59,7 +61,7 @@ class HomeController extends Controller
 
     public function editAdrShow()
     {
-        $client=\Auth::user();
+        $client=Auth::user();
         $adresse_client =\App\Adresse::where('client_id', $client->id)->first();
         if($adresse_client!=null){
         $commune = \App\Commune::where('id',$adresse_client->commune_id)->first();
@@ -82,7 +84,7 @@ class HomeController extends Controller
     {
         
         \DB::table('clients')
-            ->where('id', \Auth::user()->id)
+            ->where('id', Auth::user()->id)
             ->update(['nom' => request()->input('name'),
                       'prenom' => request()->input('prenom'),
                       'email' => request()->input('email'),
@@ -106,7 +108,7 @@ class HomeController extends Controller
                 ]);
         }
         else{
-            \DB::table('adresses') ->insert([
+            DB::table('adresses') ->insert([
                       'client_id'=> $client->id,
                       'commune_id' => $commune_id,
                       'description' => request()->input('desc'),

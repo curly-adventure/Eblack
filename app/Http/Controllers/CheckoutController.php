@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Stripe\Stripe;
-use Illuminate\Support\Arr;
-use Stripe\PaymentIntent;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use DateTime;
 use App\Commande;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 class CheckoutController extends Controller
 {
     /**
@@ -17,9 +20,9 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function infoAdr()
     {
-        $client=\Auth::user();
+        $client=Auth::user();
         $adresse_client =\App\Adresse::where('client_id', $client->id)->first();
        if ($adresse_client) {
         $commune = \App\Commune::where('id',$adresse_client->commune_id)->first();
@@ -30,12 +33,58 @@ class CheckoutController extends Controller
         $ville_client=null;
        }
         
-        return view("checkout.index",[
+        return view("checkout.info1",[
             'client' => $client,
             'adresse_client' =>$adresse_client,
             'commune_client' => $commune_client,
             'ville_client' =>$ville_client,
             ]);
+    }
+
+    public function storeAdr(Request $request)
+    {
+        $client=Auth::user();
+        $commune = \App\Commune::where('nom',request()->input('commune'))->first();
+        $adresse_client =\App\Adresse::where('client_id', $client->id)->first();
+        DB::table('clients')
+            ->where('id', $client->id)
+            ->update(['nom' => request()->input('nom'),
+                      'prenom' => request()->input('prenom'),
+                      'email' => request()->input('email'),
+                      'numero' => request()->input('numero'),
+                ]);
+        
+        if ($adresse_client) {
+            
+            DB::table('adresses')
+            ->where('id', $client->id)
+            ->update(['commune_id' => $commune->id,
+                      'description' => request()->input('adresse'),
+                ]);
+        }
+        else {
+            DB::table('adresses') ->insert([
+                'client_id'=> $client->id,
+                'commune_id' => $commune->id,
+                'description' => request()->input('adresse'),
+          ]);
+        }
+        return view('checkout.info2',[
+            "numero" => $client->numero,
+            "adresse" => request()->input('adresse'),
+            "commune" => request()->input('commune'),
+            "ville" => request()->input('ville'),
+        ]);
+    }
+
+
+    public function infoPaie()
+    {
+        return view('checkout.info3');
+    }
+
+    public function storePaie(Request $request){
+        dd(request()->input('surplace'),request()->input('orangemoney'),request()->input('orangemtn'));
     }
 
     public function stripe()
@@ -71,9 +120,11 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
         $data = $request->json()->all();
+        dd($data['num']);
         
        /* $data = $request->json()->all();
         $commande = new Commande();

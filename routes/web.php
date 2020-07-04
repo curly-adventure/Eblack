@@ -34,9 +34,12 @@ Route::get('/callback/{provider}', 'SocialController@callback');
 
 /*route checkout proteger par le middleware auth*/
 Route::group(['middleware' => ['auth']],function(){
-Route::get("/paiement","CheckoutController@index")->name("paiement.index");
-Route::get("/paiement/stripe","CheckoutController@stripe")->name("paiement.stripe");
-Route::post("/paiement/stripe","CheckoutController@store")->name("paiement.store");
+Route::get("/paiement/info/adresse","CheckoutController@infoAdr")->name("paiement.info.adresse");
+Route::post("/paiement/info/adresse","CheckoutController@storeAdr")->name("paiement.store.adresse");
+Route::get("/paiement/info/methode-paiement","CheckoutController@infoPaie")->name("paiement.info.methodepaie");
+Route::post("/paiement/info/methode-paiement","CheckoutController@storePaie")->name("paiement.store.methodepaie");
+//Route::get("/paiement/stripe","CheckoutController@stripe")->name("paiement.stripe");
+//Route::post("/paiement/index","CheckoutController@store")->name("paiement.store");
 Route::get("paiement/merci","CheckoutController@thankyou")->name("paiement.thankyou");
 });
   
