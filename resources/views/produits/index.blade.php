@@ -51,7 +51,7 @@
 				</ul>
 			</div>
 					
-					 <div class="btn-group">
+			<!-- <div class="btn-group">
 		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			couleur
 		  </button>
@@ -76,7 +76,7 @@
 			<a class="dropdown-item" href="#">XL</a>
 			<a class="dropdown-item" href="#">XXL</a>
 		  </div>
-		</div>
+		</div>-->
 					</ul>
 			</div>
 			<div class="col-4 ">
@@ -154,8 +154,8 @@
 				<figcaption class="info-wrap text-center">
 					<a href="{{route('produits.show',[$produit->id])}}" class="title">{{$produit->nom}}</a>
 					<div class="price-wrap">
-						<span class="h6 price-new">{{$produit->prix_vente}} FCFA</span>
-						<del class="price-old">{{$produit->prix_achat}} FCFA</del>
+						<span class="h6 price-new">{{$produit->getprice()}} FCFA</span>
+						<del class="price-old">{{getprice($produit->prix_achat)}} FCFA</del>
 						{{--URL::action('ProduitsController@show',$produit->id)--}}
 					</div><a href="{{route('produits.show',[$produit->id])}}"><button type="button" class="btn ">acheter</button></a>
 				</figcaption>

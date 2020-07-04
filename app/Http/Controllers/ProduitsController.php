@@ -39,13 +39,15 @@ class ProduitsController extends Controller
         $categorie = Categories::find($produit->categorie_id);
         $sous_categorie=SousCategories::find($produit->sous_categorie_id);
         $autres_produits = Produits::where('categorie_id', $categorie->id)->paginate(10);
+        $stock=$produit->quantite==0 ? "Indisponible" : "Disponible";
+     
         $lien=array(
             $categorie->nom=>"produits.index",
             $sous_categorie->nom=>"produits.index",
             $produit->nom =>"produits.show"
         );
 
-        return view('produits.details',compact('produit','autres_produits','lien','categorie','sous_categorie'));
+        return view('produits.details',compact('produit','autres_produits','lien','stock','categorie','sous_categorie'));
     }
     
     public function search()

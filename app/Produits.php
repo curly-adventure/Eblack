@@ -9,6 +9,11 @@ class Produits extends Model
     protected $table='Produits';
     protected $primaryKey='id';
    
+    public function getprice()
+    {
+        $prix=$this->prix_vente/1000;
+        return number_format($prix,3,',','');
+    }
 
     public function categories(){
         return $this->belongsToMany('App\Categories');

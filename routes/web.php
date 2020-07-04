@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,6 +21,8 @@ Route::get('produits/{produit}/details', [
   Route::post('/panier/ajouter', "PanierController@store")->name('panier.store');
   Route::patch('/panier/{rowId}/{qte}', "PanierController@update")->name('panier.update');
   Route::delete('/panier/{rowId}', "PanierController@destroy")->name('panier.supprime');
+  Route::post('/coupon', "PanierController@storeCoupon")->name('panier.store.coupon');
+  Route::delete('/coupon', "PanierController@destroyCoupon")->name('panier.supprime.coupon');
   /*Route::get('videpanier',function(){
     Cart::destroy();
     return redirect()->route('produits.index');

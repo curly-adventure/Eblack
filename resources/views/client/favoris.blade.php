@@ -22,7 +22,7 @@
                 <th scope="col" width="200">PRODUIT</th>
                 <th scope="col" width="150">PRIX</th>
                 <th scope="col" width="140">STATUS</th>
-                <th scope="col" class="text-right" width="150">ACTION</th>
+                <th scope="col" class="text-right" width="200">ACTION</th>
               </tr>
               </thead>
               <tbody>
@@ -35,7 +35,7 @@
                           <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}" class="img-thumbnail img-sm"></div>
                           <figcaption class="media-body">
                               
-                              <h6 class="title text-truncate mt-4" style="font-size: 20px;">
+                              <h6 class="title text-truncate mt-4 word-limit" style="font-size: 20px;">
                                   {{$produit->nom}}</h6>
                               
                           </figcaption>
@@ -44,18 +44,26 @@
                       
                       <td> 
                           <div class="price-wrap"> 
-                              <var class="price mt-4"style="color:#000; ">{{$produit->prix_vente}} FCFA</var> 
+                              <var class="price mt-4"style="color:#000; ">{{getprice($produit->prix_vente)}} FCFA</var> 
                           </div> <!-- price-wrap .// -->
                       </td>
                       <td> 
                         <div>
-                       <p class="mt-4" style="font-weight: bold">disponible </p>  
+                       <p class="mt-4" style="font-weight: bold">
+                          {{$stock=$produit->quantite==0 ? "Indisponible" : "Disponible"}}
+                       </p>  
                       </div>
                     </td>
                       <td class="text-right"> 
                         <form action="{{route('panier.store')}}" method="POST" style="display:inline-block">
-                        <button data-original-title="Ajouter au panier" type="submit" class="btn" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687">
+                          @if($stock==='Indisponible')
+                                    
+                          <span id="btn-ajout" data-original-title="Indiponible" class="btn disabled" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;">Ajouter <i class="fas fa-shopping-cart "></i></span>
+                           <style> #btn-ajout.disabled { opacity: 0.65; cursor: not-allowed;}</style>
+                          @else
+                          <button data-original-title="Ajouter au panier" type="submit" class="btn" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687">
                           Ajouter <i class="fas fa-shopping-cart "></i></button>
+                          @endif
                           @csrf
                           <input type="hidden" name="produit_id" value="{{$produit->id}}">
                         </form>
@@ -92,19 +100,22 @@
   
   <main class="d-lg-none col-sm-9"> 
       <div class="card mb-3" style="box-shadow: 0px 0px 5px 0px rgba(46, 41, 41, 0.192);">
-          
+        @php $stock=$produit->quantite==0 ? "Indisponible" : "Disponible" @endphp
           <figure class="media p-2">
               @php $liens=$produit->images; $lien=json_decode($liens); @endphp
               <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}"  style="border:none" class="img-thumbnail img-sm"></div>
               <figcaption class="media-body">
-                  <h6 class="title text-truncate mt-4" style="color: black;font-size:20px;">{{$produit->nom}}</h6>
+                  <h6 class="title text-truncate mt-4 word-limit" style="color: black;font-size:20px;width:150px">{{$produit->nom}}</h6>
                   
-                  <span style="color: #002687;font-weight:bold;font-size:17px">{{$produit->prix_vente}} </span>F
-                  &nbsp;&nbsp;<del class="price-old" >{{$produit->prix_achat}} F</del>                           
+                  <span style="color: #002687;font-weight:bold;font-size:17px">{{getprice($produit->prix_vente)}} </span>F
+                  &nbsp;&nbsp;<del class="price-old" >{{getprice($produit->prix_achat)}} F</del>                           
                   
               </figcaption>
+              
           </figure>
+          <div></div>
           <div class="card-body border-top">
+            <div><span class="badge badge-pill badge-info d-lg-none" style="">{{$stock =="Indisponible"?$stock:"" }}</span></div>
             <form action="{{route('wishlist.supprime',$produit->id)}}" method="POST" class="mt-4" style="display:inline-block">
               @csrf
               @method('DELETE')
@@ -112,10 +123,16 @@
                 <i class="fas fa-trash"></i></button>
           </form>
           <form action="{{route('panier.store')}}" method="POST" style="display:inline-block">
+            @if($stock==='Indisponible')
+                      
+            <span id="btn-ajout" data-original-title="Indiponible" class="btn disabled" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;">Ajouter <i class="fas fa-shopping-cart "></i></span>
+              <style> #btn-ajout.disabled { opacity: 0.65; cursor: not-allowed;}</style>
+            @else
             <button data-original-title="Ajouter au panier" type="submit" class="btn" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687">
               Ajouter <i class="fas fa-shopping-cart "></i></button>
               @csrf
               <input type="hidden" name="produit_id" value="{{$produit->id}}">
+              @endif
             </form>
           </div>
           </div>

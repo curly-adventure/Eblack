@@ -28,6 +28,10 @@ class Client extends Authenticatable
         'motdepasse','Adresse_id', 'remember_token',
     ];
 
+    public function password()
+    {
+        return 'motdepasse';
+    }
 
     public function getAuthPassword()
     {

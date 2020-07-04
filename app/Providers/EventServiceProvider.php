@@ -18,6 +18,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'cart.added' =>[
+            'App\Listeners\PanierUpdatedListener'
+        ],
+        'cart.updated' =>[
+            'App\Listeners\PanierUpdatedListener'
+        ],
+        'cart.removed' =>[
+            'App\Listeners\PanierUpdatedListener'
+        ],
     ];
 
     /**
@@ -29,6 +38,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        
     }
 }

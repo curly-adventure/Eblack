@@ -9,7 +9,7 @@
         'button_text' => trans('backpack::base.logout'),
     ];*/
   $produitCount = App\Models\Produit::count();
-	$userCount = App\Administrator::count();
+	$userCount = App\Models\Clients::count();
  	// notice we use Widget::add() to add widgets to a certain group
 	Widget::add()->to('before_content')->type('div')->class('row')->content([
 		// notice we use Widget::make() to add widgets as content (not in a group)

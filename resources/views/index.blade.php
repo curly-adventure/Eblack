@@ -36,45 +36,41 @@
         <li class="col-6 col-md-3">
             <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
+               
+                 <!--<span class="badge-new float-right"> NEW </span>-->
+                 @php
+                 $liens=$produit->images; $lien=json_decode($liens);
+                 //dd($lien);
+                 @endphp
+                 <center><img class="img-sm" src="storage/{{$lien[0]}}"></center>
+                <hr>
                 <div class="">
                     <center class="word-limit">{{$produit->nom}}</center>
-                    <center class="price-wrap h6 price-new">{{$produit->prix_vente}}F CFA</center>
+                    <center class="price-wrap h6 price-new">{{getprice($produit->prix_vente)}}F CFA</center>
                 </div>
-                <hr>
-                <center>
-                    
-                    <!--<span class="badge-new float-right"> NEW </span>-->
-                    @php
-					$liens=$produit->images; $lien=json_decode($liens);
-					//dd($lien);
-				    @endphp
-                    <img class="img-sm" src="storage/{{$lien[0]}}">
-                </center>
+               
                 </div>
             </a>
             </li>
         
         @endforeach
     </ul>
-    
     <ul class="row no-gutters border-cols">
         @foreach ($new_prod as $key => $produit)
         @if ($key>=4)
         <li class="col-6 col-md-3">
             <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
-                <div class="">
-                    <center class="word-limit ">{{$produit->nom}}</center>
-                    <center class="price-wrap h6 price-new">{{$produit->prix_vente}}F CFA</center>
-                </div>
-                <hr>
-                <center>
                     @php
-					$liens=$produit->images; $lien=json_decode($liens);
-					//dd($lien);
-				    @endphp
-                    <img class="img-sm" src="storage/{{$lien[0]}}">
-                </center>
+                    $liens=$produit->images; $lien=json_decode($liens);
+                    //dd($lien);
+                    @endphp
+                    <center><img class="img-sm" src="storage/{{$lien[0]}}"></center>
+                   <hr>
+                   <div class="">
+                       <center class="word-limit">{{$produit->nom}}</center>
+                       <center class="price-wrap h6 price-new">{{getprice($produit->prix_vente)}}F CFA</center>
+                   </div>
                 </div>
             </a>
             </li>
@@ -120,20 +116,16 @@
                 <li class="col-6 col-md-3">
                     <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                         <div class="card-body align-items-center">
-                        <div class="">
-                            <center class="word-limit ">{{$produit->nom}}</center>
-                            <div class="price-wrap" style="font-size: 15px;font-weight: bold;text-align: center;">
-                                <span class="price-new">{{$produit->prix_vente}} CFA</span> <del class="price-old ">{{$produit->prix_achat}} CFA</del>
-                            </div>
-                        </div>
-                        <hr>
-                        <center>
                             @php
                             $liens=$produit->images; $lien=json_decode($liens);
                             //dd($lien);
                             @endphp
-                            <img class="img-sm" src="storage/{{$lien[0]}}">
-                        </center>
+                            <center><img class="img-sm" src="storage/{{$lien[0]}}"></center>
+                           <hr>
+                           <div class="">
+                               <center class="word-limit">{{$produit->nom}}</center>
+                               <center class="price-wrap h6 price-new">{{getPrice($produit->prix_vente)}}F CFA</center>
+                           </div>
                         </div>
                     </a>
                 </li>
@@ -147,21 +139,16 @@
                 <li class="col-6 col-md-3">
                     <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                         <div class="card-body align-items-center">
-                        <div class="">
-                            <center class="word-limit ">{{$produit->nom}}</center>
-                            <div class="price-wrap" style="font-size: 15px;font-weight: bold;text-align: center;">
-                                <span class="price-new">{{$produit->prix_vente}} FCFA</span> <del class="price-old ">{{$produit->prix_achat}} FCFA</del>
-                            </div>
-                        </div>
-                        <hr>
-                        <center>
                             @php
                             $liens=$produit->images; $lien=json_decode($liens);
                             //dd($lien);
                             @endphp
-                            <img class="img-sm" src="storage/{{$lien[0]}}">
-                        </center>
-                        </div>
+                                <center><img class="img-sm" src="storage/{{$lien[0]}}"></center>
+                           <hr>
+                           <div class="">
+                               <center class="word-limit">{{$produit->nom}}</center>
+                               <center class="price-wrap h6 price-new">{{$produit->getprice()}}F CFA</center>
+                           </div>
                     </a>
                 </li>
                 @endif

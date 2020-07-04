@@ -34,8 +34,6 @@
 		  </div> <!-- card-body.// -->
 		</div> <!-- card .// -->
 	
-		 
-	<!-- ============================ COMPONENT LOGIN  END.// ================================= -->
 	</section>
 	@include('sweetalert::alert')
 @stop

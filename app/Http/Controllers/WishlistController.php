@@ -32,18 +32,20 @@ class WishlistController extends Controller
     {
         $client=\Auth::user();
         $produit=Produits::find($request->produit_id);
-        $client->wish($produit);
+        $exist=false;
+        foreach ($client->wishlist('default') as $prod) {
+            if ($prod->nom == $produit->nom) $exist=true; }
+        if($exist) {$client->unwish($produit, 'default'); return back()->with('toast_success','article supprimer des favoris !');}
+        else {$client->wish($produit); return back()->with('toast_success','article ajouté aux favoris !');}
         //dd(count($client->wishlist('default')));
-        return back()->with('toast_success','article ajouté au favoris !');
-        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function destroy(Produits $produit)
+    {
+        \Auth::user()->unwish($produit, 'default');
+        return back()->with('toast_success','article supprimer !');
+    }
+  
     public function show($id)
     {
         //
@@ -71,16 +73,5 @@ class WishlistController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Produits $produit)
-    {
-        \Auth::user()->unwish($produit, 'default');
-        return back()->with('toast_success','article supprimer !');
-    }
+    
 }

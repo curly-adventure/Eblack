@@ -53,6 +53,21 @@ class PanierController extends Controller
         return redirect()->route('panier.index')->with('success','le produit a bien été ajouter');
     }
 
+    public function storeCoupon(Request $request)
+    {
+        $code = $request->get('code');
+        $coupon = \App\Coupon::where("code",$code)->first();
+        
+        if(!$coupon){
+            return back()->with('toast_error','le code coupon est invalide');
+        }
+        //dd($coupon->discount(Cart::subtotal()));
+        $request->session()->put('coupon',[
+            'code'=> $coupon->code,
+            'remise' => $coupon->discount(Cart::subtotal()),
+        ]);
+        return back()->with('toast_success','le code coupon est appliqué');
+    }
     /**
      * Display the specified resource.
      *
@@ -112,5 +127,10 @@ class PanierController extends Controller
     {
         Cart::remove($rowId);
         return back()->with('toast_success','article supprimer !');
+    }
+    public function destroyCoupon()
+    {
+        request()->session()->forget('coupon');
+        return back()->with("toast_success","le coupon a été retiré !");
     }
 }

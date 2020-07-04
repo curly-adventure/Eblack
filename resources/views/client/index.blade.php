@@ -62,6 +62,7 @@
                </aside>
             </div>
           </div>
+          <div><a href="{{route('produits.index')}}" class="btn" style="color : #002687;font-size:20px"><i class="fa fa-arrow-left"></i> continuer ses achats</a></div>
           </div>
       </div>
     </div>
@@ -96,6 +97,9 @@
         </button>
       </div>
     </div>
+    <div class="mt-3">
+    <a href="{{route('produits.index')}}" class="btn" style="color : #002687;font-size:20px"><i class="fa fa-arrow-left"></i> continuer ses achats</a>
+  </div>
   </div>
 </section>
 @include('sweetalert::alert')

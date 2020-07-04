@@ -21,7 +21,7 @@
     <tr>
       <th scope="col" width="150">PRODUIT</th>
       <th scope="col" width="100">QUANTITE</th>
-      <th scope="col" width="150" class="text-right">SOUS-TOTAL</th>
+      <th scope="col" width="150" class="text-right">PRIX</th>
       <th scope="col" class="text-right" width="200">ACTION</th>
     </tr>
     </thead>
@@ -50,8 +50,8 @@
             </td>
             <td> 
                 <div class="price-wrap mt-3"> 
-                    <var class="price text-right"style="color:#002687; ">{{$produit->subtotal()}} FCFA</var>
-                    <del class="price-old ml-5 text-right">{{$produit->model->prix_achat}} FCFA</del>  
+                    <var class="price text-right"style="color:#002687; ">{{getPrice($produit->subtotal())}} FCFA</var>
+                    <del class="price-old ml-5 text-right">{{getPrice($produit->model->prix_achat)}} FCFA</del>  
                     
                 </div> <!-- price-wrap .// -->
             </td>
@@ -80,26 +80,58 @@
         <aside class="col-md-3">
             <div class="card mb-3">
                 <div class="card-body">
-                <form>
+                    @if(!request()->session()->has('coupon'))
+                <form action="{{route('panier.store.coupon')}}" method="POST">
+                    @csrf
                     <div class="form-group">
-                        <label>coupon ?</label>
+                        <strong>coupon ?</strong>
                         <div class="input-group">
-                            <input type="text" class="form-control" name="" placeholder="code coupon">
+                            <input type="text" class="form-control" name="code" required placeholder="code coupon">
                             <span class="input-group-append"> 
-                                <button class="btn btn-primary" style="border:none;background-color: #002687">appliquer</button>
+                                <button type="submit" class="btn btn-primary" style="border:none;background-color: #002687">appliquer</button>
                             </span>
                         </div>
                     </div>
                 </form>
+                @else
+                <strong>un coupon est appliqué</strong>
+                @endif
                 </div> <!-- card-body.// -->
             </div>  <!-- card .// -->
             <div class="card">
                 <div class="card-body">
                         <dl class="dlist-align">
-                          <dt >TOTAL :</dt>
-                          <dd class="text-right" style="font-weight:bold;color: #002687">{{Cart::subtotal()}} FCFA</dd>
+                          <dt >sous total :</dt>
+                          <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(Cart::subtotal())}} FCFA</dd>
                         </dl>
-                       
+                        @if(request()->session()->has('coupon'))
+                        <dl class="dlist-align">
+                            
+                            <dt class="word-limit"class="word-limit" style="width:40%">
+                               
+                                <form action="{{route('panier.supprime.coupon')}}"  method="POST" class="p-0 m-0"style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger m-0 p-0" style="font-size:10px;border:none">
+                                        <i class="fas fa-trash"></i></button>
+                                </form>
+
+                                coupon {{request()->session()->get('coupon')['code']}} :</dt>
+                            
+                            <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(request()->session()->get('coupon')['remise'])}} FCFA</dd>
+                        </dl>
+                        
+                        <br>
+                        <dl class="dlist-align">
+                            <dt class="word-limit">Total :</dt>
+                            <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])}} FCFA</dd>
+                          </dl>
+                          @else
+                          <dl class="dlist-align">
+                            <dt class="word-limit">Total :</dt>
+                            <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(Cart::subtotal())}} FCFA</dd>
+                          </dl>
+                          @endif
                         <hr>
                         <figure class="itemside mb-3">
                             <aside class="aside"><img src="{{asset('images/icons/logo-jpay-card.png')}}"></aside>
@@ -127,10 +159,10 @@
                     @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
                     <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}"  style="border:none" class="img-thumbnail img-sm"></div>
                     <figcaption class="media-body">
-                        <h6 class="title text-truncate mt-4" style="color: black;font-size:20px;">{{$produit->model->nom}}</h6>
+                        <h6 class="title text-truncate mt-4 word-limit" style="color: black;font-size:20px;max-width :150px">{{$produit->model->nom}}</h6>
                         
-                        <span style="color: #002687;font-weight:bold;font-size:17px">{{$produit->model->prix_vente}} </span>F
-                        <del class="price-old">{{$produit->model->prix_achat}} F</del>                           
+                        <span style="color: #002687;font-weight:bold;font-size:17px">{{getprice($produit->model->prix_vente)}} </span>F
+                        <del class="price-old">{{getprice($produit->model->prix_achat)}} F</del>                           
                         
                     </figcaption>
                 </figure>
@@ -157,11 +189,59 @@
         </div>
     </section>
     <section class="mb-4 d-lg-none">
+        <div class="card mb-2">
+            <div class="card-body" style="background: #eee;border:transparent">
+                @if(!request()->session()->has('coupon'))
+ 
+            <form action="{{route('panier.store.coupon')}}" method="POST">
+                    @csrf
+                <div class="form-group">
+                    <strong>coupon ?</strong>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="code" placeholder="code coupon" required>
+                        <span class="input-group-append"> 
+                            <button type="submit" class="btn btn-primary" style="border:none;background-color: #002687">appliquer</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            @else
+            <strong>un coupon est appliqué</strong>
+                @endif
+            </div> <!-- card-body.// -->
+        </div>
         <div class="mt-3 col-sm-12" style="background: white">
-            <center style="font-size: 20px">
+            
+            <center style="font-size: 18px">
+            <span class="text-left" style="font-weight: bold">sous total :</span>
+           <span class="text-right" style="font-weight: bold;color:#002687">{{getPrice(Cart::subtotal())}}</span> Fcfa
+        </center>
+        @if(request()->session()->has('coupon'))
+
+        <center style="font-size: 18px">
+            <form action="{{route('panier.supprime.coupon')}}" class="p-0 m-0"style="display:inline-block">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-danger m-0 p-0" style="font-size:12px;border:none">
+                    <i class="fas fa-trash"></i></button>
+            </form>
+           <span class="text-left" style="font-weight: bold;display:inline-block">
+            
+            coupon {{request()->session()->get('coupon')['code']}}
+            :</span>
+           <span class="text-right" style="font-weight: bold;color:#002687">{{getprice(request()->session()->get('coupon')['remise'])}}</span> Fcfa
+        </center>
+        <center style="font-size: 18px">
+           <span class="text-left" style="font-weight: bold">TOTAL :</span>
+           <span class="text-right" style="font-weight: bold;color:#002687">{{getPrice(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])}}</span> Fcfa
+        </center>
+        @else
+        <center style="font-size: 18px">
             <span class="text-left" style="font-weight: bold">TOTAL :</span>
-           <span class="text-right" style="font-weight: bold;color:#002687">{{Cart::subtotal()}}</span> Fcfa
-           </center>
+            <span class="text-right" style="font-weight: bold;color:#002687">{{getPrice(Cart::subtotal())}}</span> Fcfa
+         </center>
+        @endif
+        
            <center class="mt-2">
             <a href="{{route('paiement.index')}}" class="btn btn-light "style="font-weight:bold;font-size:18px;border:none;background:#002687;color:white" >
                 Finaliser la commande &nbsp;<i class="fa fa-chevron-right" style="color: white"></i> </a>

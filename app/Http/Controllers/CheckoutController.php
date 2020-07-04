@@ -20,7 +20,7 @@ class CheckoutController extends Controller
     public function index()
     {
         $client=\Auth::user();
-        $adresse_client =\App\Adresse::where('utilisateur_id', $client->id)->first();
+        $adresse_client =\App\Adresse::where('client_id', $client->id)->first();
        if ($adresse_client) {
         $commune = \App\Commune::where('id',$adresse_client->commune_id)->first();
         $ville_client = \App\Ville::where('id',$commune->ville_id)->first()->nom;
@@ -30,7 +30,7 @@ class CheckoutController extends Controller
         $ville_client=null;
        }
         
-        return view("checkout.checkout",[
+        return view("checkout.index",[
             'client' => $client,
             'adresse_client' =>$adresse_client,
             'commune_client' => $commune_client,

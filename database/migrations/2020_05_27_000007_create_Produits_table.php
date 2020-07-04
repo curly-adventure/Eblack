@@ -27,7 +27,7 @@ class CreateProduitsTable extends Migration
             $table->longText('images');
             $table->integer('prix_achat');
             $table->integer('prix_vente');
-            $table->integer('quantite')->nullable();
+            $table->integer('quantite')->default(1);
             $table->bigInteger('categorie_id')->unsigned();
             $table->bigInteger('sous_categorie_id')->unsigned();
             $table->bigInteger('marque_id')->unsigned();

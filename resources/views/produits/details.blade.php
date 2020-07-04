@@ -29,6 +29,7 @@
                     <div class="row no-gutters">
                         <aside class="col-sm-5 border-right">
                             <article class="gallery-wrap">
+                                
                                 <div class="img-big-wrap">
                                     @php $liens=$produit->images; $lien=json_decode($liens); @endphp
                                     <div>
@@ -36,6 +37,7 @@
                                     </div>
                                 </div>
                                 <!-- slider-product.// -->
+                                
                                 <div class="img-small-wrap">
                                     @foreach ($lien as $img)
                                     <div class="item-gallery"> <img class="item"src="{{asset('storage/'.$img)}}"></div>
@@ -59,12 +61,21 @@
                         <aside class="col-sm-7">
                             
                             <article class="p-5">
+                                
                             <form action="{{route('wishlist.store')}}" method="POST">
-                                <button type="submit" data-original-title="Sauver dans favoris" class="btn" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;position: absolute;left:80%"> <i class="fas fa-heart"></i> </span></button>
+                                @php
+                                $exist=false;
+                                if(\Auth::user()){
+                                foreach (\Auth::user()->wishlist('default') as $prod) {if ($prod->nom == $produit->nom) $exist=true; }
+                                }
+                                    $exist ? $class='fas fa-heart' : $class="far fa-heart"
+                                @endphp
+                                <button type="submit" data-original-title="favoris" class="btn" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;position: absolute;left:80%">
+                                 <i class="{{$class}}"></i> </button>
                                 @csrf
                                 <input type="hidden" name="produit_id" value="{{$produit->id}}">
                             </form>
-                                
+                            <span class="badge badge-pill badge-info float-right d-none d-lg-block" style="margin-right: 45%;">{{$stock =="Indisponible"?$stock:"" }}</span>
                                 <h3 class="title mb-3">{{$produit->nom}}</h3>
 
                                 <div class="rating-wrap">
@@ -86,13 +97,15 @@
                                 <hr>
                                 <div class="mb-3">
                                     <var class="price h3 " style="font-weight:bold">
-                                   <span class="num">{{$produit->prix_vente}}F CFA</span>
+                                   <span class="num">{{getprice($produit->prix_vente)}}F CFA</span>
                                    <span>&nbsp;</span>
-                                    </span><del class="price-old">{{$produit->prix_achat}} FCFA</del></span>
+                                    </span><del class="price-old">{{getprice($produit->prix_achat)}} FCFA</del></span>
                                 </var>
                                 </div>
                                 <hr>
                                 <form action="{{route('panier.store')}}" method="POST">
+                                    @if($stock==='Indisponible') <span class="badge badge-pill badge-info d-lg-none" style="">{{$stock =="Indisponible"?$stock:"" }}</span>
+                                    @else
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <dl class="dlist-inline">
@@ -131,10 +144,19 @@
                                     </div>
                                     <!-- col.// -->
                                 </div>
+                                @endif
                                 <!-- row.// -->
                                <br><br>
-                                    <button data-original-title="Ajouter au panier" type="submit" class="btn " data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;">
-                                    <i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                                    @if($stock==='Indisponible')
+                                    
+                                    <span id="btn-ajout" data-original-title="article indiponible" class="btn disabled" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;"> <i class="fas fa-shopping-cart"></i> Ajouter au panier</span>
+                                     <style> #btn-ajout.disabled { opacity: 0.65; cursor: not-allowed;}</style>
+                                    @else
+                                   
+                                    <button id="btn-ajout" data-original-title="Ajouter au panier" type="submit" class="btn" data-toggle="tooltip" style="background:white;border-color: #002687;color:#002687;">
+                                        <i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                                     @endif
+                                    
                                     @csrf
                                     <input type="hidden" name="produit_id" value="{{$produit->id}}">
                                     {{--<input type="hidden" name="nom" value="{{$produit->nom}}">
@@ -188,8 +210,8 @@
                             <h6 class="title text-truncate">
                                 <a class="title"href="{{route('produits.show',[$produit->id])}}">{{$produit->nom}}</a></h6>
                                 <div class="price-wrap">
-                                    <span class="h6 price-new">{{$produit->prix_vente}} FCFA</span>
-                                    <del class="price-old">{{$produit->prix_achat}} FCFA</del>
+                                    <span class="h6 price-new">{{getprice($produit->prix_vente)}} FCFA</span>
+                                    <del class="price-old">{{getprice($produit->prix_achat)}} FCFA</del>
                                 </div>
                         </figcaption>
                     </figure> 
@@ -198,4 +220,6 @@
         </div>  
     </div>
 </section>
+@include('sweetalert::alert')
+
 @stop
