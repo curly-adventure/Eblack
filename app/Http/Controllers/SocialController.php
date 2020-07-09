@@ -23,7 +23,7 @@ public function callback($provider)
  
     auth()->login($user);
  
-    return redirect()->to('/home');
+    return redirect()->to('/client/index');
  
 }
 function createUser($getInfo,$provider){

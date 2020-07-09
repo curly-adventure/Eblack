@@ -46,11 +46,14 @@
                 -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
                 box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);">
                 <div class="float-left" style="color:black;">Sous-total : </div> 
-                <div class="float-right">{{getprice(getprice(Cart::subtotal()))}} Fcfa</div>
+                <div class="float-right">{{getprice(Cart::subtotal())}} Fcfa</div>
                 <br>
                 <hr>
                 <div  class="float-left" style="font-weight: bold;">Total : </div> 
                 <div class="float-right h6 price-new" >{{getprice(Cart::subtotal())}} Fcfa</div>
+                </article>
+                <article class="text-center" style="border: 1px solid #002687">
+                    <a href="{{route('produits.index')}}" class="btn btn-outline-notice" style="color: red;letter-spacing:3px">ANNULER</a>
                 </article>
             </div>            
         </div>
@@ -101,7 +104,7 @@
                                 <!-- form-row end.// -->
                                 <div class="form-group">
                                     <label>detail Addresse *</label>
-                                    <textarea name="adresse" class="form-control adresse" id="t1" maxlength="255" placeholder="detail adresse" required autocomplete="adresse" autofocus>{{$adresse_client->description}}</textarea>
+                                    <textarea name="adresse" class="form-control adresse" id="t1" maxlength="255" placeholder="detail adresse" required autocomplete="adresse" autofocus>{{$adresse_client?$adresse_client->description:""}}</textarea>
                                    
                                 </div>
                                 <!-- form-group end.// -->
@@ -135,7 +138,7 @@
                                 </div>
                                 <small class="form-text text-muted">* champs requis </small>
                                 <div class="col-md-12 mt-4">
-                                    <input class="btn btn-success btn-lg btn-block" type="submit" style="background-color: #002687;color: white;border:none" value="Suivant">
+                                    <input class="btn btn-success btn-lg btn-block" type="submit" style="background-color: #002687;color: white;border:none" value="SUIVANT">
                                 </div>
                             </form>
                             <script>

@@ -124,12 +124,12 @@
                         <br>
                         <dl class="dlist-align">
                             <dt class="word-limit">Total :</dt>
-                            <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])}} FCFA</dd>
+                            <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(floatval(Cart::total()) - request()->session()->get('coupon')['remise'])}} FCFA</dd>
                           </dl>
                           @else
                           <dl class="dlist-align">
                             <dt class="word-limit">Total :</dt>
-                            <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(Cart::subtotal())}} FCFA</dd>
+                            <dd class="text-right" style="font-weight:bold;color: #002687">{{getPrice(Cart::total())}} FCFA</dd>
                           </dl>
                           @endif
                         <hr>

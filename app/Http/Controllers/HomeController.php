@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $client=\Auth::user();
+        $client=Auth::user();
         $adresse_client =\App\Adresse::where('client_id', $client->id)->first();
         if($adresse_client!=null){
             $commune = \App\Commune::where('id',$adresse_client->commune_id)->first();
@@ -48,12 +49,12 @@ class HomeController extends Controller
 
     public function favoris()
     {
-        $client=\Auth::user();
+        $client=Auth::user();
         return view('client.favoris',["client" => $client,]);
     }
     public function editInfoShow()
     {
-        $client=\Auth::user();
+        $client=Auth::user();
         return view('client.editForm1',[
             'client'=>$client,
         ]);
@@ -83,28 +84,30 @@ class HomeController extends Controller
     public function updateInfo()
     {
         
-        \DB::table('clients')
+        DB::table('clients')
             ->where('id', Auth::user()->id)
             ->update(['nom' => request()->input('name'),
                       'prenom' => request()->input('prenom'),
                       'email' => request()->input('email'),
                       'numero' => request()->input('numero'),
+                      "updated_at"=> now()
                 ]);
         return redirect()->route('home')->with('toast_success','mise a jour !');
     }
 
     public function updateAdr()
     {
-        $client=\Auth::user();
+        $client=Auth::user();
         $adresse_client =\App\Adresse::where('client_id', $client->id)->first();
         $commune_id = \App\Commune::where('nom',request()->input('commune'))->first()->id;
         if($adresse_client!=null){
             
-        \DB::table('adresses')
+        DB::table('adresses')
             ->where('client_id', $client->id)
             ->update([
                       'commune_id' => $commune_id,
                       'description' => request()->input('desc'),
+                      "updated_at"=> now()
                 ]);
         }
         else{
@@ -112,6 +115,7 @@ class HomeController extends Controller
                       'client_id'=> $client->id,
                       'commune_id' => $commune_id,
                       'description' => request()->input('desc'),
+                      "created_at"=> Carbon::now(),"updated_at"=> now()
                 ]);
         }
         return redirect()->route('home')->with('toast_success','mise a jour !');

@@ -18,6 +18,9 @@ Route::group([
     Route::crud('villes', 'VillesCrudController');
     Route::crud('communes', 'CommunesCrudController');
     Route::crud('achats', 'AchatsCrudController');
+    Route::get('/achats/{id}', 'AchatsCrudController@show');
+    // Update Order Status
+	Route::post('achats/mise-a-jour', ['as' => 'updateOrderStatus', 'uses' => 'AchatsCrudController@updateStatus']);
     Route::crud('souscategorie', 'SouscategorieCrudController');
     //Route::crud('images', 'ImagesCrudController');
     //Route::crud('adresse', 'AdresseCrudController');

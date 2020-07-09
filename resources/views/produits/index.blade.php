@@ -28,7 +28,7 @@
 		 <!-- row.// -->
 		<div class="container">
 			<figure class="mt-3 mb-3 banner ">
-				<div class=" text-center " id="titre-cate">{{$titre}}</div>
+				<div class=" text-center " id="titre-cate" style="text-transform: capitalize;">{{$titre}}</div>
 			</figure>	
 		</div>
 		<div class="card d-none d-lg-block" style="padding:20px;margin-bottom: 10px;" >
@@ -39,32 +39,31 @@
 					  <div class="btn-group">
 		  			 <button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					categorie</button>
-				<ul class="btn dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+					<ul class="btn dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 					<li><a class="dropdown-item" href="{{route('produits.index')}}">Tout Afficher</a></li>
 					<div class="dropdown-divider"></div>
 					@foreach (App\Categories::All() as $categorie)
 					<li><a class="dropdown-item" href="{{route('produits.index',['categorie'=>$categorie->id])}}">{{$categorie->nom}}</a></li>
-						@foreach ($categorie->sousCategories as $souscategorie)
-					<li><a class="dropdown-item" href="{{route('produits.index',['souscategorie'=>$souscategorie->id])}}">{{$souscategorie->nom}}</a></li>
 					@endforeach
+					@foreach ($categorie->sousCategories as $souscategorie)
+					<li><a class="dropdown-item" href="{{route('produits.index',['souscategorie'=>$souscategorie->id])}}">{{$souscategorie->nom}}</a></li>
 					@endforeach
 				</ul>
 			</div>
 					
-			<!-- <div class="btn-group">
+		<div class="btn-group">
 		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			couleur
+			marque
 		  </button>
 		  <div class="dropdown-menu">
 			<a class="dropdown-item" href="#">tout afficher</a>
 			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="#">bleu</a>
-			<a class="dropdown-item" href="#">blanc</a>
-			<a class="dropdown-item" href="#">orange</a>
-			
+			@foreach (App\Marque::All() as $marque)
+			<a class="dropdown-item" href="{{route('produits.index',['marque'=>$marque->id])}}">{{$marque->nom}}</a>
+			@endforeach
 		  </div>
 		</div>
-					  <div class="btn-group">
+		<!--<div class="btn-group">
 		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			taille
 		  </button>
@@ -101,14 +100,15 @@
 				<div class="btn-group">
 		  			<button style="background-color: white" type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					categorie</button>
+					
 					<ul class="btn dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 						<li><a class="dropdown-item" href="{{route('produits.index')}}">Tout Afficher</a></li>
 						<div class="dropdown-divider"></div>
 						@foreach (App\Categories::All() as $categorie)
 						<li><a class="dropdown-item" href="{{route('produits.index',['categorie'=>$categorie->id])}}">{{$categorie->nom}}</a></li>
+						@endforeach
 						@foreach ($categorie->sousCategories as $souscategorie)
 						<li><a class="dropdown-item" href="{{route('produits.index',['souscategorie'=>$souscategorie->id])}}">{{$souscategorie->nom}}</a></li>
-						@endforeach
 						@endforeach
 					</ul>
 				</div>
@@ -130,21 +130,18 @@
 	<header class="mb-3">
 		<div class="form-inline">
 			<strong class="mr-md-auto">{{$products->total()}} produits trouvés </strong>
-			<div class="btn-group  d-none d-lg-block">
+			<!--<div class="btn-group  d-none d-lg-block">
 				<a href="" class="btn btn-light active" data-toggle="tooltip" title="" data-original-title="affichage grid"> 
 					<i class="fa fa-th"></i></a>
 				<a href="#" class="btn btn-light " data-toggle="tooltip" title="" data-original-title="affichage liste"> 
 					<i class="fa fa-bars"></i></a>
-				
-			</div>
+			</div>-->
 		</div>
 </header>
-	
 	<div class="row-sm">
 		@foreach ($products as $key => $produit)
 		<div class="col-md-3 col-sm-6">
 			<figure class="card card-product">
-				
 				<div class="img-wrap img-fluid"> 
 				@php
 					$liens=$produit->images; $lien=json_decode($liens);

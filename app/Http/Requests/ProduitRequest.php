@@ -30,7 +30,7 @@ class ProduitRequest extends FormRequest
             'prix_vente' => 'required',
             'prix_achat' => 'required',
             'description' => 'required',
-            
+            'images' => 'required',
             'quantite' => 'required'
         ];
     }

@@ -80,7 +80,7 @@
     <div class="card mt-2 d-block d-lg-none">
       <div class="card-body">
         <button id="button">
-          <a href="" class=""><i class="fas fa-shopping-basket mr-4" ></i>Vos commandes</a>
+          <a href="{{route('client.commandes')}}" class=""><i class="fas fa-shopping-basket mr-4" ></i>Vos commandes</a>
         </button>  
         <button id="button">
           <a href="{{route('wishlist.show')}}"><i class="fas fa-heart mr-4" ></i>Vos favoris</a>

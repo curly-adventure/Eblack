@@ -9,19 +9,19 @@
     </div>
     
         @if(\Auth::user())
-            <a href="{{route('home')}}"><div id="tcat"><spam style="text-transform: uppercase;font-size: 15px;font-weight:bold;">Votre Compte</spam> <i class="fas fa-arrow-right float-right" style="color:#00268;font-size:20px"></i></div></a>
+            <a href="{{route('home')}}"><div id="tcat"><spam style="text-transform: uppercase;font-size: 15px;font-weight:bold;">VOTRE COMPTE</spam> <i class="fas fa-arrow-right float-right" style="color:#00268;font-size:20px"></i></div></a>
             <ul class="list-unstyled menu-elements">
-                <li><a href="#"><i class="fas fa-circle mr-4" ></i>Vos Commandes</a></li>
-                <li><a href="{{route('wishlist.show')}}"><i class="fas fa-heart mr-4" ></i>Vos Favoris</a></li>
+                <li><a href="#"><i class="fas fa-circle mr-4" ></i>VOS COMMANDE</a></li>
+                <li><a href="{{route('wishlist.show')}}"><i class="fas fa-heart mr-4" ></i>VOS FAVORIS</a></li>
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="fas fa-power-off mr-4 "></i> deconnexion</a></li>
+                    <i class="fas fa-power-off mr-4 "></i>DECONNEXION</a></li>
             </ul>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
          @endif
     
-    <div id="tcat"><spam style="text-transform: uppercase;font-size: 15px;font-weight:bold;">nos categories</spam> <a href="#" style="color:#00268">voir plus</a></div>
+    <div id="tcat"><spam style="text-transform: uppercase;font-size: 15px;font-weight:bold;">NOS CATEGORIES</spam> <a href="#" style="color:#00268">voir plus</a></div>
     <style>#tcat{padding: 5px;font-size: 11px;color:#002687}#tcat a{margin-left: 60px;font-size: 12px;color:#002687}</style>
     <ul class="list-unstyled menu-elements">
         @foreach (App\Categories::All() as $i=>$cate)

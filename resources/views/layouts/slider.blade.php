@@ -18,22 +18,22 @@
       <div class="carousel-item active item-slide cover img-fluid">
       <a href="{{route('produits.index')}}"><img src="images/banners/slide1.png" alt="Première diapositive" style="width:100%;height:100%;object-fit: cover"> </a>
       <div class="carousel-caption">
-          <h5 style="color: white;" >casque audio</h5>
+          <h5 style="color: white;" >CASQUE AUDIO</h5>
         </div>
       </div>
       <div class="carousel-item item-slide">
-      <a href="liste_grid.html"><img src="images/banners/slide2.png" alt="Deuxième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
+      <a href="{{route('produits.index')}}"><img src="images/banners/slide2.png" alt="Deuxième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
       </div>
       <div class="carousel-item item-slide">
-      <a href="liste_grid.html"><img src="images/banners/slide3.png" alt="Troisième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
+      <a href="{{route('produits.index')}}"><img src="images/banners/slide3.png" alt="Troisième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
       <div class="carousel-caption">
-        <h5 style="color: white;" >ordinateurs </h5>
+        <h5 style="color: white;" >ORDINATEURS</h5>
         </div>
     </div>
     <div class="carousel-item item-slide">
-      <a href="liste_grid.html"><img src="images/banners/slide4.png" alt="Troisième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
+      <a href="{{route('produits.index')}}"><img src="images/banners/slide4.png" alt="Troisième diapositive" style="width:100%;height:100%;object-fit: cover"></a>
       <div class="carousel-caption">
-        <h5 style="color: white;" >chaussures</h5>
+        <h5 style="color: white;" >CHAUSSURES</h5>
         </div>
     </div>
     </div>
@@ -59,7 +59,7 @@
     @endphp 
     <div class="col-md d-none d-lg-block flex-grow-1 reveal">
       <aside class="special-home-right">
-          <h6 class="bg-blue text-center text-white mb-3 p-3" style="background-color: #00044C;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Catégories populaires</font></font></h6>
+          <h6 class="bg-blue text-center text-white mb-3 p-3" style="background-color: #00044C;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CATEGORIES POPULAIRE</font></font></h6>
           
           <div class=" row  reveal-1 mb-0" >
             <div class="float-left py-4 ml-4" style="width: 40%;">

@@ -53,6 +53,9 @@
                 <div  class="float-left" style="font-weight: bold;">Total : </div> 
                 <div class="float-right h6 price-new" >{{getprice(Cart::subtotal())}} Fcfa</div>
                 </article>
+                <article class="text-center" style="border: 1px solid #002687">
+                    <a href="{{route('produits.index')}}" class="btn btn-outline-notice" style="color: red;letter-spacing:3px">ANNULER</a>
+                </article>
             </div>
          
             
@@ -65,23 +68,25 @@
                     </header>
                     <article class="card-body">
                         <p style="font-weight: bold;">Quel moyen de paiement voulez-vous utiliser ?</p><br>
-                        <form action="{{route('paiement.store.methodepaie')}}" id="form-3" method="POST">
+                    <form action="{{route('paiement.store.methodepaie')}}" id="form-3" method="POST">
                         @csrf
                         <div style="padding-left: 20px;" class="form-group ">
-                            <input style="color: #002687;font-size: 20px;"class="form-check-input" type="radio" name="surplace" value="option1" checked>
+                            <input style="color: #002687;font-size: 20px;"class="form-check-input" type="radio" name="methode" value="paiement_livraison" checked>
                             <span style="font-weight: bold;"class="form-check-label"> Paiement à la livraison</span>
                         </div>
                         <hr>
                         <div style="padding-left: 20px;" class="form-group ">
-                            <input class="form-check-input" type="radio" name="orangemoney" value="option1" >
-                            <span class="form-check-label"><img src="{{asset('images/ompay-ci.png')}}" alt=""></span>
+                            <input class="form-check-input" type="radio" name="methode" value="orange_money">
                             <span style="font-weight: bold;">Orange Money</span>
+                            <span class="form-check-label"><img src="{{asset('images/icons/ompay-ci.png')}}" width="20" alt=""></span>
+                            
                          </div>
                          <hr>
                          <div style="padding-left: 20px;" class="form-group ">
-                            <input class="form-check-input" type="radio" name="mtnmoney" value="option1" >
-                            <span class="form-check-label"><img src="{{asset('images/momo.png')}}" alt=""></span>
+                            <input class="form-check-input" type="radio" name="methode" value="mtn_money" >
                             <span style="font-weight: bold;">MTN Mobile Money</span>
+                            <span class="form-check-label"><img src="{{asset('images/icons/momo.png')}}" width="20" alt=""></span>
+                            
                          </div>
                          <!--<hr>
                          <div style="padding-left: 20px;" class="form-group ">

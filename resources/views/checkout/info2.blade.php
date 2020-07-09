@@ -51,6 +51,9 @@
                 <div  class="float-left" style="font-weight: bold;">Total : </div> 
                 <div class="float-right h6 price-new" >{{getprice(Cart::subtotal())}} Fcfa</div>
                 </article>
+                <article class="text-center" style="border: 1px solid #002687">
+                    <a href="{{route('produits.index')}}" class="btn btn-outline-notice" style="color: red;letter-spacing:3px">ANNULER</a>
+                </article>
             </div>
          
             

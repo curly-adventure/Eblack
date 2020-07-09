@@ -24,7 +24,6 @@ class Produits extends Model
     /*
     public function images_prod(){
         return ImagesProduit::select('lien')->where('produits_id', $this->id)->first();
-       
     }
 
     public function attributes(){

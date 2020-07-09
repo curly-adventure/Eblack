@@ -111,7 +111,8 @@ class ProduitCrudController extends CrudController
                 'label' => "image(s)",
                 'name' => "images",
                 'type' => 'upload_multiple',
-                'upload' => true
+                'upload' => true,
+                
             ]
         );
         $this->crud->addField(

@@ -38,7 +38,11 @@ class Client extends Authenticatable
       return $this->motdepasse;
     }
 
-    public function commandes()
+    public function commandes(){
+        return Commande::all()->where('client_id', $this->id);
+    }
+
+    public function commande()
     {
         return $this->hasMany('App\Commande');
     }

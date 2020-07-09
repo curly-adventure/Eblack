@@ -40,8 +40,7 @@
                         
                         <div class="col- form-group">
                             <label>detail Addresse </label>
-                            <textarea name="desc" class="form-control adresse" id="t1" maxlength="255" placeholder="" required>{{$adresse->description}}
-                            </textarea>
+                            <textarea name="desc" class="form-control adresse" id="t1" maxlength="255" placeholder="" required>{{$adresse ?$adresse->description:""}}</textarea>
                         </div>
                         <div class="form-group text-center" style="">
                             <button  style="max-width: 200px;background-color: #002687;border:none" type="submit" class="btn btn-primary btn-block"> Enregistrer </button>

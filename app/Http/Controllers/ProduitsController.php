@@ -6,19 +6,15 @@ use Illuminate\Http\Request;
 use App\Produits;
 use App\SousCategories;
 use App\Categories;
+use App\Models\Marque;
+
 class ProduitsController extends Controller
 {
   
     function index(){
         
-        if (request()->categorie and !request()->souscategorie) {
-            
-            $products = Produits::where('categorie_id', request()->categorie)->orderBy('created_at','DESC')->paginate(8);
-            $titre = Categories::find(request()->categorie)->nom;
-            $lien=array($titre=>"produits.index");
         
-        }
-        elseif(request()->souscategorie and request()->categorie){
+        if(request()->souscategorie and request()->categorie){
             $products = Produits::where('sous_categorie_id', request()->souscategorie)
                         ->where('categorie_id', request()->categorie)
                         ->orderBy('created_at','DESC')->paginate(8);
@@ -26,7 +22,27 @@ class ProduitsController extends Controller
             $lien=array(
                 Categories::find(request()->categorie)->nom=>"produits.index",
                 $titre=>"produits.index");
-            } 
+            }
+        elseif (request()->categorie ) {
+            
+                $products = Produits::where('categorie_id', request()->categorie)->orderBy('created_at','DESC')->paginate(8);
+                $titre = Categories::find(request()->categorie)->nom;
+                $lien=array($titre=>"produits.index");
+            
+            }
+        elseif (request()->souscategorie ) {
+            
+                $products = Produits::where('sous_categorie_id', request()->souscategorie)->orderBy('created_at','DESC')->paginate(8);
+                $titre = Categories::find(request()->souscategorie)->nom;
+                $lien=array($titre=>"produits.index");
+            
+            }
+        elseif (request()->marque ) {
+                $products = Produits::where('marque_id', request()->marque)->orderBy('created_at','DESC')->paginate(8);
+                $titre = Marque::find(request()->marque)->nom;
+                $lien=array($titre=>"produits.index");
+            
+            }
         else {
             $products=Produits::orderBy('created_at','DESC')->paginate(8);
             $titre = "Tous Les Produits";

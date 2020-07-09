@@ -153,7 +153,7 @@
 
             <center><p class="h3"style="font-weight:bold;">VOTRE LISTE EST VIDE</p><br>
                
-                <small>içi s'afficherons votre liste d'envie</small>
+                <small>içi s'afficheras votre liste d'envie</small>
                 <div class="col-md-6 mt-4 ">
                     <a href="{{route('produits.index')}}" class="btn btn-success btn-lg btn-block" type="button" style="background-color: #002687;color: white;border:none">passez aux achats !</a>
                 </div>

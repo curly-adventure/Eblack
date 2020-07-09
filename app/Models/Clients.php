@@ -34,7 +34,10 @@ class Clients extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function achats()
+    {
+        return $this->hasMany('App\Models\Achats');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
