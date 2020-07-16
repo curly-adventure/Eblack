@@ -47,9 +47,17 @@
                 <div class="float-left" style="color:black;">Sous-total : </div> 
                 <div class="float-right">{{getprice(Cart::subtotal())}} Fcfa</div>
                 <br>
+                @if(request()->session()->has('coupon'))
+                <div class="float-left" style="color:black;">Coupon {{request()->session()->get('coupon')['code']}} : </div> 
+                <div class="float-right">{{getprice(request()->session()->get('coupon')['remise'])}} Fcfa</div>
+                <br>
+                @endif
+                <div class="float-left" style="color:black;">Frais de Livraison : </div> 
+                <div class="float-right">{{getprice($tarif)}} Fcfa</div>
+                <br>
                 <hr>
                 <div  class="float-left" style="font-weight: bold;">Total : </div> 
-                <div class="float-right h6 price-new" >{{getprice(Cart::subtotal())}} Fcfa</div>
+                <div class="float-right h6 price-new" >{{getprice($total)}} Fcfa</div>
                 </article>
                 <article class="text-center" style="border: 1px solid #002687">
                     <a href="{{route('produits.index')}}" class="btn btn-outline-notice" style="color: red;letter-spacing:3px">ANNULER</a>
@@ -61,40 +69,65 @@
           <div class="tab-content" id="myTabContent">
             
             <div class="tab-pane fade show active" id="livraison" role="tabpanel" aria-labelledby="livraison-tab">
-                <div class="card" style="margin-top:20px">
-                    <header class="card-header">
-                        <p class="float-left" style="font-weight: bold;">Information</p>
-                        <a class="btn float-right"style="color:red;font-size:14px" onclick="window.location.href = '/paiement/info/adresse';">
-                            <strong>MODIFIER</strong></a>
-                    </header>
-                    <article class="card-body">
-                    <div>
-                        <p><strong class="float-left">Contact  </strong></p>
-                        <p id="num" class="float-right">{{$numero}}</p>
-                    </div>
-                    <br>
-                    <hr>
-                    <div>
-                    <p><strong class="float-left">Expedier à  </strong></p> <br>
-                        <div>
-                        <p id="adr" class="">{{$adresse}}, {{$commune}}, {{$ville}}</p>
-                        </div>
-                    </div>
-                    </article>
-                </div>
-                    <br> <div class="h5">2. Mode de livraison</div><br>
+                
+                <br> <div class="h5">2. Mode de livraison</div><br>
+
             <div class="card">
             <article class="card-body">
                 <div style="padding-left: 10px;" class="form-group float-left">
                 <input class="form-check-input" type="radio" name="gender" value="option1" checked>
-                <span class="form-check-label"> Livraison a domicile</span>
+                <span class="form-check-label"> Livraison a domicile </span>
                 </div>
-                <div class="float-right"style="font-weight:bold">gratuit</div>
             </article>
             </div>
+            <div class="card" style="margin-top:20px">
+                <header class="card-header">
+                    <p class="float-left" style="font-weight: bold;">Information</p>
+                    <a class="btn float-right"style="color:red;font-size:14px" onclick="window.location.href = '/paiement/info/adresse';">
+                        <strong>MODIFIER</strong></a>
+                </header>
+                <article class="card-body">
+                <div>
+                    <p><strong class="float-left">Contact</strong></p>
+                    <p id="num" class="float-right">{{$numero}}</p>
+                </div>
+                <br>
+                <hr>
+                <div>
+                <p><strong class="float-left">Expedier à  </strong></p> <br>
+                    <div>
+                    <p id="adr" class="">{{$adresse}}, {{$commune}}, {{$ville}}</p>
+                    </div>
+                </div>
+                </article>
+            </div>
+
+            <div class="card d-lg-none mt-3">
+                <div class="card-body">
+                    <div class="float-left" style="color:black;">Sous-total : </div> 
+                <div class="float-right">{{getprice(Cart::subtotal())}} Fcfa</div>
+                <br>
+                @if(request()->session()->has('coupon'))
+                <div class="float-left" style="color:black;">Coupon {{request()->session()->get('coupon')['code']}} : </div> 
+                <div class="float-right">{{getprice(request()->session()->get('coupon')['remise'])}} Fcfa</div>
+                <br>
+                @endif
+                <div class="float-left" style="color:black;">Frais de Livraison : </div> 
+                <div class="float-right">{{getprice($tarif)}} Fcfa</div>
+                <br>
+                <hr>
+                <div  class="float-left" style="font-weight: bold;">Total : </div> 
+                <div class="float-right h6 price-new" >{{getprice($total)}} Fcfa</div>
+
+                </div>
+            </div>
+
             <div class="col-md-6 mt-4">
-                <a class="btn btn-success btn-lg btn-block" onclick="window.location.href = '/paiement/info/methode-paiement';" type="button" style="background-color: #002687;color: white;">
+                <a href="{{route('paiement.info.methodepaie',['commune_id'=> $commune_id])}}" class="btn btn-primary btn-lg btn-block" onclick="/*window.location.href = '/paiement/info/methode-paiement';*/" type="button" style="background-color: #002687;color: white;border-color:#002687">
                     Continuer</a>
+            </div>
+            <div class="col-md-12 mt-4">
+                <a href="{{route('panier.index')}}"  class="btn btn-primary d-lg-none btn-lg btn-block" style="color: #002687;background-color: white;border-color:#002687">ANNULER</a>
             </div>
             <br><br>
             </div>
@@ -103,4 +136,5 @@
         
     </div>
 </section>
+@include('sweetalert::alert')
 @endsection

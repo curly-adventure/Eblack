@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ClientsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -14,8 +15,8 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class ClientsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
@@ -24,14 +25,37 @@ class ClientsCrudController extends CrudController
         $this->crud->setModel('App\Models\Clients');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/clients');
         $this->crud->setEntityNameStrings('un client', 'Clients');
+        $this->crud->enableExportButtons();
     }
+    
+    
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn([
+            'name' => 'nom', 
+            'label' => "nom", 
+            'type' => 'text'
+        ]);
+        $this->crud->addColumn([
+            'name' => 'prenom', 
+            'label' => "prenoms", 
+            'type' => 'text'
+        ]);
+        $this->crud->addColumn([
+            'name' => 'email', 
+            'label' => "email", 
+            'type' => 'email'
+        ]);
+        $this->crud->addColumn([
+            'name' => 'numero', 
+            'label' => "numero", 
+            'type' => 'text'
+        ]);
+        
     }
 
+    
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ClientsRequest::class);
@@ -57,10 +81,19 @@ class ClientsCrudController extends CrudController
             'label' => "mot de passe", // Table column heading
             'type' => 'password'
         ]);
+
+        if (request()->input('motdepasse')) {
+            request()->request->set('motdepasse', Hash::make(request()->input('motdepasse')));
+        } else {
+            request()->request->remove('motdepasse');
+        }
+
+        
     }
 
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    
     }
 }

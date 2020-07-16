@@ -30,8 +30,9 @@
         <tr>
             <td>
             <figure class="media">
-                @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
-                <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}" class="img-thumbnail img-sm"></div>
+                @php  $liens=$produit->model->images; $lien=json_decode($liens); $img="img.jpg";
+                if ($lien) { $img=$lien[0]; } @endphp
+                <div class="img-wrap"><img src="{{asset('storage/'.$img)}}" class="img-thumbnail img-sm"></div>
                 <figcaption class="media-body">
                     
                     <h6 class="title text-truncate mt-4" style="font-size: 20px;">
@@ -56,6 +57,7 @@
                 </div> <!-- price-wrap .// -->
             </td>
             <td class="text-right"> 
+                h
             <form class=" mt-4" action="{{route('panier.supprime',$produit->rowId)}}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -133,12 +135,14 @@
                           </dl>
                           @endif
                         <hr>
-                        <figure class="itemside mb-3">
-                            <aside class="aside"><img src="{{asset('images/icons/logo-jpay-card.png')}}"></aside>
+                        <figure class="itemside align-item-center mb-3">
+                            
+                            <aside class="aside"><img src="{{asset('images/icons/cashpay.jpg')}}"></aside>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <aside class="aside"><img src="{{asset('images/icons/ompay-ci.png')}}"></aside>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <aside class="aside"><img src="{{asset('images/icons/momo.png')}}"></aside>
-                          </figure>
+                        </figure>
                         
                 </div> <!-- card-body.// -->
             </div>  <!-- card .// -->
@@ -156,8 +160,9 @@
             <div class="card mb-3" style="box-shadow: 0px 0px 5px 0px rgba(46, 41, 41, 0.192);">
                 
                 <figure class="media p-2">
-                    @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
-                    <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}"  style="border:none" class="img-thumbnail img-sm"></div>
+                    @php  $liens=$produit->model->images; $lien=json_decode($liens); $img="img.jpg";
+                    if ($lien) { $img=$lien[0]; } @endphp
+                    <div class="img-wrap"><img src="{{asset('storage/'.$img)}}"  style="border:none" class="img-thumbnail img-sm"></div>
                     <figcaption class="media-body">
                         <h6 class="title text-truncate mt-4 word-limit" style="color: black;font-size:20px;max-width :150px">{{$produit->model->nom}}</h6>
                         
@@ -219,7 +224,7 @@
         @if(request()->session()->has('coupon'))
 
         <center style="font-size: 18px">
-            <form action="{{route('panier.supprime.coupon')}}" class="p-0 m-0"style="display:inline-block">
+            <form action="{{route('panier.supprime.coupon',['code_coupon'=>request()->session()->get('coupon')['code']])}}" method="POST" class="p-0 m-0"style="display:inline-block">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-outline-danger m-0 p-0" style="font-size:12px;border:none">
@@ -233,12 +238,12 @@
         </center>
         <center style="font-size: 18px">
            <span class="text-left" style="font-weight: bold">TOTAL :</span>
-           <span class="text-right" style="font-weight: bold;color:#002687">{{getPrice(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])}}</span> Fcfa
+           <span class="text-right" style="font-weight: bold;color:#002687">{{getPrice($total)}}</span> Fcfa
         </center>
         @else
         <center style="font-size: 18px">
             <span class="text-left" style="font-weight: bold">TOTAL :</span>
-            <span class="text-right" style="font-weight: bold;color:#002687">{{getPrice(Cart::subtotal())}}</span> Fcfa
+            <span class="text-right" style="font-weight: bold;color:#002687">{{getPrice($total)}}</span> Fcfa
          </center>
         @endif
         

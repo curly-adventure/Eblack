@@ -11,6 +11,15 @@
 		  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);">
 		  <h4 class="card-title mb-4">se Connecter</h4>
 		  <form method="POST" action="{{ route('login') }}">
+			{{--@if(url()->previous() === route('panier.index'))
+			<div class="col s12">
+			  <div class="card purple darken-3">
+				<div class="card-content white-text center-align">
+				  Vous devez être connecté pour passer une commande, si vous n'avez pas encore de compte vous pouvez en créer un en utilisant le lien sous ce formulaire.
+				</div>
+			  </div>
+			</div>
+		  @endif--}}
             @csrf
 			  <div class="form-group">
 				 

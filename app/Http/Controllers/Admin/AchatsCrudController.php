@@ -107,7 +107,6 @@ class AchatsCrudController extends CrudController
     public function show(Achats $id)
     {
         $this->crud->hasAccessOrFail('show');
-
         $order = $id;
         $orderStatuses = StatusCommande::get();
         $adresse=Adresse::where('client_id',$order->client->id)->first();
@@ -116,11 +115,9 @@ class AchatsCrudController extends CrudController
     }
     public function updateStatus(Request $request)
     {
-       
-
         $this->crud->update($request->input('order_id'), ['status_id' => $request->input('status_id')]);
 
-        \Alert::success("status mise à jour")->flash();
+        Alert::success("status mise à jour")->flash();
 
         return redirect()->back();
     }

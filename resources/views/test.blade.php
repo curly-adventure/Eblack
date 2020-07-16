@@ -1,5 +1,6 @@
 @php
-    echo "TOUTES LES COMMUNES"."<br>";
+
+/*    echo "TOUTES LES COMMUNES"."<br>";
     App\Models\Villes::get()->each(function($communes)
 {
     
@@ -49,5 +50,5 @@ function strtoarray($a, $t = ''){
         }
     }
     return $arr;
-}
+}*/
 @endphp

@@ -48,9 +48,17 @@
                 <div class="float-left" style="color:black;">Sous-total : </div> 
                 <div class="float-right">{{getprice(Cart::subtotal())}} Fcfa</div>
                 <br>
+                @if(request()->session()->has('coupon'))
+                <div class="float-left" style="color:black;">Coupon {{request()->session()->get('coupon')['code']}} : </div> 
+                <div class="float-right">{{getprice(request()->session()->get('coupon')['remise'])}} Fcfa</div>
+                <br>
+                @endif
+                <div class="float-left" style="color:black;">Frais de Livraison : </div> 
+                <div class="float-right">--</div>
+                <br>
                 <hr>
                 <div  class="float-left" style="font-weight: bold;">Total : </div> 
-                <div class="float-right h6 price-new" >{{getprice(Cart::subtotal())}} Fcfa</div>
+                <div class="float-right h6 price-new" >{{$total}} Fcfa</div>
                 </article>
                 <article class="text-center" style="border: 1px solid #002687">
                     <a href="{{route('produits.index')}}" class="btn btn-outline-notice" style="color: red;letter-spacing:3px">ANNULER</a>
@@ -141,6 +149,9 @@
                                     <input class="btn btn-success btn-lg btn-block" type="submit" style="background-color: #002687;color: white;border:none" value="SUIVANT">
                                 </div>
                             </form>
+                            <div class="col-md-12 mt-4">
+                                <a href="{{route('panier.index')}}"  class="btn btn-primary d-lg-none btn-lg btn-block" style="color: #002687;background-color: white;border-color:#002687">ANNULER</a>
+                            </div>
                             <script>
                                 function suivant() {
                                     var tab1 = document.querySelectorAll('#t1');
@@ -200,4 +211,5 @@
 
     </div>
 </section>
+@include('sweetalert::alert')
 @endsection

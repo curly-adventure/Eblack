@@ -15,10 +15,9 @@
 					@foreach ($lien as  $item=>$i)
 
 					@if ($item==$titre)
-					
-					<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie,'souscategorie'=>request()->souscategorie])}}">{{$item}}</a></li>
+					 	<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie,'souscategorie'=>request()->souscategorie])}}">{{$item}}</a></li>
 					@else
-					<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie])}}">{{$item}}</a></li>
+						<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie])}}">{{$item}}</a></li>
 					@endif
 						
 					@endforeach
@@ -56,7 +55,7 @@
 			marque
 		  </button>
 		  <div class="dropdown-menu">
-			<a class="dropdown-item" href="#">tout afficher</a>
+			<a class="dropdown-item" href="{{route('produits.index')}}">tout afficher</a>
 			<div class="dropdown-divider"></div>
 			@foreach (App\Marque::All() as $marque)
 			<a class="dropdown-item" href="{{route('produits.index',['marque'=>$marque->id])}}">{{$marque->nom}}</a>
@@ -79,15 +78,25 @@
 					</ul>
 			</div>
 			<div class="col-4 ">
+				@php
+					$categorie_id=request()->categorie;
+					$souscategorie_id=request()->souscategorie;
+					$marque_id=request()->marque;
+				@endphp
 				<strong class="">Trier par</strong>
-				<select style="border-color:#002687;background-color:white"class="mr-2 form-control" >
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">popularité</font></font></option>
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nouveauté</font></font></option>
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : moins chere au plus chere</font></font></option>
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prix : plus chere au moins chere</font></font></option>
-						<option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ordre alphabetique</font></font></option>
-						
+				<form action="{{route('produits.index',['categorie'=>$categorie_id,'souscategorie'=>$souscategorie_id])}}" method="GET" >
+				<select onchange='this.form.submit()' name='trie' style="border-color:#002687;background-color:white"class="mr-2 form-control" >
+					{{--<option value="1">Popularité</option>--}}
+					<option value="0">--selectionnez un critère--</option>
+					<option value="1">Nouveauté</option>
+					<option value="2">prix croissant</option>
+					<option value="3">prix decroissant</option>
+					{{--<option value="5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ordre alphabetique</font></font></option>--}}
 				</select>
+				<input type="hidden" name="categorie" value="{{$categorie_id}}">
+				<input type="hidden" name="souscategorie" value="{{$souscategorie_id}}">
+				<input type="hidden" name="marque" value="{{$marque_id}}">
+			</form>
 			</div>
 			</div>
 		</div>
@@ -143,11 +152,9 @@
 		<div class="col-md-3 col-sm-6">
 			<figure class="card card-product">
 				<div class="img-wrap img-fluid"> 
-				@php
-					$liens=$produit->images; $lien=json_decode($liens);
-					//dd($lien);
-				@endphp
-				<img src="{{asset('storage/'.$lien[0])}}" style="width:50%;object-fit: cover"></div>
+				    @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
+                        if ($lien) { $img=$lien[0]; }  @endphp
+				<img src="{{asset('storage/'.$img)}}" style="width:50%;object-fit: cover"></div>
 				<figcaption class="info-wrap text-center">
 					<a href="{{route('produits.show',[$produit->id])}}" class="title">{{$produit->nom}}</a>
 					<div class="price-wrap">

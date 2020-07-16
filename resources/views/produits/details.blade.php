@@ -31,9 +31,10 @@
                             <article class="gallery-wrap">
                                 
                                 <div class="img-big-wrap">
-                                    @php $liens=$produit->images; $lien=json_decode($liens); @endphp
+                                    @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
+                                    if ($lien) { $img=$lien[0]; }  @endphp
                                     <div>
-                                        <a id="item-display" href="{{asset('storage/'.$lien[0])}}" data-fancybox=""><img id="display" class="img-fluid" src="{{asset('storage/'.$lien[0])}}" style="max-height:300px"></a>
+                                        <a id="item-display" href="{{asset('storage/'.$img)}}" data-fancybox=""><img id="display" class="img-fluid" src="{{asset('storage/'.$img)}}" style="max-height:300px"></a>
                                     </div>
                                 </div>
                                 <!-- slider-product.// -->
@@ -204,8 +205,10 @@
                 <div class="item-slide" style="max-width: 350px">
                     <figure class="card card-product">
                     <!--<span class="badge-new"> NEW </span>-->
-                        @php $liens=$produit->images; $lien=json_decode($liens); @endphp
-                        <div class="img-wrap"> <img src="{{asset('storage/'.$lien[0])}}"> </div>
+                        @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
+                        if ($lien) { $img=$lien[0]; }  @endphp
+                    
+                        <div class="img-wrap"> <img src="{{asset('storage/'.$img)}}"> </div>
                         <figcaption class="info-wrap text-center">
                             <h6 class="title text-truncate">
                                 <a class="title"href="{{route('produits.show',[$produit->id])}}">{{$produit->nom}}</a></h6>

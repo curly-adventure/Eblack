@@ -24,6 +24,7 @@ class CategoryCrudController extends CrudController
         $this->crud->setModel('App\Models\Category');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/category');
         $this->crud->setEntityNameStrings('une categorie', 'categories');
+        $this->crud->enableExportButtons();
     }
 
     protected function setupListOperation()

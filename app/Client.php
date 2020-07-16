@@ -2,11 +2,12 @@
 
 namespace App;
 
+use LamaLama\Wishlist\HasWishlists;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use LamaLama\Wishlist\HasWishlists;
 
 class Client extends Authenticatable
 {
@@ -27,6 +28,9 @@ class Client extends Authenticatable
     protected $hidden = [
         'motdepasse','Adresse_id', 'remember_token',
     ];
+    public function setPasswordAttribute($value) {
+        $this->attributes['motdepasse'] = Hash::make($value);
+    }
 
     public function password()
     {
@@ -39,7 +43,7 @@ class Client extends Authenticatable
     }
 
     public function commandes(){
-        return Commande::all()->where('client_id', $this->id);
+        return Commande::where('client_id', $this->id)->orderBy('created_at', 'DESC')->get();
     }
 
     public function commande()

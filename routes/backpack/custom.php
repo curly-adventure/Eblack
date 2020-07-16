@@ -30,4 +30,6 @@ Route::group([
     Route::crud('clients', 'ClientsCrudController');
     Route::crud('administrators', 'AdministratorsCrudController');
     Route::get('charts/weekly-users', 'Charts\WeeklyUsersChartController@response');
+    Route::crud('tarif_livraisons', 'Tarif_livraisonsCrudController');
+    Route::crud('sliders', 'SlidersCrudController');
 }); // this should be the absolute last line of this file

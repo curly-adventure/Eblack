@@ -59,6 +59,10 @@ class Produit extends Model
         return $this->hasMany('App\Models\Images');
 
     }
+    public function achats()
+    {
+        return $this->belongsToMany('App\Models\Produit','achat_produits','produit_id','achat_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

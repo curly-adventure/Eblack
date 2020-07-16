@@ -31,8 +31,9 @@
                   <tr>
                       <td>
                       <figure class="media">
-                          @php $liens=$produit->images; $lien=json_decode($liens); @endphp
-                          <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}" class="img-thumbnail img-sm"></div>
+                        @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
+                        if ($lien) { $img=$lien[0]; }  @endphp
+                          <div class="img-wrap"><img src="{{asset('storage/'.$img)}}" class="img-thumbnail img-sm"></div>
                           <figcaption class="media-body">
                               
                               <h6 class="title text-truncate mt-4 word-limit" style="font-size: 20px;">
@@ -102,8 +103,9 @@
       <div class="card mb-3" style="box-shadow: 0px 0px 5px 0px rgba(46, 41, 41, 0.192);">
         @php $stock=$produit->quantite==0 ? "Indisponible" : "Disponible" @endphp
           <figure class="media p-2">
-              @php $liens=$produit->images; $lien=json_decode($liens); @endphp
-              <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}"  style="border:none" class="img-thumbnail img-sm"></div>
+            @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
+            if ($lien) { $img=$lien[0]; }  @endphp
+              <div class="img-wrap"><img src="{{asset('storage/'.$img)}}"  style="border:none" class="img-thumbnail img-sm"></div>
               <figcaption class="media-body">
                   <h6 class="title text-truncate mt-4 word-limit" style="color: black;font-size:20px;width:150px">{{$produit->nom}}</h6>
                   

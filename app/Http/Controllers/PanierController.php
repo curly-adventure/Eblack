@@ -17,7 +17,15 @@ class PanierController extends Controller
     public function index()
     {
         //dd(Cart::content());
-        return view('panier.index');
+        if(request()->session()->has('coupon')){
+            $total=floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'];
+        }
+        else{
+            $total=Cart::subtotal();
+        }
+        return view('panier.index',[
+            "total" =>$total,
+        ]);
     }
 
     /**
@@ -58,15 +66,18 @@ class PanierController extends Controller
         $code = $request->get('code');
         $coupon = \App\Coupon::where("code",$code)->first();
         
-        if(!$coupon){
-            return back()->with('toast_error','le code coupon est invalide');
+        if(!$coupon || $coupon->utilise){
+            return back()->with('toast_error','ce code coupon est invalide');
         }
         //dd($coupon->discount(Cart::subtotal()));
         $request->session()->put('coupon',[
             'code'=> $coupon->code,
             'remise' => $coupon->discount(Cart::subtotal()),
         ]);
-        return back()->with('toast_success','le code coupon est appliqué');
+        $coupon->update([
+            'utilise'=>1
+        ]);
+        return back()->with('toast_success','code coupon appliqué');
     }
     /**
      * Display the specified resource.
@@ -130,7 +141,13 @@ class PanierController extends Controller
     }
     public function destroyCoupon()
     {
+        $code = request()->session()->get('coupon')['code'];
+        //dd($code);
+        $coupon = \App\Coupon::where("code",$code)->first();
         request()->session()->forget('coupon');
+        $coupon->update([
+            'utilise'=>0
+        ]);
         return back()->with("toast_success","le coupon a été retiré !");
     }
 }

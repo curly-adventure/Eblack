@@ -1,0 +1,117 @@
+<mjml>
+  <mj-head>
+    <mj-style>
+      a:link { color: lightgrey; }
+      a:visited { color: white; }
+      a:hover { color: grey; }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#FFF">
+    <mj-section padding-bottom="20px" padding-top="20px">
+      <mj-column width="100%">
+        <mj-image src="{{ asset('images/logo.png') }}" alt="" align="center" border="none" width="300px" padding-left="0px" padding-right="0px" padding-bottom="10px" padding-top="10px"></mj-image>
+      </mj-column>
+    </mj-section>
+    
+    <mj-section background-color="#356cc7" padding-bottom="20px" padding-top="0">
+      <mj-column width="100%">
+        <mj-text align="center" color="#FFF" font-size="20px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-top="28px">Commande N° <strong>{{ $order->num_achat }}</strong>
+        </mj-text>
+        <mj-text align="center" color="#FFF" font-size="20px" font-family="Helvetica" padding-left="25px" padding-right="25px">Bonjour {{ $user->prenom . ' ' . $user->nom }}
+        </mj-text>
+        <mj-text align="center" color="#FFF" font-size="20px" font-family="Helvetica" padding-left="25px" padding-right="25px">
+        Merci d'avoir effectué votre achat sur notre boutique
+        </mj-text>
+      </mj-column>
+    </mj-section> 
+
+    <mj-section background-color="#356cc7" padding-bottom="5px" padding-top="0">
+      <mj-column width="100%">
+        <mj-divider border-color="#FFF" border-width="2px" border-style="solid" padding-left="20px" padding-right="20px" padding-bottom="0px" padding-top="0"></mj-divider>
+        <mj-text align="center" color="#FFF" font-size="18px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-top="28px">Détails de la commande
+        </mj-text>
+        <mj-table color="#FFF" font-size="14px">
+          <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">Produit</th>
+            <th style="padding: 0 15px;">Prix TTC</th>
+          </tr>
+
+          @foreach ($articles as $item)
+          <tr>
+            <td style="padding: 0 15px 0 0;">{{ $item->nom }}&nbsp({{ $item->quantite }}&nbsp @if($item->quantite > 1) exemplaires) @else exemplaire) @endif</td>
+            <td style="padding: 0 15px;">{{$item->prix}} €</td>
+          </tr>
+          @endforeach
+          <tr>
+            <td style="padding: 15px;"></td>
+            <td style="padding: 15px;"></td>
+          </tr>
+
+          <tr style="background-color: #25a;">
+            <td style="padding: 10px;">Sous Total</td>
+            <td style="padding: 0 10px 0 10px;">{{$order->montant}} Fcf</td>
+          </tr>
+          
+
+          <tr style="background-color: #25a">
+            <td style="padding: 10px;">Total</td>
+            <td style="padding: 0 10px 0 10px;">{{$order->montant}} Fcfa</td>
+          </tr>
+        </mj-table>
+        <mj-text color="#FFF" font-size="16px" font-family="Helvetica" padding-left="25px" padding-bottom="20px" padding-right="25px">
+          <br /> Date : {{ $order->created_at->format('d/m/Y') }}<br /><br /> Paiement : {{ $order->methode_paiement }}
+        </mj-text>
+      </mj-column>
+
+    </mj-section>
+
+    <mj-section background-color="#356cc7" padding-bottom="5px" padding-top="0">
+      <mj-column width="100%">
+        <mj-divider border-color="#FFF" border-width="2px" border-style="solid" padding-left="20px" padding-right="20px" padding-bottom="0px" padding-top="0"></mj-divider>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#356cc7" padding-bottom="5px" padding-top="0">      
+      <mj-column>
+        
+        <mj-text color="#FFF" font-size="16px" font-family="Helvetica" padding-left="25px" padding-bottom="20px" padding-right="25px">
+          
+            <strong>Adresse de livraison</strong><br /><br /> 
+            Ville : $ville<br />
+            Commune : $commune<br />
+            $adresse->description<br />
+            
+        </mj-text>
+        
+      </mj-column>
+      
+    </mj-section>
+    <mj-section background-color="#356cc7" padding-bottom="5px" padding-top="0">
+      <mj-column width="100%">
+                <mj-divider border-color="#FFF" border-width="2px" border-style="solid" padding-left="20px" padding-right="20px" padding-bottom="0px" padding-top="0"></mj-divider>
+        <mj-text color="#FFF" font-size="16px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-top="10px">
+
+          
+        Pour toute question ou information complémentaire merci de contacter notre <a href="mailto:{{ $shop->email }}">support client</a>.
+          
+
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFF" padding-bottom="0px" padding-top="0">
+      <mj-column width="100%">
+        <mj-text align="center" color="#555" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="20px">Eblack, le choix de la qualité</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#36c" padding-bottom="0px" padding-top="0">
+      <mj-column width="100%">
+      <mj-text color="#ddd"align="center"  font-size="18px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-top="20px">
+        Conditions générales de vente       
+        </mj-text>
+       
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

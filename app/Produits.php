@@ -8,7 +8,7 @@ class Produits extends Model
 {
     protected $table='Produits';
     protected $primaryKey='id';
-   
+   protected $fillable=['quantite'];
     public function getprice()
     {
         $prix=$this->prix_vente/1000;

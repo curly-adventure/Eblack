@@ -87,10 +87,10 @@
                         <a class="dropdown-item" href="{{ route('home') }}">
                             Votre compte
                         </a>
-                        <a class="dropdown-item" href="{{ route('home') }}">
+                        <a class="dropdown-item" href="{{route('client.commandes')}}">
                             Vos commandes
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('wishlist.show')}}">
                             Vos favoris
                         </a>
                         <hr class="dropdown-divider">

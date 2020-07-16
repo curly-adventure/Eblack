@@ -80,6 +80,19 @@
       }
     }
   </style>
+  <style type="text/css">
+    a:link {
+      color: lightgrey;
+    }
+
+    a:visited {
+      color: white;
+    }
+
+    a:hover {
+      color: grey;
+    }
+  </style>
 </head>
 
 <body style="background-color:#FFFFFF;">
@@ -113,7 +126,7 @@
                         <tbody>
                           <tr>
                             <td style="width:300px;">
-                              <img alt="" height="auto" src="{{ asset('images/eblack.png') }}" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="300" />
+                              <img alt="" height="auto" src="{{ asset('images/logo.png') }}" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="300" />
                             </td>
                           </tr>
                         </tbody>
@@ -149,7 +162,7 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#356cc7;background-color:#356cc7;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:20px;padding-top:0;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -162,9 +175,18 @@
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:28px;padding-right:25px;padding-bottom:18px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#ABCDEA;">BONJOUR <p style="font-size:16px; color:white">{{ $user->nom }} {{ $user->prenom }}</p>
-                      </div>
+                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:28px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:20px;line-height:1;text-align:center;color:#FFFFFF;">Commande N° <strong>{{ $order->num_achat }}</strong></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:20px;line-height:1;text-align:center;color:#FFFFFF;">Bonjour {{ $user->prenom . ' ' . $user->nom }}</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:20px;line-height:1;text-align:center;color:#FFFFFF;">Merci d'avoir effectué votre achat sur notre boutique</div>
                     </td>
                   </tr>
                 </table>
@@ -210,11 +232,11 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:20px;padding-bottom:0px;padding-left:20px;word-break:break-word;">
-                      <p style="border-top:solid 2px #ffffff;font-size:1px;margin:0px auto;width:100%;">
+                      <p style="border-top:solid 2px #FFFFFF;font-size:1px;margin:0px auto;width:100%;">
                       </p>
                       <!--[if mso | IE]>
         <table
-           align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 2px #ffffff;font-size:1px;margin:0px auto;width:560px;" role="presentation" width="560px"
+           align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 2px #FFFFFF;font-size:1px;margin:0px auto;width:560px;" role="presentation" width="560px"
         >
           <tr>
             <td style="height:0;line-height:0;">
@@ -226,8 +248,39 @@
                     </td>
                   </tr>
                   <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:28px;padding-right:25px;padding-bottom:28px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:13px;line-height:1;text-align:center;color:#FFFFFF;"><span style="font-size:20px; font-weight:bold">Merci d'avoir créé votre compte client</span></div>
+                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:28px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:18px;line-height:1;text-align:center;color:#FFFFFF;">Détails de la commande</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                      <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;table-layout:auto;width:100%;border:none;">
+                        <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+                          <th style="padding: 0 15px 0 0;">Produit</th>
+                          <th style="padding: 0 15px;">Prix TTC</th>
+                          @php $articles = \App\AchatProduit::all()->where('achat_id', $order->id);@endphp
+                        </tr> @foreach ($articles as $item) <tr>
+                          <td style="padding: 0 15px 0 0;">{{ $item->nom }} (* {{ $item->quantite }} )</td>
+                          <td style="padding: 0 15px;">{{$item->prix}} Fcfa</td>
+                        </tr> @endforeach 
+                        <tr>
+                          <td style="padding: 15px;"></td>
+                          <td style="padding: 15px;"></td>
+                        </tr>
+                        <tr style="background-color: #25a;">
+                          <td style="padding: 10px;">Sous Total</td>
+                          <td style="padding: 0 10px 0 10px;">{{$order->montant}} Fcf</td>
+                        </tr>
+                        <tr style="background-color: #25a">
+                          <td style="padding: 10px;">Total</td>
+                          <td style="padding: 0 10px 0 10px;">{{$order->montant}} Fcfa</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-bottom:20px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:16px;line-height:1;text-align:left;color:#FFFFFF;"><br /> Date : {{ $order->created_at->format('d/m/Y') }}<br /><br /> Paiement : {{ $order->methode_paiement }}</div>
                     </td>
                   </tr>
                 </table>
@@ -273,11 +326,11 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:20px;padding-bottom:0px;padding-left:20px;word-break:break-word;">
-                      <p style="border-top:solid 2px #ffffff;font-size:1px;margin:0px auto;width:100%;">
+                      <p style="border-top:solid 2px #FFFFFF;font-size:1px;margin:0px auto;width:100%;">
                       </p>
                       <!--[if mso | IE]>
         <table
-           align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 2px #ffffff;font-size:1px;margin:0px auto;width:560px;" role="presentation" width="560px"
+           align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 2px #FFFFFF;font-size:1px;margin:0px auto;width:560px;" role="presentation" width="560px"
         >
           <tr>
             <td style="height:0;line-height:0;">
@@ -286,71 +339,6 @@
           </tr>
         </table>
       <![endif]-->
-                    </td>
-                  </tr>
-                  <!-- <mj-text align="center" color="#FFF" font-size="13px" font-family="Helvetica" padding-left="25px" padding-right="25px" padding-bottom="20px" padding-top="28px"><span style="font-size:20px; font-weight:bold">Votre code d'accès</span>
-        </mj-text> -->
-                  <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-bottom:28px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:13px;line-height:1;text-align:center;color:#FFFFFF;"><span style="font-size:20px; font-weight:bold">Adresse e-mail : {{ $user->email }}</span></div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <!--[if mso | IE]>
-            </td>
-          
-        </tr>
-      
-                  </table>
-                <![endif]-->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!--[if mso | IE]>
-          </td>
-        </tr>
-      </table>
-      
-      <table
-         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
-      >
-        <tr>
-          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
-      <![endif]-->
-    <div style="background:#568feb;background-color:#568feb;margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#568feb;background-color:#568feb;width:100%;">
-        <tbody>
-          <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:15px;text-align:center;">
-              <!--[if mso | IE]>
-                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
-        <tr>
-      
-            <td
-               class="" style="vertical-align:top;width:600px;"
-            >
-          <![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                  <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-bottom:0px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:17px;line-height:1;text-align:center;color:#FFFFFF;"><strong>Conseils de sécurité</strong></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="left" style="font-size:0px;padding:10px 25px;padding-top:10px;padding-right:25px;padding-bottom:20px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:15px;line-height:1;text-align:left;color:#FFFFFF;">
-                        <ul>
-                          <li> Vos informations de compte doivent rester confidentielles. </li> <br />
-                          <li>Ne les communiquez jamais à qui que ce soit.</li><br />
-                          <li>Changez votre mot de passe régulièrement.</li><br />
-                          <li> Si vous pensez que quelqu'un utilise votre compte illégalement, veuillez nous prévenir immédiatement. </li>
-                        </ul>
-                      </div>
                     </td>
                   </tr>
                 </table>
@@ -382,7 +370,7 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#356cc7;background-color:#356cc7;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:5px;padding-top:0;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -395,8 +383,71 @@
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-right:25px;padding-bottom:20px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:15px;line-height:1;text-align:center;color:#FFFFFF;">Vous pouvez dès à présent passer vos commandes sur notre boutique</div>
+                    <td align="left" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-bottom:20px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:16px;line-height:1;text-align:left;color:#FFFFFF;"><strong>Adresse de livraison</strong><br /><br /> Ville : {{$ville->nom}}<br /> Commune : {{$commune->nom}}<br /> {{$adresse->description}}<br /></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+    <div style="background:#356cc7;background-color:#356cc7;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#356cc7;background-color:#356cc7;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:5px;padding-top:0;text-align:center;">
+              <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               class="" style="vertical-align:top;width:600px;"
+            >
+          <![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tr>
+                    <td style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:20px;padding-bottom:0px;padding-left:20px;word-break:break-word;">
+                      <p style="border-top:solid 2px #FFFFFF;font-size:1px;margin:0px auto;width:100%;">
+                      </p>
+                      <!--[if mso | IE]>
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 2px #FFFFFF;font-size:1px;margin:0px auto;width:560px;" role="presentation" width="560px"
+        >
+          <tr>
+            <td style="height:0;line-height:0;">
+              &nbsp;
+            </td>
+          </tr>
+        </table>
+      <![endif]-->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:10px 25px;padding-top:10px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:16px;line-height:1;text-align:left;color:#FFFFFF;">Pour toute question ou information complémentaire merci de contacter notre <a href="mailto:virtus225one@gmail.com">support client</a>.</div>
                     </td>
                   </tr>
                 </table>
@@ -441,8 +492,54 @@
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-right:25px;padding-bottom:20px;padding-left:25px;word-break:break-word;">
                       <div style="font-family:Helvetica;font-size:15px;line-height:1;text-align:center;color:#555555;">Eblack, le choix de la qualité</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+    <div style="background:#3366cc;background-color:#3366cc;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#3366cc;background-color:#3366cc;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0;text-align:center;">
+              <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               class="" style="vertical-align:top;width:600px;"
+            >
+          <![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tr>
+                    <td align="center" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:18px;line-height:1;text-align:center;color:#dddddd;">Conditions générales de vente</div>
                     </td>
                   </tr>
                 </table>

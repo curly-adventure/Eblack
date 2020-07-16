@@ -10,23 +10,24 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('reduction') }}'><i class='nav-icon la la-database'></i> BONS</a></li>    
 </ul>
 </li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('achats') }}'><i class='nav-icon la la-database'></i>COMMANDES</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('achats') }}'><i class='nav-icon la la-circle'></i>COMMANDES</a></li>
 
-<li class="nav-item nav-dropdown">
-    <a class="nav-link nav-dropdown-toggle" href="#"><i class=""></i>ADDRESSES</a>
-    <ul class="nav-dropdown-items">
-
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('villes') }}'><i class=" nav-icon las la-city"></i></i> VILLES</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('communes') }}'><i class='nav-icon la la-database'></i> COMMUNES</a></li>
-    </ul>
-</li>
 
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class=""></i>UTILISATEURS</a>
     <ul class="nav-dropdown-items">
-
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('clients') }}'><i class="nav-icon la la-group"></i> CLIENTS</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('administrators') }}'><i class='nav-icon la la-user'></i> ADMINISTRATEURS</a></li>
-
+        
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('clients') }}'><i class="nav-icon la la-group"></i> CLIENTS</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('administrators') }}'><i class='nav-icon la la-user'></i> ADMINISTRATEURS</a></li>
+        
+    </ul>
+</li>
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class=""></i>CONFIGURATIONS</a>
+    <ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('sliders') }}'><i class='nav-icon la la-database'></i> SLIDER</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('villes') }}'><i class=" nav-icon las la-city"></i></i> VILLES</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('communes') }}'><i class='nav-icon la la-database'></i> COMMUNES</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('tarif_livraisons') }}'><i class='nav-icon la la-question'></i> TARIFS LIVRAISON</a></li>
     </ul>
 </li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdministratorsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -14,8 +15,8 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class AdministratorsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation ;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation ;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
@@ -24,6 +25,7 @@ class AdministratorsCrudController extends CrudController
         $this->crud->setModel('App\Models\Administrators');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/administrators');
         $this->crud->setEntityNameStrings('un administrateur', 'Admin');
+        $this->crud->enableExportButtons();
     }
 
     protected function setupListOperation()
@@ -40,8 +42,8 @@ class AdministratorsCrudController extends CrudController
             'type' => 'email'
         ]);
         $this->crud->addColumn([
-            'name' => 'email_verified_at', // The db column name
-            'label' => "date de verification", // Table column heading
+            'name' => 'numero', // The db column name
+            'label' => "numero", // Table column heading
             'type' => 'text'
         ]);
     }
@@ -62,9 +64,9 @@ class AdministratorsCrudController extends CrudController
             'label' => "email", // Table column heading
             'type' => 'email'
         ]);
-        $this->crud->addField([
-            'name' => 'email_verified_at', // The db column name
-            'label' => "date de verification", // Table column heading
+        $this->crud->addColumn([
+            'name' => 'numero', // The db column name
+            'label' => "numero", // Table column heading
             'type' => 'text'
         ]);
         $this->crud->addField([
@@ -72,6 +74,11 @@ class AdministratorsCrudController extends CrudController
             'label' => "mot de passe", // Table column heading
             'type' => 'password'
         ]);
+        if (request()->input('password')) {
+            request()->request->set('password', Hash::make(request()->input('password')));
+        } else {
+            request()->request->remove('password');
+        }
     }
 
     protected function setupUpdateOperation()

@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
+route::get('/test',function(){
+  return view('test');
+});
 route::get('/', 'IndexController@home')->name('accueil');
 
 /*vue produits*/

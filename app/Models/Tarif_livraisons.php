@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Model;
 
-class Clients extends Model
+class Tarif_livraisons extends Model
 {
     use CrudTrait;
 
@@ -16,12 +15,12 @@ class Clients extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'Clients';
+    protected $table = 'tarif_livraisons';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
-    //protected $hidden = ['motdepasse'];
+    // protected $hidden = [];
     // protected $dates = [];
 
     /*
@@ -29,22 +28,19 @@ class Clients extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function password()
-    {
-        return 'motdepasse';
+    public static function frais($id){
+        $tarif=Tarif_livraisons::where('commune_id',$id)->first();
+        $tarif= $tarif?$tarif->prix : 500 ;
+        return $tarif;
     }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function achats()
+    public function commune()
     {
-        return $this->hasMany('App\Models\Achats');
-    }
-    public function adresse()
-    {
-        return $this->belongsTo('App\Adresse', 'adresse_id');
+        return $this->belongsTo('App\Models\Communes', 'commune_id');
     }
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +59,4 @@ class Clients extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-    public function setPasswordAttribute($value) {
-        $this->attributes['motdepasse'] = Hash::make($value);
-    }
 }

@@ -24,6 +24,7 @@ class MarqueCrudController extends CrudController
         $this->crud->setModel('App\Models\Marque');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/marque');
         $this->crud->setEntityNameStrings('une marque', 'marques');
+        $this->crud->enableExportButtons();
     }
 
     protected function setupListOperation()

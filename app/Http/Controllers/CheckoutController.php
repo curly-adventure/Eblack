@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Achats;
+use id;
 use DateTime;
+use App\Achats;
 use App\Commande;
+use App\Produits;
 use Carbon\Carbon;
 use Stripe\Stripe;
+use App\Mail\Ordered;
+use App\Mail\NewOrder;
+use App\Models\Produit;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use App\Models\Tarif_livraisons;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
@@ -24,6 +32,9 @@ class CheckoutController extends Controller
      */
     public function infoAdr()
     {
+        if (Cart::count() <= 0) {
+            return redirect()->route('produits.index');
+        }
         $client = Auth::user();
         $adresse_client = \App\Adresse::where('client_id', $client->id)->first();
         if ($adresse_client) {
@@ -34,12 +45,14 @@ class CheckoutController extends Controller
             $commune_client = null;
             $ville_client = null;
         }
-
+        if(request()->session()->has('coupon')){ $total=floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'];
+        } else{ $total=Cart::subtotal(); }
         return view("checkout.info1", [
             'client' => $client,
             'adresse_client' => $adresse_client,
             'commune_client' => $commune_client,
             'ville_client' => $ville_client,
+            'total' =>$total,
         ]);
     }
 
@@ -72,30 +85,56 @@ class CheckoutController extends Controller
                 'description' => request()->input('adresse'),
             ]);
         }
+        $tarif=Tarif_livraisons::frais($commune->id);
+        if(request()->session()->has('coupon')){ $total=(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])+$tarif;
+        } else{ $total=Cart::subtotal()+$tarif; }
         return view('checkout.info2', [
             "numero" => $client->numero,
             "adresse" => request()->input('adresse'),
             "commune" => request()->input('commune'),
+            'commune_id' => $commune->id,
             "ville" => request()->input('ville'),
+            "tarif" => $tarif,
+            "total"=>$total,
         ]);
     }
 
     public function infoPaie()
     {
-        return view('checkout.info3');
+        
+        $commune = \App\Commune::find(request()->commune_id);
+        $tarif=Tarif_livraisons::frais($commune->id);
+        if(request()->session()->has('coupon')){ $total=(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])+$tarif;
+        } else{ $total=Cart::subtotal()+$tarif; }
+        return view('checkout.info3',[
+            'commune_id' => $commune->id,
+            "tarif" => $tarif,
+            "total"=>$total,
+        ]);
     }
 
     public function storePaie(Request $request)
     {
+        // Vérification du stock
+        $items = Cart::Content();
+        foreach($items as $row) {
+            $product = Produits::findOrFail($row->id);
+            //dd($row->qty);
+            if($product->quantite < $row->qty) {
+                Alert::error('Nous sommes désolés mais le produit "' . $row->name . '" ne dispose pas d\'un stock suffisant pour satisfaire votre demande. Il ne nous reste plus que ' . $product->quantite . ' exemplaires disponibles.');
+                return back();
+            }
+        }
         $methode = request()->input('methode');
         $client = Auth::user();
-        $montant = Cart::total();
         $adresse = \App\Adresse::where('client_id', $client->id)->first();
+        if(request()->session()->has('coupon')){ $total=(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])+Tarif_livraisons::frais($adresse->commune_id);
+        } else{ $total=Cart::subtotal()+Tarif_livraisons::frais($adresse->commune_id); }
         $num_achat = Achats::max_num() + 1;
         if ($methode === "paiement_livraison") {
             DB::table('achats')->insert([
                 'num_achat' => $num_achat,
-                'montant' => floatval($montant),
+                'montant' => floatval($total),
                 'quantite' => Cart::count() ,
                 'client_id' => $client->id,
                 'adresse_id' => $adresse->id,
@@ -113,13 +152,32 @@ class CheckoutController extends Controller
                     "created_at" => Carbon::now(), "updated_at" => now()
                 ]);
             }
+            $this->updateStock();
             Cart::destroy();
-            Session::flash('success', 'Votre commande a été traitée avec succès.');
-        }
+            //Session::flash('success', 'Votre commande a été traitée avec succès.');
+            // Notification à l'administrateur
+        Mail::to("virtus225one@gmail.com")->send(new NewOrder($achat_id));       
+        
+        $commune = \App\Commune::where('id', $adresse->commune_id)->first();
+        $ville_id = \App\Ville::where('id', $commune->ville_id)->first()->id;
 
+        // Notification au client
+        //$page = Page::whereSlug('conditions-generales-de-vente')->first();
+        Mail::to($client->email)->send(new Ordered($achat_id,$adresse->id,$ville_id,$commune->id));
+
+        }
+        request()->session()->forget('coupon');
         return view('checkout.merci', ['num' => $num_achat]);
     }
 
+    public function updateStock(){
+        foreach (Cart::content() as $item) {
+            $produit=Produit::find($item->model->id);
+            $produit->update([
+                'quantite' => $produit->quantite - $item->qty,
+            ]);
+        }
+    }
     public function stripe()
     {
         if (Cart::count() <= 0) {

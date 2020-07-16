@@ -65,7 +65,7 @@ class CommandeController extends Controller
 
         return view(
             'client.commandes.details',
-            compact('commande', 'articles', 'nbre_article', 'status', 'adresse_client', 'ville_client', 'commune_client')
+            compact('commande', 'articles', 'nbre_article', 'adresse_client', 'ville_client', 'commune_client')
         );
     }
 

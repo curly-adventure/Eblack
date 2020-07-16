@@ -11,7 +11,7 @@
         @if(\Auth::user())
             <a href="{{route('home')}}"><div id="tcat"><spam style="text-transform: uppercase;font-size: 15px;font-weight:bold;">VOTRE COMPTE</spam> <i class="fas fa-arrow-right float-right" style="color:#00268;font-size:20px"></i></div></a>
             <ul class="list-unstyled menu-elements">
-                <li><a href="#"><i class="fas fa-circle mr-4" ></i>VOS COMMANDE</a></li>
+                <li><a href="{{route('client.commandes')}}"><i class="fas fa-circle mr-4" ></i>VOS COMMANDE</a></li>
                 <li><a href="{{route('wishlist.show')}}"><i class="fas fa-heart mr-4" ></i>VOS FAVORIS</a></li>
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-power-off mr-4 "></i>DECONNEXION</a></li>
@@ -69,9 +69,9 @@
     </ul>
     <center>
     <div class="btn-group white ">
-        <a class="btn btn-facebook" title="Facebook" target="_blank" href="#"><i class="fab fa-facebook-f  fa-fw"></i></a>
-        <a class="btn btn-instagram" title="Instagram" target="_blank" href="#"><i class="fab fa-instagram  fa-fw"></i></a>
-        <a class="btn btn-twitter" title="Twitter" target="_blank" href="#"><i class="fab fa-twitter  fa-fw"></i></a>
+        <a class="btn btn-facebook" title="Facebook" target="_blank" href="{{URL('http://www.facebook.com/Eblackofficiel')}}"><i class="fab fa-facebook-f  fa-fw"></i></a>
+        <a class="btn btn-youtube" title="Youtube" target="_blank" href="{{URL('http://m.youtube.com/channel/UCTtUh40V6kBXRDneZrDRAfA')}}"><i class="fab fa-youtube  fa-fw"></i></a>
+        <a class="btn btn-whatsapp" style="background: rgb(47, 206, 152);color:white" title="Whatsapp" target="_blank" href="{{URL('https://wa.me/22597775867')}}'"><i class="fab fa-whatsapp  fa-fw"></i></a>
     </div>
 </center>
     <div class="dark-light-buttons">

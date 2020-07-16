@@ -24,20 +24,48 @@ class ReductionCrudController extends CrudController
         $this->crud->setModel('App\Models\Reduction');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/reduction');
         $this->crud->setEntityNameStrings('un bon', 'Bons de reduction');
+        
     }
 
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn([
+            "name"=>"code",
+            'type'=>"text",
+            "label"=>"code",
+        ]);
+        $this->crud->addColumn([
+            "name"=>"valeur",
+            'type'=>"text",
+            "label"=>"valeur ( % )",
+        ]);
+        $this->crud->addColumn([
+            "name"=>"utilise",
+            'type'=>"boolean",
+            "label"=>"deja utiliser ?",
+        ]);
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ReductionRequest::class);
 
-        // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->addField([
+            "name"=>"code",
+            'type'=>"text",
+            "label"=>"code",
+        ]);
+        $this->crud->addField([
+            "name"=>"valeur",
+            'type'=>"text",
+            "label"=>"valeur ( % )",
+        ]);
+        $this->crud->addField([
+            "name"=>"utilise",
+            'type'=>"boolean",
+            "label"=>"deja utiliser ?",
+        ]);
     }
 
     protected function setupUpdateOperation()
