@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use id;
 use DateTime;
-use App\Achats;
-use App\Commande;
+use App\Models\Achats;
+
 use App\Produits;
 use Carbon\Carbon;
 use Stripe\Stripe;
@@ -128,8 +128,12 @@ class CheckoutController extends Controller
         $methode = request()->input('methode');
         $client = Auth::user();
         $adresse = \App\Adresse::where('client_id', $client->id)->first();
-        if(request()->session()->has('coupon')){ $total=(floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'])+Tarif_livraisons::frais($adresse->commune_id);
-        } else{ $total=Cart::subtotal()+Tarif_livraisons::frais($adresse->commune_id); }
+        if(request()->session()->has('coupon')){
+            $soustotal=floatval(Cart::subtotal()) - request()->session()->get('coupon')['remise'];
+             $total=$soustotal+Tarif_livraisons::frais($adresse->commune_id);
+        } else{ 
+            $soustotal=Cart::subtotal();
+            $total=$soustotal+Tarif_livraisons::frais($adresse->commune_id); }
         $num_achat = Achats::max_num() + 1;
         if ($methode === "paiement_livraison") {
             DB::table('achats')->insert([
@@ -147,7 +151,7 @@ class CheckoutController extends Controller
                     'achat_id' => $achat_id,
                     'produit_id' => $produit->model->id,
                     'nom' => $produit->model->nom,
-                    'prix' => $produit->model->prix_achat,
+                    'prix' => $produit->model->prix_vente,
                     'quantite' => $produit->qty,
                     "created_at" => Carbon::now(), "updated_at" => now()
                 ]);
@@ -163,7 +167,7 @@ class CheckoutController extends Controller
 
         // Notification au client
         //$page = Page::whereSlug('conditions-generales-de-vente')->first();
-        Mail::to($client->email)->send(new Ordered($achat_id,$adresse->id,$ville_id,$commune->id));
+        Mail::to($client->email)->send(new Ordered($achat_id,$adresse->id,$ville_id,$commune->id,$soustotal));
 
         }
         request()->session()->forget('coupon');

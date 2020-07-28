@@ -179,10 +179,40 @@
 
 	  
 	</div><!-- container // -->
+	<div id="html">
 	<div class="box text-center">
 		<p>As-tu trouvé ce que tu cherchais？</p>
-		<a href="" class="btn btn-light">Oui</a>
-		<a href="" class="btn btn-light">Non</a>
+		<button class="btn btn-light" onclick="alert('merci de nous faire confiance !\nEblack, le choix de la qualité')">Oui</button>
+		<button type="button" data-toggle="modal" data-target="#form" class="btn btn-light">Non</button>
 	</div>
+	<div class="modal fade" id="form">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Que recherchez vous ?</h4>
+					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				</div>
+				<div class="modal-body row">
+					<form action="detail.blade.php" class="col" method="POST">
+						<div class="form-group">
+							<label for="nom" class="form-control-label">Nom</label>
+							<input type="text" name="nom" class="form-control" id="nom"placeholder="entrez votre nom">
+						</div>
+						<div class="form-group">
+							<label for="tel" class="form-control-label">Numero</label>
+							<input type="text" name="tel" class="form-control" id="tel"placeholder="entrez votre numero">
+						</div>
+						<div class="form-group">
+							<label for="desc" class="form-control-label">description</label>
+							<textarea name="desc" id="desc" cols="50" rows="5" placeholder="entrez les details du produit que vous rechercher"></textarea>
+						</div>
+						<button class="btn btn-outline-primary pull-right" type="submit">Envoyer</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 	</section>
 @stop

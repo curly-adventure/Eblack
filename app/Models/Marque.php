@@ -36,6 +36,14 @@ class Marque extends Model
         $this->uploadFileToDisk($value,$attribute_name,$disk,$destination_path);
 
     }
+    public function nombreProduits($id){
+        $produit=Produit::where("marque_id",$id)->get();
+        $i=0;
+        foreach ($produit as $key => $value) {
+            $i=$i+1;
+        }return $i;
+       
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

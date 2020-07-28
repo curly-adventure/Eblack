@@ -63,6 +63,9 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/client/commandes/{commande}', 'CommandeController@update')->name('client.commande.supprimer');
 });
 
+Route::get('/enregistrement',function(){
+return view('forms');
+});
 /*route pour les lien inexistant*/
 Route::any('{catchall}', function () {
   return 'Cette page n\'existe pas !';

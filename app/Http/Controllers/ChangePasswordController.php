@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Rules\MatchOldPassword;
-use Illuminate\Http\Request;
 use Hash;
 use App\Client;
+use Illuminate\Http\Request;
+use App\Rules\MatchOldPassword;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+
 class ChangePasswordController extends Controller
 {
     /**
@@ -60,9 +63,9 @@ class ChangePasswordController extends Controller
          if (!\Hash::check($request->new_password , $hashedPassword)) {
              if (str_compare($request->new_password,$request->new_confirm_password)) {
                  //dd("f");
-                $users =Client::find(\Auth::user()->id);
+                $users =Client::find(Auth::user()->id);
               $users->motdepasse = bcrypt($request->new_password);
-              Client::where( 'id' , \Auth::user()->id)->update( array( 'motdepasse' =>  $users->motdepasse));
+              Client::where( 'id' , Auth::user()->id)->update( array( 'motdepasse' =>  $users->motdepasse));
  
               return redirect(route('home'))->with('toast_success',"mot de passe mise a jour !");
              }

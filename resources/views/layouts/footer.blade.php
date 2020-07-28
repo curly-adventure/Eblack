@@ -56,19 +56,19 @@
           <!-- Grid column -->
           <div class="col-md-12">
     
-            <div class="mb-5 flex-center">
-    
+            <div class="mb-5 flex-center ">
+   
               <!-- Facebook -->
-              <a class="fb-ic">
+              <a class="fb-ic text-white" href="{{URL('http://www.facebook.com/Eblackofficiel')}}">
                 <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
               </a>
               <!-- Twitter -->
-              <a class="tw-ic">
-                <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
+              <a class="tw-ic text-white" href="{{URL('http://m.youtube.com/channel/UCTtUh40V6kBXRDneZrDRAfA')}}">
+                <i class="fab fa-youtube fa-lg white-text mr-4"> </i>
               </a>
               
               <!--Instagram-->
-              <a class="ins-ic">
+              <a class="ins-ic text-white" href="{{URL('https://www.instagram.com/')}}">
                 <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
               </a>
             

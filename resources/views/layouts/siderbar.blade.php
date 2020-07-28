@@ -71,7 +71,7 @@
     <div class="btn-group white ">
         <a class="btn btn-facebook" title="Facebook" target="_blank" href="{{URL('http://www.facebook.com/Eblackofficiel')}}"><i class="fab fa-facebook-f  fa-fw"></i></a>
         <a class="btn btn-youtube" title="Youtube" target="_blank" href="{{URL('http://m.youtube.com/channel/UCTtUh40V6kBXRDneZrDRAfA')}}"><i class="fab fa-youtube  fa-fw"></i></a>
-        <a class="btn btn-whatsapp" style="background: rgb(47, 206, 152);color:white" title="Whatsapp" target="_blank" href="{{URL('https://wa.me/22597775867')}}'"><i class="fab fa-whatsapp  fa-fw"></i></a>
+        <a class="btn btn-instagram" style="color:white" title="instagram" target="_blank" href="{{URL('https://www.instagram.com/')}}"><i class="fab fa-instagram  fa-fw"></i></a>
     </div>
 </center>
     <div class="dark-light-buttons">

@@ -1,26 +1,42 @@
 @extends(backpack_view('blank'))
 
 @php
+
     /*$widgets['before_content'][] = [
         'type'        => 'jumbotron',
         'heading'     => trans('backpack::base.welcome'),
         'content'     => trans('backpack::base.use_sidebar'),
         'button_link' => backpack_url('logout'),
         'button_text' => trans('backpack::base.logout'),
-    ];*/
-  $produitCount = App\Models\Produit::count();
+	];*/
+	$clientenligne=0;
+	foreach (App\Models\Clients::all() as $key => $client) {
+		if (Cache::has('user-is-online-'.$client->id)){
+			$clientenligne=$clientenligne+1;}
+	}
+	
+  	$produitCount = App\Models\Produit::count();
 	$userCount = App\Models\Clients::count();
+	$achateffectue = App\Models\Achats::where("status_id",3)->count();
+
  	// notice we use Widget::add() to add widgets to a certain group
 	Widget::add()->to('before_content')->type('div')->class('row')->content([
 		// notice we use Widget::make() to add widgets as content (not in a group)
 		Widget::make()
 			->type('progress')
-			->class('card border-0 text-white bg-primary')
+			->class('card border-0 text-white bg-primary h5 p-1')
 			->progressClass('progress-bar')
 			->value($userCount)
-			->description('client inscrits.')
+			->description('client inscrits')
 			->progress(100*(int)$userCount/200)
-			->hint('plus'.(200-$userCount).' jusqu\'au prochain jalon.'),
+			->hint('+ '.(200-$userCount).' jusqu\'au prochain jalon.'),
+		Widget::make([
+			'type' => 'progress',
+			'class'=> 'card border-0 text-black bg-secondary p-3 h4',
+			'progressClass' => 'progress-bar',
+			'value' => $clientenligne,
+			'description' => 'clients connectés',
+		]),
 		// alternatively, to use widgets as content, we can use the same add() method,
 		// but we need to use onlyHere() or remove() at the end
   
@@ -28,22 +44,31 @@
 		// if you prefer defining your widgets as arrays
 	    Widget::make([
 			'type' => 'progress',
-			'class'=> 'card border-0 text-white bg-dark',
+			'class'=> 'card border-0 text-white bg-dark h4',
 			'progressClass' => 'progress-bar',
 			'value' => $produitCount,
-			'description' => 'Produits.',
+			'description' => 'produits enregistrés',
 			'progress' => (int)$produitCount/75*100,
 			'hint' => $produitCount>75?'Excellent.':'continuons...',
 		]),
+		Widget::make([
+			'type' => 'progress',
+			'class'=> 'card border-0 text-white bg-success p-3 h4',
+			'progressClass' => 'progress-bar',
+			'value' => $achateffectue,
+			'description' => 'achats effectués',
+		]),
+		
 	]);
     
-    $widgets['after_content'][] = [
+    /*$widgets['after_content'][] = [
 	  'type'         => 'alert',
 	  'class'        => 'alert alert-warning bg-dark border-0 mb-4',
 	  'heading'      => 'Citation du jour',
 	  'content'      => 'Le commerce est l\'art d\'abuser du besoin ou du desir que quelqu\'un a de quelque chose.\n(Frères Goncourt)' ,
 	  'close_button' => true, // show close button or not
-  ];
+  ];*/
+
   Widget::add([ 
     'type'       => 'chart',
     'controller' => \App\Http\Controllers\Admin\Charts\WeeklyUsersChartController::class,

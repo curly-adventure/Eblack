@@ -240,7 +240,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:18px;line-height:1;text-align:left;color:#FFFFFF;">Paiement : {{ $order->methode_paiement }}</div>
+                      <div style="font-family:Helvetica;font-size:18px;line-height:1;text-align:left;color:#FFFFFF;"> {{ $order->methode_paiement }}</div>
                     </td>
                   </tr>
                   <tr>

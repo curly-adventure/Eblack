@@ -59,13 +59,14 @@ class ProduitCrudController extends CrudController
                 'name'  => 'quantite',
                 'type'  => 'number',
                 'label' => 'qte'
-            ]);
+            ]
+        );
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ProduitRequest::class);
-        
+
         $this->crud->addField(
             [
                 'name' => 'categorie_id',
@@ -78,7 +79,8 @@ class ProduitCrudController extends CrudController
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ]
-            ]);
+            ]
+        );
 
         $this->crud->addField(
             [
@@ -113,7 +115,7 @@ class ProduitCrudController extends CrudController
                 'name' => "images",
                 'type' => 'upload_multiple',
                 'upload' => true,
-                
+
             ]
         );
         $this->crud->addField(
@@ -123,7 +125,7 @@ class ProduitCrudController extends CrudController
                 'label' => 'nom du produit',
             ]
         );
-        $this->crud->addField( [
+        $this->crud->addField([
             'name'  => 'description',
             'type'  => 'wysiwyg',
             'label' => 'description du produit',
@@ -132,7 +134,7 @@ class ProduitCrudController extends CrudController
             [
                 'name'  => 'prix_achat',
                 'type' => 'number',
-                'label' => 'prix_achat',
+                'label' => 'prix initial',
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
@@ -141,8 +143,18 @@ class ProduitCrudController extends CrudController
         $this->crud->addField(
             [
                 'name'  => 'prix_vente',
+                'type'  => 'text',
+                'label' => 'prix de vente',
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-6'
+                ],
+            ]
+        );
+        $this->crud->addField(
+            [
+                'name'  => 'fake_percent',
                 'type'  => 'number',
-                'label' => 'prix_vente',
+                'label' => 'faux pourcentage de reduction',
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
@@ -156,8 +168,8 @@ class ProduitCrudController extends CrudController
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
-            ]);
-        
+            ]
+        );
     }
 
     protected function setupUpdateOperation()

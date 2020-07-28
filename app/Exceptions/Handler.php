@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -36,6 +37,28 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
+        if ($exception instanceof \Exception) {
+            // Fetch the error information we would like to 
+            // send to the view for emailing
+            $error['file']    = $exception->getFile();
+            $error['code']    = $exception->getCode();
+            $error['line']    = $exception->getLine();
+            $error['message'] = $exception->getMessage();
+            $error['trace']   = $exception->getTrace();
+    
+            // Only send email reports on production server
+            if(ENV('APP_ENV') == "production"){
+                #1. Queue email for sending on "exceptions_emails" queue
+                #2. Use the emails.exception_notif view shown below
+                #3. Pass the error array to the view as variable $e
+                Mail::queueOn('exception_emails', 'mail.exception_notif', ["e" => $error], function ($m) {
+                    $m->subject("Laravel Error");
+                    $m->from(ENV("MAIL_FROM"), ENV("MAIL_NAME"));
+                    $m->to("emmanuelmalan225@gmail.com", "programmeur");
+                });
+    
+            }
+        }
         parent::report($exception);
     }
 

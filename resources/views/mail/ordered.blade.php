@@ -186,7 +186,12 @@
                   </tr>
                   <tr>
                     <td align="center" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:20px;line-height:1;text-align:center;color:#FFFFFF;">Merci d'avoir effectué votre achat sur notre boutique</div>
+                      <div style="font-family:Helvetica;font-size:18px;line-height:1;text-align:center;color:#FFFFFF;">Merci d'avoir effectué votre achat sur notre boutique</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:15px;line-height:1;text-align:center;color:#FFFFFF;">Nous vous appellerons sous peu pour confirmer votre commande</div>
                     </td>
                   </tr>
                 </table>
@@ -256,8 +261,8 @@
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;table-layout:auto;width:100%;border:none;">
                         <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
-                          <th style="padding: 0 15px 0 0;">Produit</th>
-                          <th style="padding: 0 15px;">Prix TTC</th>
+                          <th style="width:55%">Produit</th>
+                          <th style="width:50%;">Prix TTC</th>
                           @php $articles = \App\AchatProduit::all()->where('achat_id', $order->id);@endphp
                         </tr> @foreach ($articles as $item) <tr>
                           <td style="padding: 0 15px 0 0;">{{ $item->nom }} (* {{ $item->quantite }} )</td>
@@ -268,8 +273,12 @@
                           <td style="padding: 15px;"></td>
                         </tr>
                         <tr style="background-color: #25a;">
+                          <td style="padding: 10px;">Frais transport</td>
+                          <td style="padding: 0 10px 0 10px;">{{$tarif??0}} Fcfa</td>
+                        </tr>
+                        <tr style="background-color: #25a;">
                           <td style="padding: 10px;">Sous Total</td>
-                          <td style="padding: 0 10px 0 10px;">{{$order->montant}} Fcf</td>
+                          <td style="padding: 0 10px 0 10px;">{{$soustotal}} Fcfa</td>
                         </tr>
                         <tr style="background-color: #25a">
                           <td style="padding: 10px;">Total</td>
@@ -280,7 +289,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-bottom:20px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:16px;line-height:1;text-align:left;color:#FFFFFF;"><br /> Date : {{ $order->created_at->format('d/m/Y') }}<br /><br /> Paiement : {{ $order->methode_paiement }}</div>
+                      <div style="font-family:Helvetica;font-size:16px;line-height:1;text-align:left;color:#FFFFFF;"><br /> Date : {{ $order->created_at->format('d/m/Y') }}<br/><br/>{{ $order->methode_paiement }}</div>
                     </td>
                   </tr>
                 </table>

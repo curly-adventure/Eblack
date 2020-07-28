@@ -41,6 +41,11 @@ class MarqueCrudController extends CrudController
             'type' => 'image',
             'prefix' => 'storage/',
         ]);
+        $this->crud->addColumn([
+            'name'  => 'id',
+            'type'  => 'nbre',
+            'label' => 'produits',
+        ]);
     }
 
     protected function setupCreateOperation()
@@ -62,6 +67,7 @@ class MarqueCrudController extends CrudController
                 'upload' => true,
                 'crop' => true,
             ],
+            
         ]);
     }
 

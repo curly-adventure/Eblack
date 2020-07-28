@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Charts;
 use App\Administrator;
 use App\Models\Produit;
 use App\Models\Category;
+use App\Models\Clients;
 use App\Models\Souscategorie;
 use Backpack\CRUD\app\Http\Controllers\ChartController;
 use ConsoleTVs\Charts\Classes\Chartjs\Chart;
@@ -24,15 +25,20 @@ class WeeklyUsersChartController extends ChartController
         /*$this->chart->labels([
             'Today',
         ]);*/
-        $today_users = Administrator::whereDate('created_at', today())->count();
-        $yesterday_users = Administrator::whereDate('created_at', today()->subDays(1))->count();
-        $users_2_days_ago =Administrator::whereDate('created_at', today()->subDays(2))->count();
+        $today_users = Clients::whereDate('created_at', today())->count();
+        $yesterday_users = Clients::whereDate('created_at', today()->subDays(1))->count();
+        $users_2_days_ago =Clients::whereDate('created_at', today()->subDays(2))->count();
+        $_3 = Clients::whereDate('created_at', today()->subDays(3))->count();
+        $_4 =Clients::whereDate('created_at', today()->subDays(4))->count();
+        $_5 = Clients::whereDate('created_at', today()->subDays(5))->count();
+        $_6 =Clients::whereDate('created_at', today()->subDays(6))->count();
+        $_7 =Clients::whereDate('created_at', today()->subDays(7))->count();
 
         //$chart = new Chart();
-        $this->chart->labels(['2 days ago', 'Yesterday', 'Today']);
-        $this->chart->dataset('My dataset', 'line', [$users_2_days_ago, $yesterday_users, $today_users])
-        ->color('rgb(77, 189, 116)')
-            ->backgroundColor('rgba(77, 189, 116, 0.4)');
+        $this->chart->labels(['7 jour','6 jour','5 jour','4 jour','3 jour','2 jour avant', 'hier', 'aujourd\'hui']);
+        $this->chart->dataset('Clients', 'line', [$_7,$_6,$_5,$_4,$_3,$users_2_days_ago, $yesterday_users, $today_users])
+        ->color('orange')
+        ->backgroundColor('blue');
 
             //$this->chart->load(backpack_url('charts/new-entries'));
         

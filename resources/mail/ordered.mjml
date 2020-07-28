@@ -19,8 +19,11 @@
         </mj-text>
         <mj-text align="center" color="#FFF" font-size="20px" font-family="Helvetica" padding-left="25px" padding-right="25px">Bonjour {{ $user->prenom . ' ' . $user->nom }}
         </mj-text>
-        <mj-text align="center" color="#FFF" font-size="20px" font-family="Helvetica" padding-left="25px" padding-right="25px">
+        <mj-text align="center" color="#FFF" font-size="18px" font-family="Helvetica" padding-left="25px" padding-right="25px">
         Merci d'avoir effectué votre achat sur notre boutique
+        </mj-text>
+        <mj-text align="center" color="#FFF" font-size="15px" font-family="Helvetica" padding-left="25px" padding-right="25px">
+        Nous vous appellerons sous peu pour confirmer votre commande
         </mj-text>
       </mj-column>
     </mj-section> 
@@ -32,14 +35,14 @@
         </mj-text>
         <mj-table color="#FFF" font-size="14px">
           <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
-            <th style="padding: 0 15px 0 0;">Produit</th>
-            <th style="padding: 0 15px;">Prix TTC</th>
+            <th style="width:55%">Produit</th>
+            <th style="width:50%">Prix TTC</th>
           </tr>
 
           @foreach ($articles as $item)
           <tr>
             <td style="padding: 0 15px 0 0;">{{ $item->nom }}&nbsp({{ $item->quantite }}&nbsp @if($item->quantite > 1) exemplaires) @else exemplaire) @endif</td>
-            <td style="padding: 0 15px;">{{$item->prix}} €</td>
+            <td style="padding: 0 15px;">{{$item->prix}} FCFA</td>
           </tr>
           @endforeach
           <tr>
@@ -48,18 +51,22 @@
           </tr>
 
           <tr style="background-color: #25a;">
-            <td style="padding: 10px;">Sous Total</td>
-            <td style="padding: 0 10px 0 10px;">{{$order->montant}} Fcf</td>
+            <td style="padding: 10px;">Frai de livraison</td>
+            <td style="padding: 0 10px 0 10px;">{{$order->montant}} FCFA</td>
           </tr>
           
+          <tr style="background-color: #25a;">
+            <td style="padding: 10px;">Remise</td>
+            <td style="padding: 0 10px 0 10px;">{{$order->montant}} FCFA</td>
+          </tr>
 
           <tr style="background-color: #25a">
             <td style="padding: 10px;">Total</td>
-            <td style="padding: 0 10px 0 10px;">{{$order->montant}} Fcfa</td>
+            <td style="padding: 0 10px 0 10px;">{{$order->montant}} FCFA</td>
           </tr>
         </mj-table>
         <mj-text color="#FFF" font-size="16px" font-family="Helvetica" padding-left="25px" padding-bottom="20px" padding-right="25px">
-          <br /> Date : {{ $order->created_at->format('d/m/Y') }}<br /><br /> Paiement : {{ $order->methode_paiement }}
+          <br /> Date : {{ $order->created_at->format('d/m/Y') }}<br /><br /> {{ $order->methode_paiement }}
         </mj-text>
       </mj-column>
 

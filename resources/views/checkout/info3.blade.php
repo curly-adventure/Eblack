@@ -84,16 +84,16 @@
                         </div>
                         <hr>
                         <div style="padding-left: 20px;" class="form-group ">
-                            <input class="form-check-input" type="radio" name="methode" value="orange_money">
-                            <span style="font-weight: bold;">Orange Money</span>
-                            <span class="form-check-label"><img src="{{asset('images/icons/ompay-ci.png')}}" width="20" alt=""></span>
+                            <input class="form-check-input" disabled type="radio" name="methode" value="orange_money">
+                            <span style="font-weight: bold;color:#888">Orange Money</span>
+                            <span class="form-check-label"><img src="{{asset('images/icons/ompay-ci.png')}}" width="20" alt=""> ( très bientôt )</span>
                             
                          </div>
                          <hr>
                          <div style="padding-left: 20px;" class="form-group ">
-                            <input class="form-check-input" type="radio" name="methode" value="mtn_money" >
-                            <span style="font-weight: bold;">MTN Mobile Money</span>
-                            <span class="form-check-label"><img src="{{asset('images/icons/momo.png')}}" width="20" alt=""></span>
+                            <input class="form-check-input" type="radio" name="methode" value="mtn_money" disabled>
+                            <span style="font-weight: bold;color:#888">MTN Mobile Money</span>
+                            <span class="form-check-label"><img src="{{asset('images/icons/momo.png')}}" width="20" alt=""> ( très bientôt )</span>
                             
                          </div>
                          <!--<hr>

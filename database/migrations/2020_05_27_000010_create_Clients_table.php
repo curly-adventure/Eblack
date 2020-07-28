@@ -32,6 +32,7 @@ class CreateClientsTable extends Migration
             $table->string('provider_id')->nullable();
             $table->bigInteger('Adresse_id')->nullable()->unsigned();
             $table->rememberToken();
+            $table->timestamp('last_seen')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

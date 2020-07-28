@@ -52,6 +52,11 @@ class ClientsCrudController extends CrudController
             'label' => "numero", 
             'type' => 'text'
         ]);
+        $this->crud->addColumn([
+            'name' => 'id', 
+            'label' => "status", 
+            'type' => 'text_perso'
+        ]);
         
     }
 

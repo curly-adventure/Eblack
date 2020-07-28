@@ -1,14 +1,14 @@
-@php
+<?php ?>
 
-/*    echo "TOUTES LES COMMUNES"."<br>";
+<?php
+/*  
+    echo "TOUTES LES COMMUNES"."<br>";
     App\Models\Villes::get()->each(function($communes)
-{
-    
+{    
     foreach ($communes->communes as $key => $value) {
         echo $value->nom;
         echo "<br>";
-    } 
-    
+    }    
 });
 
 echo "LA VILLES DE LA COMMUNE AVEC L'ID 5"."<br>";
@@ -50,5 +50,6 @@ function strtoarray($a, $t = ''){
         }
     }
     return $arr;
-}*/
+}
 @endphp
+*/

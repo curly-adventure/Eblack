@@ -2,9 +2,10 @@
 
 namespace App\Mail;
 
-use App\Sms\NewOrderSms;
-use Twilio\Rest\Client;
 use App\Commande;
+use Twilio\Rest\Client;
+use App\Sms\NewOrderSms;
+use Informagenie\OrangeSDK;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -17,6 +18,7 @@ class NewOrder extends Mailable
     public $account_sid;
     public $auth_token;
     public $twilio_number;
+    
     /**
      * Create a new message instance.
      *
@@ -51,6 +53,19 @@ class NewOrder extends Mailable
                 'body' => $text
             )
         );*/
+        $credential = array(
+            'client_id' => 'eOAXzDCXpmhe5lxfgLp29PIp4XhnobUw',
+            'client_secret' => 'BACwJnW8kyDsWNDn'
+        );
+        
+        $sms = new OrangeSDK($credential);
+        $text="Nouvelle commande du client ".auth()->user()->nom."\ncommande n°".$this->order->num_achat."\nmontant :".$this->order->montant." Fcfa";
+        $response = $sms->message($text)
+             ->from(22588364403)
+             ->as('Sminth')
+             ->to(22588364403)
+             ->send();
+
         return $this ->subject('Nouvelle commande')
                      ->view('mail.neworder', ['user' => auth()->user()]);
     }
