@@ -50,7 +50,7 @@
 				</ul>
 			</div>
 					
-		<div class="btn-group">
+		<!--<div class="btn-group">
 		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			marque
 		  </button>
@@ -60,24 +60,11 @@
 			@foreach (App\Marque::All() as $marque)
 			<a class="dropdown-item" href="{{route('produits.index',['marque'=>$marque->id])}}">{{$marque->nom}}</a>
 			@endforeach
-		  </div>
-		</div>
-		<!--<div class="btn-group">
-		  <button style="background-color: white" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			taille
-		  </button>
-		  <div class="dropdown-menu">
-			<a class="dropdown-item" href="#">tout afficher</a>
-			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="#">M</a>
-			<a class="dropdown-item" href="#">X</a>
-			<a class="dropdown-item" href="#">XL</a>
-			<a class="dropdown-item" href="#">XXL</a>
-		  </div>
-		</div>-->
-					</ul>
 			</div>
-			<div class="col-4 ">
+		</div>-->
+			</ul>
+			</div>
+			<div class="col-4">
 				@php
 					$categorie_id=request()->categorie;
 					$souscategorie_id=request()->souscategorie;
@@ -159,7 +146,8 @@
 					<a href="{{route('produits.show',[$produit->id])}}" class="title">{{$produit->nom}}</a>
 					<div class="price-wrap">
 						<span class="h6 price-new">{{$produit->getprice()}} FCFA</span>
-						<del class="price-old">{{getprice($produit->prix_achat)}} FCFA</del>
+						@php $d=$produit->prix_barre()?"":"d-none";@endphp
+						<del class="price-old {{$d}}">{{getprice($produit->prix_barre())}} FCFA</del>
 						{{--URL::action('ProduitsController@show',$produit->id)--}}
 					</div><a href="{{route('produits.show',[$produit->id])}}"><button type="button" class="btn ">acheter</button></a>
 				</figcaption>
@@ -193,7 +181,8 @@
 					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
 				</div>
 				<div class="modal-body row">
-					<form action="detail.blade.php" class="col" method="POST">
+					<form action="{{route('client.demande')}}" class="col" method="POST">
+						@csrf
 						<div class="form-group">
 							<label for="nom" class="form-control-label">Nom</label>
 							<input type="text" name="nom" class="form-control" id="nom"placeholder="entrez votre nom">
@@ -203,8 +192,8 @@
 							<input type="text" name="tel" class="form-control" id="tel"placeholder="entrez votre numero">
 						</div>
 						<div class="form-group">
-							<label for="desc" class="form-control-label">description</label>
-							<textarea name="desc" id="desc" cols="50" rows="5" placeholder="entrez les details du produit que vous rechercher"></textarea>
+							<label for="detail" class="form-control-label">description</label>
+							<textarea name="detail" id="desc" cols="50" rows="5" placeholder="entrez les details du produit que vous rechercher"></textarea>
 						</div>
 						<button class="btn btn-outline-primary pull-right" type="submit">Envoyer</button>
 					</form>
@@ -215,4 +204,5 @@
 </div>
 
 	</section>
+	@include('sweetalert::alert')
 @stop

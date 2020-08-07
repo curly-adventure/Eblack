@@ -19,12 +19,12 @@ class ProduitsController extends Controller
             switch(request()->input('trie')){
                 case 1:
                      $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                                    ->where('categorie_id', request()->categorie)
+                                        ->where('categorie_id', request()->categorie)
                                         ->orderBy('created_at', 'DESC')->paginate(8);
                     break;
                 case 2:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                                    ->where('categorie_id', request()->categorie)
+                                        ->where('categorie_id', request()->categorie)
                                         ->orderBy('prix_vente', 'ASC')->paginate(8);
                     break;
                 case 3:
@@ -182,5 +182,8 @@ class ProduitsController extends Controller
             );
         }
         return view('produits.index', compact('products', 'titre', 'lien'));
+    }
+    public function personnalisable(){
+        return view('produits.personnalisable');
     }
 }

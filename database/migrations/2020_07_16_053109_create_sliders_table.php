@@ -18,6 +18,7 @@ class CreateSlidersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('categorie_id')->nullable();
             $table->bigInteger('sous_categorie_id')->nullable();
+            $table->bigInteger('produit_id')->nullable();
             $table->string('titre');
             $table->longText('image');
             $table->softDeletes();

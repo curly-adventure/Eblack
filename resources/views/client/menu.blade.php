@@ -15,17 +15,26 @@
     }
   </style>
 <!-- AFFICHAGE ORDI-->
+@php
+    
+@endphp
 <div class="card col-3 d-none d-lg-block" style="">
     <div class="card-body">
         <button id="button" > 
-          <a class="" href="{{route('home')}}"><i class="fas fa-user mr-4" ></i>votre compte </a>
+          <a class="" href="{{route('home')}}"><i class="fas fa-user mr-2" ></i>Votre compte </a>
         </button>
         <button id="button">
-          <a href="{{route('client.commandes')}}" class=""><i class="fas fa-shopping-basket mr-4"></i>Vos commandes</a>
+          <a href="{{route('client.commandes')}}" class=""><i class="fas fa-shopping-basket mr-2"></i>Vos commandes</a>
         </button>
         <button id="button">
-          <a href="{{route('wishlist.show')}}"><i class="fas fa-heart mr-4" ></i> favoris</a>
-        </button> <hr>
+          <a href="{{route('wishlist.show')}}"><i class="fas fa-heart mr-2" ></i>Favoris</a>
+        </button>
+        <button id="button">
+          <a href="#"><i class="fas fa-comment " ></i>Commentaire en attente 
+            (<span style="color: red">0</span>)
+          </a>
+        </button>
+         <hr>
         <button id="button">
           <a href="{{route('client.change_passe')}}" style="font-size: 18px; color:#002687;">modifier votre mot de passe</a>
         </button> <hr>

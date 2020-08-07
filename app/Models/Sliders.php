@@ -49,6 +49,10 @@ class Sliders extends Model
     {
         return $this->belongsTo('App\Models\Souscategorie','sous_categorie_id');
     }
+    public function produit()
+    {
+        return $this->belongsTo('App\Models\Produit','produit_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

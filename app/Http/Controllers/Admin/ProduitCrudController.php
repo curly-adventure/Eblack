@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ProduitRequest;
+use App\Models\Marge;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -51,14 +52,14 @@ class ProduitCrudController extends CrudController
             [
                 'name'  => 'prix_vente',
                 'type'  => 'number',
-                'label' => 'prix_vente'
+                'label' => 'prix de vente'
             ]
         );
         $this->crud->addColumn(
             [
                 'name'  => 'quantite',
                 'type'  => 'number',
-                'label' => 'qte'
+                'label' => 'qantite'
             ]
         );
     }
@@ -108,7 +109,7 @@ class ProduitCrudController extends CrudController
                 'class' => 'form-group col-md-6'
             ],
         ]);
-
+        
         $this->crud->addField(
             [   // Browse
                 'label' => "image(s)",
@@ -118,13 +119,33 @@ class ProduitCrudController extends CrudController
 
             ]
         );
+        
         $this->crud->addField(
             [
                 'name'  => 'nom',
                 'type'  => 'text',
                 'label' => 'nom du produit',
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-6'
+                ],
             ]
         );
+        $this->crud->addField(
+            [
+                'name'  => 'quantite',
+                'type'  => 'number',
+                'label' => 'quantité disponible',
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-6'
+                ],
+            ]
+        );
+        $this->crud->addField([
+            'name'  => 'personnalisable',
+            'type'  => 'checkbox',
+            'label' => 'personnalisable',
+            
+        ]);
         $this->crud->addField([
             'name'  => 'description',
             'type'  => 'wysiwyg',
@@ -145,35 +166,42 @@ class ProduitCrudController extends CrudController
                 'name'  => 'prix_vente',
                 'type'  => 'text',
                 'label' => 'prix de vente',
+                'type'=>'hidden',
                 'wrapperAttributes' => [
-                    'class' => 'form-group col-md-6'
+                    'class' => 'form-group col-md-6 '
                 ],
             ]
         );
         $this->crud->addField(
             [
-                'name'  => 'fake_percent',
+                'name'  => 'faux_percent',
                 'type'  => 'number',
                 'label' => 'faux pourcentage de reduction',
                 'wrapperAttributes' => [
+                    'readonly',
                     'class' => 'form-group col-md-6'
                 ],
             ]
         );
         $this->crud->addField(
             [
-                'name'  => 'quantite',
+                'name'  => 'vrai_percent',
                 'type'  => 'number',
-                'label' => 'quantité disponible',
+                'label' => 'vrai pourcentage de reduction',
                 'wrapperAttributes' => [
                     'class' => 'form-group col-md-6'
                 ],
             ]
         );
+        
+        $mtn=request()->input('prix_achat');
+        $prix_vente=Marge::prix_vente($mtn);
+        request()->merge(array('prix_vente'=>$prix_vente));
     }
 
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+        
     }
 }

@@ -70,18 +70,16 @@
 					<form action="{{ route('updateOrderStatus') }}" method="POST">
 						{!! csrf_field() !!}
 						<input type="hidden" name="order_id" value="{{ $order->id }}">
-
+						<input type="hidden" name="orderStatus" value="{{$order->status->id}}">
 						<div class="form-group">
 							<select name="status_id" id="status_id" class="select2_field" style="width: 100%">
 								@foreach($orderStatuses as $orderStatus)
-									
 									<option value="{{ $orderStatus->id }}"
 										@if ($orderStatus->nom==$order->status->nom) selected @endif
 										>{{ $orderStatus->nom }}</option>
 								@endforeach
 							</select>
 						</div>
-
 						<button type="submit" class="btn btn-primary">{{ "mettre a jour" }}</button>
 					</form>
 					

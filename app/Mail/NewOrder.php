@@ -60,11 +60,15 @@ class NewOrder extends Mailable
         
         $sms = new OrangeSDK($credential);
         $text="Nouvelle commande du client ".auth()->user()->nom."\ncommande n°".$this->order->num_achat."\nmontant :".$this->order->montant." Fcfa";
-        $response = $sms->message($text)
-             ->from(22588364403)
-             ->as('Sminth')
-             ->to(22588364403)
-             ->send();
+        try {
+            $response = $sms->message($text)
+            ->from(22588364403)
+            ->as('Eblack')
+            ->to(22588364403)
+            ->send();
+        } catch (\Throwable $th) {
+            
+        }
 
         return $this ->subject('Nouvelle commande')
                      ->view('mail.neworder', ['user' => auth()->user()]);

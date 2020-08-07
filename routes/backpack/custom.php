@@ -32,4 +32,7 @@ Route::group([
     Route::get('charts/weekly-users', 'Charts\WeeklyUsersChartController@response');
     Route::crud('tarif_livraisons', 'Tarif_livraisonsCrudController');
     Route::crud('sliders', 'SlidersCrudController');
+    Route::get('charts/achats', 'Charts\AchatsChartController@response');
+    Route::get('charts/count', 'Charts\CountChartController@response');
+    Route::crud('marge', 'MargeCrudController');
 }); // this should be the absolute last line of this file

@@ -93,6 +93,14 @@ class SlidersCrudController extends CrudController
                     'attribute' => 'nom',
                     'model' => "App\Models\Souscategorie", 
                 ],
+                [
+                    'name' => 'produit_id',
+                    'type' => 'select',
+                    'label' => "Produit",
+                    'entity' => 'souscategorie',
+                    'attribute' => 'nom',
+                    'model' => "App\Models\Produit", 
+                ],
             ]);
             
     }

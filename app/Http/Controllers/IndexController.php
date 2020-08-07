@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Produits;
+use App\Mail\Demande;
 use App\Models\Sliders;
 use Illuminate\Http\Request;
-use App\Produits;
+use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {
@@ -18,6 +20,19 @@ class IndexController extends Controller
         $pop_prod=Produits::inRandomOrder()->take(8)->get();
 
         return view('index',compact('new_prod','pop_prod'));
+    }
+    public function demande(){
+        request()->validate([
+            'nom' => ['required'],
+            'tel' => ['required'],
+            'detail' => ['required'],
+        ]);
+        $nom=request()->input('nom');
+        $tel=request()->input('tel');
+        $detail=request()->input('detail');
+        //dd($nom,$tel,$detail);
+        Mail::to("virtus225one@gmail.com")->send(new Demande($nom,$tel,$detail));
+        return redirect()->back()->with('toast_success','message envoyé !');
     }
     
 }

@@ -32,6 +32,9 @@ class CreateProduitsTable extends Migration
             $table->bigInteger('sous_categorie_id')->unsigned();
             $table->bigInteger('marque_id')->unsigned();
             $table->longText('description');
+            $table->string('faux_percent')->nullable();
+            $table->string('vrai_percent')->nullable();
+            $table->boolean('personnalisable')->default(false);
             $table->boolean('enligne')->default(true);
             $table->softDeletes();
             $table->timestamps();

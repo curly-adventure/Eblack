@@ -33,7 +33,7 @@
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" style="color: white;">DEVENEZ VENDEUR</a>
+              <a href="{{route('enregistrement')}}" style="color: white;">DEVENEZ VENDEUR</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -97,26 +97,20 @@
             <section class="footer-top padding-y-lg text-white" style="padding:0px ;">
                 <div class="" style="width:50%;display:inline-block">
                     <a class="btn ">CONTACTER-NOUS</a>
-                    <a class="btn ">DEVENEZ VENDEUR</a>
+                    <a class="btn" href="{{route('enregistrement')}}">DEVENEZ VENDEUR</a>
                 </div>
                 
                 <div class="left" style="width:40%;display:inline-block">
-                    <a class="btn " > POINT DE VENTE</a>
-                    <a class="btn " >AIDE</a>
+                    <a class="btn" > POINT DE VENTE</a>
+                    <a class="btn" >AIDE</a>
                 </div> 
                 <hr>
             </section>
-        
-            
+
             <!--style="border-top:1px solid grey ;margin:0;padding: 0;"-->
             <section class="footer-bottom text-center"  style="padding-bottom: 1px">
-            
                 <p class="text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eblack ci, Tous droits réservés ! </font></font></p>
-                <p class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fait avec <i style="color:red"class="fas fa-heart" aria-hidden="true"></i> par <a href="" target="_blank">kingscode teams</a></font></font></p>
-                    
+                <p class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fait avec <i style="color:red"class="fas fa-heart" aria-hidden="true"></i> par <a href="" target="_blank">kingscode teams</a></font></font></p>        
             </section>
         </div>
-        
-    </footer>
-    <!-- ========================= FOOTER END // ========================= -->
-    
+    </footer>    

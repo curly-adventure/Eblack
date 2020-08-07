@@ -26,13 +26,12 @@ class SlidersRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'titre' => 'required|min:5|max:255',
+            'image' => 'required',
         ];
     }
-
     /**
      * Get the validation attributes that apply to the request.
-     *
      * @return array
      */
     public function attributes()

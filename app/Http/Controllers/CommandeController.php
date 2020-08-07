@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\AchatProduit;
 use App\Commande;
+use App\AchatProduit;
+use App\Mail\AlertOrderCancel;
 use App\StatusCommande;
+use App\Mail\OrderCancelled;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CommandeController extends Controller
 {
@@ -95,9 +98,15 @@ class CommandeController extends Controller
             'updated_at' => now(),
             'deleted_at' => now()
             ]);
+        $client = Auth::user();
+        $adresse = \App\Adresse::where('client_id', $client->id)->first();
+        $commune = \App\Commune::where('id', $adresse->commune_id)->first();
+        $ville_id = \App\Ville::where('id', $commune->ville_id)->first()->id;
+        Mail::to($client->email)->send(new OrderCancelled($commande->id,$adresse->id,$ville_id,$commune->id,$commande->soustotal));
+        Mail::to("virtus225one@gmail.com")->send(new AlertOrderCancel($commande->id));
+        toast("commande annuler","success");
         $commande = Auth::user()->commandes();
-            toast("commande annuler","success");
-        return view('client.commandes.index', compact('commande'));
+        return redirect()->route('client.commandes', compact('commande'));
     }
 
     /**

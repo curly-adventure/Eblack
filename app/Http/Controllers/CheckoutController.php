@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use id;
 use DateTime;
-use App\Models\Achats;
-
+use App\Achats;
+use App\Commande;
 use App\Produits;
 use Carbon\Carbon;
 use Stripe\Stripe;
@@ -13,6 +13,7 @@ use App\Mail\Ordered;
 use App\Mail\NewOrder;
 use App\Models\Produit;
 use Stripe\PaymentIntent;
+use App\Mail\ProduitAlert;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Models\Tarif_livraisons;
@@ -124,6 +125,11 @@ class CheckoutController extends Controller
                 Alert::error('Nous sommes désolés mais le produit "' . $row->name . '" ne dispose pas d\'un stock suffisant pour satisfaire votre demande. Il ne nous reste plus que ' . $product->quantite . ' exemplaires disponibles.');
                 return back();
             }
+            if($product->quantite <= 5) {
+             
+                Mail::to("virtus225one@gmail.com")->send(new ProduitAlert($product->id));
+                 
+            }
         }
         $methode = request()->input('methode');
         $client = Auth::user();
@@ -139,6 +145,7 @@ class CheckoutController extends Controller
             DB::table('achats')->insert([
                 'num_achat' => $num_achat,
                 'montant' => floatval($total),
+                'soustotal'=>floatval($soustotal),
                 'quantite' => Cart::count() ,
                 'client_id' => $client->id,
                 'adresse_id' => $adresse->id,
@@ -158,8 +165,10 @@ class CheckoutController extends Controller
             }
             $this->updateStock();
             Cart::destroy();
+
             //Session::flash('success', 'Votre commande a été traitée avec succès.');
             // Notification à l'administrateur
+            
         Mail::to("virtus225one@gmail.com")->send(new NewOrder($achat_id));       
         
         $commune = \App\Commune::where('id', $adresse->commune_id)->first();
@@ -167,9 +176,7 @@ class CheckoutController extends Controller
 
         // Notification au client
         //$page = Page::whereSlug('conditions-generales-de-vente')->first();
-        Mail::to($client->email)->send(new Ordered($achat_id,$adresse->id,$ville_id,$commune->id,$soustotal));
-
-        }
+        Mail::to($client->email)->send(new Ordered($achat_id,$adresse->id,$ville_id,$commune->id,$soustotal));}
         request()->session()->forget('coupon');
         return view('checkout.merci', ['num' => $num_achat]);
     }

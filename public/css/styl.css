@@ -1,0 +1,53 @@
+
+  .color-preview {
+      border: 1px solid #CCC;
+      margin: 2px;
+      zoom: 1.8;
+      vertical-align: top;
+      display: inline-block;
+      cursor: pointer;
+      overflow: hidden;
+      width: 20px;
+      height: 20px;
+  }
+  .rotate {  
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    /* filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5); */
+    -ms-transform:rotate(90deg);		   
+}		
+.Arial{font-family:"Arial";}
+.Helvetica{font-family:"Helvetica";}
+.MyriadPro{font-family:"Myriad Pro";}
+.Delicious{font-family:"Delicious";}
+.Verdana{font-family:"Verdana";}
+.Georgia{font-family:"Georgia";}
+.Courier{font-family:"Courier";}
+.ComicSansMS{font-family:"Comic Sans MS";}
+.Impact{font-family:"Impact";}
+.Monaco{font-family:"Monaco";}
+.Optima{font-family:"Optima";}
+.HoeflerText{font-family:"Hoefler Text";}
+.Plaster{font-family:"Plaster";}
+.Engagement{font-family:"Engagement";}
+::-webkit-file-upload-button {
+background: red;
+color: white;
+padding: 0.8em;
+width:58%;
+text-transform: uppercase;
+margin-top: 20px;
+}
+#b
+{
+background:Chocolate;
+color:white;
+padding: 0.8em;
+width:60%;
+}	
+#cart li{
+float: right;
+padding-right: 25px;
+font-size: 18px;
+}

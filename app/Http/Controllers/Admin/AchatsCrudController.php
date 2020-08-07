@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Ville;
 use App\Adresse;
+use App\Commune;
 use App\Models\Achats;
 use App\StatusCommande;
+use App\Mail\OrderCancelled;
 use App\Http\Requests\AchatsRequest;
+use App\Mail\OrderEtatChange;
+use App\Models\Clients;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\Request;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -115,10 +122,24 @@ class AchatsCrudController extends CrudController
     }
     public function updateStatus(Request $request)
     {
+        $satusid=$request->input('status_id');
+        if ($satusid!=$request->input('orderStatus')) {
         $this->crud->update($request->input('order_id'), ['status_id' => $request->input('status_id')]);
-
+        $commande=\App\Models\Achats::find($request->input('order_id'));
+        $idstatus=$request->input('status_id');
+        $client =Clients::find($commande->client->id);
+        $adresse = \App\Adresse::where('client_id', $client->id)->first();
+        $commune = \App\Models\Communes::where('id', $adresse->commune_id)->first();
+        $ville_id = \App\Models\Villes::where('id', $commune->ville_id)->first()->id;
+        if ($satusid==2 or $satusid==3 or $satusid==4) {
+        Mail::to($client->email)->send(new OrderEtatChange($idstatus,$commande->id,$adresse->id,$ville_id,$commune->id,$commande->soustotal));
+            
+        }
         Alert::success("status mise à jour")->flash();
-
         return redirect()->back();
+    }
+    else{
+        return redirect()->back();
+    }
     }
 }

@@ -4,21 +4,37 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\ImagesProduit;
+
 class Produits extends Model
 {
-    protected $table='Produits';
-    protected $primaryKey='id';
-   protected $fillable=['quantite'];
-    public function getprice()
+    protected $table = 'Produits';
+    protected $primaryKey = 'id';
+    protected $fillable = ['quantite'];
+
+    public function prix_barre()
     {
-        $prix=$this->prix_vente/1000;
-        return number_format($prix,3,',','');
+        if($this->vrai_percent){
+             return null;
+        }
+        if ($this->faux_percent){
+            $p=$this->faux_percent;
+            return $this->prix_vente / ($p / 100);
+        }
+        return null;
     }
 
-    public function categories(){
+    public function getprice()
+    {
+        $prix = $this->prix_vente / 1000;
+        return number_format($prix, 3, ',', '');
+    }
+
+    public function categories()
+    {
         return $this->belongsToMany('App\Categories');
     }
-    public function sousCategories(){
+    public function sousCategories()
+    {
         return $this->belongsToMany('App\Categories');
     }
     /*

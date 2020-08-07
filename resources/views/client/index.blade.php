@@ -1,3 +1,6 @@
+@section('extra-script')
+<script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
+@endsection
 @extends('layouts.app')
 @section('title')
     mon compte

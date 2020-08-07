@@ -442,7 +442,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="center" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-right:25px;padding-left:25px;word-break:break-word;">
-                      <div style="font-family:Helvetica;font-size:15px;line-height:1;text-align:center;color:#555555;">Eblack, le choix de la qualité</div>
+                      <div style="font-family:Helvetica;font-size:15px;line-height:1;text-align:center;color:#555555;"><a href="http://eblackci.com"> Eblack, le choix de la qualité !</a></div>
                     </td>
                   </tr>
                 </table>

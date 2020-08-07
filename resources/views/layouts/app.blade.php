@@ -13,13 +13,13 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo32.png')}}">
     <!-- jQuery -->
+    
     <script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
     
-   
     <!-- Bootstrap4 files-->
     <script src="{{ asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
     <link href="{{ asset('css/bootstrap-custom.css')}}" rel="stylesheet" type="text/css"/>
-    <!--<link href="css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+    <!--<link href="css/bootstrap.min.css'" rel="stylesheet" type="text/css"/>
     Font awesome 5 -->
     <link href="{{ asset('fonts/fontawesome/css/fontawesome-all.min.css')}}" type="text/css" rel="stylesheet">
     <!-- plugin: fancybox  -->
@@ -41,6 +41,8 @@
     <!-- custom javascript -->
     <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+
+   
 
 </head>
 <body>

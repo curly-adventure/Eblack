@@ -16,6 +16,7 @@ Route::get('produits/{produit}/details', [
   'as' => 'produits.show',
   'uses' => 'ProduitsController@show',
 ]);
+route::get('/produits/personnalisables', 'ProduitsController@personnalisable')->name('produits.personnalisable');
 
 
 /* route panier*/
@@ -44,7 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
   //Route::post("/paiement/index","CheckoutController@store")->name("paiement.store");
   Route::get("/paiement/merci", "CheckoutController@thankyou")->name("paiement.thankyou");
 });
-
+Route::post('/client/demande', 'IndexController@demande')->name('client.demande');
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/client/index', 'HomeController@index')->name('home');
@@ -65,7 +66,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/enregistrement',function(){
 return view('forms');
-});
+})->name('enregistrement');
+
 /*route pour les lien inexistant*/
 Route::any('{catchall}', function () {
   return 'Cette page n\'existe pas !';

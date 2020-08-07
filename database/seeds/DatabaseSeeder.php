@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TarifLivraisonsTableSeeder::class);
         $this->call(SlidersTableSeeder::class);
         
+        $this->call(MargeTableSeeder::class);
     }
 }

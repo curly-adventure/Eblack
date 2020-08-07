@@ -25,6 +25,9 @@ class ProduitRequest extends FormRequest
      */
     public function rules()
     {
+        //$input=array_map('trim',$this->all());
+        //$this->input['prix_vente']="40000";
+        
         return [
             'nom' => 'required|min:5|max:255',
             'prix_vente' => 'required',
@@ -33,8 +36,12 @@ class ProduitRequest extends FormRequest
             'images' => 'required',
             'quantite' => 'required'
         ];
+        
     }
 
+    public function formatInput(){
+        
+    }
     /**
      * Get the validation attributes that apply to the request.
      *

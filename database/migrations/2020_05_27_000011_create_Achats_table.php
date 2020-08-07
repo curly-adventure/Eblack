@@ -25,6 +25,7 @@ class CreateAchatsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->integer('num_achat');
             $table->integer('montant');
+            $table->integer('soustotal')->nullable();
             $table->integer('quantite');
             $table->bigInteger('client_id')->unsigned();
             $table->bigInteger('adresse_id')->unsigned();

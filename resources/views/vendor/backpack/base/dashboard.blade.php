@@ -68,131 +68,46 @@
 	  'content'      => 'Le commerce est l\'art d\'abuser du besoin ou du desir que quelqu\'un a de quelque chose.\n(Frères Goncourt)' ,
 	  'close_button' => true, // show close button or not
   ];*/
-
-  Widget::add([ 
+  Widget::add()->to('before_content')->type('div')->class('row')->content([
+  Widget::make([ 
     'type'       => 'chart',
     'controller' => \App\Http\Controllers\Admin\Charts\WeeklyUsersChartController::class,
-
+	
     // OPTIONALS
 
-    // 'class'   => 'card mb-2',
-    // 'wrapper' => ['class'=> 'col-md-6'] ,
-    // 'content' => [
-         // 'header' => 'New Users', 
-         // 'body'   => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>',
-    // ],
+    'class'   => 'card mb-2',
+    'wrapper' => ['class'=> 'col-md-6'] ,
+    'content' => [
+         'header' => 'NOUVELLES ENTREES DU MOIS', 
+         'body'   => 'Ici s\'affiche le nombre de clients inscrits et le nombre de produits achetés sur les 30 dernier jour <br>',
+    ],
+]),
+Widget::make([ 
+    'type'       => 'chart',
+    'controller' => \App\Http\Controllers\Admin\Charts\AchatsChartController::class,
+	
+    // OPTIONALS
+
+    'class'   => 'card mb-2',
+    'wrapper' => ['class'=> 'col-md-6'] ,
+    'content' => [
+         'header' => 'PRODUITS ACHETES ', 
+         'body'   => 'Ici s\'affiche le nombre de produits achetés par mois <br>',
+    ],
+]),
 ]);
-   /*$widgets['before_content'][] = [
-	  'type' => 'div',
-	  'class' => 'row',
-	  'content' => [ // widgets 
-		  	[ 
+ widget::add(
+	[ 
 		        'type' => 'chart',
 		        'wrapperClass' => 'col-md-6',
 		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\WeeklyUsersChartController::class,,
+		        'controller' => \App\Http\Controllers\Admin\Charts\CountChartController::class,
 				'content' => [
-				    'header' => 'New Users Past 7 Days', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-					
-		    	]
-	    	],
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-6',
-		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\NewEntriesChartController::class,
-				'content' => [
-				    'header' => 'New Entries', // optional
+				    'header' => 'EFFECTIFS', // optional
 				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
 		    	]
 	    	],
-    	]
-	];
-    /*$widgets['after_content'][] = [
-	  'type' => 'div',
-	  'class' => 'row',
-	  'content' => [ // widgets 
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-4',
-		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\Pies\ChartjsPieController::class,
-				'content' => [
-				    'header' => 'Pie Chart - Chartjs', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-		    	]
-	    	],
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-4',
-		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\Pies\EchartsPieController::class,
-				'content' => [
-				    'header' => 'Pie Chart - Echarts', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-		    	]
-	    	],
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-4',
-		        // 'class' => 'col-md-6',
-				'controller' => \App\Http\Controllers\Admin\Charts\Pies\HighchartsPieController::class,
-				'content' => [
-				    'header' => 'Pie Chart - Highcharts', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-		    	]
-	    	],
-	  ]
-	];
-    $widgets['after_content'][] = [
-	  'type' => 'div',
-	  'class' => 'row',
-	  'content' => [ // widgets 
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-6',
-		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\Lines\ChartjsLineChartController::class,
-				'content' => [
-				    'header' => 'Line Chart - Chartjs', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-		    	]
-	    	],
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-6',
-		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\Lines\EchartsLineChartController::class,
-				'content' => [
-				    'header' => 'Line Chart - Echarts', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-		    	]
-	    	],
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-6',
-		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\Lines\HighchartsLineChartController::class,
-				'content' => [
-				    'header' => 'Line Chart - Highcharts', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-		    	]
-	    	],
-	    	[ 
-		        'type' => 'chart',
-		        'wrapperClass' => 'col-md-6',
-		        // 'class' => 'col-md-6',
-		        'controller' => \App\Http\Controllers\Admin\Charts\Lines\FrappeLineChartController::class,
-				'content' => [
-				    'header' => 'Line Chart -
-        Frappe', // optional
-				    // 'body' => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>', // optional
-		    	]
-	    	],
-	    	
-    	]
-	];*/
+ )
 @endphp
 
 @section('content')
