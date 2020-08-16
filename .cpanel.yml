@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/eblackci/public_html/
+    - export DEPLOYPATH=/home6/eblackci/repositories/
     - /bin/cp -R * $DEPLOYPATH
