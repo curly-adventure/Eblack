@@ -30,7 +30,7 @@ class CreateAdresseTable extends Migration
             $table->timestamps();
 
             $table->foreign('commune_id')
-                ->references('id')->on('Communes');
+                ->references('id')->on('Communes')->onDelete('cascade');
         });
     }
 

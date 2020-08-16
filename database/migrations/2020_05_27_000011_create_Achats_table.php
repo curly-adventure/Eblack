@@ -38,9 +38,9 @@ class CreateAchatsTable extends Migration
 
             
             $table->foreign('adresse_id')
-                ->references('id')->on('Adresses');
+                ->references('id')->on('Adresses')->onDelete('cascade');
             $table->foreign('client_id')
-                ->references('id')->on('Clients');
+                ->references('id')->on('Clients')->onDelete('cascade');
             //$table->foreign('status_id')
                // ->references('id')->on('status_commandes');
         });

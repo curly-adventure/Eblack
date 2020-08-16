@@ -36,5 +36,7 @@ class DatabaseSeeder extends Seeder
         
         $this->call(MargeTableSeeder::class);
         $this->call(PromotionTableSeeder::class);
+        $this->call(CommandeTableSeeder::class);
+        $this->call(RatingsTableSeeder::class);
     }
 }

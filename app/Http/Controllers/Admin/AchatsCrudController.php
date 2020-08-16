@@ -102,7 +102,7 @@ class AchatsCrudController extends CrudController
     {
         // Get authenticated user
         $user = auth()->user();
-        $this->crud->denyAccess(['create', 'update', 'reorder', 'delete']);
+        $this->crud->denyAccess(['create', 'update', 'reorder']);
         // Deny all accesses
         //$this->crud->denyAccess(['create', 'delete', 'update']);
         

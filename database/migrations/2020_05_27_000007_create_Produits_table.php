@@ -41,13 +41,13 @@ class CreateProduitsTable extends Migration
             $table->timestamps();
 
             $table->foreign('categorie_id')
-                ->references('id')->on('Categorie');
+                ->references('id')->on('Categorie')->onDelete('cascade');
 
             $table->foreign('sous_categorie_id')
-                ->references('id')->on('sousCategorie');
+                ->references('id')->on('sousCategorie')->onDelete('cascade');
 
             $table->foreign('marque_id')
-                ->references('id')->on('Marque');
+                ->references('id')->on('Marque')->onDelete('cascade');
         });
     }
 

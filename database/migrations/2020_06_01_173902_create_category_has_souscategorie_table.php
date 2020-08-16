@@ -20,10 +20,10 @@ class CreateCategoryHasSouscategorieTable extends Migration
             $table->timestamps();
 
             $table->foreign('Categorie_id')
-                ->references('id')->on('Categorie');
+                ->references('id')->on('Categorie')->onDelete('cascade');
 
             $table->foreign('sousCategorie_id')
-                ->references('id')->on('sousCategorie');
+                ->references('id')->on('sousCategorie')->onDelete('cascade');
         
         });
     }

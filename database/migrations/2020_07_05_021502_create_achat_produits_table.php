@@ -24,9 +24,9 @@ class CreateAchatProduitsTable extends Migration
             $table->timestamps();
 
             $table->foreign('achat_id')
-                ->references('id')->on('Achats');
+                ->references('id')->on('Achats')->onDelete('cascade');
             $table->foreign('produit_id')
-                ->references('id')->on('Produits');
+                ->references('id')->on('Produits')->onDelete('cascade');
         });
     }
 

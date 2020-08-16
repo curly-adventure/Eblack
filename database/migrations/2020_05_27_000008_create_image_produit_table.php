@@ -29,7 +29,7 @@ class CreateImageProduitTable extends Migration
             $table->timestamps();
 
             $table->foreign('Produits_id')
-                ->references('id')->on('Produits');
+                ->references('id')->on('Produits')->onDelete('cascade');
         });
     }
 

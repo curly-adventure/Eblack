@@ -30,7 +30,7 @@ class Tarif_livraisons extends Model
     */
     public static function frais($id){
         $tarif=Tarif_livraisons::where('commune_id',$id)->first();
-        $tarif= $tarif?$tarif->prix : 500 ;
+        $tarif= $tarif?$tarif->prix : 1500 ;
         return $tarif;
     }
     /*

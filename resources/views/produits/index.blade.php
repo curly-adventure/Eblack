@@ -84,7 +84,7 @@
 				</select>
 				<input type="hidden" name="categorie" value="{{$categorie_id}}">
 				<input type="hidden" name="souscategorie" value="{{$souscategorie_id}}">
-				<input type="hidden" name="personnalisable" value="1">
+				
 			</form>
 			</div>
 			</div>
@@ -163,17 +163,14 @@
 		</div>
 	@endforeach
 
-
-	<nav class="mb-4" aria-label="Page navigation sample">
+	</div><!-- container // -->
+	<nav class="mb-4" aria-label="Page navigation">
 		<ul class="pagination">
 		 <!-- <li class="page-item disabled"><a class="page-link" href="#">Precedant</a></li>-->
 		  {{ $products->appends(request()->input())->links() }}
 		  <!--<li class="page-item"><a class="page-link" href="#">suivant</a></li>-->
 		</ul>
 	  </nav>
-
-	  
-	</div><!-- container // -->
 	<div id="html">
 	<div class="box text-center">
 		<p>As-tu trouvé ce que tu cherchais？</p>

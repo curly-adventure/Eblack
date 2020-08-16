@@ -16,12 +16,12 @@ return [
     'google' => [
         'client_id' => '1000003890082-el0k1pue5v7r1d655rar78ufq82tf3ri.apps.googleusercontent.com',
         'client_secret' => 'Yc8hvhxSC0zbwDY1a_WeAMnM',
-        'redirect' => 'http://4155d62251b7.ngrok.io/callback/google',
+        'redirect' => 'http://eblackci.com/callback/google',
       ],
       'facebook' => [
         'client_id' => '688423352003130',
         'client_secret' => '9de3de152549fd914bda293045b21104',
-        'redirect' => 'https://4155d62251b7.ngrok.io/callback/facebook',
+        'redirect' => 'https://eblackci.com/callback/facebook',
       ],
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),

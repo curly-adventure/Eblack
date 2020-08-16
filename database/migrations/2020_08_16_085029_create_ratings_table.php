@@ -19,7 +19,7 @@ class CreateRatingsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->index('rateable_id');
             $table->index('rateable_type');
-            $table->foreign('user_id')->references('id')->on('clients');
+            $table->foreign('user_id')->references('id')->on('clients')->onDelete('cascade');;
         });
     }
 

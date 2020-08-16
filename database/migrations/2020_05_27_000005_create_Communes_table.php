@@ -29,7 +29,7 @@ class CreateCommunesTable extends Migration
             $table->timestamps();
 
             $table->foreign('ville_id')
-                ->references('id')->on('Villes');
+                ->references('id')->on('Villes')->onDelete('cascade');
         });
     }
 

@@ -33,6 +33,12 @@ class ProduitsController extends Controller
                         ->where('categorie_id', request()->categorie)
                         ->orderBy('prix_vente', 'DESC')->paginate(8);
                     break;
+                case 4:
+                    $products = Produits::where('sous_categorie_id', request()->souscategorie)
+                        ->where('categorie_id', request()->categorie)
+                        ->where('personnalisable', 1)
+                        ->paginate(8);
+                    break;
                 default:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
                         ->where('categorie_id', request()->categorie)
@@ -85,6 +91,11 @@ class ProduitsController extends Controller
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
                         ->orderBy('prix_vente', 'DESC')->paginate(8);
                     break;
+                case 4:
+                    $products = Produits::where('sous_categorie_id', request()->categorie)
+                        ->where('personnalisable', 1)
+                        ->paginate(8);
+                    break;
                 default:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
                         ->paginate(8);
@@ -121,10 +132,6 @@ class ProduitsController extends Controller
 
             $titre = "Personnalisable";
             $lien = array($titre => "produits.index");
-        } elseif (request()->personnalisable) {
-
-            $titre = "personnalisable";
-            $lien = array($titre => "produits.index");
         } else {
             switch (request()->input('trie')) {
                 case 1:
@@ -135,6 +142,11 @@ class ProduitsController extends Controller
                     break;
                 case 3:
                     $products = Produits::orderBy('prix_vente', 'DESC')->paginate(8);
+                    break;
+                case 4:
+                    $products = Produits::orderBy('prix_vente', 'DESC')
+                        ->where('personnalisable', 1)
+                        ->paginate(8);
                     break;
                 default:
                     $products = Produits::paginate(8);

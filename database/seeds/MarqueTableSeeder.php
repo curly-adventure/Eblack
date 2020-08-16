@@ -14,9 +14,9 @@ class MarqueTableSeeder extends Seeder
     {
         
 
-        \DB::table('Marque')->delete();
+        \DB::table('marque')->delete();
         
-        \DB::table('Marque')->insert(array (
+        \DB::table('marque')->insert(array (
             0 => 
             array (
                 'id' => 1,
@@ -29,11 +29,20 @@ class MarqueTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'nom' => 'nike',
+                'nom' => 'Eshop',
                 'logo' => NULL,
                 'deleted_at' => NULL,
                 'created_at' => '2020-06-05 21:03:59',
-                'updated_at' => '2020-06-05 21:03:59',
+                'updated_at' => '2020-08-16 12:04:30',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'nom' => 'buzz',
+                'logo' => NULL,
+                'deleted_at' => NULL,
+                'created_at' => '2020-08-16 12:05:02',
+                'updated_at' => '2020-08-16 12:05:02',
             ),
         ));
         
