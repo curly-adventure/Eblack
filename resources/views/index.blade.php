@@ -39,9 +39,13 @@
         <li class="col-6 col-md-3">
             <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
-               
-                 <!--<span class="badge-new float-right"> NEW </span>-->
+                @if($produit->vrai_percent or $produit->faux_percent)
+                <span class="badge-new"> 
+                    @php $v=$produit->vrai_percent??$produit->faux_percent;echo "-$v%" @endphp
+                   </span>
+                   @endif
                  @php
+
                  $liens=$produit->images; $lien=json_decode($liens);
                  $img="img.jpg";
                  if ($lien) {
@@ -69,6 +73,11 @@
             
             <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                 <div class="card-body align-items-center">
+                    @if($produit->vrai_percent or $produit->faux_percent)
+                    <span class="badge-new"> 
+                        @php $v=$produit->vrai_percent??$produit->faux_percent;echo "-$v%" @endphp
+                       </span>
+                       @endif
                     @php
                     $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
                     if ($lien) { $img=$lien[0]; } 
@@ -124,6 +133,11 @@
                 <li class="col-6 col-md-3">
                     <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                         <div class="card-body align-items-center">
+                            @if($produit->vrai_percent or $produit->faux_percent)
+                 <span class="badge-new"> 
+                     @php $v=$produit->vrai_percent??$produit->faux_percent;echo "-$v%" @endphp
+                    </span>
+                @endif
                             @php
                             $liens=$produit->images; $lien=json_decode($liens);
                             $img="img.jpg";
@@ -151,6 +165,12 @@
                 <li class="col-6 col-md-3">
                     <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                         <div class="card-body align-items-center">
+                            @if($produit->vrai_percent or $produit->faux_percent)
+                 <span class="badge-new"> 
+                     @php $v=$produit->vrai_percent??$produit->faux_percent;echo "-$v%" @endphp
+                    </span>
+                @endif
+                <!--<span class="badge-new"> NEW </span>-->
                             @php
                             $liens=$produit->images; $lien=json_decode($liens);
                             $img="img.jpg";

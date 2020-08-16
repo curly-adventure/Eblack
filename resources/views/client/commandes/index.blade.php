@@ -30,7 +30,7 @@
                     <span>{{getprice($item->montant)}} Fcfa</span>
                   </div>
                   <div class="mb-2">
-                    <span style="font-weight: bold">status : </span>
+                    <span style="font-weight: bold">statut : </span>
                     @php
                     switch($status->id){
                       case 1 : $nom= "En attente de confirmation";$color='rgb(58, 230, 59)'; break;

@@ -29,9 +29,10 @@ class ClientsTableSeeder extends Seeder
                 'provider_id' => NULL,
                 'Adresse_id' => 3,
                 'remember_token' => NULL,
+                'last_seen' => '2020-08-07 18:57:24',
                 'deleted_at' => NULL,
                 'created_at' => '2020-07-06 19:05:24',
-                'updated_at' => '2020-07-06 19:05:24',
+                'updated_at' => '2020-08-07 18:57:24',
             ),
             1 => 
             array (
@@ -44,10 +45,11 @@ class ClientsTableSeeder extends Seeder
                 'provider' => NULL,
                 'provider_id' => NULL,
                 'Adresse_id' => NULL,
-                'remember_token' => NULL,
+                'remember_token' => 'FdHuRrhK3u80eOZlie7dI8uxrZNsm8AIC7RtSkwPSF1B38cCOJkXO9DMPvDh',
+                'last_seen' => '2020-08-09 23:32:07',
                 'deleted_at' => NULL,
                 'created_at' => '2020-07-06 19:07:29',
-                'updated_at' => '2020-07-16 18:24:34',
+                'updated_at' => '2020-08-09 23:32:07',
             ),
             2 => 
             array (
@@ -61,9 +63,27 @@ class ClientsTableSeeder extends Seeder
                 'provider_id' => NULL,
                 'Adresse_id' => NULL,
                 'remember_token' => '9BNL3DI2a8ExYayQ8lREiZUpgfiQNFlFOGmkTFXhyRfXgxVhEsxb5ty8CiZF',
+                'last_seen' => NULL,
                 'deleted_at' => NULL,
                 'created_at' => '2020-07-16 18:31:04',
                 'updated_at' => '2020-07-20 11:57:59',
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'nom' => 'Tano',
+                'prenom' => 'junior',
+                'email' => 'juniortano035@gmail.com',
+                'numero' => '67651682',
+                'motdepasse' => '$2y$10$k78WR6qPRnrgyQxEn707BeToIXvr58y1YXCvVE8eHgVzU1x26tggy',
+                'provider' => NULL,
+                'provider_id' => NULL,
+                'Adresse_id' => NULL,
+                'remember_token' => NULL,
+                'last_seen' => '2020-08-10 09:43:01',
+                'deleted_at' => NULL,
+                'created_at' => '2020-08-10 08:57:32',
+                'updated_at' => '2020-08-10 09:43:01',
             ),
         ));
         

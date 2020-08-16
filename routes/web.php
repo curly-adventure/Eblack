@@ -1,5 +1,8 @@
 <?php
 
+use App\Produits;
+use GuzzleHttp\Psr7\Request;
+use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +19,21 @@ Route::get('produits/{produit}/details', [
   'as' => 'produits.show',
   'uses' => 'ProduitsController@show',
 ]);
+Route::get('produits/{produit}/personnalise','ProduitsController@personnalise')->name('produits.personnalise');
+Route::get('produits/{produit}/annuler',function($produit){
+  return redirect()->route('produits.show',[$produit]);
+})->name('produits.personnalise.annuler');
 route::get('/produits/personnalisables', 'ProduitsController@personnalisable')->name('produits.personnalisable');
 
+route::get('/produit/{produit}/rate{value}',function (Produits $produit,$value )
+{
+if(Auth::user()){
+   $produit->rateOnce($value);
+   return back();}
+else{
+  return back()->with("toast_error","vous devez etre connecté pour donner une note");
+}
+})->name('produit.rate');
 
 /* route panier*/
 Route::get('/panier', "PanierController@index")->name('panier.index');

@@ -32,3 +32,4 @@
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('marge') }}'><i class='nav-icon la la-question'></i> MARGES</a></li>
     </ul>
 </li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('promotion') }}'><i class='nav-icon la la-question'></i> PROMOTION</a></li>

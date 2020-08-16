@@ -245,6 +245,11 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word;">
+                      <div style="font-family:Helvetica;font-size:18px;line-height:1;text-align:left;color:#FFFFFF;">{{ $nbre_personnaliser }} produit(s) personnalisé(s)</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word;">
                       <div style="font-family:Helvetica;font-size:18px;line-height:1;text-align:left;color:#FFFFFF;">Total : {{ $order->montant }} Fcfa</div>
                     </td>
                   </tr>

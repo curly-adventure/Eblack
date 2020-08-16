@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use id;
-use DateTime;
+
 use App\Achats;
 use App\Commande;
 use App\Produits;
@@ -153,6 +152,7 @@ class CheckoutController extends Controller
                 "created_at" => Carbon::now(), "updated_at" => now()
             ], true);
             $achat_id = Commande::where('num_achat', $num_achat)->first()->id;
+            $nbre_personnaliser=0;
             foreach (Cart::content() as $produit) {
                 DB::table('achat_produits')->insert([
                     'achat_id' => $achat_id,
@@ -162,23 +162,26 @@ class CheckoutController extends Controller
                     'quantite' => $produit->qty,
                     "created_at" => Carbon::now(), "updated_at" => now()
                 ]);
+                if($produit->model->personnalisable){
+                    
+                    if(DB::select("select * from produit_personnaliser where produit_id = ?",[$produit->model->id])){
+                        $nbre_personnaliser+=1;
+                    }
+                }
+                
             }
             $this->updateStock();
             Cart::destroy();
 
-            //Session::flash('success', 'Votre commande a été traitée avec succès.');
-            // Notification à l'administrateur
-            
-        Mail::to("virtus225one@gmail.com")->send(new NewOrder($achat_id));       
+        
+        Mail::to("virtus225one@gmail.com")->send(new NewOrder($achat_id,$nbre_personnaliser));       
         
         $commune = \App\Commune::where('id', $adresse->commune_id)->first();
         $ville_id = \App\Ville::where('id', $commune->ville_id)->first()->id;
 
-        // Notification au client
-        //$page = Page::whereSlug('conditions-generales-de-vente')->first();
         Mail::to($client->email)->send(new Ordered($achat_id,$adresse->id,$ville_id,$commune->id,$soustotal));}
         request()->session()->forget('coupon');
-        return view('checkout.merci', ['num' => $num_achat]);
+        return view('checkout.merci', ['num' => $num_achat] );
     }
 
     public function updateStock(){

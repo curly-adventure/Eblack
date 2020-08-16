@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SlidersRequest extends FormRequest
+class PromotionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,13 +27,12 @@ class SlidersRequest extends FormRequest
     {
         return [
             'titre' => 'required|min:3|max:255',
-            //'image' => 'required',
+            'marque_id' => 'required',
+            'percent' => 'required',
         ];
     }
-    /**
-     * Get the validation attributes that apply to the request.
-     * @return array
-     */
+
+   
     public function attributes()
     {
         return [

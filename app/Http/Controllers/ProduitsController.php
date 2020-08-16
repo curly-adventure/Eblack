@@ -7,6 +7,7 @@ use App\Produits;
 use App\SousCategories;
 use App\Categories;
 use App\Models\Marque;
+use App\Models\Produit;
 
 class ProduitsController extends Controller
 {
@@ -16,26 +17,26 @@ class ProduitsController extends Controller
         //dd(request()->categorie);
         //dd(url()->full());
         if (request()->souscategorie and request()->categorie) {
-            switch(request()->input('trie')){
+            switch (request()->input('trie')) {
                 case 1:
-                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->where('categorie_id', request()->categorie)
-                                        ->orderBy('created_at', 'DESC')->paginate(8);
+                    $products = Produits::where('sous_categorie_id', request()->souscategorie)
+                        ->where('categorie_id', request()->categorie)
+                        ->orderBy('created_at', 'DESC')->paginate(8);
                     break;
                 case 2:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->where('categorie_id', request()->categorie)
-                                        ->orderBy('prix_vente', 'ASC')->paginate(8);
+                        ->where('categorie_id', request()->categorie)
+                        ->orderBy('prix_vente', 'ASC')->paginate(8);
                     break;
                 case 3:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->where('categorie_id', request()->categorie)
-                                        ->orderBy('prix_vente', 'DESC')->paginate(8);
+                        ->where('categorie_id', request()->categorie)
+                        ->orderBy('prix_vente', 'DESC')->paginate(8);
                     break;
                 default:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->where('categorie_id', request()->categorie)
-                                        ->paginate(8);
+                        ->where('categorie_id', request()->categorie)
+                        ->paginate(8);
                     break;
             }
             $titre = SousCategories::find(request()->souscategorie)->nom;
@@ -43,78 +44,91 @@ class ProduitsController extends Controller
                 Categories::find(request()->categorie)->nom => "produits.index",
                 $titre => "produits.index"
             );
-        } 
-        elseif (request()->categorie) {
+        } elseif (request()->categorie) {
 
-            switch(request()->input('trie')){
+            switch (request()->input('trie')) {
                 case 1:
-                     $products = Produits::where('categorie_id', request()->categorie)
-                                        ->orderBy('created_at', 'DESC')->paginate(8);
+                    $products = Produits::where('categorie_id', request()->categorie)
+                        ->orderBy('created_at', 'DESC')->paginate(8);
                     break;
                 case 2:
                     $products = Produits::where('categorie_id', request()->categorie)
-                                        ->orderBy('prix_vente', 'ASC')->paginate(8);
+                        ->orderBy('prix_vente', 'ASC')->paginate(8);
                     break;
                 case 3:
                     $products = Produits::where('categorie_id', request()->categorie)
-                                        ->orderBy('prix_vente', 'DESC')->paginate(8);
+                        ->orderBy('prix_vente', 'DESC')->paginate(8);
+                    break;
+                case 4:
+                    $products = Produits::where('categorie_id', request()->categorie)
+                        ->where('personnalisable', 1)
+                        ->paginate(8);
                     break;
                 default:
                     $products = Produits::where('categorie_id', request()->categorie)
-                                        ->paginate(8);
+                        ->paginate(8);
                     break;
             }
             $titre = Categories::find(request()->categorie)->nom;
             $lien = array($titre => "produits.index");
-        } 
-        elseif (request()->souscategorie) {
-            switch(request()->input('trie')){
+        } elseif (request()->souscategorie) {
+            switch (request()->input('trie')) {
                 case 1:
-                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->orderBy('created_at', 'DESC')->paginate(8);
+                    $products = Produits::where('sous_categorie_id', request()->souscategorie)
+                        ->orderBy('created_at', 'DESC')->paginate(8);
                     break;
                 case 2:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->orderBy('prix_vente', 'ASC')->paginate(8);
+                        ->orderBy('prix_vente', 'ASC')->paginate(8);
                     break;
                 case 3:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->orderBy('prix_vente', 'DESC')->paginate(8);
+                        ->orderBy('prix_vente', 'DESC')->paginate(8);
                     break;
                 default:
                     $products = Produits::where('sous_categorie_id', request()->souscategorie)
-                                        ->paginate(8);
+                        ->paginate(8);
                     break;
             }
             $titre = Souscategories::find(request()->souscategorie)->nom;
             $lien = array($titre => "produits.index");
-        } 
-        elseif (request()->marque) {
-            switch(request()->input('trie')){
+        } elseif (request()->personnalisable) {
+
+            switch (request()->input('trie')) {
                 case 1:
-                     $products = Produits::where('marque_id', request()->marque)
-                                        ->orderBy('created_at', 'DESC')->paginate(8);
+
+                    $products = Produits::where('personnalisable', 1)
+                        ->orderBy('created_at', 'DESC')->paginate(8);
                     break;
                 case 2:
-                    $products = Produits::where('marque_id', request()->marque)
-                                        ->orderBy('prix_vente', 'ASC')->paginate(8);
+                    $products = Produits::where('personnalisable', 1)
+                        ->orderBy('prix_vente', 'ASC')->paginate(8);
                     break;
                 case 3:
-                    $products = Produits::where('marque_id', request()->marque)
-                                        ->orderBy('prix_vente', 'DESC')->paginate(8);
+                    $products = Produits::where('personnalisable', 1)
+                        ->orderBy('prix_vente', 'DESC')->paginate(8);
+                    break;
+                case 4:
+                    $products = Produits::where('personnalisable', 1)
+                        ->where('personnalisable', 1)
+                        ->paginate(8);
                     break;
                 default:
-                    $products = Produits::where('marque_id', request()->marque)
-                                        ->paginate(8);
+                    $products = Produits::where('personnalisable', 1)
+                        ->paginate(8);
                     break;
             }
-            $titre = Marque::find(request()->marque)->nom;
+
+            $titre = "Personnalisable";
             $lien = array($titre => "produits.index");
-        } 
-        else {
-            switch(request()->input('trie')){
+        } elseif (request()->personnalisable) {
+
+            $titre = "personnalisable";
+            $lien = array($titre => "produits.index");
+        } else {
+            switch (request()->input('trie')) {
                 case 1:
-                     $products = Produits::orderBy('created_at', 'DESC')->paginate(8);
+                    $products = Produits::orderBy('created_at', 'DESC')->paginate(8);
                     break;
                 case 2:
                     $products = Produits::orderBy('prix_vente', 'ASC')->paginate(8);
@@ -147,13 +161,28 @@ class ProduitsController extends Controller
 
         return view('produits.details', compact('produit', 'autres_produits', 'lien', 'stock', 'categorie', 'sous_categorie'));
     }
+    function personnalise(Produits $produit)
+    {
+        $categorie = Categories::find($produit->categorie_id);
+        $sous_categorie = SousCategories::find($produit->sous_categorie_id);
+        $autres_produits = Produits::where('personnalisable', 1)->paginate(10);
+        $stock = $produit->quantite == 0 ? "Indisponible" : "Disponible";
+        $lien = array(
+            "personnalisable" => "produits.index",
+            $produit->nom => "produits.show"
+        );
+        return view('produits.personnalise', compact('produit', 'lien', 'autres_produits', 'stock', 'categorie', 'sous_categorie'));
+    }
+
 
     public function search()
     {
         $q = request()->input('q');
+
         request()->validate([
             'q' => 'required|min:3'
         ]);
+
         $products = Produits::where('nom', 'like', "%$q%")
             ->orWhere('description', 'like', "%$q%")
             ->paginate(8);
@@ -183,7 +212,9 @@ class ProduitsController extends Controller
         }
         return view('produits.index', compact('products', 'titre', 'lien'));
     }
-    public function personnalisable(){
+    public function personnalisable()
+    {
+
         return view('produits.personnalisable');
     }
 }

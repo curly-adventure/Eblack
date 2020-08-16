@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProduitRequest;
 use App\Models\Marge;
+use App\Models\Produit;
+use App\Personnalisable;
+use App\Http\Requests\ProduitRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 
 /**
  * Class ProduitCrudController
@@ -63,7 +66,7 @@ class ProduitCrudController extends CrudController
             ]
         );
     }
-
+ 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ProduitRequest::class);
@@ -193,10 +196,17 @@ class ProduitCrudController extends CrudController
                 ],
             ]
         );
+        $pers=request()->input('personnalisable');
         
         $mtn=request()->input('prix_achat');
         $prix_vente=Marge::prix_vente($mtn);
         request()->merge(array('prix_vente'=>$prix_vente));
+        $pv=Produit::ApplyPercent(request()->input('vrai_percent'),$prix_vente);
+        if($pv){
+            request()->merge(array('prix_vente'=>$pv));
+        }
+        $id = Produit::latest()->first()->id+1;
+        Personnalisable::AddOrRemove($pers,$id);
     }
 
     protected function setupUpdateOperation()

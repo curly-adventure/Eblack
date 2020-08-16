@@ -41,7 +41,7 @@
 							break;
 							case 'Traitement':
 							$back="orange";
-							$nom="En cour de confirmation";
+							$nom="En cour de traitement";
 							break;
 							case 'Livrer':
 							$back="blue";
@@ -135,7 +135,7 @@
 			<div class="box p-2 b-t-2 b-b-2" style="background: white">
 			    <div class="box-header with-border">
 			      <h3 class="box-title">
-		            <span><i class="fa fa-shopping-cart"></i>  Produits </span>
+		            <span><i class="fa fa-shopping-cart"></i>  Produit(s) </span>
 		          </h3>
 			    </div>
 
@@ -156,7 +156,7 @@
 								@foreach($produits as $product)
 									<tr>
 										<td class="vertical-align-middle">
-											<a href="">{{ $product->nom }}</a><br/>
+											<a href="{{URL('produits/'.$product->produit_id.'/details')}}">{{ $product->nom }}</a><br/>
 										</td>
 										<td class="vertical-align-middle">{{ $product->prix }}</td>
 										<td class="vertical-align-middle">{{ $product->quantite }}</td>
@@ -165,10 +165,57 @@
 							</tbody>
 						</table>
 					</div>
-
+					<div class="col-md-12">
+				    	<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Produit personnalisé(s)</th>
+									<th>Texte</th>
+									<th>Couleur</th>
+								</tr>
+							</thead>
+							<tbody>
+								@php
+									$produits=\App\AchatProduit::all()->where('achat_id',$order->id);
+									
+								@endphp
+								@foreach($produits as $product)
+								@php
+									$produit=App\Models\Produit::find($product->produit_id)->first();
+									
+								@endphp
+								@if($produit->personnalisable)
+								@php
+									$p_pers = DB::table("produit_personnaliser")->where("produit_id",$product->produit_id)->first();
+								@endphp
+									@if($p_pers)
+				
+									<tr>
+										<td class="vertical-align-middle">
+											<a href="{{URL('produits/'.$product->produit_id.'/details')}}">{{ $product->nom }}</a><br/>
+										</td>
+										<td class="vertical-align-middle">{{ $p_pers->texte }}</td>
+										<td class="vertical-align-middle">{{ $p_pers->couleur }}</td>
+									</tr>
+									@endif
+									@endif
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+<hr style="font-size: 25px;font-weight:bold">
 					<div class="col-md-6 col-md-offset-6">
 						<table class="table table-condensed b-">
-							
+							<tr>
+								<td class=""><strong>SOUS-TOTAL : </strong></td>
+								<td class=""><strong>{{$order->soustotal}} FCFA</strong></td> <br>
+													
+							</tr>
+							<tr>
+								<td class=""><strong>FRAIS DE LIVRAISON : </strong></td>
+								<td class=""><strong>{{App\Models\Tarif_livraisons::frais($commune->id)}} FCFA</strong></td>
+		
+							</tr>
 							<tr>
 								<td class=""><strong>TOTAL : </strong></td>
 								<td class=""><strong>{{$order->montant}} FCFA</strong></td>

@@ -8,12 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>	
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>	
+	
      <script type="text/javascript" src="{{asset('js/fabric.js')}}"></script>
      <script type="text/javascript" src="{{asset('js/tshirtEditor.js')}}"></script>
      <script type="text/javascript" src="{{asset('js/jquery.miniColors.min.js')}}"></script>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-    
 	
 	<link type="text/css" rel="stylesheet" href="{{asset('css/jquery.miniColors1.css')}}" />
     <link href="{{asset('css/bootstrap.min1.css')}}" rel="stylesheet">
@@ -101,7 +101,8 @@
 				
 		   		 <h1 ><a href="{{URL('/')}}"><img  src="{{asset('images/eblack.jpg')}}" width="300" alt="Eblack"></a><span class="">Personalisation</span></h1>
                     <hr><hr>
-		  		</div>
+				  </div>
+				  
 		  <br>
 		  <!-- Headings & Paragraph Copy -->
 		  <div class="row">			
@@ -220,12 +221,14 @@
 						</div>												
 					</div>					  		
 				<!--	EDITOR      -->					
-					<div id="shirtDiv" class="page mb-9" style="width: 430px; height: 510px; position: relative; background-color: rgb(255, 255, 255);">
+					<div id="shirtDiv" class="page mb-9 im" style="width: 430px; height: 510px; position: relative; background-color: rgb(255, 255, 255);">
 						<img id="tshirtFacing" src="{{asset('images\h.png')}}" style="">
 						<div id="drawingArea" style="position: absolute;top: 80px;left: 120px;z-index: 10;width: 200px;height: 350px;">					
 							<canvas id="tcanvas" width="200" height="350" class="hover" style="-webkit-user-select: none;"></canvas>
 						</div>
+        
 					</div>
+					
 				</div>
 				<div class="span3"> 
          <div class="well">
@@ -240,8 +243,14 @@
 			</div>
 			
 		</div>
+
 		</section>
+
 	</div>
+<div style="mt-5">
+	<p style="font-size: 11px;margin-top:-70px" class="">mode experimentale, vous nous excusez pour tout desagrement ocasionné</p>
+
+</div>
       <?php
 	if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['done']))
     {
@@ -258,14 +267,6 @@
         }
     }
      ?>
-					
-<!--					
-		    </div>
-		
-    <!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->   
-
 	<script src="{{asset('js/bootstrap.min1.js')}}"></script>  
     
   </body>

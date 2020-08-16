@@ -44,6 +44,39 @@ class Marque extends Model
         }return $i;
        
     }
+    protected function PromoProduits($marque,$percent){
+        $mrq=Marque::find($marque);
+        if($marque){
+        $produits=Produit::where("marque_id",$mrq->id)->get();
+        foreach ($produits as $produit) {
+            $prix_achat_red=$produit->prix_achat-($produit->prix_achat*($percent/100));
+            $prix_vente=Marge::prix_vente($prix_achat_red);
+            $produit->update([
+                "prix_achat" => $prix_achat_red,
+                "prix_vente" => $prix_vente,
+                "vrai_percent" => $percent,
+            ]);
+        }}
+        return null;
+    }
+    
+    public static function RemovePromoProduits($prmotion){
+        $prm=Promotion::find($prmotion);
+        $mrq=Marque::find($prm->marque_id);
+        $percent=$prm->percent;
+        $produits=Produit::where("marque_id",$mrq->id)->get();
+     
+        foreach ($produits as $produit) {
+            $prix_achat=$produit->prix_achat/(-($percent/100)+1);
+            $prix_vente=Marge::prix_vente($prix_achat);
+            $produit->update([
+                "prix_achat" => $prix_achat,
+                "prix_vente" => $prix_vente,
+                "vrai_percent" => null,
+            ]);
+        }
+        return null;
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

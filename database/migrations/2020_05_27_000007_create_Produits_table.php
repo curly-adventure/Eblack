@@ -35,6 +35,7 @@ class CreateProduitsTable extends Migration
             $table->string('faux_percent')->nullable();
             $table->string('vrai_percent')->nullable();
             $table->boolean('personnalisable')->default(false);
+            $table->boolean('uniquement_personnalisable')->default(false);
             $table->boolean('enligne')->default(true);
             $table->softDeletes();
             $table->timestamps();

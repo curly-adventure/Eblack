@@ -52,16 +52,17 @@
             </select> 
             </td>
             <td> 
-                <div class="price-wrap mt-3"> 
+                <div class="price-wrap mt-4"> 
                     <var class="price text-right"style="color:#002687; ">{{getPrice($produit->subtotal())}} FCFA</var>
-                    <del class="price-old ml-5 text-right">{{getPrice($produit->model->prix_achat)}} FCFA</del>  
+                    <!--<del class="price-old ml-5 text-right">{{getPrice($produit->model->prix_achat)}} FCFA</del> --> 
                     
                 </div> <!-- price-wrap .// -->
             </td>
             <td class="text-right"> 
-                h
+                
             <form class=" mt-4" action="{{route('panier.supprime',$produit->rowId)}}" method="POST">
                     @csrf
+                    <input name="produit_id" type="hidden" value="{{$produit->model->id}}">
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger">× Supprimer</button>
             </form>
@@ -78,7 +79,7 @@
     </div>
     </div> <!-- card.// -->
     <div class="alert alert-success mt-3 p-1 pl-5 ">
-        <p class="icontext" style="font-weight: bold"><i class="icon text-success fa fa-truck"></i>&nbsp;Livraison gratuite pour un achat superieur a 20000 fr</p>
+        <p class="icontext" style="font-weight: bold"><i class="icon text-success fa fa-truck"></i>&nbsp;Livraison rapide et securisé</p>
     </div>
         </main> <!-- col.// -->
         <aside class="col-md-3">

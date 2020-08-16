@@ -19,13 +19,16 @@
               <div class="carousel-inner">
                 @foreach ($sliders as $i=>$slide)
                 @php
-                    $categorie_id=$slide->categorie_id; $souscategorie_id=$slide->sous_categorie_id;
+                    $categorie_id=$slide->categorie_id; $souscategorie_id=$slide->sous_categorie_id;$produit=$slide->produit_id
                 @endphp
                 @if ($i==0) <div class="carousel-item active item-slide">
                 @else <div class="carousel-item item-slide">
                 @endif
-                  <a href="{{route('produits.index',['categorie'=>$categorie_id,'souscategorie'=>$souscategorie_id])}}"><img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->titre}}" style="width:100%;height:100%;object-fit: cover"> </a>
-                  <div class="carousel-caption">
+                @if($produit)<a href="{{route('produits.show',[$produit])}}"><img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->titre}}" style="width:100%;height:100%;object-fit: cover"> </a>
+                   
+                @else<a href="{{route('produits.index',['categorie'=>$categorie_id,'souscategorie'=>$souscategorie_id])}}"><img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->titre}}"  style="width:100%;height:100%;object-fit: cover"> </a>
+                @endif
+                <div class="carousel-caption">
                     <h5 style="color: white; text-transform : uppercase">{{$slide->titre}}</h5>
                   </div>
                 </div>

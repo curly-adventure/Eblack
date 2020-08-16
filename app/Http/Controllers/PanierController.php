@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Produits;
+use App\Models\Produit;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class PanierController extends Controller
@@ -54,8 +55,18 @@ class PanierController extends Controller
         if ($duplicata->isNotEmpty()) {
             return redirect()->route('panier.index')->with('info','le produit a deja été ajouter');
         }
-
-        $produit=Produits::find($request->produit_id);
+        
+        $produit=Produit::find($request->produit_id);
+        if ($request->personnaliser) {
+            if(!$request->texte){
+                return redirect()->back()->with('toast_info','veillez entrez votre texte');
+            }
+            DB::table("produit_personnaliser")->insert([
+                "produit_id"=>$produit->id,
+                "texte" => $request->texte,
+                "couleur" => $request->couleur,
+            ]);
+        }
         Cart::add($produit->id,$produit->nom,$request->qte?$request->qte:1,$produit->prix_vente)
             ->associate('App\Produits');
         return redirect()->route('panier.index')->with('success','le produit a bien été ajouter');
@@ -79,23 +90,12 @@ class PanierController extends Controller
         ]);
         return back()->with('toast_success','code coupon appliqué');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
@@ -128,14 +128,9 @@ class PanierController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($rowId)
     {
+        DB::delete("delete from produit_personnaliser where produit_id=?",[request()->input("produit_id")]);
         Cart::remove($rowId);
         return back()->with('toast_success','article supprimer !');
     }

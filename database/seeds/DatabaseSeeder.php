@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SlidersTableSeeder::class);
         
         $this->call(MargeTableSeeder::class);
+        $this->call(PromotionTableSeeder::class);
     }
 }

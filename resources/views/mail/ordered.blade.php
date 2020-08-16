@@ -265,7 +265,7 @@
                           <th style="width:50%;">Prix TTC</th>
                           @php $articles = \App\AchatProduit::all()->where('achat_id', $order->id);@endphp
                         </tr> @foreach ($articles as $item) <tr>
-                          <td style="padding: 0 15px 0 0;">{{ $item->nom }} (* {{ $item->quantite }} )</td>
+                          <td style="padding: 0 15px 0 0;">{{ $item->nom }} *{{ $item->quantite }}</td>
                           <td style="padding: 0 15px;">{{$item->prix}} Fcfa</td>
                         </tr> @endforeach 
                         <tr>

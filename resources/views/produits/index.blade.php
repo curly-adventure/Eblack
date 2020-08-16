@@ -14,17 +14,17 @@
 					
 					@foreach ($lien as  $item=>$i)
 
-					@if ($item==$titre)
-					 	<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie,'souscategorie'=>request()->souscategorie])}}">{{$item}}</a></li>
-					@else
-						<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie])}}">{{$item}}</a></li>
-					@endif
-						
+						@if ($item==$titre)
+							<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie,'souscategorie'=>request()->souscategorie])}}">{{$item}}</a></li>
+						@else	
+							<li class="breadcrumb-item"><a href="{{route($i,['categorie'=>request()->categorie])}}">{{$item}}</a></li>
+						@endif	
+
 					@endforeach
 				</ol>
-			</nav> <!-- col.// -->
+			</nav> 
 		</div>
-		 <!-- row.// -->
+
 		<div class="container">
 			<figure class="mt-3 mb-3 banner ">
 				<div class=" text-center " id="titre-cate" style="text-transform: capitalize;">{{$titre}}</div>
@@ -78,11 +78,13 @@
 					<option value="1">Nouveauté</option>
 					<option value="2">prix croissant</option>
 					<option value="3">prix decroissant</option>
+					<option value="4">personnalisable</option>
+
 					{{--<option value="5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ordre alphabetique</font></font></option>--}}
 				</select>
 				<input type="hidden" name="categorie" value="{{$categorie_id}}">
 				<input type="hidden" name="souscategorie" value="{{$souscategorie_id}}">
-				<input type="hidden" name="marque" value="{{$marque_id}}">
+				<input type="hidden" name="personnalisable" value="1">
 			</form>
 			</div>
 			</div>
@@ -138,6 +140,11 @@
 		@foreach ($products as $key => $produit)
 		<div class="col-md-3 col-sm-6">
 			<figure class="card card-product">
+				@if($produit->vrai_percent or $produit->faux_percent)
+                 <span class="badge-new float-right"> 
+                     @php $v=$produit->vrai_percent??$produit->faux_percent;echo "-$v%" @endphp
+                    </span>
+                @endif
 				<div class="img-wrap img-fluid"> 
 				    @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
                         if ($lien) { $img=$lien[0]; }  @endphp

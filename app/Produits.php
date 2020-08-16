@@ -2,11 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\ImagesProduit;
+use willvincent\Rateable\Rateable;
+use Illuminate\Database\Eloquent\Model;
 
 class Produits extends Model
 {
+    use Rateable;
     protected $table = 'Produits';
     protected $primaryKey = 'id';
     protected $fillable = ['quantite'];
@@ -14,13 +16,26 @@ class Produits extends Model
     public function prix_barre()
     {
         if($this->vrai_percent){
-             return null;
+            $p=$this->vrai_percent;
+            return $this->prix_vente/(-($p/100)+1);
+              
         }
-        if ($this->faux_percent){
+        elseif ($this->faux_percent){
             $p=$this->faux_percent;
             return $this->prix_vente / ($p / 100);
         }
         return null;
+    }
+    public function percent()
+    {
+        if($this->vrai_percent){
+            return $this->vrai_percent;
+       }
+       elseif ($this->faux_percent){
+        return $this->faux_percent;
+            
+       }
+       return null;
     }
 
     public function getprice()
