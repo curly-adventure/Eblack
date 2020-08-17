@@ -28,6 +28,7 @@ class SweetAlertServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->registerPublishing();
         }
+        $this->loadViewsFrom(__DIR__.'/views/vendor', 'sweetalert'); 
     }
 
     /**

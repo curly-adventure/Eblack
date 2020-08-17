@@ -5,6 +5,7 @@ use GuzzleHttp\Psr7\Request;
 use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 route::get('/test',function(){
   return view('test');
@@ -83,6 +84,17 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/enregistrement',function(){
 return view('forms');
 })->name('enregistrement');
+
+Route::get('/clear', function() {
+
+  Artisan::call('cache:clear');
+  Artisan::call('config:clear');
+  Artisan::call('config:cache');
+  Artisan::call('view:clear');
+
+  return "Cleared!";
+
+});
 
 /*route pour les lien inexistant*/
 Route::any('{catchall}', function () {
