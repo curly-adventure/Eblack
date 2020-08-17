@@ -1,4 +1,4 @@
-{{-- Bootstrap Notifications using Prologue Alerts & PNotify JS 
+{{-- Bootstrap Notifications using Prologue Alerts & PNotify JS --}}
 <script type="text/javascript">
   Noty.overrideDefaults({
     layout   : 'topRight',
@@ -18,6 +18,4 @@
 
       @endforeach
   @endforeach
- 
-</script>--}}
-@include('sweetalert::alert')
+</script>

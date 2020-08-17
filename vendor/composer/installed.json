@@ -8024,7 +8024,7 @@
                 "dev-master": "5.1-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Symfony\\Component\\Routing\\": ""
@@ -8737,7 +8737,7 @@
         },
         "time": "2020-06-15T23:49:30+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "voku\\": "src/voku/"
