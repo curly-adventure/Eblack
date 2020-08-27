@@ -21,14 +21,12 @@
             </form>
          @endif
     
-    <div id="tcat"><span style="text-transform: uppercase;font-size: 15px;font-weight:bold;">NOS CATEGORIES</span> <a href="#" style="color:#00268">voir plus</a></div>
+    <div id="tcat"><span style="text-transform: uppercase;font-size: 15px;font-weight:bold;">NOS CATEGORIES</span> <!--<a href="#" style="color:#00268">voir plus</a>--></div>
     <style>#tcat{padding: 5px;font-size: 11px;color:#002687}#tcat a{margin-left: 60px;font-size: 12px;color:#002687}</style>
     <ul class="list-unstyled menu-elements">
         <li><a class="" href="{{route('produits.index',['personnalisable'=>1])}}">Personnalisable</a></li>
         @foreach (App\Categories::All() as $i=>$cate)
-        @if ($i==4)
-            @php break; @endphp
-        @endif
+       
         <li class="">
             <a href="#{{$cate->id}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="{{$cate->id}}">
                 {{$cate->nom}}

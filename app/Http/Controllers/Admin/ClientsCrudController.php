@@ -57,7 +57,11 @@ class ClientsCrudController extends CrudController
             'label' => "status", 
             'type' => 'text_perso'
         ]);
-        
+        $this->crud->addColumn([
+            'name' => 'last_seen', 
+            'label' => "dernière vue", 
+            'type' => 'text'
+        ]);
     }
 
     

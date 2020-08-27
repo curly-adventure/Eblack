@@ -65,7 +65,7 @@
             }
           </style>
           @php
-          $categories=App\Categories::All()
+          $categories=App\Categories::take(5)->get()
           @endphp
           <div class="col-md d-none d-lg-block flex-grow-1 reveal">
             <aside class="special-home-right">

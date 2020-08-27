@@ -108,21 +108,14 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rowId, $qte)
+    public function update()
     {
-        $data = $request->json()->all();
-        //dd($data);
-        $validates = Validator::make($request->all(), [
-            'qty' => "numeric|required|between:1,$qte",
-        ]);
-
-        if ($validates->fails()) {
-            return back()->with(toast("La quantité doit est comprise entre 1 et ".$qte,"error")->autoClose(5000));
-            //return response()->json(['error' => 'Cart Quantity Has Not Been Updated']);
-        }
-
-        Cart::update($rowId, $data['qty']);
-        return back()->with(toast('panier mis à jour !','success')->autoClose(5000));
+        //dd(request()->qte,request()->rowId);
+        //$data = $request->json()->all();
+        //dd($data,$qte);
+       
+        Cart::update(request()->rowId, request()->qte);
+        return redirect()->route('panier.index')->with('toast_success','panier mis à jour !');
         //return back()->with(toast('La quantité des produits est passée à ' . Cart::count() . '.','success')->autoClose(5000));
         //return response()->json(['success' => 'Cart Quantity Has Been Updated']);
     }

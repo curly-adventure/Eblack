@@ -13,8 +13,8 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo32.png')}}">
     <!-- jQuery -->
-    
     <script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
+
     
     <!-- Bootstrap4 files-->
     <script src="{{ asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>

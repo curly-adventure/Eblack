@@ -1,0 +1,9 @@
+2020.08.27 09:02:43 INFO  started: Metals version 0.9.3 in workspace 'C:\Users\personnel\Documents\Programming Universe\Projects\projets laragon\eblackShop' for client vscode.
+2020.08.27 09:02:45 INFO  time: initialize in 2.65s
+2020.08.27 09:02:52 WARN  no build tool detected in workspace 'C:\Users\personnel\Documents\Programming Universe\Projects\projets laragon\eblackShop'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+août 27, 2020 9:18:05 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFOS: Unsupported notification method: $/setTraceNotification
+2020.08.27 09:52:50 INFO  shutting down Metals
+2020.08.27 09:55:05 INFO  started: Metals version 0.9.3 in workspace 'C:\Users\personnel\Documents\Programming Universe\Projects\projets laragon\eblackShop' for client vscode.
+2020.08.27 09:55:07 INFO  time: initialize in 2.38s
+2020.08.27 09:55:37 WARN  no build tool detected in workspace 'C:\Users\personnel\Documents\Programming Universe\Projects\projets laragon\eblackShop'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 

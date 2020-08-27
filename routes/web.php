@@ -25,7 +25,7 @@ Route::get('produits/{produit}/annuler',function($produit){
   return redirect()->route('produits.show',[$produit]);
 })->name('produits.personnalise.annuler');
 route::get('/produits/personnalisables', 'ProduitsController@personnalisable')->name('produits.personnalisable');
-
+//Route::get('/produits/promo', 'ProduitsController@index')->name('produits.promo');
 route::get('/produit/{produit}/rate{value}',function (Produits $produit,$value )
 {
 if(Auth::user()){
@@ -39,7 +39,7 @@ else{
 /* route panier*/
 Route::get('/panier', "PanierController@index")->name('panier.index');
 Route::post('/panier/ajouter', "PanierController@store")->name('panier.store');
-Route::patch('/panier/{rowId}/{qte}', "PanierController@update")->name('panier.update');
+Route::get('/panier/update', "PanierController@update")->name('panier.update');
 Route::delete('/panier/{rowId}', "PanierController@destroy")->name('panier.supprime');
 Route::post('/coupon', "PanierController@storeCoupon")->name('panier.store.coupon');
 Route::delete('/coupon', "PanierController@destroyCoupon")->name('panier.supprime.coupon');

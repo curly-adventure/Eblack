@@ -25,7 +25,7 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nom');
             $table->string('prenom')->nullable();;
-            $table->string('email', 45)->nullable()->unique();
+            $table->string('email', 45)->nullable();
             $table->string('numero')->nullable();
             $table->string('motdepasse', 250);
             $table->string('provider')->nullable();

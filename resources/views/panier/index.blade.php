@@ -1,6 +1,4 @@
-@section('extra-script')
-    <script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
-@endsection
+
 @extends('layouts.app')
 @section('title','panier')
 @section('extra-meta')
@@ -45,11 +43,15 @@
             </td>
             <td> 
                 
-            <select name="qty" id="qty" data-id="{{$produit->rowId}}" qte="{{$produit->model->quantite}}" class="custom-select mt-4" style="width: 80px">
+            <select onchange="change(this.value,{{$produit->model->quantite}})" name="qty" id="qty" data-id="{{$produit->rowId}}" class="custom-select mt-4" style="width: 80px">
                     @for ($i = 1; $i <= $produit->model->quantite; $i++)
-                <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
+                <option  value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
                     @endfor	
             </select> 
+            <form action="{{route('panier.update')}}" class="d-none" id="form" method="GET">
+            <input type="hidden" name="rowId" value="{{$produit->rowId}}">
+            
+            </form>
             </td>
             <td> 
                 <div class="price-wrap mt-4"> 
@@ -179,7 +181,7 @@
                         <div class="text-left ml-2 ">
                         <select  name="qty" id="qty" data-id="{{$produit->rowId}}" class="custom-select">
                             @for ($i = 1; $i <= 6; $i++)
-                            <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option>
+                        <a href="#{{$i}}"> <option value="{{$i}}" {{$i==$produit->qty ? 'selected':''}}>{{$i}}</option></a>
                             @endfor	
                         </select> 
                     </div>
@@ -277,31 +279,21 @@
 @section('extra-js')
 <script>
     var qty = document.querySelectorAll('#qty');
-    Array.from(qty).forEach((element) => {
-        element.addEventListener('change', function () {
-            var rowId = element.getAttribute('data-id');
-            var qte=element.getAttribute('qte');
-            var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch(`/panier/${rowId}/${qte}`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json, text-plain, */*",
-                        "X-Requested-With": "XMLHttpRequest",
-                        "X-CSRF-TOKEN": token
-                    },
-                    method: 'patch',
-                    body: JSON.stringify({
-                        qty: this.value
-                    })
-            }).then((data) => {
-                console.log(data);
-                location.reload();
-            }).catch((error) => {
-                console.log(error);
-            });
-        });
-    });
+    form = document.getElementById("form"),
+      node = document.createElement("input");
+      node2 = document.createElement("input");
+      node.name  = "qte";
+      node2.name  = "stock";
+    
+  function change(v,s){
+    node.value = v;
+    node2.value=s;
+    form.appendChild(node.cloneNode());
+    form.appendChild(node2.cloneNode());
+
+    form.submit();
+     
+  }
 </script>
 @include('sweetalert::alert')
 @endsection

@@ -22,7 +22,7 @@ class Produits extends Model
         }
         elseif ($this->faux_percent){
             $p=$this->faux_percent;
-            return $this->prix_vente / ($p / 100);
+            return $this->prix_vente / (1-$p / 100);
         }
         return null;
     }

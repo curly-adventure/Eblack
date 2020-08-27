@@ -1,11 +1,51 @@
-@section('extra-script')
-<script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
-@endsection
 @extends('layouts.app')
 @section('title','Accueil')
 @section('content')
 
 @include('layouts.slider')
+
+<section class="section-content padding-y-sm bg reveal">
+    
+    <div class="container d-none ">
+        <div class="card " style="height:200px;background:transparent;border:transparent" >
+            <a href="{{route('produits.index',["promo"=>1])}}">
+                <img class="col-lg-8 offset-lg-2" src="/images/banners/vv.jpg" style="height:200px">
+            </a>
+        </div>
+    </div>
+    <div class="card d-lg-none">
+        @php
+          $categories=App\Categories::inRandomOrder()->take(3)->get();
+          @endphp
+        <div class="row p-1">
+            <center class="col-4 bl-1">
+                <a href="{{route('produits.index')}}">
+                  <img src="{{asset('images/go.gif')}}" height="80" style="padding:10px;border:1px solid black;border-radius:50%" class="img-bg">
+                   <br>
+                <span style="font-size: 11px;font-weight:bold;color:black">tous les produits</span>
+                </a>
+            </center>
+            <center class="col-4">
+                <a href="{{route('produits.index',['categorie'=>$categories[0]->id])}}">
+                <img src="{{asset('storage/'.$categories[0]->logo)}}" height="80" style="padding:10px;border:1px solid black;border-radius:50%" class="img-bg">
+                 <br>
+              <span style="font-size: 11px;font-weight:bold;color:black">{{$categories[0]->nom}}</span>
+                </a>
+          </center>
+          <center class="col-4">
+              <a href="{{route('produits.index',['categorie'=>$categories[1]->id])}}">
+                <img src="{{asset('storage/'.$categories[1]->logo)}}" height="80" style="padding:10px;border:1px solid black;border-radius:50%" class="img-bg">
+                <br>
+                <span style="font-size: 11px;font-weight:bold;color:black">{{$categories[1]->nom}}</span>
+            </a>
+      </center>
+           
+        </div>
+    </div>
+    <div class="card d-none mt-1" style="height:100px;background:transparent;border:transparent;" >
+        <a href="{{route('produits.index',["promo"=>1])}}"><img class="" src="/images/banners/vv.jpg" style="height:100px;width:100%"></a>
+    </div>
+</section>
 <section class="section-content padding-y-sm bg reveal">
     
     <div class="container">
@@ -124,11 +164,15 @@
             </div> <!-- col.// -->
             <div class="col-md-9 reveal-3">
             <ul class="row no-gutters border-cols">
-           
+           @php $cpt=0 @endphp
            @foreach($pop_prod as $key=>$produit)
-                @if($key==4)
-                    
-                @break
+                
+                @if(intval($produit->averageRating)<3)
+                    @continue
+                @endif
+                @php $cpt+=1 @endphp
+                @if ($cpt==5)
+                    @break
                 @endif
                 <li class="col-6 col-md-3">
                     <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
@@ -159,9 +203,16 @@
             @endforeach
         </ul>
         <ul class="row no-gutters border-cols">
+            @php  $k=$key;$cpt=0 @endphp
             @foreach($pop_prod as $key=>$produit)
-                @if($key>=4)
-                
+                @if($key>$k)
+                @if(intval($produit->averageRating)<3)
+                    @continue
+                @endif
+                @php $cpt+=1 @endphp
+                @if ($cpt==5)
+                    @break
+                @endif
                 <li class="col-6 col-md-3">
                     <a href="{{route('produits.show',[$produit->id])}}" class="itembox"> 
                         <div class="card-body align-items-center">

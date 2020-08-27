@@ -132,7 +132,44 @@ class ProduitsController extends Controller
 
             $titre = "Personnalisable";
             $lien = array($titre => "produits.index");
-        } else {
+        } 
+        elseif (request()->promo) {
+            switch (request()->input('trie')) {
+                case 1:
+                    $products = Produits::where('faux_percent','>',0)
+                    ->orWhere('vrai_percent','>',0)
+                    ->orderBy('created_at', 'DESC')->paginate(8);
+                    break;
+                case 2:
+                    $products = Produits::where('faux_percent','>',0)
+                    ->orWhere('vrai_percent','>',0)
+                    ->orderBy('prix_vente', 'ASC')
+                    ->paginate(8);
+                    break;
+                case 3:
+                    $products = Produits::where('faux_percent','>',0)
+                    ->orWhere('vrai_percent','>',0)
+                    ->orderBy('prix_vente', 'DESC')
+                    ->paginate(8);
+                    break;
+                case 4:
+                    
+                    $products = Produits::where('faux_percent','>',0)
+                    
+                    ->where('personnalisable','=', 1)
+                    ->orWhere('vrai_percent','>',0)
+                    ->where('personnalisable','=', 1)
+                        ->paginate(8);
+                    break;
+                default:
+                    $products = Produits::where('faux_percent','>',0)
+                    ->orWhere('vrai_percent','>',0)
+                        ->paginate(8);
+                    break;
+            }
+            $titre = "Produits En Promo";
+            $lien = array("Tous Les Produits" => "produits.index");
+        }else {
             switch (request()->input('trie')) {
                 case 1:
                     $products = Produits::orderBy('created_at', 'DESC')->paginate(8);
@@ -216,7 +253,8 @@ class ProduitsController extends Controller
             );
         } elseif ($mot_cle == "popular") {
             $products = Produits::inRandomOrder()->paginate(8);
-            $titre = "Produits Populaire";
+            
+            $titre = "Produits Populaires";
             $lien = array(
                 "tout les produits" => "produits.index",
                 "populaires" => 'produits.index'

@@ -173,7 +173,7 @@
 	  </nav>
 	<div id="html">
 	<div class="box text-center">
-		<p>As-tu trouvé ce que tu cherchais？</p>
+		<p>Avez-vous trouvez ce que vous cherchez？</p>
 		<button class="btn btn-light" onclick="alert('merci de nous faire confiance !\nEblack, le choix de la qualité')">Oui</button>
 		<button type="button" data-toggle="modal" data-target="#form" class="btn btn-light">Non</button>
 	</div>
