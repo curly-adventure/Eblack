@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table='clients';
+    protected $primaryKey='id';
+
     /**
      * The attributes that are mass assignable.
      *

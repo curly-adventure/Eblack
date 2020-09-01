@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
-    protected $table='Achats';
+    protected $table='achats';
     protected $primaryKey='id';
     protected $fillable = [
         'canceled','status_id','deleted_at'

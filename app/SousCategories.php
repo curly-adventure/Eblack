@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SousCategories extends Model
 {
-    protected $table='sousCategorie';
+    protected $table='souscategorie';
     protected $primaryKey='id';
 
     public function categories()

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Produits extends Model
 {
     use Rateable;
-    protected $table = 'Produits';
+    protected $table = 'produits';
     protected $primaryKey = 'id';
     protected $fillable = ['quantite'];
 

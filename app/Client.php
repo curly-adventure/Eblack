@@ -13,7 +13,7 @@ class Client extends Authenticatable
 {
     use Notifiable;
     use HasWishlists;
-    protected $table='Clients';
+    protected $table='clients';
     protected $primaryKey='id';
 
     protected $fillable = [
