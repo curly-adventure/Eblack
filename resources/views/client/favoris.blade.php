@@ -35,7 +35,7 @@
                       <td>
                       <figure class="media">
                         @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
-                        if ($lien) { $img=$lien[0]; }  @endphp
+                        if ($lien) { foreach($lien as $i){$img=$i;break;} }  @endphp
                           <div class="img-wrap"><img src="{{asset('storage/'.$img)}}" class="img-thumbnail img-sm"></div>
                           <figcaption class="media-body">
                               
@@ -107,7 +107,7 @@
         @php $stock=$produit->quantite==0 ? "Indisponible" : "Disponible" @endphp
           <figure class="media p-2">
             @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
-            if ($lien) { $img=$lien[0]; }  @endphp
+            if ($lien) { foreach($lien as $i){$img=$i;break;} }  @endphp
               <div class="img-wrap"><img src="{{asset('storage/'.$img)}}"  style="border:none" class="img-thumbnail img-sm"></div>
               <figcaption class="media-body">
                   <h6 class="title text-truncate mt-4 word-limit" style="color: black;font-size:20px;width:150px">{{$produit->nom}}</h6>

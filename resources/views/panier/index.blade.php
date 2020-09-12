@@ -31,7 +31,7 @@
             <td>
             <figure class="media">
                 @php  $liens=$produit->model->images; $lien=json_decode($liens); $img="img.jpg";
-                if ($lien) { $img=$lien[0]; } @endphp
+                if ($lien) { foreach($lien as $i){$img=$i;break;} } @endphp
                 <div class="img-wrap"><img src="{{asset('storage/'.$img)}}" class="img-thumbnail img-sm"></div>
                 <figcaption class="media-body">
                     
@@ -166,7 +166,7 @@
                 
                 <figure class="media p-2">
                     @php  $liens=$produit->model->images; $lien=json_decode($liens); $img="img.jpg";
-                    if ($lien) { $img=$lien[0]; } @endphp
+                    if ($lien) { foreach($lien as $i){$img=$i;break;} } @endphp
                     <div class="img-wrap"><img src="{{asset('storage/'.$img)}}"  style="border:none" class="img-thumbnail img-sm"></div>
                     <figcaption class="media-body">
                         <h6 class="title text-truncate mt-4 word-limit" style="color: black;font-size:20px;max-width :150px">{{$produit->model->nom}}</h6>

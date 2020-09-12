@@ -49,7 +49,7 @@
                                 
                                 <div class="img-big-wrap">
                                     @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
-                                    if ($lien) { $img=$lien[0]; }  @endphp
+                                    if ($lien) { foreach($lien as $i){$img=$i;break;} }  @endphp
                                     <div>
                                         <a id="item-display" href="{{asset('storage/'.$img)}}" data-fancybox=""><img id="display" class="img-fluid" src="{{asset('storage/'.$img)}}" style="max-height:300px"></a>
                                     </div>
@@ -244,7 +244,7 @@
                     </span>
                 @endif
                         @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
-                        if ($lien) { $img=$lien[0]; }  @endphp
+                        if ($lien) { foreach($lien as $i){$img=$i;break;} }  @endphp
                     
                         <div class="img-wrap"> <img src="{{asset('storage/'.$img)}}"> </div>
                         <figcaption class="info-wrap text-center">

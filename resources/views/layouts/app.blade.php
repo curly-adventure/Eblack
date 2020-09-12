@@ -37,7 +37,7 @@
     <link href="{{ asset('css/responsive.css')}}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/media-queries.css')}}">
-
+    @yield('extra-css')
     <!-- custom javascript -->
     <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>

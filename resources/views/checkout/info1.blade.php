@@ -38,8 +38,10 @@
                         <span class="h6 price-new">{{$produit->model->getprice()}} Fcfa</span>
                         <p>Qté : {{$produit->qty}}</p>
                     </div>
-                    @php $liens=$produit->model->images; $lien=json_decode($liens); @endphp
-                    <img class="img-sm float-right mb-2" style="width: 30%;" src="{{asset('storage/'.$lien[0])}}">
+                    @php $liens=$produit->model->images; $lien=json_decode($liens);$img="img.jpg";
+                   if ($lien) { foreach($lien as $i){$img=$i;break;} }
+                   @endphp
+                    <img class="img-sm float-right mb-2" style="width: 30%;" src="{{asset('storage/'.$img)}}">
                   
                 </div>
                 

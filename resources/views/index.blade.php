@@ -86,10 +86,10 @@
                    @endif
                  @php
 
-                 $liens=$produit->images; $lien=json_decode($liens);
+                 $liens=$produit->images; $lien=json_decode($liens,true);
                  $img="img.jpg";
                  if ($lien) {
-                    $img=$lien[0];
+                    foreach($lien as $i){$img=$i;break;}
                  } 
                  //dd($lien);
                  @endphp
@@ -120,7 +120,7 @@
                        @endif
                     @php
                     $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
-                    if ($lien) { $img=$lien[0]; } 
+                    if ($lien) { foreach($lien as $i){$img=$i;break;} } 
                     @endphp
                     <center><img class="img-sm" src="storage/{{$img}}"></center>
                    <hr>

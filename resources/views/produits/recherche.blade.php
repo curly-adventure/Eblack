@@ -147,7 +147,7 @@
                 @endif
 				<div class="img-wrap img-fluid"> 
 				    @php $liens=$produit->images; $lien=json_decode($liens); $img="img.jpg";
-                        if ($lien) { $img=$lien[0]; }  @endphp
+                        if ($lien) { foreach($lien as $i){$img=$i;break;} }  @endphp
 				<img src="{{asset('storage/'.$img)}}" style="width:50%;object-fit: cover"></div>
 				<figcaption class="info-wrap text-center">
 					<a href="{{route('produits.show',[$produit->id])}}" class="title">{{$produit->nom}}</a>

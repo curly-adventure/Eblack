@@ -81,6 +81,10 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/client/commandes/{commande}', 'CommandeController@update')->name('client.commande.supprimer');
 });
 
+Route::get('/contact',function(){
+  return view('contact');
+  })->name('contact');
+  
 Route::get('/enregistrement',function(){
 return view('forms');
 })->name('enregistrement');

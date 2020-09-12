@@ -31,8 +31,9 @@
                                 <figure class="media ">
                                     @php
                                         $liens=\App\Produits::where('id',$article->produit_id)->first()->images;
-                                        $lien=json_decode($liens); @endphp
-                                    <div class="img-wrap"><img src="{{asset('storage/'.$lien[0])}}"  style="border:none" class="img-thumbnail img-sm"></div>
+                                        $lien=json_decode($liens);$img="img.jpg";
+                                        if ($lien) { foreach($lien as $i){$img=$i;break;} } @endphp
+                                    <div class="img-wrap"><img src="{{asset('storage/'.$img)}}"  style="border:none" class="img-thumbnail img-sm"></div>
                                 </figure>
                                 <div class="ml-2">
                                     <span style="font-weight: bold;font-size:17px"> {{$article->nom}}</span> <br>

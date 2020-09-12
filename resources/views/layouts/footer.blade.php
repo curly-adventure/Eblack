@@ -41,7 +41,7 @@
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" style="color: white;">NOUS CONTACTER</a>
+              <a href="{{route('contact')}}" style="color: white;">NOUS CONTACTEZ</a>
             </h6>
           </div>
           <!-- Grid column -->
